@@ -26,7 +26,7 @@
 
 ##### S T A R T ##### new/empty project, new repository #####
 #  mkdir ~/project/can1127
-## sed 's/can1127/NEWPROJ/g' ~git/svn/svn_note.txt > ~/project/can1127/svn_note.txt
+## sed 's/newproj/can1127/g' ~git/svn/svn_note.txt > ~/project/can1127/svn_note.txt
 
 ## to create .svn in a initial/developing copy, ./can1127
 ## ./can1127 can already been there or not
