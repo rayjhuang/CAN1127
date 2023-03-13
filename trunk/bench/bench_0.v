@@ -108,7 +108,7 @@ chiptop_1127a0 U0_DUT ( // for DFP development
 `endif // FPGA
 	.CC1		(CC1),		.CC2		(CC2),
 	.DP		(DP),		.DN		(DN),
-	.TS		(TS),
+	.GPIO_TS	(TS),
 	.SCL		(SCL),		.SDA		(SDA),
 	.GPIO1		(GPIO1),	.GPIO2		(GPIO2),
 	.GPIO3		(GPIO3),	.GPIO4		(GPIO4),

@@ -38,13 +38,13 @@ inout		scl, // J11_3
 inout		sda, // J11_4
 inout		GPIO6, // for AFE
 `else // !FPGA
-input		CSP, CSN,
-input		VFB,
-output		COM, LG, SW, HG, BST, GATE, VDRV,
+inout		CSP, CSN,
+inout		VFB,
+inout		COM, LG, SW, HG, BST, GATE, VDRV,
 `endif // FPGA
 inout		DP, DN, CC1, CC2,
-inout		TST,
-input		TS, // resistor for OTP
+input		TST,
+inout		GPIO_TS, // resistor for OTP
 inout		SCL, SDA, GPIO1, GPIO2,
 inout		GPIO3, GPIO4, GPIO5
 );

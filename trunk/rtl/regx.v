@@ -109,7 +109,6 @@ input		clk, rrstz
    assign  reg0C = UNREGX_D4;
    assign  reg0D = UNREGX_D4;
    assign  reg0E = UNREGX_D4;
-   assign  reg0F = UNREGX_D4;
    assign {reg0F,regx_wrcvc[3]} = {r_sdischg, we['h0f]}; // SDISCHG
 
    glreg #(1) u0_reg10 (clk, rrstz, 1'h1, ramacc, r_ramacc); // to prevent from timing loop
