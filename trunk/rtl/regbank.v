@@ -11,8 +11,8 @@ module regbank (
 // 2018/10/03 remove postfix
 // ALL RIGHTS ARE RESERVED
 // =============================================================================
-input	[6:0]	srci, // async.
-input		dm_fault, id_di, cc1_di, cc2_di, // async.
+input	[5:0]	srci, // async.
+input		dm_fault, cc1_di, cc2_di, // async.
 		di_rd_det, di_stbovp,
 		i_tmrf,
 		i_vcbyval, dnchk_en,
@@ -21,9 +21,8 @@ output		r_pwrv_upd, aswkup,
 		r_sleep, r_pwrdn, r_ocdrv_enz,
 		r_osc_stop, r_osc_lo, r_osc_gate,
 output	[11:0]	r_fw_pwrv,
-output	[2:0]	r_cvcwr,
+output	[1:0]	r_cvcwr,
 input	[15:0]	r_cvofs,
-input	[7:0]	r_sdischg,
 output		r_otpi_gate,
 output	[7:4]	r_pwrctl,
 output	[7:0]	r_pwr_i, r_cvctl,
@@ -54,9 +53,10 @@ output		r_gpio_tm,
 output	[1:0]	r_gpio_ie,
 output	[6:0]	r_gpio_oe, r_gpio_pu, r_gpio_pd,
 output	[2:0]	r_gpio_s0, r_gpio_s1, r_gpio_s2, r_gpio_s3,
-output	[47:0]	r_ana_opt, // register trim for analog
+output	[55:0]	r_regtrm, // register trim for analog
 input	[15:0]	i_pc,
 input		i_goidle, i_gobusy, i_i2c_idle,
+output		bus_idle, i2c_stretch,
 input	[7:0]	i_i2c_rwbuf, i_i2c_ltbuf, i_i2c_ofs,
 output	[4:0]	o_intr,
 output	[1:0]	r_auto_gdcrc,
@@ -152,7 +152,7 @@ output		srstz, prstz
    wire r_ack_hi = r_dec[7]=='h1; // to enable NVM access
    wire cc_stat = prx_rcvinf[3];
    wire cc_idle = prx_rcvinf[4];
-   wire bus_idle = i_i2c_idle &~prl_cany0 & cc_idle & (~|ptx_fsm);
+   assign bus_idle = i_i2c_idle & cc_idle & ~prl_cany0 & (~|ptx_fsm);
 
    wire [7:0] irq03,irq04,irq28,irqAE,irqDF;
    assign o_intr = {
@@ -336,20 +336,12 @@ output		srstz, prstz
    assign r_pg0_sel = reg25[4:1];
    assign r_i2c_ninc = ~reg25[0];
 
-   reg q_toggle_i2c;
-   wire to_toogle_i2c = we['hca] & (wdat[0]^reg26[0]); // to switch I2C
-   wire ev_toogle_i2c = q_toggle_i2c & i_i2c_idle; // switch I2C
-   always @(posedge clk or negedge rrstz)
-      if (~rrstz)
-         q_toggle_i2c <= 'h0;
-      else
-         q_toggle_i2c <=
-               (to_toogle_i2c) ?'h1
-              :(ev_toogle_i2c) ?'h0 :q_toggle_i2c;
-   wire upd26 = we['hca] | ev_toogle_i2c; // never comes togather
-   wire [7:0] wd26 = we['hca] ?{wdat[7:1],reg26[0]}
-             :ev_toogle_i2c ?{reg26[7:1],~reg26[0]} :'hx;
-   glreg #(8,{7'h70,1'h1}) u0_reg26 (clk, rrstz, upd26, wd26, reg26); // I2CDEVA
+   wire lt_reg26_0;
+   wire i2c_mode_upd = (we['hca] | (lt_reg26_0^reg26[0])) & bus_idle;
+   wire i2c_mode_wdat = we['hca] ? wdat[0] : lt_reg26_0;
+   glreg #(1)       u0_reg26 (clk, rrstz, we['hca], wdat[0], lt_reg26_0); // temp
+   glreg #(1,1'h1)  u1_reg26 (clk, rrstz, i2c_mode_upd, i2c_mode_wdat, reg26[0]); // I2CDEVA[0]
+   glreg #(7,7'h70) u2_reg26 (clk, rrstz, we['hca], wdat[7:1], reg26[7:1]); // I2CDEVA[7:1]
    assign r_i2c_deva = reg26[7:1];
    assign r_hwi2c_en = reg26[0];
 
@@ -358,6 +350,8 @@ output		srstz, prstz
    wire [7:0] set28 = i2c_ev;
    wire [7:0] clr28 = {8{we['hcc]}} & wdat;
    glsta u0_reg28 (clk, rrstz, 1'h0, set28, clr28, reg28, irq28); // I2CEV
+
+   assign i2c_stretch = |(reg27 & reg28 & 'hdf); // no stretch at P 'cause its SCL=1
 
    assign reg29 = i_i2c_ltbuf; // I2CBUF
    assign reg30 = r_ack_hi ? {2'h0,prx_adpn} : i_pc[7:0]; // PCL
@@ -487,13 +481,14 @@ output		srstz, prstz
    assign reg8C = `UNUSED_D4; // MCU(th0)
    assign reg8D = `UNUSED_D4; // MCU(th1)
    assign reg8E = `UNUSED_D4; // MCU(ckcon)
-   assign{reg8F,r_cvcwr[2]} = {r_sdischg,we['h8f]}; // SDISCHG
+   glreg u0_reg8F (clk, rrstz, we['h8f], wdat, reg8F); // DPDNCTL
+   assign r_dpdmctl = reg8F;
 
    assign{reg90,r_dacwr[13]} = {r_adofs,we['h90]}; // ADOFS
    assign{reg91,r_dacwr[14]} = {r_isofs,we['h91]}; // ISOFS
    assign reg92 = `UNUSED_D4; // MCU(dps)
    assign reg93 = `UNUSED_D4; // MCU(dpc)
-   glreg #(3) u0_reg94 (clk, rrstz, we['h94], wdat[6:4], reg94[6:4]); // LDBPRO
+   glreg #(4) u0_reg94 (clk, rrstz, we['h94], wdat[6:3], reg94[6:3]); // LDBPRO
    wire ovp_dbsel = reg94[4];
    wire scp_dbsel = reg94[5];
    assign r_otpi_gate = reg94[6] & reg94[7];
@@ -513,16 +508,14 @@ output		srstz, prstz
    assign r_fcpre = sfr_r & hit['h97];
 
    assign regA0 = `UNUSED_D4; // MCU(p2)
-   glreg u0_regA1 (clk, rrstz, we['ha1], wdat, regA1); // DPDNCTL
-   assign r_dpdmctl = regA1;
-
-   glreg u0_regA2 (clk, rrstz, we['ha2], wdat, regA2); // REGTRM0
-   glreg u0_regA3 (clk, rrstz, we['ha3], wdat, regA3); // REGTRM1
-   glreg u0_regA4 (clk, rrstz, we['ha4], wdat, regA4); // REGTRM2
-   glreg u0_regA5 (clk, rrstz, we['ha5], wdat, regA5); // REGTRM3
-   glreg u0_regA6 (clk, rrstz, we['ha6], wdat, regA6); // REGTRM4
-   glreg u0_regA7 (clk, rrstz, we['ha7], wdat, regA7); // REGTRM5 (AOPT)
-   assign r_ana_opt = {regA7,regA6,regA5,regA4,regA3,regA2};
+   glreg u0_regA1 (clk, rrstz, we['ha2], wdat, regA1); // REGTRM0
+   glreg u0_regA2 (clk, rrstz, we['ha2], wdat, regA2); // REGTRM1
+   glreg u0_regA3 (clk, rrstz, we['ha3], wdat, regA3); // REGTRM2
+   glreg u0_regA4 (clk, rrstz, we['ha4], wdat, regA4); // REGTRM3
+   glreg u0_regA5 (clk, rrstz, we['ha5], wdat, regA5); // REGTRM4
+   glreg u0_regA6 (clk, rrstz, we['ha6], wdat, regA6); // REGTRM5
+   glreg u0_regA7 (clk, rrstz, we['ha7], wdat, regA7); // REGTRM6
+   assign r_regtrm = {regA7,regA6,regA5,regA4,regA3,regA2,regA1};
 
    assign regA8 = `UNUSED_D4; // MCU(ie0)
    assign regA9 = `UNUSED_D4; // MCU(ip0)
@@ -537,31 +530,31 @@ output		srstz, prstz
    wire [7:0] clrAE = {8{we['hae]}} & wdat;
    wire [7:0] setAE;
    dbnc #(4,14) // 14~15 *2ms +sync
-	u1_cf_db   (.o_dbc(reg94[3]),.o_chg(),.i_org(srci[3]),.clk(clk_500),.rstz(rrstz)),
         u2_ovp_db  (.o_dbc(reg94[2]),.o_chg(),.i_org(srci[2]),.clk(clk_500),.rstz(rrstz)),
         u1_ocp_db  (.o_dbc(reg94[1]),.o_chg(),.i_org(srci[1]),.clk(clk_500),.rstz(rrstz)),
         u1_uvp_db  (.o_dbc(reg94[0]),.o_chg(),.i_org(srci[0]),.clk(clk_500),.rstz(rrstz)); 
    dbnc // #(4,15) debounce 15~16 *2us +sync
-        u0_iddi_db (.o_dbc(regAD[6]),.o_chg(setAE[6]), .i_org(id_di),    .clk(clk_500k),.rstz(rrstz)), // ccddovp (DPDN_CC_OVP)
         u1_ovp_db  (.o_dbc(m_ovp),   .o_chg(m_ovp_sta),.i_org(srci[2]),  .clk(clk_500k),.rstz(rrstz));
    dbnc #(3,5) // debounce 5~6 *2/3us +sync
-	u0_cf_db   (.o_dbc(regAD[3]),.o_chg(setAE[3]), .i_org(srci[3]),  .clk(clk_1500k),.rstz(rrstz)),
+	u0_otpi_db (.o_dbc(regAD[3]),.o_chg(setAE[3]), .i_org(srci[5]),  .clk(clk_1500k),.rstz(rrstz)), // OTPI
 	u0_ocp_db  (.o_dbc(regAD[1]),.o_chg(setAE[1]), .i_org(srci[1]),  .clk(clk_1500k),.rstz(rrstz)),
 	u0_uvp_db  (.o_dbc(regAD[0]),.o_chg(setAE[0]), .i_org(srci[0]),  .clk(clk_1500k),.rstz(rrstz)),
-        u1_scp_db  (.o_dbc(m_scp),   .o_chg(m_scp_sta),.i_org(srci[4]),  .clk(clk_1500k),.rstz(rrstz)),
+        u1_scp_db  (.o_dbc(m_scp),   .o_chg(m_scp_sta),.i_org(srci[3]),  .clk(clk_1500k),.rstz(rrstz)),
 	u0_dmf_db  (.o_dbc(regAD[7]),.o_chg(setAE[7]), .i_org(dm_fault), .clk(clk_1500k),.rstz(rrstz));
    dbnc #(2,2) // 2~3T (3 samples) +sync
-	u0_otpi_db (.o_dbc(reg94[7]),.o_chg(),         .i_org(srci[6]),  .clk(clk),.rstz(rrstz)), // OTPI
+	u0_otps_db (.o_dbc(reg94[7]),.o_chg(),         .i_org(srci[5]),  .clk(clk),.rstz(rrstz)), // sync-OTPI
 	u0_cc1_db  (.o_dbc(s_cci2c1),.o_chg(),         .i_org(cc1_di),   .clk(clk),.rstz(rrstz)),
 	u0_cc2_db  (.o_dbc(s_cci2c2),.o_chg(),         .i_org(cc2_di),   .clk(clk),.rstz(rrstz)),
 	u0_ovp_db  (.o_dbc(s_ovp),   .o_chg(s_ovp_sta),.i_org(srci[2]),  .clk(clk),.rstz(rrstz)),
-	u0_scp_db  (.o_dbc(s_scp),   .o_chg(s_scp_sta),.i_org(srci[4]),  .clk(clk),.rstz(rrstz)),
-	u0_v5oc_db (.o_dbc(regAD[5]),.o_chg(setAE[5]), .i_org(srci[5]),  .clk(clk),.rstz(rrstz));
+	u0_scp_db  (.o_dbc(s_scp),   .o_chg(s_scp_sta),.i_org(srci[3]),  .clk(clk),.rstz(rrstz)),
+	u0_v5oc_db (.o_dbc(regAD[5]),.o_chg(setAE[5]), .i_org(srci[4]),  .clk(clk),.rstz(rrstz));
 
    assign regAD[2] = ovp_dbsel ? m_ovp : s_ovp ;
    assign regAD[4] = scp_dbsel ? m_scp : s_scp ;
+   assign regAD[6] = 1'h0;
    assign setAE[2] = ovp_dbsel ? m_ovp_sta : s_ovp_sta ;
    assign setAE[4] = scp_dbsel ? m_scp_sta : s_scp_sta ;
+   assign setAE[6] = 1'h0;
 
    glsta u0_regAE (clk, rrstz, 1'h0, setAE, clrAE, regAE, irqAE); // PROSTA
    wire gating_pwr = |{regAE[4]&regAF[4],regAE[2]&regAF[2]}; // sync./async. B0ECO

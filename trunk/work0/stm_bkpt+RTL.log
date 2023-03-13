@@ -1,0 +1,585 @@
+ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s024: Started on Mar 13, 2023 at 17:10:50 CST
+ncverilog
+	+ncaccess+rc
+	+nowarn+NONPRT
+	-disable_sem2009
+	-sv
+	+ncnowarn+CUVWSP
+	+ncnowarn+CSINFI
+	+ncnowarn+MRSTAR
+	-timescale
+	1ns/10ps
+	-nohistory
+	-f /mnt/app1/ray/project/can1127/cmd/rtl.f
+		-v
+		/mnt/app1/ray/project/can1127/rtl/softmacro.v
+		/mnt/app1/ray/project/can1127/rtl/phycrc.v
+		/mnt/app1/ray/project/can1127/rtl/phyff.v
+		/mnt/app1/ray/project/can1127/rtl/phyidd.v
+		/mnt/app1/ray/project/can1127/rtl/phyrx.v
+		/mnt/app1/ray/project/can1127/rtl/phytx.v
+		/mnt/app1/ray/project/can1127/rtl/prltmr.v
+		/mnt/app1/ray/project/can1127/rtl/updprl.v
+		/mnt/app1/ray/project/can1127/rtl/updphy.v
+		-f /mnt/app1/ray/project/can1127/cmd/mcu.f
+			+incdir+/mnt/app1/ray/project/can1127/rtl/mcu/
+			/mnt/app1/ray/project/can1127/rtl/mcu/extint.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/i2c.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/isr.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mdu.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/pmurstctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/ports.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mcu51_cpu.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/serial0.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/softrstctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/syncneg.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/timer0.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/timer1.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/wakeupctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/watchdog.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mcu51.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/sfrmux.v
+		/mnt/app1/ray/project/can1127/rtl/i2cslv.v
+		/mnt/app1/ray/project/can1127/rtl/dpdmacc.v
+		/mnt/app1/ray/project/can1127/rtl/fcp.v
+		/mnt/app1/ray/project/can1127/rtl/fcpegn.v
+		/mnt/app1/ray/project/can1127/rtl/fcpcrc.v
+		/mnt/app1/ray/project/can1127/rtl/dacmux.v
+		/mnt/app1/ray/project/can1127/rtl/mpb.v
+		/mnt/app1/ray/project/can1127/rtl/regbank.v
+		/mnt/app1/ray/project/can1127/rtl/regx.v
+		/mnt/app1/ray/project/can1127/rtl/ictlr.v
+		/mnt/app1/ray/project/can1127/rtl/srambist.v
+		/mnt/app1/ray/project/can1127/rtl/divclk.v
+		/mnt/app1/ray/project/can1127/rtl/cvctl.v
+		+incdir+/mnt/app1/ray/project/can1127/rtl/
+		/mnt/app1/ray/project/can1127/rtl/core_a0.v
+		/mnt/app1/ray/project/can1127/rtl/chiptop_1127a0.v
+	-f /mnt/app1/ray/project/can1127/cmd/macro.f
+		-v
+		/mnt/app1/ray/project/can1127/macro/std.v
+		/mnt/app1/ray/project/can1127/macro/anatop_1127a0.v
+		/mnt/app1/ray/project/can1127/macro/bhv_cc_rcver.v
+		/mnt/app1/ray/project/can1127/macro/bhv_compm_mux.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/io_udp.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/io.v
+		+incdir+/mnt/app1/ray/project/can1127/macro/
+		-v
+		/mnt/app1/ray/project/can1127/macro/ATO0008KX8MX180LBX4DA.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/sram/MSL18B_1536X8_RW10TM4_16_20210603_SS.v
+		-v
+		/mnt/app1/ray/project/can1127/fpga/softmacro.v
+		-v
+		/mnt/app1/ray/project/can1127/fpga/ATO0008KX8VI150BG33NA_FPGA.v
+	-f /mnt/app1/ray/project/can1127/cmd/bench.f
+		+define+BENCH=bench
+		+incdir+../stm/
+		+incdir+../bench/
+		../bench/bench_0.v
+		../bench/rc_network.v
+		../bench/usb_port.v
+		../bench/bhv_updphy.sv
+		../bench/bhv_usbpd_controller.sv
+		../bench/usbpd_analyzer.sv
+		../bench/m51_synthe.v
+		../bench/probe.v
+		+incdir+../stm+../bench/mpsse/
+		../bench/mpsse/mpsse_mst_i2c.v
+		../bench/uart_bhv.v
+	+define+CAN1127A0
+	../bench/can1127.v
+	+define+RTL
+	../stm/stm_bkpt.v
+	-l
+	stm_bkpt+RTL.log
+Recompiling... reason: file '../macro/anatop_1127a0.v' is newer than expected.
+	expected: Mon Mar 13 17:05:47 2023
+	actual:   Mon Mar 13 17:10:48 2023
+file: /mnt/app1/ray/project/can1127/macro/anatop_1127a0.v
+	module worklib.anatop_1127a0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/io_udp.v
+ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/softmacro.v" given but not used.
+ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/ATO0008KX8VI150BG33NA_FPGA.v" given but not used.
+ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 3
+		Caching library 'io' ....... Done
+		Caching library 'io_udp' ....... Done
+		Caching library 'ATO0008KX8MX180LBX4DA' ....... Done
+		Caching library 'MSL18B_1536X8_RW10TM4_16_20210603_SS' ....... Done
+		Caching library 'worklib' ....... Done
+		Caching library 'rtl' ....... Done
+		Caching library 'std_1' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.CC1:v <0x0ece704c>
+			streams:  17, words: 35897
+		worklib.CC2:v <0x3681cb9e>
+			streams:  17, words: 35897
+		worklib.DN:v <0x522c10fc>
+			streams:  17, words: 35897
+		worklib.DP:v <0x3dd0ecee>
+			streams:  17, words: 35897
+		worklib.SinkTxNG:v <0x4fa92a64>
+			streams:  17, words: 33154
+		worklib.SinkTxOk:v <0x34f18f26>
+			streams:  17, words: 33154
+		worklib.VBUS:v <0x2d3644f2>
+			streams:  17, words: 35897
+		worklib.VCONN:v <0x45498f3e>
+			streams:  17, words: 37647
+		worklib.VIN:v <0x3896db39>
+			streams:  17, words: 35897
+		worklib.anatop_1127a0:v <0x1bd4b8ed>
+			streams:  57, words: 33736
+		worklib.bench:v <0x16dacecd>
+			streams:  67, words: 34387
+		worklib.hardware_rev:v <0x06a4e8e5>
+			streams: 1254, words: 207085
+		worklib.stm_bkpt:v <0x16de5bd6>
+			streams:  32, words: 67335
+		worklib.usb_connector:v <0x73497b88>
+			streams:  31, words: 21626
+		worklib.usb_dd_composer:v <0x7295b3b7>
+			streams:   9, words: 11080
+		worklib.usb_port:v <0x5acf2e53>
+			streams:   1, words:   284
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                      Instances  Unique
+		Modules:                    315      92
+		UDPs:                         7       1
+		Primitives:                 202      11
+		Resolved nets:                0       1
+		Timing outputs:              78      30
+		Registers:                 1794    1394
+		Scalar wires:              1539       -
+		Expanded wires:            1085     101
+		Vectored wires:            2168       -
+		Named events:                29      22
+		Always blocks:             1152     695
+		Initial blocks:             138     120
+		Parallel blocks:             74      61
+		Cont. assignments:         2300    3047
+		Pseudo assignments:          50      49
+		Timing checks:              766     108
+		Delayed tcheck signals:      21      14
+		Compilation units:            1       1
+		SV Class declarations:        2       2
+		SV Class specializations:     2       2
+		Simulation timescale:       1ps
+	Writing initial simulation snapshot: worklib.bench:v
+Loading snapshot worklib.bench:v .................... Done
+*Verdi3* Loading libsscore_ius141.so
+*Verdi3* : Enable Parallel Dumping.
+ncsim> source /mnt/tools/eda_tool/INCISIV15/tools/inca/files/ncsimrc
+ncsim> run
+FSDB Dumper for IUS, Release Verdi3_J-2014.12-SP2, Linux x86_64/64bit, 05/07/2015
+(C) 1996 - 2015 by Synopsys, Inc.
+***********************************************************************
+*  WARNING -                                                          *
+*  The simulator version is newer than the FSDB dumper version which  *
+*  may cause abnormal behavior, please contact Synopsys support for   *
+*  assistance.                                                        *
+***********************************************************************
+*Verdi3* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi3* : Create FSDB file 'bench_0.fsdb'
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+                   0ns <stm_bkpt.timeout_task> simulation timeout timer: 50000
+                   0ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 0
+                   0ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+                   0ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+                   0ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
+*Verdi3* : Begin traversing the scope (stm_bkpt), layer (0).
+*Verdi3* : End of traversing.
+                 100ns <hardware_rev.load_dut_fw> NOTE: 2-byte hex file
+                 100ns <hardware_rev.load_dut_fw> NOTE: load firmware ../fw/gpio/gpio.2.memh (revid:31)
+30047000 MSL18B_1536X8_RW10TM4_16 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+30131000 MSL18B_1536X8_RW10TM4_16 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+30214000 MSL18B_1536X8_RW10TM4_16 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+               30297ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 00
+30297000 MSL18B_1536X8_RW10TM4_16 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+               50000ns <stm_bkpt> starts.....
+               50000ns <bench.U0_I2CMST.init> SSE master initialized, mode: SMB(2)
+Read dummy cycle.
+
+Read dummy cycle.
+
+             1081471ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+             1082054ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+             1082638ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
+             1083222ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+             1083806ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
+             1084390ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
+             1084973ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 07
+             1085557ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
+             1086141ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 09
+             1086725ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0a
+             1087309ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0b
+             1087892ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0c
+             1088476ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0d
+             1089060ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0e
+             1089644ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0f
+             1090228ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 10
+             1090811ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 11
+             1091395ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 12
+             1091979ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
+             1092563ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 14
+             1093147ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
+             1093730ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
+             1094314ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 17
+             1094898ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
+             1095482ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 19
+             1096066ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1a
+             1096649ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1b
+             1097233ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1c
+             1097817ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1d
+             1098401ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1e
+             1098985ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1f
+             1099568ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 20
+             1100152ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 21
+             1100736ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 22
+             1101320ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 23
+             1101904ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 24
+             1102487ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 25
+             1103071ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 26
+             1103655ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 27
+             1104239ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 28
+             1104823ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 29
+             1105406ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2a
+             1105990ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2b
+             1106574ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2c
+             1107158ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2d
+             1107742ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2e
+             1108325ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2f
+             1108909ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 30
+             1109493ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 31
+             1110077ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 32
+             1110661ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 33
+             1111244ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 34
+             1111828ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 35
+             1112412ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 36
+             1112996ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 37
+             1113580ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 38
+             1114163ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 39
+             1114747ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3a
+             1115331ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3b
+             1115915ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3c
+             1116499ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3d
+             1117082ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3e
+             1117666ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3f
+             1118250ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 40
+             1118834ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 41
+             1119418ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 42
+             1120001ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 43
+             1120585ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 44
+             1121169ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 45
+             1121753ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 46
+             1122337ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 47
+             1122920ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 48
+             1123504ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 49
+             1124088ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4a
+             1124672ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4b
+             1125256ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4c
+             1125839ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4d
+             1126423ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4e
+             1127007ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4f
+             1127591ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 50
+             1128175ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 51
+             1128758ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 52
+             1129342ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 53
+             1129926ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 54
+             1130510ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 55
+             1131094ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 56
+             1131677ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 57
+             1132261ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 58
+             1132845ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 59
+             1133429ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5a
+             1134013ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5b
+             1134596ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5c
+             1135180ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5d
+             1135764ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5e
+             1136348ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5f
+             1136932ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 60
+             1137515ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 61
+             1138099ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 62
+             1138683ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 63
+             1139267ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 64
+             1139851ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 65
+             1140434ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 66
+             1141018ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 67
+             1141602ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 68
+             1142186ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 69
+             1142770ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6a
+             1143353ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6b
+             1143937ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6c
+             1144521ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6d
+             1145105ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6e
+             1145689ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6f
+             1146272ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 70
+             1146856ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 71
+             1147440ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 72
+             1148024ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 73
+             1148608ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 74
+             1149191ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 75
+             1149775ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 76
+             1150359ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 77
+             1150943ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 78
+             1151527ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 79
+             1152110ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7a
+             1152694ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7b
+             1153278ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7c
+             1153862ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7d
+             1154446ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7e
+             1155029ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7f
+             1155613ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 80
+             1156197ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 81
+             1156781ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 82
+             1157365ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 83
+             1157948ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 84
+             1158532ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 85
+             1159116ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 86
+             1159700ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 87
+             1160284ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 88
+             1160867ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 89
+             1161451ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8a
+             1162035ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8b
+             1162619ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8c
+             1163203ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8d
+             1163786ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8e
+             1164370ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8f
+             1164954ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 90
+             1165538ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 91
+             1166122ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 92
+             1166705ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 93
+             1167289ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 94
+             1167873ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 95
+             1168457ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 96
+             1169041ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 97
+             1169624ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 98
+             1170208ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 99
+             1170792ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9a
+             1171376ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9b
+             1171960ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9c
+             1172543ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9d
+             1173127ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9e
+             1173711ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9f
+             1174295ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a0
+             1174879ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a1
+             1175462ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a2
+             1176046ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a3
+             1176630ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a4
+             1177214ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a5
+             1177798ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a6
+             1178381ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a7
+             1178965ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a8
+             1179549ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a9
+             1180133ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: aa
+             1180717ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ab
+             1181300ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ac
+             1181884ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ad
+             1182468ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ae
+             1183052ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: af
+             1183636ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b0
+             1184219ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b1
+             1184803ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b2
+             1185387ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b3
+             1185971ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b4
+             1186555ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b5
+             1187138ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b6
+             1187722ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b7
+             1188306ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b8
+             1188890ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b9
+             1189474ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ba
+             1190057ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bb
+             1190641ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bc
+             1191225ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bd
+             1191809ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: be
+             1192393ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bf
+             1192976ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c0
+             1193560ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c1
+             1194144ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c2
+             1194728ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c3
+             1195312ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c4
+             1195895ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c5
+             1196479ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c6
+             1197063ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c7
+             1197647ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c8
+             1198231ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c9
+             1198814ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ca
+             1199398ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cb
+             1199982ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cc
+             1200566ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cd
+             1201150ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ce
+             1201733ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cf
+             1202317ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d0
+             1202901ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d1
+             1203485ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d2
+             1204069ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d3
+             1204652ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d4
+             1205236ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d5
+             1205820ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d6
+             1206404ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d7
+             1206988ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d8
+             1207571ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d9
+             1208155ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: da
+             1208739ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: db
+             1209323ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dc
+             1209907ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dd
+             1210490ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: de
+             1211074ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: df
+             1211658ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
+             1212242ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
+             1212826ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e2
+             1213409ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e3
+             1213993ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e4
+             1214577ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e5
+             1215161ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e6
+             1215745ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e7
+             1216328ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e8
+             1216912ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e9
+             1217496ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ea
+             1218080ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: eb
+             1218664ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ec
+             1219915ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ef
+             1220749ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f0
+             1221332ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f1
+             1221916ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f2
+             1222500ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f3
+             1223084ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f4
+             1223668ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f5
+             1224251ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f6
+             1224835ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f7
+             1225419ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f8
+             1226003ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f9
+             1226587ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fa
+             1227170ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fb
+             1227754ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fc
+             1228338ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fd
+             1228922ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fe
+             1230006ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ff
+             1230006ns <stm_bkpt> NOTE: GPO completed.
+             1234176ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
+             1242349ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+             1251857ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+             1261364ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+             1268370ns <stm_bkpt> NOTE: GPIO PU/PD completed.
+             1270872ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
+             1272040ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 00
+             1275876ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
+             1368370ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
+Read dummy cycle.
+
+Read dummy cycle.
+
+             1709285ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
+Read dummy cycle.
+
+Read dummy cycle.
+
+             1738996ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2049599ns <stm_bkpt.try_bkpt> bkpt@pc:0xcf
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2077767ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2387440ns <stm_bkpt.try_bkpt> bkpt@pc:0xd0
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2417705ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2729991ns <stm_bkpt.try_bkpt> bkpt@pc:0xd3
+Read dummy cycle.
+
+Read dummy cycle.
+
+             2759312ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+Read dummy cycle.
+
+Read dummy cycle.
+
+             3069883ns <stm_bkpt.try_bkpt> bkpt@pc:0xd4
+Read dummy cycle.
+
+Read dummy cycle.
+
+             3099917ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
+Read dummy cycle.
+
+Read dummy cycle.
+
+             3411250ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
+             3411372ns <stm_bkpt.try_bkpt> bkpt@pc:0xcb
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+             3749400ns <stm_bkpt.try_bkpt> bkpt@pc:0xc9
+Read dummy cycle.
+
+Read dummy cycle.
+
+             3777876ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4088362ns <stm_bkpt.try_bkpt> bkpt@pc:0xc8
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4118315ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4428909ns <stm_bkpt.try_bkpt> bkpt@pc:0xc6
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4458420ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4770086ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
+Read dummy cycle.
+
+Read dummy cycle.
+
+             4943975ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ed
+             4944058ns <stm_bkpt.fw_ending> NOTE: simulation completed by DUT FW
+Simulation complete via $finish(1) at time 4944158280 PS + 0
+../stm/stm_task.v:54    forever @(posedge `DUT_CCLK) if (`DUT_MCU.port0o==='hed) `HW_FIN (($time,"ns <%m> NOTE: simulation completed by DUT FW"))
+ncsim> exit
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 13, 2023 at 17:10:58 CST  (total: 00:00:08)

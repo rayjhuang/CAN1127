@@ -95,14 +95,16 @@ chiptop_1127a0 U0_DUT ( // for DFP development
 	.GPIO6		(),
 	.IDDI		(),
 `else // !FPGA
-	.VBUS		(),
-	.GATE_A		(),
-	.GATE_B		(),
-	.ISENP		(),
-	.ISENN		(),
-	.IFB		(),
+	.CSP		(),
+	.CSN		(),
 	.VFB		(),
-	.OCDRV		(),
+	.COM		(),
+	.LG		(),
+	.SW		(),
+	.HG		(),
+	.BST		(),
+	.GATE		(),
+	.VDRV		(),
 `endif // FPGA
 	.CC1		(CC1),		.CC2		(CC2),
 	.DP		(DP),		.DN		(DN),
@@ -176,7 +178,7 @@ U0_USB_PORT (
 	.DUT_VCONN2_EN	(`DUT_ANA.VCONN2_EN),
 	.DUT_RP_SEL	(`DUT_ANA.RP_SEL),
 
-	.v_VBUS		(`DUT_ANA.v_VBUS),
+	.v_VBUS		(`DUT_ANA.v_VO),
 	.v_CV		(`DUT_ANA.v_VIN));
 
 // I2CMST connection
@@ -247,7 +249,7 @@ always @(`URMST.x_txd or urmst_connect)
 pullup (weak1) (pu_ts);
 `ifdef CAN1112B2
 `else
-tranif1 (pu_ts,TS,~`DUT_ANA.S100UB & ~`DUT_CORE.DO_TS[0]); // PD for both RTL/FPGA
+tranif1 (pu_ts,TS, `DUT_ANA.S100U & ~`DUT_CORE.DO_TS[0]); // PD for both RTL/FPGA
 `endif
 
 

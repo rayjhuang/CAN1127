@@ -4,62 +4,70 @@
 `timescale 1ns/100ps
 module anatop_1127a0 (
 //inout		VIN ,	// VIN
-//inout		AGND ,	// Analog GND
-//inout		V5 ,	// 5.0V LDO out
-//inout		V18 ,	// 1.8V LDO out
-inout		VBUS ,
+//inout		PGND ,	// Analog GND
+//inout		GND ,	// Digital GND
+//inout		V5V ,	// 5.0V LDO out
+// === P D  PAD ================================================================
 inout		CC1 ,
 inout		CC2 ,
 inout		DP ,
 inout		DN ,
-input		VFB , IFB ,
-input		ISENP , ISENN ,
-output		OCDRV , GATE_A , GATE_B ,
-// =============================================================================
+input		VFB ,
+input		CSP , CSN ,
+// === B U C K  PAD ============================================================
+inout		COM, LG, SW, HG, BST, GATE, VDRV,
+// === B U C K  interface part =================================================
+input		BST_SET ,
+		DCM_SEL ,
+		HGOFF ,
+		HGLGOFF ,
+		HGON ,
+		LGON ,
+		ENDRV ,
+input	[1:0]	FSW ,
+input		EN_OSC ,
+input		MAXDS ,
+		EN_GM ,
+		EN_ODLDO ,
+		EN_IBUK ,
+// === P D  interface part =====================================================
 input   [1:0]   RP_SEL ,
 input		RP1_EN ,
 input		RP2_EN ,
 input		VCONN1_EN ,
 input		VCONN2_EN ,
-input		GP3_20U , GP4_20U , GP5_20U , // high-active
-input		S20UB , // low-active
-input		S100UB , // low-active
+input	[5:1]	SGP , // high-active, 20uA current source enable
+input		S20U , S100U , // high-active, CAN1127 removes B suffix
 input		TX_EN ,
 input		TX_DAT ,
 input		CC_SEL ,
 input		TRA , TFA ,
-output		RX_D_PK ,
-output		RX_D_49 ,
+output		RX_DAT , LSR ,
 output		RX_SQL ,
-input		CCBIAS ,
-input		CCLEVEL ,
-input		CV_ENB ,
-input		CC_ENB ,
+input		SEL_RX_TH , // CAN1127 changes name, CCLEVEL ,
 input		DAC1_EN ,
 input		DPDN_SHORT ,
 input		DP_2V7_EN , DN_2V7_EN ,
 input		DP_0P6V_EN , DN_0P6V_EN ,
 input		DP_DWN_EN , DN_DWN_EN ,
-//put	[1:0]	CC_SLOPE ,
 input	[7:0]	PWR_I ,
 input	[5:0]	DAC3,
 input	[9:0]	DAC1 ,
-input		CV2 , CS_DIR , LFOSC_ENB ,
-input		VIN_DISCHG_EN, VBUS_DISCHG_EN, // DISCHARGE ,
+input		CV2 , LFOSC_ENB ,
+input		VO_DISCHG ,
 		DISCHG_SEL ,
-		T3A, CC_FT,
+//		T3A, CC_FT,
+input		CMP_SEL_VO10 , CMP_SEL_VO20 ,
+input		CMP_SEL_GP1 , CMP_SEL_GP2 ,
 input		CMP_SEL_GP3 , CMP_SEL_GP4 , CMP_SEL_GP5 , CMP_SEL_VIN20,
-input		CMP_SEL_DI , CMP_SEL_DV ,
-input		CMP_SEL_T ,
-input		CMP_SEL_VIN ,
+input		CMP_SEL_TS ,
 input		CMP_SEL_IS ,
-input		CMP_SEL_VBUS ,
 input		CMP_SEL_CC2 ,
 input		CMP_SEL_CC1 ,
 input		CMP_SEL_CC2_4 ,
 input		CMP_SEL_CC1_4 ,
-input		CMP_SEL_DN ,
-input		CMP_SEL_DP ,
+input		CMP_SEL_DP , CMP_SEL_DP_3 ,
+input		CMP_SEL_DN , CMP_SEL_DN_3 ,
 input		OCP_EN , CS_EN ,
 output		COMP_O ,
 input		CCI2C_EN ,
@@ -67,59 +75,68 @@ input		CCI2C_EN ,
 input	[3:0]	TM ,
 output		V5OCP ,
 output		RSTB ,
-		RSTB_5 , V1P1 , // analog signals for IO cells
 input	[10:0]	DAC0 ,
 input		SLEEP ,
-input		OSC_LOW , OSC_STOP , PWRDN , VPP_ZERO , OCDRV_ENZ ,
-output		OSC_O , RD_DET , STB_OVP ,
+input		OSC_LOW , OSC_STOP , PWRDN , VPP_ZERO ,
+output		OSC_O , RD_DET ,
 		IMP_OSC , DRP_OSC ,
 input		STB_RP , RD_ENB ,
 //put	[3:0]	CABLE_COMP ,
-input		PWREN_A , PWREN_B ,
+input		PWREN ,
 output		OCP ,
 output		SCP ,
 output		UVP ,
 input		LDO3P9V , VPP_SEL ,
-output		VPP_OTP ,
-output		VDD_OTP ,
 input		CC1_DOB ,
 input		CC2_DOB ,
 output		CC1_DI ,
 output		CC2_DI ,
 input		ANTI_INRUSH ,
-input		IFB_CUT ,
-output		OTPI , CF ,
-input		CC_PROT ,
+//put		IFB_CUT ,
+output		OTPI , // CF ,
+//put		CC_PROT ,
 input	[1:0]	OVP_SEL ,
 output		OVP ,
-input		TX_DRV0 ,
+//put		TX_DRV0 ,
 output		DN_COMP ,
 		DP_COMP ,
 input		DPDN_VTH ,
 input		DPDEN , DPDO , DPIE ,
 		DNDEN , DNDO , DNIE ,
-		IDEN ,  IDDO ,
-output		IDIN ,
+//		IDEN ,  IDDO ,
+//tput		IDIN ,
 input   [7:0]   DUMMY_IN ,
-input   [47:0]  REGTRM ,
+input	        CP_CLKX2 ,	// REGTRM[47]
+		SEL_CONST_OVP ,	// REGTRM[46]
+		LP_EN ,		// REGTRM[45]
+//		LP_SEL ,	// REGTRM[44]
+		DNCHK_EN ,	// REGTRM[43]
+		IRP_EN ,	// REGTRM[42]
+//		VBUS_REG_SEL ,	// REGTRM[41]
+		CCBFEN ,	// REGTRM[40]
+input   [55:0]  REGTRM ,
 input		AD_RST , AD_HOLD ,
 output		DN_FAULT ,
-input		VBUS_400K ,
-		SEL_CCGAIN ,
-		SEL_OCDRV , SEL_FB ,
+input		
+		SEL_CCGAIN , VFB_SW ,
+//		SEL_OCDRV , SEL_FB ,
 		CPV_SEL ,
 		CLAMPV_EN ,
 input		HVNG_CPEN , PWREN_HOLD , // CPF_SEL ,
 		OCP_SEL ,
-		IDAC_EN , IDAC_SEN ,
+//		IDAC_EN , IDAC_SEN ,
 output		OCP_80M , OCP_160M ,
 output		OPTO1 , OPTO2,
 // =============================================================================
-input		TS_ANA_R , GP5_ANA_R , GP4_ANA_R , GP3_ANA_R , // analog signals of IO cells and ADC
-output		TS_ANA_P , GP5_ANA_P , GP4_ANA_P , GP3_ANA_P   // analog signal of 100+20uA/20uA output
+output		VPP_OTP ,
+output		VDD_OTP ,
+//output	VD18 , // power supply for digital core
+output		RSTB_5 , V1P1 , // analog signals for IO cells
+input		TS_ANA_R , GP5_ANA_R , GP4_ANA_R , GP3_ANA_R , GP2_ANA_R , GP1_ANA_R , // analog signals of IO cells and ADC
+output		TS_ANA_P , GP5_ANA_P , GP4_ANA_P , GP3_ANA_P , GP2_ANA_P , GP1_ANA_P   // analog signals of 100+20uA/20uA output
  ); // anatop_1127a0
 
-`ifdef SYNTHESIS
+`ifdef ANATOP_EMPTY // SYNTHESIS
 // an empty module in synthesis
 // an empty module in formal check will be modeled as a black box and compared
 `else
@@ -134,11 +151,10 @@ assign #1 CC2 = CCI2C_EN & CC2_DOB ? 1'h0 : 1'hz; // digital output only
 assign #1 CC1_DI = v_CC1>=1800 && CCI2C_EN; // 1.0~2.6V
 assign #1 CC2_DI = v_CC2>=1800 && CCI2C_EN; // 1.0~2.6V
 
-assign #10 GATE_A = PWREN_A;
-assign #10 GATE_B = PWREN_B;
+assign #10 GATE = PWREN;
 
 reg r_otpi=0, r_ovp=0, r_ocp=0, r_scp=0, r_uvp=0, r_v5ocp=0, r_cf=0;
-assign {V5OCP, OTPI, CF, OVP, OCP, SCP, UVP} = {r_v5ocp, r_otpi, r_cf, r_ovp, r_ocp, r_scp, r_uvp};
+assign {V5OCP, OTPI, OVP, OCP, SCP, UVP} = {r_v5ocp, r_otpi, r_ovp, r_ocp, r_scp, r_uvp};
 reg r_dn_fault=0;
 reg r_DpDnCC_ovp=0;
 assign DN_FAULT = r_dn_fault;
@@ -151,8 +167,9 @@ assign #1 DN_COMP = v_DN > 1200;
 
    wire [15:0] rx_v_cc = CC_SEL ?v_CC2 :v_CC1;
    bhv_cc_rcver cc_rcver (rx_v_cc,RX_SQL,RX_D_PK,RX_D_49);
+   assign RX_DAT = RX_D_49;
 
-reg [15:0] v_VIN=0, v_IS=0, v_RT=1000, v_GP5=0, v_GP4=0, v_GP3=0; // mV
+reg [15:0] v_VIN=0, v_IS=0, v_RT=1000, v_GP5=0, v_GP4=0, v_GP3=0, v_GP2=0, v_GP1=0; // mV
 
 integer delta_VIN, VIN_target0, VIN_target;
 always @(DAC0 or DAC3 or CV2) VIN_target0 = (DAC0+DAC3*2)*(CV2?20:10); // 20/40mV
@@ -167,9 +184,8 @@ always @(posedge stb_pulse) begin: calc_standby
       @stb_pulse disable calc_standby;
    join
 end
-always @(r_standby or OCDRV_ENZ or VIN_target0)
-   VIN_target = r_standby ? 4000
-              : OCDRV_ENZ ? 12000 : VIN_target0;
+always @(r_standby or VIN_target0)
+   VIN_target = r_standby ? 4000 : VIN_target0;
 
 always #1000 if (VIN_target!=v_VIN) begin
    delta_VIN = VIN_target - v_VIN;
@@ -177,40 +193,44 @@ always #1000 if (VIN_target!=v_VIN) begin
                    :(delta_VIN<0 && delta_VIN>=-33) ?-1 :$signed(delta_VIN*3/100));
 end
 
-wire [15:0] v_VBUS; // assigned in bench_u0.v
+wire [15:0] v_VO; // assigned in bench_u0.v
 reg [15:0] v_DAC_CV; // used in bench_u0.v
 always @(DAC0 or DAC3 or CV2) v_DAC_CV = (DAC0+DAC3*2)*(CV2?2:1); // mV
 
-bhv_compm_mux #(16)
+bhv_compm_mux #(18)
 compm_mux (
 	.dac_sel ({
+		CMP_SEL_GP1,
+		CMP_SEL_GP2,
 		CMP_SEL_GP3,
 		CMP_SEL_GP4,
 		CMP_SEL_GP5,
 		CMP_SEL_CC2_4,
 		CMP_SEL_CC1_4,
-		CMP_SEL_VIN20,
-		CMP_SEL_DI,
-		CMP_SEL_DV,
+		CMP_SEL_VO20,
+		CMP_SEL_DN_3,
+		CMP_SEL_DP_3,
 		CMP_SEL_CC2,
 		CMP_SEL_CC1,
 		CMP_SEL_DN,
 		CMP_SEL_DP,
-		CMP_SEL_T,
+		CMP_SEL_TS,
 		CMP_SEL_IS,
-		CMP_SEL_VBUS,
-		CMP_SEL_VIN}),
+		CMP_SEL_VO10,
+		CMP_SEL_VIN20}),
 	.sh_rst (AD_RST),
 	.sh_hold (AD_HOLD),
 	.dac_code (DAC1),
 	// below scan sequence is implemented in core logic
 	.v_ana_in ({
+		v_GP1,
+		v_GP2,
 		v_GP3,
 		v_GP4,
 		v_GP5,
 		v_CC2/16'd4,
 		v_CC1/16'd4,
-		v_VIN/16'd20,
+		v_VO/16'd20,
 		v_DN/16'd3,
 		v_DP/16'd3,
 		v_CC2/16'd2,
@@ -219,8 +239,8 @@ compm_mux (
 		v_DP,
 		v_RT,
 		v_IS,
-		v_VBUS/16'd10,
-		v_VIN/16'd10}),
+		v_VO/16'd10,
+		v_VIN/16'd20}),
 	.comp_o (comp_o));
 
 assign #1 COMP_O = DAC1_EN ? comp_o : 'h0;
@@ -228,18 +248,19 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 
 // --- begin POR, OSC
 // -----------------------------------------------------------------------------
-   reg r_clk, r_rstz;
-   assign RSTB = r_rstz;
-   assign RSTB_5 = r_rstz;
-   assign #(1000*10) STB_OVP = v_VIN >=4800;
+   reg r_clk, r_rstz, d_rstz;
+   assign RSTB_5 = r_rstz; // IO ready first
+   assign RSTB   = d_rstz; // for HW trap
    assign #(100) RD_DET = v_CC1 <= 2000 && v_CC1 >= 600
                        || v_CC2 <= 2000 && v_CC2 >= 600;
    initial begin
 	r_clk =0;
 	r_rstz =0;
+	d_rstz =0;
 	#30_000
 	fork
-	   #1_000 r_rstz =1;
+	      #1_000 r_rstz =1; // 8-clock after
+	   #1001_000 d_rstz =1; // 100us after
 	   forever
 		if (OSC_STOP) #5                 r_clk =0;
 		else if (OSC_LOW) begin:osc_low
@@ -248,10 +269,8 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 	join
    end
    always @(negedge OSC_LOW) #5 disable osc_low;
-   always @(PWREN_A) $display ($time,"ns <%m> power enable A -> %d",PWREN_A);
-   always @(PWREN_B) $display ($time,"ns <%m> power enable B -> %d",PWREN_B);
-   always @(VIN_DISCHG_EN) $display ($time,"ns <%m> VIN discharge -> %d",VIN_DISCHG_EN);
-   always @(VBUS_DISCHG_EN) $display ($time,"ns <%m> VBUS discharge -> %d",VBUS_DISCHG_EN);
+   always @(PWREN) $display ($time,"ns <%m> power enable -> %d",PWREN);
+   always @(VO_DISCHG) $display ($time,"ns <%m> VO (VBUS) discharge -> %d",VO_DISCHG);
 `ifdef ATPG
 `else // for ATPG don't want this
    always @(CC_SEL)     $display ($time,"ns <%m> cable orientation -> %d",CC_SEL);
@@ -264,6 +283,6 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 // -----------------------------------------------------------------------------
 // --- end POR, OSC
 
-`endif // SYNTHESIS
+`endif // ANATOP_EMPTY
 endmodule // anatop_1127a0
 

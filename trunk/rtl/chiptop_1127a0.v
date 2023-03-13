@@ -15,10 +15,10 @@ input		RX_D, COMP_O, // AFE from CAN1119/COMP_O
 output		CC_SEL, AD_RST, AD_HOLD,
 		oeb_cc, doe_cc, // for FPGA AFE voltage divider CC driver
 		TX_DRV0,
-		PWREN_A,
+		PWREN,
 		DISCHARGE,
 output	[9:2]	dac_pwr_v, dac1_9_2,
-output	[15:0]	SAMPL_SEL,
+output	[17:0]	SAMPL_SEL,
 output		DP_2V7_EN, DP_DWN_EN, DPDN_SHORT,
 		DN_2V7_EN, DN_DWN_EN,
 output	[31:0]	smims_j8_o,
@@ -37,12 +37,10 @@ inout		uart_rx, // J11_2
 inout		scl, // J11_3
 inout		sda, // J11_4
 inout		GPIO6, // for AFE
-input		IDDI, // D+/D-/CC1/CC2 OVP
 `else // !FPGA
-inout		VBUS,
-output		GATE_A, GATE_B, OCDRV,
-input		ISENP, ISENN,
-input		VFB, IFB,
+input		CSP, CSN,
+input		VFB,
+output		COM, LG, SW, HG, BST, GATE, VDRV,
 `endif // FPGA
 inout		DP, DN, CC1, CC2,
 inout		TST,
@@ -82,17 +80,17 @@ inout		GPIO3, GPIO4, GPIO5
 // IOB3PURUDA_A0 // CAN1123A0 choose the 3.3V IO with 5V VCC applied
 // IOBPURUDA_A0 // choose the IO with 50-Ohm output impedence @20221011
    IODMURUDA_A0 // w/o ANA_P connected
-   PAD_SCL   (.PAD(SCL),  .IE(IE_GPIO[1]),.DI(DI_GPIO[0]),.OE(OE_GPIO[0]),.DO(DO_GPIO[0]),.PU(PU_GPIO[0]),.PD(PD_GPIO[0]),.ANA_R(),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_SDA   (.PAD(SDA),  .IE(IE_GPIO[1]),.DI(DI_GPIO[1]),.OE(OE_GPIO[1]),.DO(DO_GPIO[1]),.PU(PU_GPIO[1]),.PD(PD_GPIO[1]),.ANA_R(),.RSTB_5(ANA_RSTB5),.VB(V1P1));
+   PAD_SCL     (.PAD(SCL),    .IE(IE_GPIO[1]),.DI(DI_GPIO[0]),.OE(OE_GPIO[0]),.DO(DO_GPIO[0]),.PU(PU_GPIO[0]),.PD(PD_GPIO[0]),.ANA_R(),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_SDA     (.PAD(SDA),    .IE(IE_GPIO[1]),.DI(DI_GPIO[1]),.OE(OE_GPIO[1]),.DO(DO_GPIO[1]),.PU(PU_GPIO[1]),.PD(PD_GPIO[1]),.ANA_R(),.RSTB_5(IO_RSTB5),.VB(V1P1));
    IOBMURUDA_A0 // w/o ANA_P connected
-   PAD_TST   (.PAD(TST),  .IE(1'h1),      .DI(DI_TST),    .OE(1'h0),      .DO(1'h0),      .PU(1'h0),      .PD(1'h1),      .ANA_R(),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_GPIO1 (.PAD(GPIO1),.IE(IE_GPIO[0]),.DI(DI_GPIO[2]),.OE(OE_GPIO[2]),.DO(DO_GPIO[2]),.PU(PU_GPIO[2]),.PD(PD_GPIO[2]),.ANA_R(),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_GPIO2 (.PAD(GPIO2),.IE(IE_GPIO[0]),.DI(DI_GPIO[3]),.OE(OE_GPIO[3]),.DO(DO_GPIO[3]),.PU(PU_GPIO[3]),.PD(PD_GPIO[3]),.ANA_R(),.RSTB_5(ANA_RSTB5),.VB(V1P1));
+   PAD_TST     (.PAD(TST),    .IE(1'h1),      .DI(DI_TST),    .OE(1'h0),      .DO(1'h0),      .PU(1'h0),      .PD(1'h1),      .ANA_R(),.RSTB_5(IO_RSTB5),.VB(V1P1));
    IOBMURUDA_A1 // w/ ANA_P connected
-   PAD_GPIO3 (.PAD(GPIO3),.IE(IE_GPIO[0]),.DI(DI_GPIO[4]),.OE(OE_GPIO[4]),.DO(DO_GPIO[4]),.PU(PU_GPIO[4]),.PD(PD_GPIO[4]),.ANA_R(GP3_ANA_R),.ANA_P(ANAP_GP3),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_GPIO4 (.PAD(GPIO4),.IE(IE_GPIO[0]),.DI(DI_GPIO[5]),.OE(OE_GPIO[5]),.DO(DO_GPIO[5]),.PU(PU_GPIO[5]),.PD(PD_GPIO[5]),.ANA_R(GP4_ANA_R),.ANA_P(ANAP_GP4),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_GPIO5 (.PAD(GPIO5),.IE(IE_GPIO[0]),.DI(DI_GPIO[6]),.OE(OE_GPIO[6]),.DO(DO_GPIO[6]),.PU(PU_GPIO[6]),.PD(PD_GPIO[6]),.ANA_R(GP5_ANA_R),.ANA_P(ANAP_GP5),.RSTB_5(ANA_RSTB5),.VB(V1P1)),
-   PAD_TS    (.PAD(TS),   .IE(IE_GPIO[0]),.DI(DI_TS),     .OE(DO_TS[2]),  .DO(DO_TS[3]),  .PU(DO_TS[1]),  .PD(DO_TS[0]),  .ANA_R(TS_ANA_R), .ANA_P(ANAP_TS), .RSTB_5(ANA_RSTB5),.VB(V1P1));
+   PAD_GPIO1   (.PAD(GPIO1),  .IE(IE_GPIO[0]),.DI(DI_GPIO[2]),.OE(OE_GPIO[2]),.DO(DO_GPIO[2]),.PU(PU_GPIO[2]),.PD(PD_GPIO[2]),.ANA_R(GP1_ANA_R),.ANA_P(ANAP_GP1),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_GPIO2   (.PAD(GPIO2),  .IE(IE_GPIO[0]),.DI(DI_GPIO[3]),.OE(OE_GPIO[3]),.DO(DO_GPIO[3]),.PU(PU_GPIO[3]),.PD(PD_GPIO[3]),.ANA_R(GP2_ANA_R),.ANA_P(ANAP_GP2),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_GPIO3   (.PAD(GPIO3),  .IE(IE_GPIO[0]),.DI(DI_GPIO[4]),.OE(OE_GPIO[4]),.DO(DO_GPIO[4]),.PU(PU_GPIO[4]),.PD(PD_GPIO[4]),.ANA_R(GP3_ANA_R),.ANA_P(ANAP_GP3),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_GPIO4   (.PAD(GPIO4),  .IE(IE_GPIO[0]),.DI(DI_GPIO[5]),.OE(OE_GPIO[5]),.DO(DO_GPIO[5]),.PU(PU_GPIO[5]),.PD(PD_GPIO[5]),.ANA_R(GP4_ANA_R),.ANA_P(ANAP_GP4),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_GPIO5   (.PAD(GPIO5),  .IE(IE_GPIO[0]),.DI(DI_GPIO[6]),.OE(OE_GPIO[6]),.DO(DO_GPIO[6]),.PU(PU_GPIO[6]),.PD(PD_GPIO[6]),.ANA_R(GP5_ANA_R),.ANA_P(ANAP_GP5),.RSTB_5(IO_RSTB5),.VB(V1P1)),
+   PAD_GPIO_TS (.PAD(GPIO_TS),.IE(IE_GPIO[0]),.DI(DI_TS),     .OE(DO_TS[2]),  .DO(DO_TS[3]),  .PU(DO_TS[1]),  .PD(DO_TS[0]),  .ANA_R(TS_ANA_R), .ANA_P(ANAP_TS), .RSTB_5(IO_RSTB5),.VB(V1P1));
 
 // MSL18B_1536X8_RW10TM4_16_20210427 // Kim@20210608: too long for APR
    MSL18B_1536X8_RW10TM4_16 U0_SRAM (
@@ -131,53 +129,68 @@ inout		GPIO3, GPIO4, GPIO5
 	.Q	({PMEM_Q1,PMEM_Q0})
    );
 
+   wire [7:0] bck_regx0, bck_regx1;
+   assign BST_SET	= bck_regx0[0];
+   assign DCM_SEL	= bck_regx0[1];
+   assign HGOFF		= bck_regx0[2];
+   assign HGLGOFF	= bck_regx0[3];
+   assign HGON		= bck_regx0[4];
+   assign LGON		= bck_regx0[5];
+   assign ENDRV		= bck_regx0[6];
+   assign FSW		= bck_regx1[1:0];
+   assign EN_OSC	= bck_regx0[2];
+   assign MAXDS		= bck_regx0[3];
+   assign EN_GM		= bck_regx0[4];
+   assign EN_ODLDO	= bck_regx0[5];
+   assign EN_IBUK	= bck_regx0[6];
+
    wire [7:0] do_cvctl, do_srcctl, do_ccctl, do_cctrx;
    wire [7:0] do_pwr_i;
-   wire [5:0] do_dpdm;
-   wire [5:0] do_vooc;
    wire [7:0] do_xana0, do_xana1;
-   wire [3:0] do_regx_xtm;
+   wire [5:0] do_dpdm;
+   wire [3:0] do_regx_xtm, do_vooc;
    assign {
 	HVNG_CPEN,	// XANA1[7]
 	CPV_SEL,	// XANA1[6]
 	CLAMPV_EN,	// XANA1[5]
-	PWREN_B,	// XANA1[4]
+	PWREN_B_rv,	// XANA1[4]
 	DP_0P6V_EN,	// XANA1[3]
 	DN_0P6V_EN,	// XANA1[2]
-	V3VD_SEL[1:0]	// XANA1[1:0]
+	CC_FT_rv,	// XANA1[1]
+	T3A_rv		// XANA1[0]
 	} = do_xana1;
    assign {
 	UVP_SEL,	// XANA0[7]
-	CS_DIR,		// XANA0[6], dummy@0624 -> CS_DIR (20220915)
+	CS_DIR_rv,	// XANA0[6], dummy@0624 -> CS_DIR (20220915)
 	DPDN_VTH,	// XANA0[5]
-	VBUS_400K,	// XANA0[4]
+	VBUS_400K_rv,	// XANA0[4]
 	SEL_CCGAIN,	// XANA0[3]
-	SEL_OCDRV,	// XANA0[2]
-	SEL_FB,		// XANA0[1]
+	SEL_OCDRV_rv,	// XANA0[2]
+	VFB_SW,		// XANA0[1]
 	CV2		// XANA0[0]
 	} = do_xana0;
    assign {
 	GP4_20U,
 	GP3_20U,
-	CC_FT,
-	T3A} = do_regx_xtm;
+	GP2_20U,
+	GP1_20U} = do_regx_xtm;
    assign {
 	OVP_SEL[1:0],
 	ANTI_INRUSH,
-	IFB_CUT,
-	CC_PROT,
+	IFB_CUT_rv,
+	CC_PROT_rv,
 	OCP_EN,
-	CV_ENB,
-	CC_ENB} = do_cvctl;
+	CV_ENB_rv,
+	CC_ENB_rv} = do_cvctl;
    assign
 	RP_EN		= do_ccctl[7:6],
 	RP_SEL		= do_ccctl[5:4],
 //      cc_rd_enb       = do_ccctl[3:2], // CAN1112 removed
-	TX_DRV0		= do_ccctl[1],
+//	TX_DRV0		= do_ccctl[1],
 	CC_SEL		= do_ccctl[0];
    assign {
-	IDOE, // EN_VBUS_REG
-	IDDO, // VBUSREG_V
+//	IDOE, // EN_VBUS_REG
+//	IDDO, // VBUSREG_V
 	DPDEN,
 	DPDO,
 	DNDEN,
@@ -193,19 +206,19 @@ inout		GPIO3, GPIO4, GPIO5
 	CC_SLOPE[1], // LDO9V, CAN1126A0 removed
 	CC_SLOPE[0], // CC_SLOPE, CAN1126A0 removed
 	DISCHG_SEL,
-	VBUS_DISCHG,
+	VO_DISCHG, // CAN1127-renamed
 	VCONN_EN[1:0],
-	VIN_DISCHG,
-	PWREN_A} = do_srcctl;
+	VIN_DISCHG_rv, // CAN1127-removed
+	PWREN} = do_srcctl;
    assign {
-	CCLEVEL,
-	CCBIAS,
+	SEL_RX_TH,
+	LSR,
 	TFA,
 	TRA,
 	CS_EN, // CAN1112 removed, CAN1126A0: pk_set -> CS_EN
-	S100UB,
-	S20UB,
-	S2UB
+	S100U, // CAN1127 remove B suffix
+	S20U,  // CAN1127 remove B suffix
+	GP5_20U
 	} = do_cctrx;
    wire [4:0] di_xanav = {
 	1'h0,
@@ -213,11 +226,10 @@ inout		GPIO3, GPIO4, GPIO5
 	OPTO1,
 	OCP_80M,
 	OCP_160M};
-   wire [6:0] srci = {
+   wire [5:0] srci = {
 	OTPI_S, // original OTPI
 	V5OCP,
 	SCP,
-	OTPI_C, // CF
 	OVP,
 	OCP,
 	UVP};
@@ -226,14 +238,15 @@ inout		GPIO3, GPIO4, GPIO5
 	.SRCI		(srci),
 	.XANAV		(di_xanav),
 	.ANA_REGX	({do_xana1,do_xana0}),
+	.BCK_REGX	({bck_regx1,bck_regx0}),
 	.LFOSC_ENB	(LFOSC_ENB), // XANA2[7]
 	.STB_RP		(STB_RP), // XANA2[3] ^ DRP_OSC
 	.RD_ENB		(RD_ENB), // XANA2[2] ^ DRP_OSC
 	.OCP_SEL	(OCP_SEL), // XANA2[1]
 	.PWREN_HOLD	(PWREN_HOLD), // XANA2[0]
 	.XTM		(do_regx_xtm),
-	.IDAC_EN	(IDAC_EN),
-	.IDAC_SEN	(IDAC_SEN),
+//	.IDAC_EN	(IDAC_EN),
+//	.IDAC_SEN	(IDAC_SEN),
 	.DRP_OSC	(DRP_OSC),
 	.IMP_OSC	(IMP_OSC),
 	.CC1_DI		(CC1_DI),
@@ -248,7 +261,7 @@ inout		GPIO3, GPIO4, GPIO5
 	.DO_DAC0	(DAC0),
 	.DO_DPDN	(do_dpdm),
 	.DO_VOOC	(do_vooc),
-	.ID_DI		(IDDI),
+//	.ID_DI		(IDDI),
 	.DO_CCCTL	(do_ccctl),
 	.DO_CCTRX	(do_cctrx),
 // -----------------------------------------------------------------------------
@@ -278,27 +291,27 @@ inout		GPIO3, GPIO4, GPIO5
 	.OE_GPIO	(OE_GPIO),
 	.DO_GPIO	(DO_GPIO),
 	.DI_GPIO	(DI_GPIO),
-	.RX_D_49	(RX_D_49),
-	.RX_D_PK	(RX_D_PK),
+	.RX_DAT		(RX_DAT),
 	.RX_SQL		(RX_SQL),
 	.TX_DAT		(TX_DAT),
 	.TX_EN		(TX_EN),
 	.SLEEP		(SLEEP),
-	.OCDRV_ENZ	(OCDRV_ENZ),
+	.OCDRV_ENZ	(),
 	.PWRDN		(PWRDN),
 	.VPP_SEL	(VPP_SEL),
 	.VPP_0V		(VPP_0V),
 	.OSC_STOP	(OSC_STOP),
 	.OSC_LOW	(OSC_LOW),
 	.RD_DET		(RD_DET),
-	.STB_OVP	(STB_OVP),
+	.STB_OVP	(1'h0),
 	.DAC1_EN	(DAC1_EN),
 	.DAC1_V		(DAC1),
 	.SAMPL_SEL	(SAMPL_SEL),
 	.DAC1_COMP	(COMP_O),
 	.CCI2C_EN	(CCI2C_EN),
 	.ANA_TM		(ANA_TM),
-	.ANA_OPT	(REGTRM),
+	.REGTRM		(REGTRM),
+	.ANAOPT		(ANAOPT),
 	.DUMMY_IN	(DUMMY_IN),
 	.SH_RST		(AD_RST),
 	.SH_HOLD	(AD_HOLD),

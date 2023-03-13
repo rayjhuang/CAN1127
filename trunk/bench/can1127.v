@@ -167,8 +167,8 @@ dbg_width_16 = pulse_width_analy.width_acc[16];
 begin: PB // hw_probe
 dig_probe	SLEEP (`DUT_ANA.SLEEP),
 		OSC_LOW (`DUT_ANA.OSC_LOW),
-		PWR_ENABLE (`DUT_ANA.PWREN_A),
-		DISCHARGE  (`DUT_ANA.VIN_DISCHG_EN & `DUT_ANA.VBUS_DISCHG_EN);
+		PWR_ENABLE (`DUT_ANA.PWREN),
+		DISCHARGE  (`DUT_ANA.VO_DISCHG);
 ana_probe	PWR_I ({8'h0,`DUT_ANA.PWR_I});
 end // hw_probe
 

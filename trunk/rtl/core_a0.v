@@ -7,8 +7,9 @@ module core_a0 (
 // 2018/01/09 copy from CAN1110
 // ALL RIGHTS ARE RESERVED
 // =============================================================================
-input	[6:0]	SRCI,
+input	[5:0]	SRCI,
 input	[4:0]	XANAV,
+output	[15:0]	BCK_REGX,
 output	[15:0]	ANA_REGX,	// XANA1,XANA0
 output		LFOSC_ENB,	// XANA2[7]
 		STB_RP,		// XANA2[3] ^ DRP_OSC
@@ -16,13 +17,12 @@ output		LFOSC_ENB,	// XANA2[7]
 		OCP_SEL,	// XANA2[1]
 		PWREN_HOLD,	// XANA2[0]
 input		CC1_DI,  CC2_DI, DRP_OSC, IMP_OSC,
-output		CC1_DOB, CC2_DOB, DAC1_EN, SH_RST, SH_HOLD, LDO3P9V, IDAC_EN, IDAC_SEN,
+output		CC1_DOB, CC2_DOB, DAC1_EN, SH_RST, SH_HOLD, LDO3P9V, // IDAC_EN, IDAC_SEN,
 output	[3:0]	XTM,
 output	[7:0]	DO_CVCTL, DO_CCTRX, DO_SRCCTL, DO_CCCTL,
 output	[10:0]	DO_DAC0,
 output	[5:0]	DO_DPDN,
-output	[5:0]	DO_VOOC,
-input		ID_DI,
+output	[3:0]	DO_VOOC,
 output	[7:0]	DO_PWR_I,
 // -----------------------------------------------------------------------------
 output	[15:0]	PMEM_A,
@@ -35,13 +35,13 @@ output	[10:0]	SRAM_A,
 output	[7:0]	SRAM_D,
 input	[7:0]	SRAM_RDAT,
 // -----------------------------------------------------------------------------
-input		RX_D_49, RX_D_PK, RX_SQL,
+input		RX_DAT, RX_SQL,
 		RD_DET, STB_OVP,
 output		TX_DAT, TX_EN,
 		OSC_STOP, OSC_LOW,
 		SLEEP, PWRDN, OCDRV_ENZ,
 output	[9:0]	DAC1_V,
-output	[15:0]	SAMPL_SEL,
+output	[17:0]	SAMPL_SEL,
 input		DAC1_COMP,
 output		CCI2C_EN,
 output	[3:0]	ANA_TM,
@@ -51,8 +51,8 @@ output	[6:0]	DO_GPIO, OE_GPIO, GPIO_PU, GPIO_PD,
 output	[1:0]	GPIO_IE,
 output	[3:0]	DO_TS,
 input		DI_TS,
-output	[47:0]	ANA_OPT,
-output	[7:0]	DUMMY_IN,
+output	[55:0]	REGTRM,
+output	[7:0]	ANAOPT, DUMMY_IN,
 output  [5:0]   DAC3_V,
 input		i_clk, i_rstz,
 		atpg_en, di_tst,
@@ -206,7 +206,6 @@ input	[3:0]	dbgsel
    wire [4:0] sfr_intr;
    wire dac_intr, gpint1z, gpint0z;
    wire i_cpurst = ~srstz;
-   wire hwi2cint = |(u0_regbank.reg27 & u0_regbank.reg28 & 'hdf); // no stretch at P 'cause its SCL=1
    wire [7:0] exint = {dac_intr,
 			sfr_intr[4], // SRCSTA
 			sfr_intr[1:0], // positive edge in mcu51
@@ -343,8 +342,8 @@ input	[3:0]	dbgsel
 
    wire [14:0]	sfr_dacwr;
    wire [5:0]	x_daclsb; // bit un-positioned
-   wire [8*16-1:0] dac_r_vs; // 16-channel CAN1126
-   wire [15:0]	r_dac_en, r_sar_en, dac_r_comp; // 16-channel CAN1126
+   wire [8*18-1:0] dac_r_vs; // 18-channel CAN1127
+   wire [17:0]	r_dac_en, r_sar_en, dac_r_comp; // 18-channel CAN1127
    wire [7:0]	dac_r_ctl, dac_r_cmpsta;
    wire [7:0]	r_adofs, r_isofs;
 
@@ -358,7 +357,7 @@ input	[3:0]	dbgsel
 
    wire [31:0]	sfr_dbgpo;
    wire [3:0]	r_ana_tm;
-   wire [47:0]	r_ana_opt;
+   wire [55:0]	r_regtrm;
    wire [6:0]	REVID;
    wire [7:0]	r_ccrx, r_cvctl, r_ccctl, r_cctrx,
 		r_dpdmctl, r_srcctl, r_pwr_i;
@@ -367,20 +366,19 @@ input	[3:0]	dbgsel
 
    wire [15:0]	pff_rxpart;
    wire [7:0]	pff_rdat;
-   wire [6:0]	r_rxords_ena, prx_setsta, r_txauto, di_pro;
-   wire [5:0]	pff_ptr, prx_adpn;
+   wire [6:0]	r_rxords_ena, prx_setsta, r_txauto;
+   wire [5:0]	pff_ptr, prx_adpn, di_pro;
    wire [4:0]	r_txnumk, prx_rcvinf;
    wire [3:0]	prx_fsm, prl_fsm;
    wire [2:0]	ptx_fsm, prl_cpmsgid;
    wire [1:0]	r_spec, r_dat_spec, r_auto_gdcrc, pff_ack, prx_rst;
    wire [5:0]	r_dac3;
    wire [15:0]	r_cvofs;
-   wire [7:0]	r_sdischg, r_comp_opt;
+   wire [7:0]	r_comp_opt;
    wire [5:0]	r_cvcwr; // u0_cvctl write
 
    wire ramacc = mcu_ram_r | mcu_ram_w;
    wire [1:0] r_sqlch = r_ccrx[7:6];
-   wire r_rx_sel = r_ccrx[4];
    wire r_adprx_en = r_ccrx[3];
    wire r_adp2nd   = r_ccrx[2];
    wire [1:0] r_rxdb_opt = r_ccrx[1:0];
@@ -396,7 +394,6 @@ input	[3:0]	dbgsel
 	.dm_fault	(dm_fault), // anatop_can1112b0
 	.di_rd_det	(di_rd_det),
 	.di_stbovp	(di_stbovp),
-	.id_di		(id_di),
 	.cc1_di		(cc1_di),
 	.cc2_di		(cc2_di),
 	.i_tmrf		(t0_intr),
@@ -418,9 +415,8 @@ input	[3:0]	dbgsel
 	.r_pwrv_upd	(r_pwrv_upd),
 	.r_fw_pwrv	(r_fw_pwrv),
 
-	.r_cvcwr	(r_cvcwr[2:0]),
+	.r_cvcwr	(r_cvcwr[1:0]),
 	.r_cvofs	(r_cvofs),
-	.r_sdischg	(r_sdischg),
 	.r_otpi_gate	(r_otpi_gate),
 	.r_ccrx		(r_ccrx),
 	.r_cctrx	(r_cctrx),
@@ -476,12 +472,13 @@ input	[3:0]	dbgsel
 	.r_gpio_s1	(gpio_s1),
 	.r_gpio_s2	(gpio_s2),
 	.r_gpio_s3	(gpio_s3),
-	.r_ana_opt	(r_ana_opt),
+	.r_regtrm	(r_regtrm),
 	.r_ana_tm	(r_ana_tm),
 	.o_intr		(sfr_intr),
 	.i_pc		(mcu_pc),
 	.i_goidle	(pid_goidle),
 	.i_gobusy	(pid_gobusy),
+	.bus_idle	(bus_idle),
 	.i_i2c_idle	(sse_idle),
 	.i_i2c_rwbuf	(i2c_rwbuf),
 	.i_i2c_ltbuf	(i2c_ltbuf),
@@ -511,12 +508,13 @@ input	[3:0]	dbgsel
 	.r_discard	(r_discard),
 	.r_strtch	(r_strtch),
 	.r_i2c_deva	(r_i2c_deva),
-	.r_hwi2c_en	(),
+	.r_hwi2c_en	(), // replaced by r_i2crout in CAN1126
 	.r_i2c_ninc	(r_i2c_ninc),
 	.r_i2c_fwnak	(r_i2c_fwnak),
 	.r_i2c_fwack	(r_i2c_fwack),
 	.r_i2c_attr	(r_i2c_attr),
 	.r_pg0_sel	(r_pg0_sel),
+	.i2c_stretch	(hwi2c_stretch), // added in CAN1127
 	.i2c_ev		(i2c_ev),
 	.prl_cany0	(prl_cany0),
 	.prl_c0set	(prl_c0set),
@@ -552,7 +550,7 @@ input	[3:0]	dbgsel
    assign ictlr_idle = pmem_csb;
 
    wire [7:0] i2cslv_dbgpo;
-   wire [2:0] slvo_ev;
+   wire [3:0] slvo_ev;
    wire [7:1] i2cslv_deva = r_i2c_deva;
    wire r_i2c_inc = ~r_i2c_ninc;
    wire sse_rdrdy =~prl_cany0 & esfrm_rrdy;
@@ -587,10 +585,10 @@ input	[3:0]	dbgsel
         .i_prefetch	(sse_prefetch)
    ); // u0_i2cslv
 
-   wire scl_strtch = r_strtch & (pmem_pgm | hwi2cint);
-   wire cc_idle = prx_rcvinf[4];
+   wire scl_strtch = r_strtch & (pmem_pgm | hwi2c_stretch);
+   wire cc_idle = prx_rcvinf[4]; // also in u0_regbank
 
-   wire [7:0] r_i2crout;
+   wire [5:0] r_i2crout;
    wire [1:0] r_i2cslv_route = r_i2crout[1:0]; // 0/1/2/3 : GPIO/CC12/DPDM/disable
    wire [1:0] r_i2cmcu_route = r_i2crout[3:2]; // 0/1/2/3 : GPIO/CC12/DPDM/disable
    wire r_cci2c_swap = r_i2crout[4],
@@ -628,23 +626,21 @@ input	[3:0]	dbgsel
    assign slvi_sda = ~(cci2cslv &~cci2c_sda_di | ddi2cslv &~ddi2c_sda_di | gpi2cslv &~di_sda);
    assign slvi_scl = ~(cci2cslv &~cci2c_scl_di | ddi2cslv &~ddi2c_scl_di | gpi2cslv &~di_scl);
 
-   wire di_cc_pk, di_cc_49;
-   assign di_cc = cci2c_mode ? 'h0 : r_rx_sel ? di_cc_49 : di_cc_pk;
-
    assign i2c_rwbuf = sse_wdat;
    assign sse_rd = slvo_re | slvo_early;
    assign i2c_ev = {
 		sse_rd,
 		sse_rd & sse_pg0,
-		slvo_ev[2:1], // {STOP, repeated START}
+		slvo_ev[3], // STOP (P)
+		slvo_ev[2], // START (S/Sr)
 		sse_wr,
 		sse_wr & sse_pg0,
-		slvo_ev[0], // to ACK/NAK device address
-		1'h0}; // remove tcpc
+		slvo_ev[1], // to ACK/NAK device address
+		slvo_ev[0]}; // command written
 
-   wire [2:0] r_dat_cpmsgid = sfr_wdat[2:0];
    wire [31:0] upd_dbgpo;
-
+   wire di_cc_49;
+   assign di_cc = cci2c_mode ? 'h0 : di_cc_49;
    updphy #(
 	.FF_DEPTH_NUM	(34),
 	.FF_DEPTH_NBT	(6))
@@ -716,11 +712,11 @@ input	[3:0]	dbgsel
 
    wire [9:0] dac1_v;
    wire [4:0] comp_smpl;
-   wire [15:0] dacmux_sel;
-   wire [9:0] regx_wrdac;
+   wire [17:0] dacmux_sel;
+   wire [13:0] regx_wrdac;
    wire [7:0] r_dacwdat = (|regx_wrdac) ? xram_d : sfr_wdat;
-   wire [15:0] wr_dacv = {regx_wrdac[9:2],sfr_dacwr[7:0]};
-   wire [8:0]  r_dacwr = {regx_wrdac[1:0],sfr_dacwr[14:8]};
+   wire [17:0] wr_dacv = {regx_wrdac[13:12],regx_wrdac[9:2],sfr_dacwr[7:0]};
+   wire [10:0] r_dacwr = {regx_wrdac[11:10],regx_wrdac[1:0],sfr_dacwr[14:8]};
    wire [2:0] r_comp_opt_7_5_ = r_comp_opt[7:5];
    dacmux u0_dacmux (
 	.clk		(mclk),
@@ -750,7 +746,7 @@ input	[3:0]	dbgsel
    fcp u0_fcp (
 	.dp_comp	(dp_comp),
 	.dm_comp	(dm_comp),
-	.id_comp	(id_di),
+	.id_comp	(1'h0),
 	.intr		(fcp_intr),
 	.tx_en		(fcp_oe),
 	.tx_dat		(fcp_do),
@@ -775,7 +771,7 @@ input	[3:0]	dbgsel
    wire dpdm_ie = r_accctl[3];
    wire dpdm_short = r_accctl[4];
    wire r_ena_dac1comp = x_daclsb[2];
-   wire [7:0] r_vcomp, r_idacsh, r_cvofsx;
+   wire [7:0] r_vcomp, r_idacsh, r_cvofsx, r_sdischg;
    wire [7:0] r_cvcwdat = (|r_cvcwr[5:3]) ? xram_d : sfr_wdat;
    cvctl u0_cvctl (
 	.r_cvcwr	(r_cvcwr),
@@ -803,13 +799,13 @@ input	[3:0]	dbgsel
 
    wire [1:0] regx_hitbst;
    wire [6:0] r_do_ts, bist_r_ctl;
-   wire [7:0] r_xtm, bist_r_dat, r_adummyi;
+   wire [7:0] r_aopt, r_xtm, bist_r_dat, r_adummyi, r_bck0, r_bck1;
    wire [23:0] r_xana;
    wire [4:0] di_xanav;
    wire [1:0] r_sap;
    wire [3:0] r_dpdo_sel, r_dndo_sel;
    wire [6:0] regx_addr = xram_a[6:0];
-   assign r_vcbyval      = r_xtm[2]; // CAN1124A0
+   assign r_vcbyval      = r_xtm[4]; // CAN1124A0 -> CAN1127A0
    assign r_halflsb_freq = r_xtm[5]; // CAN1124A0
    assign r_halflsb_duty = r_xtm[6]; // CAN1124A0
    wire   r_gate_lp      = r_xtm[7]; // CAN1126A0
@@ -820,6 +816,8 @@ input	[3:0]	dbgsel
    wire [1:0] regx_wrpwm;
    wire [15:0] r_pwm;
    wire [4:0] di_aswk;
+   wire [3:0] regx_wrcvc;
+   assign {r_cvcwr[2],r_cvcwr[5:3]} = regx_wrcvc;
    regx u0_regx (
 	.di_rd_det	(di_rd_det),
 	.di_stbovp	(di_stbovp),
@@ -832,7 +830,8 @@ input	[3:0]	dbgsel
 	.r_bistctl	(bist_r_ctl),
 	.r_bistdat	(bist_r_dat),
 
-	.regx_wrcvc	(r_cvcwr[5:3]),
+	.regx_wrcvc	(regx_wrcvc),
+	.r_sdischg	(r_sdischg),
 	.r_vcomp	(r_vcomp),
 	.r_idacsh	(r_idacsh),
 	.r_cvofsx	(r_cvofsx),
@@ -841,10 +840,10 @@ input	[3:0]	dbgsel
 	.r_pwm		(r_pwm),
 
 	.regx_wrdac	(regx_wrdac),
-	.dac_r_vs	(dac_r_vs[8*8+:8*8]), // from channel 8, 8 channels
-	.dac_comp	(dac_r_comp[15:8]),
-	.r_dac_en	(r_dac_en[15:8]),
-	.r_sar_en	(r_sar_en[15:8]),
+	.dac_r_vs	(dac_r_vs[8*8+:8*10]), // from channel 8, 10 channels
+	.dac_comp	(dac_r_comp[17:8]),
+	.r_dac_en	(r_dac_en[17:8]),
+	.r_sar_en	(r_sar_en[17:8]),
 
 	.r_twlb		(pmem_twlb),
 	.wd_twlb	(wd_twlb),
@@ -876,13 +875,16 @@ input	[3:0]	dbgsel
 	.rrstz		(srstz),
         .bkpt_pc        (bkpt_pc),
         .bkpt_ena       (bkpt_ena),
+	.r_bck0		(r_bck0),
+	.r_bck1		(r_bck1),
 	.r_adummyi	(r_adummyi),
 	.r_xana		(r_xana),
 	.di_xana	(di_xanav),
+	.r_aopt		(r_aopt),
 	.r_xtm		(r_xtm),
 	.r_i2crout	(r_i2crout),
 	.sse_idle	(sse_idle),
-	.cc_idle	(cc_idle),
+	.bus_idle	(bus_idle),
 	.ramacc		(ramacc)
    ); // u0_regx
 

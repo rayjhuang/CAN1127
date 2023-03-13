@@ -242,8 +242,8 @@ input [23:0] div_r;
 endtask // rv_divider
 
    wire [15:0] v_VIN = `DUT_ANA.v_VIN;
-   wire PWR_ENABLE   = `DUT_ANA.GATE_A;
-   wire DISCHARGE    = `DUT_ANA.VIN_DISCHG_EN;
+   wire PWR_ENABLE   = `DUT_ANA.GATE;
+   wire DISCHARGE    = `DUT_ANA.VO_DISCHG;
 
    reg [15:0] v_vbus = 0;
    assign v_VBUS = v_vbus;

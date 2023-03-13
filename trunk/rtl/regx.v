@@ -15,14 +15,16 @@ input	[6:0]	regx_addr, // cmd/addr phase
 input   [7:0]   regx_wdat,
 output	[7:0]	regx_rdat,
 output	[1:0]	regx_hitbst, regx_wrpwm,
-output	[2:0]	regx_wrcvc,
+output	[3:0]	regx_wrcvc,
+input	[7:0]	r_sdischg,
 input	[6:0]	r_bistctl,
 input	[7:0]	r_bistdat, r_vcomp, r_idacsh, r_cvofsx,
 input	[15:0]	r_pwm,
-output	[9:0]	regx_wrdac,
-input	[8*8-1:0] dac_r_vs,
-input	[7:0]	dac_comp, r_dac_en, r_sar_en,
-output	[7:0]	r_xtm, r_i2crout, r_adummyi,
+output	[13:0]	regx_wrdac,
+input	[8*10-1:0] dac_r_vs,
+input	[9:0]	dac_comp, r_dac_en, r_sar_en,
+output	[7:0]	r_aopt, r_xtm, r_adummyi, r_bck0, r_bck1,
+output	[5:0]	r_i2crout,
 output  [23:0]  r_xana,
 input	[4:0]	di_xana,
 input	[3:0]	lt_gpi,
@@ -32,7 +34,7 @@ output		bkpt_ena,
 		we_twlb, r_vpp_en, r_vpp0v_en, r_otp_pwdn_en, r_otp_wpls,
 output	[1:0]	wd_twlb, r_sap,
 input	[1:0]	r_twlb,
-input		upd_pwrv, ramacc, sse_idle, cc_idle,
+input		upd_pwrv, ramacc, sse_idle, bus_idle,
 output	[6:0]	r_do_ts,
 output	[3:0]	r_dpdo_sel, r_dndo_sel,
 input		di_ts, detclk, aswclk, atpg_en,
@@ -92,8 +94,10 @@ input		clk, rrstz
    assign {reg01,regx_wrcvc[1]} = {r_idacsh[7:0],  we['h01]}; // IDAC_SH
    assign {reg02,regx_wrcvc[2]} = {r_cvofsx[7:0],  we['h02]}; // CV_OFSX
    assign  reg03 = UNREGX_D4;
-   assign  reg04 = UNREGX_D4;
-   assign  reg05 = UNREGX_D4;
+   glreg u0_reg04 (clk, rrstz, we['h04], wdat, reg04); // BCK0
+   glreg u0_reg05 (clk, rrstz, we['h05], wdat, reg05); // BCK1
+   assign r_bck0 = reg04;
+   assign r_bck1 = reg05;
    assign  reg06 = UNREGX_D4;
    glreg u0_reg07 (clk, rrstz, we['h07], wdat, reg07); // DMY0
    assign r_adummyi = reg07;
@@ -106,6 +110,7 @@ input		clk, rrstz
    assign  reg0D = UNREGX_D4;
    assign  reg0E = UNREGX_D4;
    assign  reg0F = UNREGX_D4;
+   assign {reg0F,regx_wrcvc[3]} = {r_sdischg, we['h0f]}; // SDISCHG
 
    glreg #(1) u0_reg10 (clk, rrstz, 1'h1, ramacc, r_ramacc); // to prevent from timing loop
    assign {reg10,regx_hitbst[0]} = {r_ramacc, r_bistctl, hit['h10]}; // BISTCTL
@@ -137,14 +142,14 @@ input		clk, rrstz
    always @(posedge clk) if (~rrstz) d_lt_gpi <= lt_gpi; // sync. in reset
    assign {reg14[7:3],reg14[0]} = {d_lt_gpi,d_di_tst,d_lt_drp};
 
+   wire [5:0] lt_reg15_5_0;
    wire force_i2c_upd = we['h15] & (wdat[7:6]=='h2);
-   wire i2c_mode_upd = sse_idle & cc_idle | force_i2c_upd;
-   wire [5:0] lt_reg15_5_0; // temp
-   wire [5:0] i2c_mode_wdat = force_i2c_upd ? wdat[5:0] : lt_reg15_5_0;
-   glreg #(6) u1_reg15 (clk, rrstz, i2c_mode_upd, i2c_mode_wdat, reg15[5:0]); // for read
-   glreg #(6) u0_reg15 (clk, rrstz, we['h15], wdat[5:0], lt_reg15_5_0); // I2CROUT
-   assign reg15[7:6] = 1'h0;
-   assign r_i2crout = reg15;
+   wire i2c_mode_upd = (we['h15] | (|(lt_reg15_5_0^reg15[5:0]))) & bus_idle | force_i2c_upd;
+   wire [5:0] i2c_mode_wdat = we['h15] ? wdat[5:0] : lt_reg15_5_0;
+   glreg #(6) u0_reg15 (clk, rrstz, we['h15], wdat[5:0], lt_reg15_5_0); // temp
+   glreg #(6) u1_reg15 (clk, rrstz, i2c_mode_upd, i2c_mode_wdat, reg15[5:0]); // I2CROUT
+   assign reg15[7:6] = {sse_idle,1'h0};
+   assign r_i2crout = reg15[5:0];
 
    reg d_we16;
    reg [5:0] lt_aswk, d_lt_aswk;
@@ -155,7 +160,8 @@ input		clk, rrstz
       if (~aswk_clrz) lt_aswk <= 'h0;
                  else lt_aswk <= {1'h1,di_aswk};
    assign  reg16 = {2'h0,d_lt_aswk};
-   assign  reg17 = UNREGX_D4;
+   glreg u0_reg17 (clk, rrstz, we['h17], wdat, reg17); // AOPT
+   assign r_aopt = reg17;
 
    wire [7:0] wd18; 
    glreg u0_tmp18 (clk, rrstz, we['h18], wdat, wd18);
@@ -197,8 +203,8 @@ input		clk, rrstz
 	u0_sbov_db (.o_dbc(reg1F[6]),.o_chg(),.i_org(di_stbovp),.clk(clk_500k),.rstz(rrstz)),
 	u0_rdet_db (.o_dbc(reg1F[7]),.o_chg(),.i_org(di_rd_det),.clk(clk_500k),.rstz(rrstz));
 
-   assign  reg20 = UNREGX_D4;
-   assign  reg21 = UNREGX_D4;
+   assign {reg20,regx_wrdac[12]} = {dac_r_vs[8*8+:8],we['h20]}; // DACV16
+   assign {reg21,regx_wrdac[13]} = {dac_r_vs[8*9+:8],we['h21]}; // DACV17
    assign  reg22 = UNREGX_D4;
    assign  reg23 = UNREGX_D4;
    assign  reg24 = UNREGX_D4;
@@ -215,18 +221,18 @@ input		clk, rrstz
    assign {reg2E,regx_wrdac[8]} = {dac_r_vs[8*6+:8],we['h2e]}; // DACV14
    assign {reg2F,regx_wrdac[9]} = {dac_r_vs[8*7+:8],we['h2f]}; // DACV15
 
-   assign {reg30,regx_wrdac[0]} = {r_dac_en,we['h30]}; // DACEN
-   assign {reg31,regx_wrdac[1]} = {r_sar_en,we['h31]}; // SAREN
-   assign  reg32 = {dac_comp}; // COMPI
+   assign {reg30,regx_wrdac[0]} = {r_dac_en[7:0],we['h30]}; // DACEN2
+   assign {reg31,regx_wrdac[1]} = {r_sar_en[7:0],we['h31]}; // SAREN2
+   assign  reg32 = dac_comp[7:0]; // COMPI2
    assign  reg33 = UNREGX_D4;
    assign  reg34 = UNREGX_D4;
    assign  reg35 = UNREGX_D4;
    assign  reg36 = UNREGX_D4;
    assign  reg37 = UNREGX_D4;
 
-   assign  reg38 = UNREGX_D4;
-   assign  reg39 = UNREGX_D4;
-   assign  reg3A = UNREGX_D4;
+   assign {reg38,regx_wrdac[10]} = {6'h0,r_dac_en[9:8],we['h38]}; // DACEN3
+   assign {reg39,regx_wrdac[11]} = {6'h0,r_sar_en[9:8],we['h39]}; // SAREN3
+   assign  reg3A = {6'h0,dac_comp[9:8]}; // COMPI3
    assign  reg3B = UNREGX_D4;
    assign  reg3C = UNREGX_D4;
    assign  reg3D = UNREGX_D4;

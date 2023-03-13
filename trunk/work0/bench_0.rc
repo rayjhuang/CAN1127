@@ -1,0 +1,78 @@
+Magic 271485
+Revision Verdi3_J-2014.12-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 464 217 1910 525 226 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/mnt/app1/ray/project/can1127/work0/bench_0.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 28741968.596553 42145364.829120
+cursor 34576326.41396122426
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 6
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "mcu"
+activeDirFile "" "/mnt/app1/ray/project/can1127/work0/bench_0.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /bench/U0_DUT/U0_CORE/u0_mcu/pc_o[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope instr[7:0]
+addSignal -h 15 -holdScope irq
+addSignal -h 15 -holdScope retiinstr
+addSignal -h 15 -holdScope t0_tr0
+addSignal -h 15 -holdScope ro
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/mnt/app1/ray/project/can1127/work0/bench_0.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/$unit_0x2522b8c2"
+"/bench"
+"/bench/U0_DUT"
+
+SCOPE_LIST_BEGIN
+"/$unit_0x2522b8c2"
+"/bench"
+"/bench/U0_DUT"
+"/bench/U0_DUT/U0_CORE"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

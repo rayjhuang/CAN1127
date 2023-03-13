@@ -1,5 +1,5 @@
 
-`include "can1126_reg.v"
+`include "can1127_reg.v"
 
 task r_poll; // SFR polling
 input [7:0] addr;

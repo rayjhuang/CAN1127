@@ -16,9 +16,9 @@ module dacmux #(
 // 2022/09/15 add channels for GPIO3/4 (CAN1126)
 // ALL RIGHTS ARE RESERVED
 // =============================================================================
-parameter BIT_PTR = 'd4,
-parameter N_DACV = 'd16, // N_DACV is num of channel if 2^BIT_PTR > 11
-parameter N_CHNL = 'd16, // N_CHNL = N_DACV if N_DACV>=11
+parameter BIT_PTR = 'd5,
+parameter N_DACV = 'd18, // N_DACV is num of channel if 2^BIT_PTR > 11
+parameter N_CHNL = 'd18, // N_CHNL = N_DACV if N_DACV>=11
 parameter BIT_PLUS = ('d2**BIT_PTR>N_CHNL+'d1) ?BIT_PTR :BIT_PTR+'d1,
 parameter ALL1_PLUS = {BIT_PLUS{1'h1}}
 )(
@@ -26,7 +26,7 @@ input		clk, srstz, i_comp,
 input	[2:0]	r_comp_opt,
 input	[7:0]	r_wdat,
 output	[7:0]	r_adofs, r_isofs,
-input	[8:0]	r_wr, // 7 additional SFRs, 2 additional REGX to write
+input	[10:0]	r_wr, // 7 additional SFRs, 4 additional REGX to write
 input	[N_DACV-1:0] dacv_wr, // DACV* registers
 output	[8*N_DACV-1:0] o_dacv,
 output		o_shrst, // S/H reset
@@ -213,9 +213,12 @@ output	[BIT_PLUS-1:0] o_smpl
    glreg
    u0_adofs (clk, srstz, r_wr[5], r_wdat, r_adofs),
    u0_isofs (clk, srstz, r_wr[6], r_wdat, r_isofs);
-   glreg #(N_DACV-8) // N_DACV>8
-   u1_dacen (clk, srstz, r_wr[7], r_wdat[N_DACV-1-8:0], r_dac_en[N_DACV-1:8]),
-   u1_saren (clk, srstz, r_wr[8], r_wdat[N_DACV-1-8:0], r_sar_en[N_DACV-1:8]);
+   glreg // N_DACV>15
+   u1_dacen (clk, srstz, r_wr[7], r_wdat[7:0], r_dac_en[15:8]),
+   u1_saren (clk, srstz, r_wr[8], r_wdat[7:0], r_sar_en[15:8]);
+   glreg #(N_DACV-16) // N_DACV>16
+   u2_dacen (clk, srstz, r_wr[9],  r_wdat[N_DACV-1-16:0], r_dac_en[N_DACV-1:16]),
+   u2_saren (clk, srstz, r_wr[10], r_wdat[N_DACV-1-16:0], r_sar_en[N_DACV-1:16]);
 
    reg [8*N_DACV-1:0] reg_dacv;
    always @(r_dacvs or r_adofs or r_isofs) begin: ofs_dacv

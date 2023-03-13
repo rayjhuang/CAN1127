@@ -23,7 +23,7 @@ output		o_we,
 		o_re, o_r_early,
 		o_idle,
 		o_dec,
-output	[2:0]	o_busev,
+output	[3:0]	o_busev,
 output	[7:0]	o_ofs, o_lt_ofs,
 		o_wdat, o_lt_buf,
 output	[7:0]	o_dbgpo,
@@ -147,9 +147,9 @@ input		i_prefetch
    reg [7:0] lt_buf;
    assign o_lt_ofs = lt_ofs;
    assign o_lt_buf = lt_buf;
-   wire dev_addr_ack = sclrise & (cs_sta=='h0 && cs_bit=='h1) & ps_hit;
-   wire cmd_written  = sclfall & (cs_sta=='h1 && cs_bit=='h1);
-   always @(posedge i_clk) if (dev_addr_ack) lt_buf <= ps_rwbuf; else if (o_we) lt_buf <= rwbuf;
+   wire dev_ack_nak = sclrise & (cs_sta=='h0 && cs_bit=='h1);
+   wire cmd_written = sclfall & (cs_sta=='h1 && cs_bit=='h1);
+   always @(posedge i_clk) if (dev_ack_nak & ps_hit) lt_buf <= ps_rwbuf; else if (o_we) lt_buf <= rwbuf;
    always @(posedge i_clk) if (cmd_written) lt_ofs <= rwbuf;
 
 // =============================================================================
@@ -159,16 +159,17 @@ input		i_prefetch
    assign o_ofs = adcnt;
    assign o_wdat = rwbuf;
    assign o_we = ~cs_rwb && sclfall && cs_bit=='h1 && cs_sta=='h2;
-   assign o_re =  (cs_rwb && sclrise && cs_bit=='h0 && cs_sta=='h2 && ~i_prefetch && ~i2c_sda) | //~i2c_sda:check master need next data
-  	 	  (cs_rwb && sclrise && cs_bit=='h1 && cs_sta=='h2 &&  i_prefetch);// read idata in cs_bit == 'h1
+   assign o_re = (cs_rwb && sclrise && cs_bit=='h0 && cs_sta=='h2 && ~i_prefetch && ~i2c_sda) | //~i2c_sda:check master need next data
+  	 	 (cs_rwb && sclrise && cs_bit=='h1 && cs_sta=='h2 &&  i_prefetch);// read idata in cs_bit == 'h1
    assign o_r_early = (cs_rwb & sclrise & o_dec & hit    & ~i_prefetch)| 
                       (ps_rwb & sclrise & predec& ps_hit &  i_prefetch) ;
    assign o_sda = sdat;
    assign o_idle = cs_bit=='hf;
    assign o_busev = {
-	i2c_p,
-	cmd_written,
-	sclrise & (cs_bit=='h1 && cs_sta=='h0)}; // dev.addr ack/nak
+	i2c_p, // STOP (P)
+	i2c_s, // START (S/Sr)
+	dev_ack_nak, // dev.addr ack/nak
+	cmd_written};
    assign o_dbgpo = {sclfall,sclrise,sdarise,i2c_p,cs_bit[3:0]};
 
 endmodule // i2cslv

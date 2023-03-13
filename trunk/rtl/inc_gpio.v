@@ -62,9 +62,9 @@
 //		| (tm[0]  ?'h0 :'h0) // ATPG
 		| (tm[1]  ?{x_clk,     xrstz,    1'h0,                           4'h0} :'h0)
 		| (tm[2]  ?{di_cc,     cc_rxd,   prx_bmc,  cc_idle,   di_sqlch,  2'h0} :'h0)
-		| (tm[3]  ?{di_cc_49,  cc_rxd,   di_cc_pk, cc_idle,   di_sqlch,  2'h0} :'h0)
+		| (tm[3]  ?{di_cc_49,  cc_rxd,   di_cc_49, cc_idle,   di_sqlch,  2'h0} :'h0)
 		| (tm[4]  ?{do_cc,     oe_cc,    slvo_sda, cc2_di ,   cc1_di,    2'h0} :'h0)
-		| (tm[5]  ?{dac1_comp, dp_comp,  di_cc_pk, di_cc_49,  di_sqlch,  2'h0} :'h0)
+		| (tm[5]  ?{dac1_comp, dp_comp,  di_cc_49, di_cc_49,  di_sqlch,  2'h0} :'h0)
 		| (tm[6]  ?{di_pro[4], di_pro[2:0],                   mirq,      2'h0} :'h0)
 		| (tm[7]  ?{di_pro[3:0],                              di_pro[5], 2'h0} :'h0)
 		| (tm[8]  ?{cc_flip,   do_cc,    oe_cc,    reti,      mirq,      2'h0} :'h0)
