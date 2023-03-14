@@ -3,7 +3,7 @@ STIL 1.0 {
 }
 Header {
     Title "Minimal STIL for design `chiptop_1127a0'";
-    Date "Mon Mar 13 18:27:25 2023";
+    Date "Tue Mar 14 17:24:08 2023";
     Source "DFT Compiler H-2013.03-SP1";
 }
 Signals {

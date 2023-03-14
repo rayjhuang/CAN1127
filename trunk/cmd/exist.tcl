@@ -3,9 +3,9 @@
    getenv DCODE
    printenv
    printvar
-
-   set top chiptop_1127a0
    read_file -format verilog -rtl { ../macro/anatop_1127a0.v } -define ANATOP_EMPTY
+   write -format verilog -o ../macro/anatop_1127a0_empty.v ;# for PrimeTime not support all verilog statements
+   set top chiptop_1127a0
    read_verilog -netlist ./syn/${top}_2.v
    current_design $top
    link

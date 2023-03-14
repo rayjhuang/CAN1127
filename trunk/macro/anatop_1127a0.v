@@ -259,8 +259,8 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 	d_rstz =0;
 	#30_000
 	fork
-	      #1_000 r_rstz =1; // 8-clock after
-	   #1001_000 d_rstz =1; // 100us after
+	   #700 r_rstz =1; // 8-clock after
+	   @(r_rstz) #100_000 d_rstz =1; // 100us after
 	   forever
 		if (OSC_STOP) #5                 r_clk =0;
 		else if (OSC_LOW) begin:osc_low

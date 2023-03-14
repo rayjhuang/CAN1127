@@ -11,7 +11,7 @@
    ]
 
    set set_top chiptop_1127a0
-   read_verilog -hdl_compiler $PJ_PATH/macro/anatop_1127a0.v
+   read_verilog -hdl_compiler $PJ_PATH/macro/anatop_1127a0_empty.v
    read_verilog $set_net
    current_design $set_top
 

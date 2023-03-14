@@ -1002,6 +1002,9 @@ Current design is now '/mnt/app1/ray/project/can1127/macro/anatop_1127a0.db:anat
 Loaded 1 design.
 Current design is 'anatop_1127a0'.
 anatop_1127a0
+write -format verilog -o ../macro/anatop_1127a0_empty.v ;# for PrimeTime not support all verilog statements
+Writing verilog file '/mnt/app1/ray/project/can1127/macro/anatop_1127a0_empty.v'.
+1
 read_verilog -netlist ./syn/${top}_2.v
 Loading verilog file '/mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v'
 Running DC verilog reader
@@ -1067,7 +1070,7 @@ report_scan_configuration
 Report : Scan configuration
 Design : chiptop_1127a0
 Version: H-2013.03-SP1
-Date   : Mon Mar 13 18:27:25 2023
+Date   : Tue Mar 14 17:24:08 2023
 ****************************************
 
 ========================================
@@ -4932,7 +4935,7 @@ report_scan_path
 Report : Scan path
 Design : chiptop_1127a0
 Version: H-2013.03-SP1
-Date   : Mon Mar 13 18:27:34 2023
+Date   : Tue Mar 14 17:24:18 2023
 ****************************************
 
 ========================================
@@ -4946,7 +4949,7 @@ No scan path defined in this mode.
 Report : Scan path
 Design : chiptop_1127a0
 Version: H-2013.03-SP1
-Date   : Mon Mar 13 18:27:34 2023
+Date   : Tue Mar 14 17:24:18 2023
 ****************************************
 
 ========================================
@@ -8268,7 +8271,7 @@ check_scan_def
 Report : Scan DEF check
 Design : chiptop_1127a0
 Version: H-2013.03-SP1
-Date   : Mon Mar 13 18:27:43 2023
+Date   : Tue Mar 14 17:24:26 2023
 
 ****************************************
 
