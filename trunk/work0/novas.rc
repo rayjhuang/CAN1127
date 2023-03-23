@@ -291,30 +291,31 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape      
+Orientation = Landscape     
 [FileBrowser]
 nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb,/mnt/app1/ray/project/can1127/work0,
 nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,
 [Form]
 version = Verdi3_J-2014.12-SP2
-wave/getSignal.fm = 100,100,965,579
-wave/restoreSig.fm = 100,100,723,530
 wave/openWFile.fm = 100,100,823,688
-wave/saveSig.fm = 100,100,723,530
+wave/restoreSig.fm = 105,123,723,530
+wave/saveSig.fm = 105,123,723,530
+wave/unknownSave.fm = 100,100,520,275
+wave/getSignal.fm = 105,123,965,579
 [General]
 autoSaveSession = FALSE
 TclAutoSource = 
 SyncBrowserDir = TRUE
 bDisplayWelcome = FALSE
-version = Verdi3_J-2014.12-SP2
 bKeepUndockedWidgetsOnTop = FALSE
 bUndockNewCreatedWindow = TRUE
+version = Verdi3_J-2014.12-SP2
+SignalCaseInSensitive = FALSE
+ShowWndCtntDuringResizing = FALSE
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
-SignalCaseInSensitive = FALSE
-ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
 ErrWindow_Font = Helvetica_M_R_12
 [Globals]
@@ -429,15 +430,16 @@ FileName = test.ps
 PaperSize = A4 - 210x297 (mm)
 ColorPrint = FALSE
 [PropertyTools]
+saveFsdbStat = TRUE
+savePropStat = FALSE
+savePropDtl = TRUE
 Dnd_Sig_To_Wave = FALSE
 Dnd_Sig_To_Wave_With_Exp_Group = TRUE
 Mask_Non_Active_Time_on_Wave = FALSE
 Show_Cycle_Info = TRUE
-saveFsdbStat = TRUE
-savePropStat = FALSE
-savePropDtl = TRUE
 [QtDialog]
-QwUserAskDlg = 407,447,324,134
+QwUserAskDlg = 407,447,324,120
+QwWarnMsgDlg = 665,399,600,250
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -727,11 +729,11 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-getSignalForm = 0 0 965 579 100 400 100 30
-viewPort = 50 214 960 332 100 65
+getSignalForm = 105 123 965 579 190 456 553 30
+viewPort = 0 110 1910 525 226 65
 signalSpacing = 5
 digitalSignalHeight = 15
-analogSignalHeight = 98
+analogSignalHeight = 33
 commentSignalHeight = 98
 transactionSignalHeight = 98
 messageSignalHeight = 98
@@ -1053,7 +1055,7 @@ OutputPinStatus = 2
 RevisedComponentColor = ID_BLUE5
 SpareCellColor = ID_RED5
 UserName = ray
-CommentFormat = Novas ECO updated by ${UserName} ${Date} ${Time} 
+CommentFormat = Novas ECO updated by ${UserName} ${Date} ${Time}
 PrefixN = eco_n
 PrefixP = eco_p
 PrefixI = eco_i
@@ -1336,9 +1338,9 @@ Selection = darkblue
 Standard = black
 Keyword = blue
 Comment = gray25
-Number = black 
-String = black 
-Identifier = darkred 
+Number = black
+String = black
+Identifier = darkred
 Inline = green
 colorIdentifier = green
 Value = darkgreen
@@ -1409,7 +1411,7 @@ stopCheckpoints = 0
 genCheckpoints = 0
 reverseDebug = FALSE
 [turboSchema_Printer_Options]
-Orientation = Landscape      
+Orientation = Landscape     
 [turbo_library]
 bdb_load_scope = 
 [uvmFactory]

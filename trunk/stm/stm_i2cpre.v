@@ -3,7 +3,7 @@ module stm_i2cpre; // test i2c read idata prefetch function
 // test HWI2C basic functions
 // test HWI2C OTP-access functions
 `include "stm_task.v"
-initial #1 $fsdbDumpvars (stm_i2cpre);
+initial #1 $fsdbDumpvars;
 initial timeout_task (1000*200);
 initial #10_000 begin
 	force `HW.pulse_width_probe = `DUT_CORE.u0_mpb.pg0_rdwait;
@@ -14,7 +14,7 @@ initial begin
 #100	`HW.load_dut_fw ("../fw/i2cpre/i2cpre.2.memh"); // access 180h: data00[0], 85h: data01[5]
         `I2CMST.init (1); // 400KHz, OTP read in 1MHz won't work
 	`I2CMST.dev_addr = 'h70; // to DUT
-#50_000
+#150_000 // add RSTB_5 to RSTB delay
 #100    $display ($time,"ns <%m> starts");
         `I2CMST.sfrw (`I2CCTL,'h17); repeat (100) TestXdata_0; // PG0=BANK11 (IDATA), inc
         `I2CMST.sfrw (`I2CCTL,'h05); repeat (100) TestXdata_0; // PG0=BANK2 (XDATA), inc

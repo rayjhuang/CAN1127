@@ -30,8 +30,8 @@
       frc_cc =1;
       x_cc =0;
       force `DUT_CORE.u0_updphy.u0_phyrx.x_cc = x_cc;
-      #99_000 `DUT_CORE.u0_regbank.u0_regE6.mem[3] =1; // r_adprx_en
-              `DUT_CORE.u0_regbank.u0_regE6.mem[1:0] =0; // r_rxdb_opt, don't filter out those short pulses
+      #199_000 `DUT_CORE.u0_regbank.u0_regE6.mem[3] =1; // r_adprx_en
+               `DUT_CORE.u0_regbank.u0_regE6.mem[1:0] =0; // r_rxdb_opt, don't filter out those short pulses
    end
 
    wire signed [7:0] dcnt_h = `DUT_CORE.u0_updphy.u0_phyrx.u0_phyrx_adp.dcnt_h;

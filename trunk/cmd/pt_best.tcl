@@ -16,7 +16,7 @@
    current_design $set_top
 
    set target_library [ list \
-		MSL18B_1536X8_RW10TM4_16_20210603_best_syn.db \
+		MSL18B_1536X8_RW10TM4_16_20221107_best_syn.db \
 		std_best.db \
 		STX018SIO1P4M_BEST.db \
 		ATO0008KX8MX180LBX4DA_FF_1p980v_-40c.db \

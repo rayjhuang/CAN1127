@@ -1,0 +1,264 @@
+ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s024: Started on Mar 23, 2023 at 17:50:56 CST
+ncverilog
+	+ncaccess+rc
+	+nowarn+NONPRT
+	-disable_sem2009
+	-sv
+	+ncnowarn+CUVWSP
+	+ncnowarn+CSINFI
+	+ncnowarn+MRSTAR
+	-timescale
+	1ns/10ps
+	-nohistory
+	-f /mnt/app1/ray/project/can1127/cmd/rtl.f
+		-v
+		/mnt/app1/ray/project/can1127/rtl/softmacro.v
+		/mnt/app1/ray/project/can1127/rtl/phycrc.v
+		/mnt/app1/ray/project/can1127/rtl/phyff.v
+		/mnt/app1/ray/project/can1127/rtl/phyidd.v
+		/mnt/app1/ray/project/can1127/rtl/phyrx.v
+		/mnt/app1/ray/project/can1127/rtl/phytx.v
+		/mnt/app1/ray/project/can1127/rtl/prltmr.v
+		/mnt/app1/ray/project/can1127/rtl/updprl.v
+		/mnt/app1/ray/project/can1127/rtl/updphy.v
+		-f /mnt/app1/ray/project/can1127/cmd/mcu.f
+			+incdir+/mnt/app1/ray/project/can1127/rtl/mcu/
+			/mnt/app1/ray/project/can1127/rtl/mcu/extint.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/i2c.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/isr.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mdu.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/pmurstctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/ports.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mcu51_cpu.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/serial0.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/softrstctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/syncneg.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/timer0.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/timer1.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/wakeupctrl.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/watchdog.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/mcu51.v
+			/mnt/app1/ray/project/can1127/rtl/mcu/sfrmux.v
+		/mnt/app1/ray/project/can1127/rtl/i2cslv.v
+		/mnt/app1/ray/project/can1127/rtl/dpdmacc.v
+		/mnt/app1/ray/project/can1127/rtl/fcp.v
+		/mnt/app1/ray/project/can1127/rtl/fcpegn.v
+		/mnt/app1/ray/project/can1127/rtl/fcpcrc.v
+		/mnt/app1/ray/project/can1127/rtl/dacmux.v
+		/mnt/app1/ray/project/can1127/rtl/mpb.v
+		/mnt/app1/ray/project/can1127/rtl/regbank.v
+		/mnt/app1/ray/project/can1127/rtl/regx.v
+		/mnt/app1/ray/project/can1127/rtl/ictlr.v
+		/mnt/app1/ray/project/can1127/rtl/srambist.v
+		/mnt/app1/ray/project/can1127/rtl/divclk.v
+		/mnt/app1/ray/project/can1127/rtl/cvctl.v
+		+incdir+/mnt/app1/ray/project/can1127/rtl/
+		/mnt/app1/ray/project/can1127/rtl/core_a0.v
+		/mnt/app1/ray/project/can1127/rtl/chiptop_1127a0.v
+	-f /mnt/app1/ray/project/can1127/cmd/macro.f
+		-v
+		/mnt/app1/ray/project/can1127/macro/std.v
+		/mnt/app1/ray/project/can1127/macro/anatop_1127a0.v
+		/mnt/app1/ray/project/can1127/macro/bhv_cc_rcver.v
+		/mnt/app1/ray/project/can1127/macro/bhv_compm_mux.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/io_udp.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/io.v
+		+incdir+/mnt/app1/ray/project/can1127/macro/
+		-v
+		/mnt/app1/ray/project/can1127/macro/ATO0008KX8MX180LBX4DA.v
+		-v
+		/mnt/app1/ray/project/can1127/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_SS.v
+		-v
+		/mnt/app1/ray/project/can1127/fpga/softmacro.v
+		-v
+		/mnt/app1/ray/project/can1127/fpga/ATO0008KX8VI150BG33NA_FPGA.v
+	-f /mnt/app1/ray/project/can1127/cmd/bench.f
+		+define+BENCH=bench
+		+incdir+../stm/
+		+incdir+../bench/
+		../bench/bench_0.v
+		../bench/rc_network.v
+		../bench/usb_port.v
+		../bench/bhv_updphy.sv
+		../bench/bhv_usbpd_controller.sv
+		../bench/usbpd_analyzer.sv
+		../bench/m51_synthe.v
+		../bench/probe.v
+		+incdir+../stm+../bench/mpsse/
+		../bench/mpsse/mpsse_mst_i2c.v
+		../bench/uart_bhv.v
+	+define+CAN1127A0
+	../bench/can1127.v
+	+define+RTL
+	../stm/stm_sfr.v
+	-l
+	stm_sfr+RTL.log
+Recompiling... reason: file '../stm/stm_sfr.v' is newer than expected.
+	expected: Thu Mar 23 17:37:44 2023
+	actual:   Thu Mar 23 17:50:54 2023
+file: ../stm/stm_sfr.v
+	module worklib.stm_sfr:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/io_udp.v
+ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/softmacro.v" given but not used.
+ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/ATO0008KX8VI150BG33NA_FPGA.v" given but not used.
+ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 3
+		Caching library 'io' ....... Done
+		Caching library 'io_udp' ....... Done
+		Caching library 'ATO0008KX8MX180LBX4DA' ....... Done
+		Caching library 'MSL18B_1536X8_RW10TM4_16_20221107_SS' ....... Done
+		Caching library 'worklib' ....... Done
+		Caching library 'rtl' ....... Done
+		Caching library 'std_1' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.stm_sfr:v <0x38e8bfe9>
+			streams:  41, words: 94634
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                      Instances  Unique
+		Modules:                    314      82
+		UDPs:                         7       1
+		Primitives:                 202      11
+		Timing outputs:              78      30
+		Registers:                 1794    1301
+		Scalar wires:              1540       -
+		Expanded wires:            1091     101
+		Vectored wires:            2175       -
+		Named events:                29      22
+		Always blocks:             1150     693
+		Initial blocks:             136     118
+		Parallel blocks:             74      19
+		Cont. assignments:         2307    3061
+		Pseudo assignments:          50      49
+		Timing checks:              766     108
+		Delayed tcheck signals:      21      14
+		Compilation units:            1       1
+		SV Class declarations:        2       2
+		SV Class specializations:     2       2
+		Simulation timescale:       1ps
+	Writing initial simulation snapshot: worklib.bench:v
+Loading snapshot worklib.bench:v .................... Done
+*Verdi3* Loading libsscore_ius141.so
+*Verdi3* : Enable Parallel Dumping.
+ncsim> source /mnt/tools/eda_tool/INCISIV15/tools/inca/files/ncsimrc
+ncsim> run
+FSDB Dumper for IUS, Release Verdi3_J-2014.12-SP2, Linux x86_64/64bit, 05/07/2015
+(C) 1996 - 2015 by Synopsys, Inc.
+***********************************************************************
+*  WARNING -                                                          *
+*  The simulator version is newer than the FSDB dumper version which  *
+*  may cause abnormal behavior, please contact Synopsys support for   *
+*  assistance.                                                        *
+***********************************************************************
+*Verdi3* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi3* : Create FSDB file 'bench_0.fsdb'
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+                   0ns <stm_sfr.timeout_task> simulation timeout timer: 30000
+                   0ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+                   0ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+                   0ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+                   2ns <bench.U0_I2CMST.init> SSE master initialized, mode: SMB(3)
+                 110ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 0
+30047000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+30131000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+30214000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+               30297ns <stm_sfr.fw_ending> NOTE: DUT P0-report: 00
+30297000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+Read dummy cycle.
+
+Read dummy cycle.
+
+              200002ns <stm_sfr> starts.....
+              271112ns <stm_sfr.TxRegx> starts.....POR
+             1455855ns <stm_sfr.TxRegx> starts.....WR1
+             1529095ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 1
+             3814364ns <stm_sfr.TxRegx> starts.....WR0
+             3877806ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 0
+             6171966ns <stm_sfr.TxProVal> starts.....
+             6499803ns <stm_sfr.TxDpDmVal> starts.....
+               10000us <stm_sfr> NOTE: time stamp
+*Verdi3* : Flush all FSDB Files at 10,000,000,000 ps.
+            11593159ns <stm_sfr.TxDpDmGlitch> clear dp/dm_acc
+            16152191ns <stm_sfr.TxDpDmGlitch> clear dp/dm_acc
+            16595494ns <stm_sfr.ChkOTP> starts.....
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+            18055430ns <stm_sfr.TxPwrOn> starts.....
+            19340238ns <stm_sfr.TxWrite1> starts.....
+            19367338ns <stm_sfr.fw_ending> NOTE: DUT P0-report: ff
+            19457243ns <bench> WARNING: timer0 changed during runing, not good!!
+            19475257ns <bench> WARNING: timer0 changed during runing, not good!!
+               20000us <stm_sfr> NOTE: time stamp
+*Verdi3* : Flush all FSDB Files at 20,000,000,000 ps.
+            20257966ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 1
+            20257966ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 1
+            20293995ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 1
+            20293995ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 1
+Read dummy cycle.
+
+Read dummy cycle.
+
+            21828868ns <stm_sfr.TxWrite0> starts.....
+            21855827ns <stm_sfr.fw_ending> NOTE: DUT P0-report: 00
+            22747373ns <bench.U0_DUT.U0_ANALOG_TOP> power enable -> 0
+            22747373ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
+            22783235ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+            22783235ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+Read dummy cycle.
+
+            25065889ns <stm_sfr.TxPwrOn> starts.....
+            26351743ns <stm_sfr.TxChkConn> starts.....
+            27143637ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 1
+            27143637ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 1
+            27152644ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+            27152644ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+            27206437ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 1
+            27206437ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 1
+            27215444ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+            27215444ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+            27233459ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 1
+            27233459ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 1
+            27242466ns <bench.U0_USB_PORT.USBCONN> DUT updates orientation -> 0
+            27242466ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+            28046721ns <stm_sfr.hw_complete> NOTE: simulation completed by HW
+Simulation complete via $finish(1) at time 28046821 NS + 0
+../stm/stm_task.v:50    `HW_FIN (($time,"ns <%m> NOTE: simulation completed by HW"))
+ncsim> exit
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 23, 2023 at 17:51:05 CST  (total: 00:00:09)

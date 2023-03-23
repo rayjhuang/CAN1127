@@ -12,7 +12,7 @@ initial begin
 	`I2CMST.dev_addr = 'h70;
 	`HW.load_dut_fw ("../fw/fwi2c/fwi2c.2.memh"); // dev_addr=0x50
 	force `DUT_MCU.mempsrd_comb =0;
-	#40_000
+	#140_000 // add RSTB_5 to RSTB delay
 	$display ($time,"ns <%m> starts.....");
 #10000	`I2CMST.init (0); // 100KHz
 #10000	`I2CMST.sfrw (`X0_I2CROUT,'h02); // FWI2C-SDA/SCL, HWI2C-DP/DN

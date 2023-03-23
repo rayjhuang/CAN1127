@@ -35,7 +35,7 @@
 
    set_build -empty_box { 
         ATO0008KX8MX180LBX4DA \
-        MSL18B_1536X8_RW10TM4_16 \
+        MSL18B_1536X8_RW10TM4_16_20221107 \
         anatop_1127a0 \
         tranif1 \
         }

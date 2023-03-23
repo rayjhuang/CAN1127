@@ -2,7 +2,7 @@
 `timescale 1ns/1ns
 module stm_hwtrim; //hardwire trim CV/CC/AD
 `include "stm_task.v"
-initial #1 $fsdbDumpvars (stm_hwtrim);
+initial #1 $fsdbDumpvars;
 initial timeout_task (1000*600);
 
 initial begin: main
@@ -110,16 +110,19 @@ initial begin: main
 		`I2CMST.sfrw (`SAREN,'hff);
 		`I2CMST.sfrw (`DACLSB,'h04);
 		`I2CMST.sfrw (`DACCTL,'hcf); // slowest ADC (FPGA case takes longer)
+		`I2CMST.sfrw (`CCTRX,'h08); // CS_EN
  
-		`DUT_ANA.v_IS =1800;        // (e1)
+		`DUT_ANA.v_VIN =30_000; // for DACV0 to over flow
+		`DUT_ANA.v_CSP =54; // (e1)
 #(1000*1000)	`I2CMST.sfrr (`DACV0,'hff); // check over flow
 		`I2CMST.sfrr (`DACV3,'h8b);
 		`I2CMST.sfrw (`ADOFS,'h81); // set negtive dac1_ofs (-127)
-		`I2CMST.sfrr (`DACV0,'h5a);
+		`I2CMST.sfrr (`DACV0,'h3c);
 		`I2CMST.sfrr (`DACV3,'h00); // check under flow
+		`DUT_ANA.v_VIN =10_000; // 3e
  
 		`I2CMST.sfrr (`DACV2,'hff); // check over flow   
-		`DUT_ANA.v_IS =500;         // (3e)
+		`DUT_ANA.v_CSP =15; // (3e)
 #(1000*1000)	`I2CMST.sfrr (`DACV2,'hbd);
 		`I2CMST.sfrw (`ISOFS,'hc0); `I2CMST.sfrr (`DACV2,'h00); // check under flow (-64)
 		`I2CMST.sfrw (`ISOFS,'hd0); `I2CMST.sfrr (`DACV2,'h0e); // check under flow (-48)
@@ -129,7 +132,7 @@ initial begin: main
 		`I2CMST.sfrw (`ISOFS,'h21); `I2CMST.sfrr (`DACV2,'h5f); // check under flow (+33)
 
 		`I2CMST.sfrw (`ADOFS,'h01); // (+1)
-		`I2CMST.sfrr (`DACV0,'hda);
+		`I2CMST.sfrr (`DACV0,'h3f);
 		`I2CMST.sfrr (`DACV3,'h0d);
  //=============================DAC2=================================
 
@@ -177,10 +180,10 @@ begin
 	$display($time,"ns<%m>CVOFS3      =%0d" ,cvofs3);
 	$display($time,"ns<%m>tb_dac0     =%0dV",tb_dac0code*10);
 	$display($time,"ns<%m>tb_cvofs    =%0dV",tb_cvofs*20);
-	$display($time,"ns<%m>tb_VIN      =%0dV",tb_vin);
+	$display($time,"ns<%m>tb_VBUS     =%0dV",tb_vin);
 
-	`TP.PB.VIN.WAIT (tb_vin,1);
-	`TP.PB.VIN.KEEP (tb_vin,1);
+	`TP.PB.VBUS.WAIT (tb_vin,1);
+	`TP.PB.VBUS.KEEP (tb_vin,1);
 end
 endtask // cvtrm
 
@@ -195,7 +198,7 @@ begin
  rddat = `I2CMST.rddat;
 `I2CMST.sfrw(`PWRCTL,{rddat[7:3],set_pwrv[2:0]});
 `I2CMST.sfrw(`PWR_V,set_pwrv[10:3]);
- $display($time,"ns<%m> Set VIN = %0dmv",vin);
+ $display($time,"ns<%m> Set VBUS = %0dmv",vin);
 end 
 endtask 
 wire [7:0] dbg_dacv0 = `DUT_CORE.u0_regbank.dac_r_vs[8*0+:8],
@@ -208,7 +211,4 @@ wire [7:0] dbg_dacv0 = `DUT_CORE.u0_regbank.dac_r_vs[8*0+:8],
            dbg_dacv7 = `DUT_CORE.u0_regbank.dac_r_vs[8*7+:8];
 
 endmodule
-
-
-
 

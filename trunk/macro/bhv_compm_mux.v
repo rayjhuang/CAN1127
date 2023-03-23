@@ -57,5 +57,11 @@ always #80 if (dac_target!=v_dac) begin
                      :(delta_dac<0 && delta_dac>=-3) ?-1 :$signed(delta_dac*50/100));
 end
 
+wire [15:0]
+dbg_ana_in_0 = v_ana_in[16*0+:16],
+dbg_ana_in_1 = v_ana_in[16*1+:16],
+dbg_ana_in_2 = v_ana_in[16*2+:16],
+dbg_ana_in_3 = v_ana_in[16*3+:16];
+
 endmodule // bhv_compm_mux
 

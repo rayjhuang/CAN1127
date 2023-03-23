@@ -10,7 +10,7 @@ initial begin
 #1	`HW.init_dut_fw;
 #1	`I2CMST.dev_addr = 'h70;
 	`I2CMST.init (3);
-	#100_000
+	#200_000
 	$display ($time,"ns <%m> starts.....");
 `ifdef GATE
 `else
@@ -40,7 +40,7 @@ initial begin
 	`I2CMST.sfrw (`FFIO,$random);// initialize FFIO DAT0
 	`I2CMST.sfrw (`FFSTA, 'h00); // empty FFIO
 	`I2CMST.sfrw (`FFCTL, 'h00);
-	TxPwrOn (`FFCTL);
+	TxPwrOn;
 
 	#100_000 TxWrite1;
 	#100_000 TxWrite0;
@@ -65,9 +65,9 @@ initial begin
 
 		#(1000*200) // DPDMACC debounce
 		`I2CMST.sfrw (`FCPSTA, 'h80);
-		`I2CMST.sfrr (`DPDMACC,'h00);//11
+		`I2CMST.sfrr (`DPDMACC,'h10);//11
 
-	#100_000 TxPwrOn (`FCPSTA);
+	#100_000 TxPwrOn;
 	#100_000 TxChkConn;
 	#100_000 hw_complete;
 end
@@ -85,14 +85,13 @@ begin
 	`I2CMST.bkwr (`CCCTL,   13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`REGTRM0, 13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`REGTRM4, 13,{8'h00,$random,$random,$random});
-	`I2CMST.bkwr (`AOPT,    13,{8'h00,$random,$random,$random});
+	`I2CMST.bkwr (`X0_AOPT, 13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`ATM,     13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`CMPOPT,  13,{8'h00,$random,$random,$random});
 end
 endtask // TxChkConn
 
 task TxPwrOn;
-input [7:0] LstWr;
 begin
 	$display ($time,"ns <%m> starts.....");
 	`I2CMST.bkrd ('h80,'h80,{
@@ -105,7 +104,7 @@ begin
 	64'h0001_xxxx_00e1_0100, // C8(r24): I2CDEVA, I2CEV, I2CBUF
 	1'h1,`HW.REV_ID,         //   (r23): REVID, CC_IDLE
 	  40'h00_0000_0000,      //   (r18): OFS, DEC, CC_STATE
-	            LstWr,8'h00, // C0(r16): ircon, I2CCMD=LstWr, OFS, DEC, CC_STATE
+	            8'h80,8'h00, // C0(r16): ircon, I2CCMD=latched command, OFS, DEC, CC_STATE
 	16'h0007,8'b0xxx_0000,8'h08, // CpMsgId, hold
 	          32'h00xx_0000, // B8(r08):
 	64'h8000_0020_01xx_0000, // B0(r00): CC_LOW, NAK, empty
@@ -144,20 +143,20 @@ begin
 	64'hfefe_fefe_fefe_fefe,
 	64'h00ff_ff67_ffff_fe00, // F0: DACCTL(busy)
 	64'h2000_0000_0000_00ff, // E8: md0~5, arcon
-	64'hffff_ffff_ff00_0000, // E0: COMPI, CMPSTA
+	64'hffff_ffff_7d00_0000, // E0: COMPI, CMPSTA, SCRCTL[1]:LG_DISCHG
 	64'hxxff_f800_ffff_bf00, // D8: i2cadr, i2csta, P0STA
 	64'hff98_f0e0_2200_f200, // D0: GPIO5, RWBUF, EXGP, GPIOP, GPIOSL/H, STB_OVP/PWRDN cleared
 	64'hff00_xxxx_00e1_3700, // C8(r24): I2CDEVA, I2CEV, I2CBUF
 	1'h1,`HW.REV_ID,         //    REVID, CC_IDLE
 	  40'h80_ffff_8000,      //   (r18): OFS, DEC (ofs+1), CC_STATE
-	            8'hff,8'h3f, // C0(r16): ircon, I2CCMD=LstWr, OFS, DEC, CC_STATE
+	            8'h80,8'h3f, // C0(r16): ircon, OFS, DEC, CC_STATE
 	16'hffff,8'b0xxx_0000,8'hbf,
 	          32'hffff_0000, // B8(r08): CpMsgId
 	64'h80ff_ff10_00xx_3fff, // B0(r00): 1st/last,ACK,empty
 	64'hff00_00ff_ffd9_7fbe, // A8: PROVAL, PROSTA
 	64'hffff_ffff_ffff_ffff, // A0:
 	64'h63xx_ff02_ff3f_00ff, // 98: en2, FCPSTA, FCPDAT, FCPCRC
-	64'h00df_ff70_0000_ffff, // 90: LDBPRO, OTPI_S
+	64'h00df_ff78_0000_ffff, // 90: LDBPRO, OTPI_S
 	64'haf00_ff9x_ffff_ffff, // 88: th0=random, (ckcon)
 	64'he9ff_55aa_0000_077x | 'hc // CC is output '1' by test mode but swithed to DI_OK
 	});
@@ -197,14 +196,14 @@ begin
 	64'h0098_f000_1100_0100, // D0(r32): ANACTL, GPIOP, GPIOSL/H
 	64'h0001_xxxx_00e1_0100, // C8(r24): I2CDEVA, I2CEV, I2CBUF
 	1'h1,`HW.REV_ID,         //    REVID, CC_IDLE
-	  56'h00_0000_0000_ff14, // C0(r16): ircon, I2CCMD, OFS, DEC, CC_STATE
+	  56'h00_0000_0000_8014, // C0(r16): ircon, I2CCMD, OFS, DEC, CC_STATE
 	16'h0000,8'b0xxx_0000,8'h08, // hold
 	          32'h0000_0000, // B8(r08): CpMsgId
 	64'h8000_0030_01xx_0000, // B0(r00): 1st/last,NAK/ACK,empty
 	64'h0000_0000_00d9_0000, // A8:
 	64'h0000_0000_0000_00ff, // A0:
-	64'h00xx_0083_0000_0002, // 98: FCPSTA, s0con
-	64'h1000_0000_0000_0000, // 90: DPDMACC 
+	64'h00xx_0003_2000_0002, // 98: FCPSTA, s0con
+	64'h0080_0000_0000_0000, // 90: DPDMACC 
 	64'h4000_0000_0000_0020, // 88: tcon
 	64'h0900_0000_0000_070x | 'hc}); // 80: idle
 end
@@ -221,10 +220,10 @@ begin
 	   if ((ii%4)==1) HvDcpDrv (1600,1000);
 	   if ((ii%4)==3) HvDcpDrv (1600,1600);
 	   `DUT_ANA.r_dn_fault = (ii%3)==0;
-	   `DUT_ANA.r_DpDnCC_ovp = (ii%2)==0;
+//	   `DUT_ANA.r_DpDnCC_ovp = (ii%2)==0;
 	   `I2CMST.sfrr (`ACCCTL,(((ii>>1)%2)          <<7)   // DN_COMP
-	                        | ((ii%2)              <<6)   // DP_COMP
-	                        | ((ii%2 ? 8'h0 : 8'h1)<<5)); // DPDN_OVP (from IDIN)
+	                        | ((ii%2)              <<6)); // DP_COMP
+//	                        | ((ii%2 ? 8'h0 : 8'h1)<<5)); // DPDN_OVP (from IDIN)
 	   //                   | ((ii%3 ? 8'h0 : 8'h1)<<5)); // DN_FAULT
 	end
 	HvDcpDrv (600,600);
@@ -318,14 +317,14 @@ begin
 	$display ($time,"ns <%m> starts.....POR");
 	`I2CMST.bkrd ('h00,'h80,{ // POR values
 	{8{64'hffff_ffff_ffff_ffff}}, // 40h~7Fh
-	64'hffff_ffff_ffff_ffff, // 38h:
+	64'hffff_ffff_ff00_0000, // 38h:
 	64'hffff_ffff_ff00_0000, // 30h:
 	64'h0000_0000_0000_0000, // 28h:
-	64'hffff_ffff_ffff_ffff, // 20h:
-	64'h4000_0000_0800_0000, // 18h: 1B[4]:TS is high, STB_OVP
-	64'hff00_00f0_0008_0000, // 10h: SAP, HWTRP
-	64'hffff_ffff_ffff_0000, // 08h:
-	64'h00ff_ffff_ff00_0000  // 00h:
+	64'hffff_ffff_ffff_0000, // 20h:
+	64'h0000_0000_0000_0000, // 18h: 1B[3]:TS/DI, STB_OVP
+	64'h0000_00f0_0008_0000, // 10h: SAP, HWTRP
+	64'h00ff_ffff_ffff_0000, // 08h:
+	64'h00ff_0000_ff00_0000  // 00h:
 	});
 	$display ($time,"ns <%m> starts.....WR1");
 	`I2CMST.bkwr ('h00,'h80,{ // Write-1
@@ -341,11 +340,11 @@ begin
 	});
 	`I2CMST.bkrd ('h00,'h80,{ // Write-1 results
 	{8{64'hffff_ffff_ffff_ffff}}, // 40h~7Fh
-	64'hffff_ffff_ffff_ffff, // 38h:
+	64'hffff_ffff_ff00_0303, // 38h:
 	64'hffff_ffff_ff00_ffff, // 30h: DACEN, SAREN, COMPI
 	64'hffff_ffff_ffff_ffff, // 28h:
 	64'hffff_ffff_ffff_ffff, // 20h:
-	64'h40ff_fffe_f6ff_ffff, // 18h: EPR_MODE will be update at PWR_V's update, DI_TS=DN_FAULT
+	64'h00ff_fffe_f6ff_ffff, // 18h: EPR_MODE will be update at PWR_V's update, DI_TS=DN_FAULT
 	64'hff00_30f0_ffff_ff76, // 10h: BIST, HWTRP
 	64'hffff_ffff_ffff_ffff, // 08h:
 	64'hf5ff_ffff_ffff_ffff  // 00h:
@@ -359,14 +358,14 @@ begin
 	{2{64'h0}}});            // 00h~0Fh
 	`I2CMST.bkrd ('h00,'h80,{ // Write-0 results
 	{8{64'hffff_ffff_ffff_ffff}}, // 40h~7Fh
-	64'hffff_ffff_ffff_ffff, // 38h:
+	64'hffff_ffff_ff00_0000, // 38h:
 	64'hffff_ffff_ff00_0000, // 30h:
 	64'h0000_0000_0000_0000, // 28h:
-	64'hffff_ffff_ffff_ffff, // 20h:
-	64'h4000_0000_0100_0000, // 18h:
-	64'hff00_00f4_0000_0000, // 10h: SAP, HWTRP, IMP_OSC
-	64'hffff_ffff_ffff_0000, // 08h:
-	64'h00ff_ffff_ff00_0000  // 00h:
+	64'hffff_ffff_ffff_0000, // 20h:
+	64'h0000_0000_0100_0000, // 18h:
+	64'h0000_00f4_0000_0000, // 10h: SAP, HWTRP, IMP_OSC
+	64'h00ff_ffff_ffff_0000, // 08h:
+	64'h00ff_0000_ff00_0000  // 00h:
 	});
 end
 endtask // TxRegx

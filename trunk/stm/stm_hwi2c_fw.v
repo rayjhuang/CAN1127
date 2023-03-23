@@ -17,7 +17,7 @@ initial begin
 	`I2CMST.init (1); // 400KHz
 	release `DUT_MCU.mempsrd_comb;
 
-	#100_000 // init.
+	#200_000 // init.
 //	`I2CMST.sfrw (`I2CCTL,'h3a); // non-inc, BANK13 (XDATA, 80h~FFh), write-protected (in FW)
 	`I2CMST.bkrd ('h03,2,'h30cd);
 	`I2CMST.bkwr ('h03,2,'h55aa);

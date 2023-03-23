@@ -7,6 +7,7 @@ input		DP_2V7_EN, DN_2V7_EN,
 input		DPDN_SHORT,
 output	[15:0]	v_DP,      v_DN,
 		v_CC1,     v_CC2,
+		v_VBUS,
 output		DP_COMP,   DN_COMP,
 input		CC1_DOB,   CC2_DOB,
 output		CC1_DI,    CC2_DI,
@@ -18,9 +19,7 @@ input		DUT_TX_EN,
 		DUT_TX_DAT,
 		DUT_RP1_EN, DUT_RP2_EN,
 		DUT_VCONN1_EN, DUT_VCONN2_EN,
-input	[1:0]	DUT_RP_SEL,
-output	[15:0]	v_VBUS,
-input	[15:0]	v_CV
+input	[1:0]	DUT_RP_SEL
 );
 
 parameter A0=0;
@@ -64,66 +63,31 @@ parameter A0=0;
 		.DUT_TX_DAT	(DUT_TX_DAT),
 		.DUT_RP1_EN	(DUT_RP1_EN),	.DUT_RP2_EN	(DUT_RP2_EN),
 		.DUT_VCONN1_EN	(DUT_VCONN1_EN),.DUT_VCONN2_EN	(DUT_VCONN2_EN),
-		.DUT_RP_SEL	(DUT_RP_SEL),
-		.v_VBUS		(v_VBUS),
-		.v_CV		(v_CV)
+		.DUT_RP_SEL	(DUT_RP_SEL)
    );
 
 begin: PB
-CC1		CC1 ();
-CC2		CC2 ();
-VCONN		VCONN ();
-CC_IDLE		CC_IDLE ();
-DP		DP ();
-DN		DN ();
-VBUS            VBUS ();
-VIN             VIN ();
-SinkTxOk        SinkTxOk ();
-SinkTxNG        SinkTxNG ();
-////////////////////////////////////////////////////////////////////////////////
-wire probe_sink_tx_ng = USBCONN.v_CC <  1000 && USBCONN.v_CC > 400;
-wire probe_sink_tx_ok = USBCONN.v_CC >= 1000;
+
+wire [15:0] v_VCONN = USBCONN.cable_ori ? v_CC1 : v_CC2;
+wire [15:0] v_CC    = USBCONN.cable_ori ? v_CC2 : v_CC1;
+ana_probe
+DP		(v_DP),
+DN		(v_DN),
+CC1		(v_CC1),
+CC2		(v_CC2),
+VCONN		(v_VCONN),
+VBUS		(v_VBUS);
+
+wire probe_sink_tx_ng = v_CC <  1000 && v_CC > 400;
+wire probe_sink_tx_ok = v_CC >= 1000;
+dig_probe
+CC_IDLE		(UPD.UPDPHY.cc_idle),
+SinkTxOk	(probe_sink_tx_ok),
+SinkTxNG	(probe_sink_tx_ng);
+
 end // PB
 
 endmodule // usb_port
-
-`define PBNAME VCONN
-`define PBANA (USBCONN.cable_ori ? USBCONN.v_CC1 : USBCONN.v_CC2)
-`include "inc_probe.v"
-
-`define PBNAME CC1
-`define PBANA (USBCONN.v_CC1)
-`include "inc_probe.v"
-`define PBNAME CC2
-`define PBANA (USBCONN.v_CC2)
-`include "inc_probe.v"
-
-`define PBNAME CC_IDLE
-`define PBSIG (UPD.UPDPHY.cc_idle)
-`include "inc_probe.v"
-
-`define PBNAME DP
-`define PBANA (USBCONN.v_DP)
-`include "inc_probe.v"
-`define PBNAME DN
-`define PBANA (USBCONN.v_DN)
-`include "inc_probe.v"
-
-`define PBNAME SinkTxOk
-`define PBSIG (PB.probe_sink_tx_ok)
-`include "inc_probe.v"
-
-`define PBNAME SinkTxNG
-`define PBSIG (PB.probe_sink_tx_ng)
-`include "inc_probe.v"
-
-`define PBNAME VIN
-`define PBANA (USBCONN.v_CV)
-`include "inc_probe.v"
-
-`define PBNAME VBUS
-`define PBANA (USBCONN.v_VBUS)
-`include "inc_probe.v"
 
 
 module usb_connector (
@@ -146,14 +110,12 @@ input		DUT_TX_EN,
 		DUT_TX_DAT,
 		DUT_RP1_EN, DUT_RP2_EN,
 		DUT_VCONN1_EN, DUT_VCONN2_EN,
-input	[1:0]	DUT_RP_SEL,
-output	[15:0]	v_VBUS,
-input	[15:0]	v_CV
+input	[1:0]	DUT_RP_SEL
 );
 
    reg	dp_rpu =0, dn_rpu =0, // 1.5KOhm
 	ExtCc1Drv =1'hx, ExtCc2Drv =1'hx, // 1'hx/0/1: Hi-Z/0V/3300mV, for external model signals going to DUT
-	ExtCc1Rpu =0,    ExtCc2Rpu =0, // 4.7K pullup to 3.3V
+	ExtCc1Rpu =0,    ExtCc2Rpu =0, // 4.7K pullup to 3.3V for I2C
 	cable_ori =0; // 0:non-flipped
 
    reg	[23:0] Rpu1 =0, Rpd1 =0, Rpu2 =0, Rpd2 =0; // opened
@@ -240,23 +202,6 @@ input [23:0] div_r;
 	resist = (resist===0) ? div_r : {24'h0,resist} * div_r / (resist+div_r);
    end
 endtask // rv_divider
-
-   wire [15:0] v_VIN = `DUT_ANA.v_VIN;
-   wire PWR_ENABLE   = `DUT_ANA.GATE;
-   wire DISCHARGE    = `DUT_ANA.VO_DISCHG;
-
-   reg [15:0] v_vbus = 0;
-   assign v_VBUS = v_vbus;
-
-   reg VBUS_hold = 0; // natural discharge
-   integer delta_VBUS, VBUS_target;
-   always @(v_VIN or PWR_ENABLE) VBUS_target = PWR_ENABLE ?v_VIN :0;
-   always #1000 if (VBUS_target!=v_vbus) begin
-      delta_VBUS = VBUS_target - v_vbus;
-      v_vbus = v_vbus + ((delta_VBUS<=50 && delta_VBUS>0) ?1
-                        :(delta_VBUS<0 && (delta_VBUS>=-50 || ~(DISCHARGE|PWR_ENABLE))) ?(VBUS_hold?0:-1)
-                        :$signed(delta_VBUS*2/100));
-   end
 
 endmodule // USBCONN
 

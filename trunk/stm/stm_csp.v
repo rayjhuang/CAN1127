@@ -24,7 +24,7 @@ initial begin
 	disable fw_ending; // FW completing is not safe
 
 	adr = 'h440;
-	#`UPD.INTERFRAM `UPD.CspW (`I2CCTL,'h16); // PG0 writable, at bank3
+	#`UPD.INTERFRAM `UPD.CspW (`I2CCTL,'h16); // PG0 writable, at bank3 (XDATA_0180h)
 	#`UPD.INTERFRAM `UPD.CspW ('h20,   'h55); // PG0 write
 	#`UPD.INTERFRAM `UPD.CspR ('h20,   'h55); // PG0 read
 

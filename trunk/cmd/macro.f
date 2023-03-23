@@ -10,7 +10,7 @@
    -v ${PJ_PATH}/macro/io.v
    +incdir+${PJ_PATH}/macro/
    -v ${PJ_PATH}/macro/ATO0008KX8MX180LBX4DA.v
-   -v ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20210603_SS.v
+   -v ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_SS.v
 
    -v ${PJ_PATH}/fpga/softmacro.v
    -v ${PJ_PATH}/fpga/ATO0008KX8VI150BG33NA_FPGA.v

@@ -292,7 +292,7 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape    
+Orientation = Landscape   
 [FileBrowser]
 nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb,/mnt/app1/ray/project/can1127/work0,
 nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,
@@ -310,11 +310,11 @@ SyncBrowserDir = TRUE
 bDisplayWelcome = FALSE
 bKeepUndockedWidgetsOnTop = FALSE
 bUndockNewCreatedWindow = TRUE
-version = Verdi3_J-2014.12-SP2
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
+version = Verdi3_J-2014.12-SP2
 SignalCaseInSensitive = FALSE
 ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
@@ -516,7 +516,7 @@ iscCmdSep = FALSE
 interactive_fsdb_file = inter.fsdb
 invokeSimPath = work
 vcs_svPath = simv
-vcs_svOption =  
+vcs_svOption = 
 thirdpartyIdx = -1
 simType = vcssv
 interactiveDebugging = FALSE
@@ -1135,13 +1135,13 @@ tsClkSkewSave = True
 tsClkSkewSetting = 0
 tsMaxForLoopToUnroll = 0
 tsBBoxSave = True
-tsBBoxSetting =  
+tsBBoxSetting = 
 tsBBoxEmptyModule = False
 tsBBoxIgnoreProtected = False
 tsIPSave = True
-tsIPSetting =  
-tsSymLibSetting =  
-tsSimModelSetting =  
+tsIPSetting = 
+tsSymLibSetting = 
+tsSimModelSetting = 
 tsCellModelSetting = 0
 tsContBAError = FALSE
 tsMaxLeafNum = 32768
@@ -1412,7 +1412,7 @@ stopCheckpoints = 0
 genCheckpoints = 0
 reverseDebug = FALSE
 [turboSchema_Printer_Options]
-Orientation = Landscape    
+Orientation = Landscape   
 [turbo_library]
 bdb_load_scope = 
 TurboLibs = VSC18VGB15ELV16S_1P62V_150C:worst

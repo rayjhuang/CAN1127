@@ -10,7 +10,7 @@ initial begin
 #1	`HW.init_dut_fw;
 #1	`I2CMST.dev_addr = 'h70;
 	`I2CMST.init (3); // ideal 1MHz
-#100_000 $display ($time,"ns <%m> starts.....");
+#200_000 $display ($time,"ns <%m> starts.....");
 	`I2CMST.sfrw (`I2CCTL,'h19); // BNK12, inc
 	scan_dac0 (`HLSB,0,0,0,0);
 	scan_dac0 (`HLSB,-1,-1,-1,-1);
@@ -57,6 +57,6 @@ VTARGET VTARGET();
 endmodule // stm_scan_pwrv
 
 `define PBNAME VTARGET
-`define PBANA (`DUT_ANA.VIN_target)
+`define PBANA (`DUT_ANA.VO_target)
 `include "inc_probe.v"
 

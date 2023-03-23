@@ -8,15 +8,13 @@ module chiptop_1127a0 (
 // =============================================================================
 `ifdef FPGA
 input		V5OCP,UVP,SCP,OCP,OVP,
-		OTPI_S,OTPI_C,
+		OTPI_S,
 output	[2:0]	rp_type_en,
 output	[1:0]	VCONN_EN, RP_EN,
 input		RX_D, COMP_O, // AFE from CAN1119/COMP_O
 output		CC_SEL, AD_RST, AD_HOLD,
 		oeb_cc, doe_cc, // for FPGA AFE voltage divider CC driver
-		TX_DRV0,
-		PWREN,
-		DISCHARGE,
+		VO_DISCHG,
 output	[9:2]	dac_pwr_v, dac1_9_2,
 output	[17:0]	SAMPL_SEL,
 output		DP_2V7_EN, DP_DWN_EN, DPDN_SHORT,
@@ -40,7 +38,8 @@ inout		GPIO6, // for AFE
 `else // !FPGA
 inout		CSP, CSN,
 inout		VFB,
-inout		COM, LG, SW, HG, BST, GATE, VDRV,
+inout		COM, SW, BST, VDRV,
+output		LG, HG, GATE,
 `endif // FPGA
 inout		DP, DN, CC1, CC2,
 input		TST,
@@ -93,7 +92,7 @@ inout		GPIO3, GPIO4, GPIO5
    PAD_GPIO_TS (.PAD(GPIO_TS),.IE(IE_GPIO[0]),.DI(DI_TS),     .OE(DO_TS[2]),  .DO(DO_TS[3]),  .PU(DO_TS[1]),  .PD(DO_TS[0]),  .ANA_R(TS_ANA_R), .ANA_P(ANAP_TS), .RSTB_5(IO_RSTB5),.VB(V1P1));
 
 // MSL18B_1536X8_RW10TM4_16_20210427 // Kim@20210608: too long for APR
-   MSL18B_1536X8_RW10TM4_16 U0_SRAM (
+   MSL18B_1536X8_RW10TM4_16_20221107 U0_SRAM ( // SIZE 317.760 BY 348.410
 	.CK	(SRAM_CLK),
 	.CSB	(SRAM_CEB),
 	.WEB	(SRAM_WEB),
@@ -133,19 +132,21 @@ inout		GPIO3, GPIO4, GPIO5
    assign BST_SET	= bck_regx0[0];
    assign DCM_SEL	= bck_regx0[1];
    assign HGOFF		= bck_regx0[2];
-   assign HGLGOFF	= bck_regx0[3];
+   assign LGOFF		= bck_regx0[3];
    assign HGON		= bck_regx0[4];
    assign LGON		= bck_regx0[5];
-   assign ENDRV		= bck_regx0[6];
+   assign EN_DRV	= bck_regx0[6];
    assign FSW		= bck_regx1[1:0];
-   assign EN_OSC	= bck_regx0[2];
-   assign MAXDS		= bck_regx0[3];
-   assign EN_GM		= bck_regx0[4];
-   assign EN_ODLDO	= bck_regx0[5];
-   assign EN_IBUK	= bck_regx0[6];
+   assign EN_OSC	= bck_regx1[2];
+   assign MAXDS		= bck_regx1[3];
+   assign EN_GM		= bck_regx1[4];
+   assign EN_ODLDO	= bck_regx1[5];
+   assign EN_IBUK	= bck_regx1[6];
 
-   wire [7:0] do_cvctl, do_srcctl, do_ccctl, do_cctrx;
-   wire [7:0] do_pwr_i;
+   assign EXT_CP	= bck_regx1[7];
+   assign INT_CP	= bck_regx0[7];
+
+   wire [7:0] do_cvctl, do_srcctl, do_ccctl, do_cctrx, do_pwr_i;
    wire [7:0] do_xana0, do_xana1;
    wire [5:0] do_dpdm;
    wire [3:0] do_regx_xtm, do_vooc;

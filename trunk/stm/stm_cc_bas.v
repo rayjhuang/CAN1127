@@ -79,7 +79,7 @@ begin
 	`I2CMST.sfrr (`SRCCTL,'h00); // check initial state
 	`I2CMST.sfrw (`SRCCTL,'h04); // turn-on VCONN1
 	`DUT_ANA.r_v5ocp = 1;        #(1000*10) ChkCC (5000,0);
-	`I2CMST.sfrw (`X0_XTM,'h04); #(1000*10) ChkCC (0,0); // gating by value
+	`I2CMST.sfrw (`X0_XTM,'h10); #(1000*10) ChkCC (0,0); // gating by value
 	`DUT_ANA.r_v5ocp = 0;        #(1000*10) ChkCC (5000,0);
 	`I2CMST.sfrw (`X0_XTM,'h00); #(1000*10) ChkCC (5000,0); // not by value
 	`I2CMST.sfrw (`PROCTL,'h20); #(1000*10) ChkCC (0,0); // gating by status
@@ -88,7 +88,7 @@ begin
 	`I2CMST.sfrw (`SRCCTL,'h00); #(1000*10) ChkCC (0,0); // turn-off VCONN1
 	`I2CMST.sfrw (`SRCCTL,'h08); // turn-on VCONN2
 	`DUT_ANA.r_v5ocp = 1;        #(1000*10) ChkCC (0,5000);
-	`I2CMST.sfrw (`X0_XTM,'h04); #(1000*10) ChkCC (0,0); // gating by value
+	`I2CMST.sfrw (`X0_XTM,'h10); #(1000*10) ChkCC (0,0); // gating by value
 	`DUT_ANA.r_v5ocp = 0;        #(1000*10) ChkCC (0,5000);
 	`I2CMST.sfrw (`X0_XTM,'h00); #(1000*10) ChkCC (0,5000); // not by value
 	`I2CMST.sfrw (`PROCTL,'h20); #(1000*10) ChkCC (0,0); // gating by status

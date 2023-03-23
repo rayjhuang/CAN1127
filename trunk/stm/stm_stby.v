@@ -11,7 +11,7 @@ initial begin
 #1	`HW.load_dut_fw ("../fw/iram/iram.1.memh");
 #1	`I2CMST.dev_addr = 'h70;
 	`I2CMST.init (3); // 1MHz
-	#100_000
+	#200_000
 	$display ($time,"ns <%m> starts.....");
 //	`I2CMST.sfrw (`I2CCTL,'h18); // non-inc, PG0=BNK12 (REGX)
 	ideal_standby (0); // ideal

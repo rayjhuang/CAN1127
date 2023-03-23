@@ -3,10 +3,11 @@
 // 20230302   : z:\RD\Project\CAN1127\
 `timescale 1ns/100ps
 module anatop_1127a0 (
-//inout		VIN ,	// VIN
-//inout		PGND ,	// Analog GND
-//inout		GND ,	// Digital GND
-//inout		V5V ,	// 5.0V LDO out
+//out		VIN ,	// VIN
+//out		PGND ,	// buck GND
+//out		AGND ,	// analog GND
+//out		DGND ,	// digital GND
+//out		V5V ,	// 5.0V LDO out
 // === P D  PAD ================================================================
 inout		CC1 ,
 inout		CC2 ,
@@ -15,21 +16,19 @@ inout		DN ,
 inout		VFB ,
 inout		CSP , CSN ,
 // === B U C K  PAD ============================================================
-inout		COM, LG, SW, HG, BST, GATE, VDRV,
+inout		COM, SW, BST, VDRV,
+output		LG, HG, GATE,
 // === B U C K  interface part =================================================
 input		BST_SET ,
 		DCM_SEL ,
-		HGOFF ,
-		HGLGOFF ,
-		HGON ,
-		LGON ,
-		ENDRV ,
+		HGOFF , HGON ,
+		LGOFF , LGON ,
+		EN_DRV ,
 input	[1:0]	FSW ,
 input		EN_OSC ,
 input		MAXDS ,
-		EN_GM ,
-		EN_ODLDO ,
-		EN_IBUK ,
+		EN_GM , EN_ODLDO , EN_IBUK ,
+		CP_EN , EXT_CP , INT_CP , ANTI_INRUSH , PWREN_HOLD ,
 // === P D  interface part =====================================================
 input   [1:0]   RP_SEL ,
 input		RP1_EN ,
@@ -82,7 +81,7 @@ output		OSC_O , RD_DET ,
 		IMP_OSC , DRP_OSC ,
 input		STB_RP , RD_ENB ,
 //put	[3:0]	CABLE_COMP ,
-input		PWREN ,
+//put		PWREN ,
 output		OCP ,
 output		SCP ,
 output		UVP ,
@@ -91,7 +90,6 @@ input		CC1_DOB ,
 input		CC2_DOB ,
 output		CC1_DI ,
 output		CC2_DI ,
-input		ANTI_INRUSH ,
 //put		IFB_CUT ,
 output		OTPI , // CF ,
 //put		CC_PROT ,
@@ -122,15 +120,14 @@ input
 //		SEL_OCDRV , SEL_FB ,
 		CPV_SEL ,
 		CLAMPV_EN ,
-input		HVNG_CPEN , PWREN_HOLD , // CPF_SEL ,
+input		HVNG_CPEN , // CPF_SEL ,
 		OCP_SEL ,
 //		IDAC_EN , IDAC_SEN ,
 output		OCP_80M , OCP_160M ,
 output		OPTO1 , OPTO2,
 // =============================================================================
 output		VPP_OTP ,
-output		VDD_OTP ,
-//output	VD18 , // power supply for digital core
+//tput		VDD , // 1.8V power supply for core logic/IO cells/OTP/SRAM
 output		RSTB_5 , V1P1 , // analog signals for IO cells
 input		TS_ANA_R , GP5_ANA_R , GP4_ANA_R , GP3_ANA_R , GP2_ANA_R , GP1_ANA_R , // analog signals of IO cells and ADC
 output		TS_ANA_P , GP5_ANA_P , GP4_ANA_P , GP3_ANA_P , GP2_ANA_P , GP1_ANA_P   // analog signals of 100+20uA/20uA output
@@ -141,7 +138,6 @@ output		TS_ANA_P , GP5_ANA_P , GP4_ANA_P , GP3_ANA_P , GP2_ANA_P , GP1_ANA_P   /
 // an empty module in formal check will be modeled as a black box and compared
 `else
 assign VPP_OTP = VPP_SEL & ~VPP_ZERO;
-assign VDD_OTP = 1;
 
 wire [15:0] v_CC1, v_CC2, v_DP, v_DN; // assigned in bench_0.v, bench_u0.v
 assign #1 DP  = DPDEN ? DPDO : 1'hz; // digital output only
@@ -151,12 +147,12 @@ assign #1 CC2 = CCI2C_EN & CC2_DOB ? 1'h0 : 1'hz; // digital output only
 assign #1 CC1_DI = v_CC1>=1800 && CCI2C_EN; // 1.0~2.6V
 assign #1 CC2_DI = v_CC2>=1800 && CCI2C_EN; // 1.0~2.6V
 
-assign #10 GATE = PWREN;
+assign #110 GATE = CP_EN & EXT_CP & ~PWREN_HOLD; // bypass mode by the external MOS
+assign #100 HG   = CP_EN & INT_CP & ~PWREN_HOLD  // bypass mode by the internal MOS
+                 | EN_DRV & EN_ODLDO; // PWM
 
-reg r_otpi=0, r_ovp=0, r_ocp=0, r_scp=0, r_uvp=0, r_v5ocp=0, r_cf=0;
+reg r_otpi=0, r_ovp=0, r_ocp=0, r_scp=0, r_uvp=0, r_v5ocp=0, r_dn_fault=0;
 assign {V5OCP, OTPI, OVP, OCP, SCP, UVP} = {r_v5ocp, r_otpi, r_ovp, r_ocp, r_scp, r_uvp};
-reg r_dn_fault=0;
-reg r_DpDnCC_ovp=0;
 assign DN_FAULT = r_dn_fault;
 
 reg r_ocp80m=0, r_ocp160m=0, r_opto1=0, r_opto2=0;
@@ -169,33 +165,28 @@ assign #1 DN_COMP = v_DN > 1200;
    bhv_cc_rcver cc_rcver (rx_v_cc,RX_SQL,RX_D_PK,RX_D_49);
    assign RX_DAT = RX_D_49;
 
-reg [15:0] v_VIN=0, v_IS=0, v_RT=1000, v_GP5=0, v_GP4=0, v_GP3=0, v_GP2=0, v_GP1=0; // mV
+reg [15:0] v_VIN=0, v_CSP=0, v_RT=1000, v_GP5=0, v_GP4=0, v_GP3=0, v_GP2=0, v_GP1=0; // mV
 
-integer delta_VIN, VIN_target0, VIN_target;
-always @(DAC0 or DAC3 or CV2) VIN_target0 = (DAC0+DAC3*2)*(CV2?20:10); // 20/40mV
-wire stb_pulse = VIN_target0<50; // DAC0=4
-reg r_standby =0;
-always @(posedge stb_pulse) begin: calc_standby
-   if (r_standby) fork
-      #(1000*6) r_standby = 0; // 10us to exit (for sim.)
-      @stb_pulse disable calc_standby;
-   join else fork
-      #(1000*40) r_standby = 1; // entered after 40us (for sim.)
-      @stb_pulse disable calc_standby;
-   join
-end
-always @(r_standby or VIN_target0)
-   VIN_target = r_standby ? 4000 : VIN_target0;
+// --- current sense amplifier
+wire [15:0]
+v_IFB = CS_EN
+	? v_CSP * (SEL_CCGAIN ? 200.0 : 100.0) /3
+	: 0;
 
-always #1000 if (VIN_target!=v_VIN) begin
-   delta_VIN = VIN_target - v_VIN;
-   v_VIN = v_VIN + ((delta_VIN<=33 && delta_VIN>0) ?1
-                   :(delta_VIN<0 && delta_VIN>=-33) ?-1 :$signed(delta_VIN*3/100));
-end
-
-wire [15:0] v_VO; // assigned in bench_u0.v
+// --- CV reference voltage (VDACI)
 reg [15:0] v_DAC_CV; // used in bench_u0.v
 always @(DAC0 or DAC3 or CV2) v_DAC_CV = (DAC0+DAC3*2)*(CV2?2:1); // mV
+
+// --- CV loop of EVB
+reg [15:0] v_VO =0;
+integer delta_VO, VO_target;
+always @(v_DAC_CV) VO_target = v_DAC_CV *10; // EVB
+always #1000 if (VO_target!=v_VO) begin
+   delta_VO = VO_target - v_VO;
+   v_VO = v_VO + ((delta_VO<=33 && delta_VO>0) ?1
+                   :(delta_VO<0 && delta_VO>=-33) ?-1 :$signed(delta_VO*3/100));
+end
+
 
 bhv_compm_mux #(18)
 compm_mux (
@@ -238,13 +229,12 @@ compm_mux (
 		v_DN,
 		v_DP,
 		v_RT,
-		v_IS,
+		v_IFB,
 		v_VO/16'd10,
 		v_VIN/16'd20}),
 	.comp_o (comp_o));
 
 assign #1 COMP_O = DAC1_EN ? comp_o : 'h0;
-assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 
 // --- begin POR, OSC
 // -----------------------------------------------------------------------------
@@ -260,7 +250,9 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 	#30_000
 	fork
 	   #700 r_rstz =1; // 8-clock after
-	   @(r_rstz) #100_000 d_rstz =1; // 100us after
+	   forever
+		@(r_rstz) if (r_rstz) #100_000 d_rstz =1; // 100us after
+		                else  #100     d_rstz =0;
 	   forever
 		if (OSC_STOP) #5                 r_clk =0;
 		else if (OSC_LOW) begin:osc_low
@@ -268,6 +260,8 @@ assign IDIN = r_DpDnCC_ovp; // since CAN1121B0
 		end else      #(1000.0/12/2)     r_clk = ~r_clk;
 	join
    end
+
+   wire PWREN = GATE | HG | CP_EN;
    always @(negedge OSC_LOW) #5 disable osc_low;
    always @(PWREN) $display ($time,"ns <%m> power enable -> %d",PWREN);
    always @(VO_DISCHG) $display ($time,"ns <%m> VO (VBUS) discharge -> %d",VO_DISCHG);

@@ -10,7 +10,8 @@ initial begin
 #1	`HW.init_dut_fw;
 #9	`HW.set_code(0,'h80);
 	`HW.set_code(1,'hfe); // SJMP -2 @PC=0x0
-#99_990	`I2CMST.init (2); // 1MHz
+#199_990
+	`I2CMST.init (2); // 1MHz
 	`I2CMST.dev_addr = 'h70; // to DUT
 
 	$display ($time,"ns <%m> starts");

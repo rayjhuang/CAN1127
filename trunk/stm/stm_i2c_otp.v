@@ -33,6 +33,7 @@ initial begin
 	`HW.set_code ('h0401,'hfe);
 //	`HW.set_hw_chksum;
 //#500_000 // HW checksum lantency
+#200_000 // RSTB_5 to RSTB delay
 #3000	$display ($time,"ns, <%m> test OTP address counter.....");
 ////////////////////////////////////////////////////////////////////////////////
 	`I2CMST.sfrw (`I2CCTL,'h18); // non-inc, BANK12

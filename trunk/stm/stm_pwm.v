@@ -6,11 +6,28 @@ module stm_pwm;
 initial #1 $fsdbDumpvars;
 initial timeout_task (1000*50);
 
+initial begin // to watch the de-bounce
+#(1000*1000)
+	fork
+	begin
+	   `DUT_ANA.r_ovp = 1; #(1000*50) `DUT_ANA.r_ovp = 0; #(1000*1000)
+	   `DUT_ANA.r_ovp = 1; #(1000*5)  `DUT_ANA.r_ovp = 0; #(1000*1000);
+	end
+	begin
+	   `DUT_ANA.r_scp = 1; #(1000*5)  `DUT_ANA.r_scp = 0; #(1000*1000)
+	   `DUT_ANA.r_scp = 1; #(1000*1)  `DUT_ANA.r_scp = 0; #(1000*1000);
+	end
+	join
+end
+
 initial begin
 #1	`I2CMST.dev_addr = 'h70;
 	`I2CMST.init (3); // 1MHz
-	#100_000
+	#200_000
 	$display ($time,"ns <%m> starts.....");
+	`I2CMST.sfrw (`SRCCTL,'h02); // LG discharge no ack-ed
+	`I2CMST.sfrw (`SRCCTL,'h82); // LG discharge
+
 	`I2CMST.sfrw (`GPIO34,'h44); // set OE
 	`I2CMST.sfrw (`X0_PWM0,'h80); // PWM0 duty=0
 	`I2CMST.sfrw (`X0_PWM1,'hff); // PWM0 duty=127/128

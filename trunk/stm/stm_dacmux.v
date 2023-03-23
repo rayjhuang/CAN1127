@@ -2,13 +2,12 @@
 `timescale 1ns/100ps
 module stm_dacmux;
 `include "stm_task.v"
-initial #1 $fsdbDumpvars (stm_dacmux);
-
+initial #1 $fsdbDumpvars;
 initial begin
 #10	`HW.set_code(0,'h80);
 	`HW.set_code(1,'hfe); // SJMP -2 @PC=0x0
 	ReTimeout (2);
-#(1000*100)
+#(1000*200)
 	$display ($time,"ns <%m> starts.....");
 	`I2CMST.dev_addr = 'h70; // DUT
 	`I2CMST.init (2); // 1 MHz
@@ -20,12 +19,12 @@ initial begin
 	manual_check_always_sample;
 
 	ReTimeout (50); basic_semi_scan;
-	    repeat (10) random_sar8_scan ('hffff);
+	    repeat (10) random_sar8_scan ('h3ffff);
 
-	ReTimeout (450); basic_sar10_scan;
+	ReTimeout (500); basic_sar10_scan;
 	ReTimeout (150); basic_sar8_scan;
 
-	ReTimeout (100); random_sar8_scan ('hffff);
+	ReTimeout (100); random_sar8_scan ('h3ffff);
 	    repeat (100) random_sar8_scan ($random);
 
 	#(1000*200) hw_complete;
@@ -69,7 +68,7 @@ task basic_semi_scan;
 reg [15:0] ii;
 begin
 	$display ($time,"ns <%m> starts.....");
-	`I2CMST.sfrw (`X0_SAREN,'h08); // channel 11
+	`I2CMST.sfrw (`X0_SAREN2,'h08); // channel 11
 	`I2CMST.bkwr (`DACCTL,4,{8'h34,8'hff,8'h00,8'h40}); // in inc, semi, 10-bit, LSB for ch3, DAC1_EN
 	`I2CMST.sfrw (`I2CCTL,'h18); // non-inc, BANK12
 	for (ii=0;ii<200;ii=ii+1) begin // or scan-all takes 400ms
@@ -154,9 +153,10 @@ end
 endtask // basic_sar8_scan
 
 task random_sar8_scan;
-input [15:0] sel; // enable channels
+input [17:0] sel; // enable channels
 reg [7:0] dacv07,dacv06,dacv05,dacv04,dacv03,dacv02,dacv01,dacv00,
-          dacv15,dacv14,dacv13,dacv12,dacv11,dacv10,dacv09,dacv08;
+          dacv15,dacv14,dacv13,dacv12,dacv11,dacv10,dacv09,dacv08,
+                                                    dacv17,dacv16;
 reg switch;
 begin
 	switch = $random;
@@ -165,14 +165,17 @@ begin
 	{dacv07,dacv06,dacv05,dacv04} = $random;
 	{dacv11,dacv10,dacv09,dacv08} = $random;
 	{dacv15,dacv14,dacv13,dacv12} = $random;
+	              {dacv17,dacv16} = $random;
 	`I2CMST.sfrw (`CMPOPT,{switch,7'h0}); // switch
 	`I2CMST.bkwr (`DACEN,2,{8'hff,sel[7:0]});
 	`I2CMST.bkwr (`DACV0,8,{dacv07,dacv06,dacv05,dacv04,dacv03,dacv02,dacv01,dacv00});
-	`I2CMST.bkwr (`X0_DACEN,2,{8'hff,sel[15:8]});
-	`I2CMST.bkwr (`X0_DACV8,8,{dacv15,dacv14,dacv13,dacv12,dacv11,dacv10,dacv09,dacv08});
+	`I2CMST.bkwr (`X0_DACEN2,2,{8'hff,sel[15:8]});
+	`I2CMST.bkwr (`X0_DACV8, 8,{dacv15,dacv14,dacv13,dacv12,dacv11,dacv10,dacv09,dacv08});
+	`I2CMST.bkwr (`X0_DACEN3,2,{8'hff,sel[17:16]});
+	`I2CMST.bkwr (`X0_DACV16,8,{dacv17,dacv16});
 	force `DUT_ANA.v_VIN  = {$random}%20480;
-	force `DUT_ANA.v_VBUS = {$random}%20480;
-	force `DUT_ANA.v_IS   = {$random}%2048;
+	force `DUT_ANA.v_VO   = {$random}%20480;
+	force `DUT_ANA.v_IFB  = {$random}%2048;
 	force `DUT_ANA.v_RT   = {$random}%2048;
 	force `DUT_ANA.v_DP   = {$random}%2048;
 	force `DUT_ANA.v_DN   = {$random}%2048;
@@ -181,6 +184,8 @@ begin
 	force `DUT_ANA.v_GP5  = {$random}%2048;
 	force `DUT_ANA.v_GP4  = {$random}%2048;
 	force `DUT_ANA.v_GP3  = {$random}%2048;
+	force `DUT_ANA.v_GP2  = {$random}%2048;
+	force `DUT_ANA.v_GP1  = {$random}%2048;
 	`I2CMST.sfrw (`DACCTL,'h01); // 8-bit mode
 	if (sel[7:0]==0)
 	`I2CMST.sfrr (`DACCTL,'h00); // not started
@@ -199,20 +204,23 @@ begin
 					?`DUT_ANA.v_DP/3
 					:`DUT_ANA.v_DP)    : dacv04,
 			sel[ 3] ? ADC8(`DUT_ANA.v_RT)      : dacv03,
-			sel[ 2] ? ADC8(`DUT_ANA.v_IS)      : dacv02,
-			sel[ 1] ? ADC8(`DUT_ANA.v_VBUS/10) : dacv01,
+			sel[ 2] ? ADC8(`DUT_ANA.v_IFB)     : dacv02,
+			sel[ 1] ? ADC8(`DUT_ANA.v_VO/10)   : dacv01,
 			sel[ 0] ? ADC8(switch
-					?`DUT_ANA.v_VIN/20
-					:`DUT_ANA.v_VIN/10): dacv00});
+					?`DUT_ANA.v_VO/20
+					:`DUT_ANA.v_VIN/20): dacv00});
 	`I2CMST.bkrd (`X0_DACV8,8,{
 			sel[15] ? ADC8(`DUT_ANA.v_GP3)     : dacv15,
 			sel[14] ? ADC8(`DUT_ANA.v_GP4)     : dacv14,
 			sel[13] ? ADC8(`DUT_ANA.v_GP5)     : dacv13,
 			sel[12] ? ADC8(`DUT_ANA.v_CC2/4)   : dacv12,
 			sel[11] ? ADC8(`DUT_ANA.v_CC1/4)   : dacv11,
-			sel[10] ? ADC8(`DUT_ANA.v_VIN/20)  : dacv10,
+			sel[10] ? ADC8(`DUT_ANA.v_VO/20)   : dacv10,
 			sel[ 9] ? ADC8(`DUT_ANA.v_DN/3)    : dacv09,
 			sel[ 8] ? ADC8(`DUT_ANA.v_DP/3)    : dacv08});
+	`I2CMST.bkrd (`X0_DACV16,2,{
+			sel[17] ? ADC8(`DUT_ANA.v_GP1)     : dacv17,
+			sel[16] ? ADC8(`DUT_ANA.v_GP2)     : dacv16});
 	#(1000*100) release_all;
 end
 endtask // random_sar8_scan
@@ -251,8 +259,8 @@ begin
 	release `DUT_ANA.compm_mux.v_ana_in[11*16+:16];
 	release `DUT_ANA.compm_mux.v_ana_in[12*16+:16];
 	release `DUT_ANA.v_VIN;
-	release `DUT_ANA.v_VBUS;
-	release `DUT_ANA.v_IS;
+	release `DUT_ANA.v_VO;
+	release `DUT_ANA.v_IFB;
 	release `DUT_ANA.v_RT;
 	release `DUT_ANA.v_DP;
 	release `DUT_ANA.v_DN;

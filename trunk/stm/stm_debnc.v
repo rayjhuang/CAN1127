@@ -9,7 +9,7 @@ initial begin
 #1	`I2CMST.dev_addr = 'h70;
 	`I2CMST.init (3);
 	$display ($time,"ns <%m> starts.....");
-	wait (`DUT_CORE.i_rstz)
+	wait (`DUT_CORE.i_rstz) #100_000 // add RSTB_5 to RSTB delay
 
 	#3000 TxDebnc (0); // test negative pulse
 	#3000 TxDebnc (1); // test positive pulse, return to '0'
@@ -33,8 +33,8 @@ initial begin
 end
 
 integer debnc, multi;
-wire [31:0] latency = (debnc+2) * multi * (1000/12+1); // one additinal clock for sync., roundup
-wire [31:0] glitch = (debnc-1) * multi * (1000/12); // for clock is a little varient from 12MHz, roundown
+wire [31:0] latency = (debnc+2) * multi * (1000/12) * 1.01; // one additinal clock for sync., roundup
+wire [31:0] glitch = (debnc-1) * multi * (1000/12) * 0.99; // for clock is a little varient from 12MHz, roundown
 wire [31:0] space = debnc * multi * 100;
 
 task TxDebncScp;
@@ -42,7 +42,7 @@ input	val, // 0/1: negative/positive pulse
 	dbc; // 0/1: short/3us
 begin
 	$display ($time,"ns <%m> starts.....%d,%d",val,dbc);
-	debnc=(dbc?6:3); multi=(dbc?8:1);
+	debnc=(dbc?4:3); multi=(dbc?12:1);
         #3000 `DUT_ANA.r_scp = ~val;
         #latency fork
         SCP.KEEP (~val,1);
@@ -56,19 +56,19 @@ input	val, // 0/1: negative/positive pulse
 	dbc; // 0/1: short/30us
 begin
 	$display ($time,"ns <%m> starts.....%d,%d",val,dbc);
-	debnc=(dbc?16:3); multi=(dbc?24:1);
+	debnc=(dbc?31:3); multi=(dbc?12:1);
         #3000 `DUT_ANA.r_ovp = ~val;
         #latency fork
 	OVP.KEEP (~val,1);
         begin repeat (10) begin `DUT_ANA.r_ovp = val; #glitch `DUT_ANA.r_ovp = ~val; #space; end disable OVP.KEEP; end
 	join
 
-	debnc=16; multi=24;
-        #3000 `DUT_ANA.r_DpDnCC_ovp = ~val;
-        #latency fork
-        CDOVP.KEEP (~val,1);
-        begin repeat (10) begin `DUT_ANA.r_DpDnCC_ovp = val; #glitch `DUT_ANA.r_DpDnCC_ovp = ~val; #space; end disable CDOVP.KEEP; end
-        join
+//	debnc=16; multi=24;
+//	#3000 `DUT_ANA.r_DpDnCC_ovp = ~val;
+//	#latency fork
+//	CDOVP.KEEP (~val,1);
+//	begin repeat (10) begin `DUT_ANA.r_DpDnCC_ovp = val; #glitch `DUT_ANA.r_DpDnCC_ovp = ~val; #space; end disable CDOVP.KEEP; end
+//	join
 end
 endtask // TxDebncOvp
 
@@ -76,7 +76,7 @@ task TxDebnc;
 input val; // 0/1: negative/positive pulse
 begin
 	$display ($time,"ns <%m> starts.....%d",val);
-	debnc=6; multi=8;
+	debnc=4; multi=12;
         #3000 `DUT_ANA.r_ocp = ~val;
         #latency fork
 	OCP.KEEP (~val,1);
@@ -92,14 +92,14 @@ begin
         TxDebncScp (val,0);
         TxDebncOvp (val,0);
 
-	debnc=6; multi=8;
-        #3000 `DUT_ANA.r_cf = ~val;
+	debnc=4; multi=12;
+        #3000 `DUT_ANA.r_otpi = ~val;
         #latency fork
         OTPI_CF.KEEP (~val,1);
-        begin repeat (10) begin `DUT_ANA.r_cf = val; #glitch `DUT_ANA.r_cf = ~val; #space; end disable OTPI_CF.KEEP; end
+        begin repeat (10) begin `DUT_ANA.r_otpi = val; #glitch `DUT_ANA.r_otpi = ~val; #space; end disable OTPI_CF.KEEP; end
         join
 
-	debnc=6; multi=8;
+	debnc=4; multi=12;
         #3000 `DUT_ANA.r_dn_fault = ~val;
         #latency fork
         DN_FAULT.KEEP (~val,1);
@@ -119,7 +119,7 @@ task TxLdbOcp;
 input val;
 begin
 	$display ($time,"ns <%m> starts.....%d",val);
-	debnc=14; multi=24000;
+	debnc=15; multi=24000;
         #3000 `DUT_ANA.r_ocp = ~val;
         #latency fork
 	LDBOCP.KEEP (~val,1);
@@ -132,7 +132,7 @@ task TxLdbUvp;
 input val;
 begin
 	$display ($time,"ns <%m> starts.....%d",val);
-	debnc=14; multi=24000;
+	debnc=15; multi=24000;
         #3000 `DUT_ANA.r_uvp = ~val;
         #latency fork
 	LDBUVP.KEEP (~val,1);
@@ -147,7 +147,7 @@ OVP OVP ();
 OTPI_CF OTPI_CF ();
 SCP SCP ();
 V5OCP V5OCP ();
-CDOVP CDOVP ();
+//CDOVP CDOVP ();
 DN_FAULT DN_FAULT ();
 
 LDBUVP LDBUVP ();
@@ -173,9 +173,9 @@ endmodule // stm_debnc
 `define PBNAME V5OCP
 `define PBSIG (`DUT_CORE.u0_regbank.regAD[5])
 `include "inc_probe.v"
-`define PBNAME CDOVP
-`define PBSIG (`DUT_CORE.u0_regbank.regAD[6])
-`include "inc_probe.v"
+//`define PBNAME CDOVP
+//`define PBSIG (`DUT_CORE.u0_regbank.regAD[6])
+//`include "inc_probe.v"
 `define PBNAME DN_FAULT
 `define PBSIG (`DUT_CORE.u0_regbank.regAD[7])
 `include "inc_probe.v"

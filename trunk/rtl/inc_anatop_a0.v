@@ -52,8 +52,8 @@
 	.DP		(DP),
 	.DN		(DN),
 	.VFB		(VFB),
-	.CSP		(ISENP),
-	.CSN		(ISENN),
+	.CSP		(CSP),
+	.CSN		(CSN),
 	.COM		(COM),
 	.LG		(LG),
 	.SW		(SW),
@@ -65,16 +65,21 @@
 	.BST_SET	(BST_SET),
 	.DCM_SEL	(DCM_SEL),
 	.HGOFF		(HGOFF),
-	.HGLGOFF	(HGLGOFF),
+	.LGOFF		(LGOFF),
 	.HGON		(HGON),
 	.LGON		(LGON),
-	.ENDRV		(ENDRV),
+	.EN_DRV		(EN_DRV),
 	.FSW		(FSW),
 	.EN_OSC		(EN_OSC),
 	.MAXDS		(MAXDS),
 	.EN_GM		(EN_GM),
 	.EN_ODLDO	(EN_ODLDO),
 	.EN_IBUK	(EN_IBUK),
+	.CP_EN		(PWREN),
+	.EXT_CP		(EXT_CP),
+	.INT_CP		(INT_CP),
+	.PWREN_HOLD	(PWREN_HOLD), // once named CPF_SEL
+	.ANTI_INRUSH	(ANTI_INRUSH),	// CAN1121A0 new
 // =============================================================================
 	.RP_SEL		({
 /*1*/			 RP_SEL[1],
@@ -121,19 +126,19 @@
 	.CMP_SEL_GP3	(SAMPL_SEL[15]),
 /*40*/	.CMP_SEL_GP4	(SAMPL_SEL[14]),
 	.CMP_SEL_GP5	(SAMPL_SEL[13]),
-	.CMP_SEL_CC2_4	(SAMPL_SEL[12]),
-	.CMP_SEL_CC1_4	(SAMPL_SEL[11]),
+	.CMP_SEL_CC2_4	(SAMPL_SEL[12]), // CC2/4
+	.CMP_SEL_CC1_4	(SAMPL_SEL[11]), // CC1/4
 	.CMP_SEL_VO20	(SAMPL_SEL[10]), // CAN1127: VIN20 -> VO20
 	.CMP_SEL_DN_3	(SAMPL_SEL[9]), // D-/3
 	.CMP_SEL_DP_3	(SAMPL_SEL[8]), // D+/3
-	.CMP_SEL_CC2	(SAMPL_SEL[7]),
-	.CMP_SEL_CC1	(SAMPL_SEL[6]),
+	.CMP_SEL_CC2	(SAMPL_SEL[7]), // CC2/2
+	.CMP_SEL_CC1	(SAMPL_SEL[6]), // CC1/2
 	.CMP_SEL_DN	(SAMPL_SEL[5]),
 /*50*/	.CMP_SEL_DP	(SAMPL_SEL[4]),
 	.CMP_SEL_TS	(SAMPL_SEL[3]),
 	.CMP_SEL_IS	(SAMPL_SEL[2]),
-	.CMP_SEL_VIN20	(SAMPL_SEL[1]), // CAN1127: VBUS -> VIN20
-	.CMP_SEL_VO10	(SAMPL_SEL[0]), // CAN1127: VIN -> VO10
+	.CMP_SEL_VO10	(SAMPL_SEL[1]), // CAN1127: VBUS -> VO10
+	.CMP_SEL_VIN20	(SAMPL_SEL[0]), // CAN1127: VIN -> VIN20
 	.DAC1_EN	(DAC1_EN), // CAN1124A0: DAC -> DAC1
 	.DAC1		({
 			 DAC1[9],
@@ -196,9 +201,8 @@
 //			 CABLE_COMP[1],
 //			 CABLE_COMP[0]}), // CAN1121A0 [2:0] -> [3:0], CAN1126A0 removed
 //	.PWR_ENABLE	(PWR_ENABLE), // CAN1126A0 changes
-	.PWREN		(PWREN),
+//	.PWREN		(PWREN),
 //	.PWREN_B	(PWREN_B),
-	.ANTI_INRUSH	(ANTI_INRUSH),	// CAN1121A0 new
 //	.CC_PROT	(CC_PROT),
 	.OVP_SEL	({
 			 OVP_SEL[1],
@@ -314,7 +318,6 @@
 	.VFB_SW		(VFB_SW),
 	.CLAMPV_EN	(CLAMPV_EN),
 	.CPV_SEL	(CPV_SEL), // lower voltage for PWREN charge pump
-	.PWREN_HOLD	(PWREN_HOLD), // once named CPF_SEL
 //	.T3A		(T3A),
 //	.CC_FT		(CC_FT),
 //	.CS_DIR		(CS_DIR),
@@ -334,7 +337,7 @@
 			 DUMMY_IN[ 0]}),
 // -----------------------------------------------------------------------------
 	.VPP_OTP	(VPP_OTP),	// let APR route to OTP
-	.VDD_OTP	(VDD_OTP),	// let APR route to OTP
+//	.VDD		(),		// let APR route to OTP/IO cells/SRAM/core logic
 	.RSTB_5		(IO_RSTB5),	// let APR route to IO cells
 	.V1P1		(V1P1),		// let APR route to IO cells
 	.TS_ANA_P	(ANAP_TS),	// let APR route to IO cell TS

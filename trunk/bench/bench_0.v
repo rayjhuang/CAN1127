@@ -139,6 +139,16 @@ uart_bhv U0_UARTMST (
 	.x_rxd ()
 ); // U0_UARTMST
 
+begin: EVB
+
+   initial `DUT_ANA.v_VIN = 10_000; // for traditional POWER-GOOD check
+
+   wire [15:0] v_VBUS = `DUT_ANA.v_VO;
+   wire PWR_ENABLE    = `DUT_ANA.GATE;
+   wire DISCHARGE     = `DUT_ANA.VO_DISCHG;
+
+end: EVB
+
 // for v_DP to DP, v_DN to DN digital input of DUT
 // force to dominate output driver of the IO cell, if D+/D- use digital IO
 //initial force `DUT_ANA.DP_COMP = U0_USB_PORT.DP_COMP;
@@ -158,6 +168,7 @@ U0_USB_PORT (
 	.DN_COMP	(), // to provide a digital output behavior
 	.v_DP		(`DUT_ANA.v_DP),
 	.v_DN		(`DUT_ANA.v_DN),
+	.v_VBUS		(EVB.v_VBUS),
 
 	.CC1_DI		(`DUT_ANA.CC1_DI),
 	.CC2_DI		(`DUT_ANA.CC2_DI),
@@ -176,10 +187,7 @@ U0_USB_PORT (
 	.DUT_RP2_EN	(`DUT_ANA.RP2_EN),
 	.DUT_VCONN1_EN	(`DUT_ANA.VCONN1_EN),
 	.DUT_VCONN2_EN	(`DUT_ANA.VCONN2_EN),
-	.DUT_RP_SEL	(`DUT_ANA.RP_SEL),
-
-	.v_VBUS		(`DUT_ANA.v_VO),
-	.v_CV		(`DUT_ANA.v_VIN));
+	.DUT_RP_SEL	(`DUT_ANA.RP_SEL));
 
 // I2CMST connection
 // =============================================================================

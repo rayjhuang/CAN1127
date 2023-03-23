@@ -9,15 +9,14 @@
 	a). macro (other than IO cells)
 	    U0_CODE_0_ (ATO0008KX8MX180LBX4DA)
 	    U0_CODE_1_ (ATO0008KX8MX180LBX4DA)
-	    U0_SRAM (MSL18B_1536X8_RW10TM4_16_20210603 -> MSL18B_1536X8_RW10TM4_16,
-                                                   shortened name requested by Kim)
+	    U0_SRAM (MSL18B_1536X8_RW10TM4_16_20221107) - 3/15 - kimking@canyon-semi.com.tw
 	b). IO cell
 	    IOBMURUDA_A0, IOBMURUDA_A1
 	    IODMURUDA_A0
 	c). fully power/analog
 	    U0_ANALOG_TOP (analog_top) <-> U0_CODE_0_, U0_CODE_1_
-		VPP_OTP (1.8/3.8V) <-----> VDDP
-		VDD_OTP (1.8) <----------> VDD
+		VPP_OTP (Z/1.8/3.8V) <---> VDDP
+		VDD       (1.8) <--------> VDD
 	    U0_ANALOG_TOP (analog_top) <-> all IO cells (IOBMURUDA_A0,IOBMURUDA_A1,IODMURUDA_A0)
 	        RSTB_5 (ANA_RSTB5) <-----> RSTB_5
 	        V1P1 (V1P1) <------------> VB

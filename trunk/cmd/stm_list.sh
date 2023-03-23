@@ -82,12 +82,12 @@
    ncverilog $NCOPT ../stm/stm_i2crout.v   -l stm_i2crout$NCDEF.log
 #  ncverilog $NCOPT ../stm/stm_dpdmi2c.v   -l stm_dpdmi2c$NCDEF.log
    ncverilog $NCOPT ../stm/stm_wdt.v       -l stm_wdt$NCDEF.log
-   ncverilog $NCOPT ../stm/stm_hwi2c_fw.v  -l stm_hwi2c_fw$NCDEF.log
    ncverilog $NCOPT ../stm/stm_hwi2c.v     -l stm_hwi2c$NCDEF.log
    ncverilog $NCOPT ../stm/stm_hwi2c_mpb.v -l stm_hwi2c_mpbxr$NCDEF.log +define+FW0=\"iram\"+T100
    ncverilog $NCOPT ../stm/stm_hwi2c_mpb.v -l stm_hwi2c_mpbir$NCDEF.log +define+FW0=\"iram\"+T100+IDATA
    ncverilog $NCOPT ../stm/stm_hwi2c_mpb.v -l stm_hwi2c_mpbxw$NCDEF.log +define+FW0=\"iram\"+T100+WR
    ncverilog $NCOPT ../stm/stm_hwi2c_mpb.v -l stm_hwi2c_mpbiw$NCDEF.log +define+FW0=\"iram\"+T100+IDATA+WR
+   ncverilog $NCOPT ../stm/stm_hwi2c_fw.v  -l stm_hwi2c_fw$NCDEF.log
 #  ncverilog $NCOPT ../stm/stm_tcpc_0.v    -l stm_tcpc_0$NCDEF.log
 #  ncverilog $NCOPT ../stm/stm_tcpc_1.v    -l stm_tcpc_1$NCDEF.log
    ncverilog $NCOPT ../stm/stm_debnc.v     -l stm_debnc$NCDEF.log
@@ -120,7 +120,7 @@
    ncverilog $NCOPT ../stm/stm_fcp1_5byte_length_check.v    -l stm_fcp1_5byte_length_check$NCDEF.log    $FCP1REV
    ncverilog $NCOPT ../stm/stm_fcp1_nack_write_read.v       -l stm_fcp1_nack_write_read$NCDEF.log       $FCP1REV
 
-   setenv FCP2REV '+define+FW0=\"../fw/fcp/CYc1112_Smp0g164.2.memh\"'
+   setenv FCP2REV '+define+FW0=\"../fw/fcp/CYc1112_Smp0g165.2.memh\"'
    ncverilog $NCOPT ../stm/stm_fcp2_basic.v                 -l stm_fcp2_basic$NCDEF.log  $FCP2REV
    ncverilog $NCOPT ../stm/stm_fcp2_reset.v                 -l stm_fcp2_reset$NCDEF.log  $FCP2REV
    ncverilog $NCOPT ../stm/stm_fcp2_packet.v                -l stm_fcp2_packet$NCDEF.log $FCP2REV

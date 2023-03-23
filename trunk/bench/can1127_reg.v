@@ -10,9 +10,12 @@
 // external SFR (CAN1121 -> CAN1124)
 `define CVOFS01 8'h84
 `define CVOFS23 8'h85
-`define SDISCHG 8'h8f
+
+`define DPDNCTL	8'h8f
+
 `define ADOFS	8'h90
 `define ISOFS	8'h91
+
 `define LDBPRO	8'h94
 `define FCPTUI	8'h95
 `define ACCCTL	8'h96
@@ -23,13 +26,13 @@
 `define FCPDAT	8'h9e
 `define FCPCRC	8'h9f
 
-`define DPDNCTL	8'ha1
-`define REGTRM0	8'ha2
-`define REGTRM1	8'ha3
-`define REGTRM2	8'ha4
-`define REGTRM3	8'ha5
-`define REGTRM4	8'ha6
-`define AOPT	8'ha7
+`define REGTRM0	8'ha1
+`define REGTRM1	8'ha2
+`define REGTRM2	8'ha3
+`define REGTRM3	8'ha4
+`define REGTRM4	8'ha5
+`define REGTRM5	8'ha6
+`define REGTRM6	8'ha7
 
 `define CCOFS	8'hab
 `define PWR_I	8'hac
@@ -169,12 +172,16 @@
 `define X0_PWM0		7'h08
 `define X0_PWM1		7'h09
 
+`define X0_SDISCHG	7'h0f
+
 `define X0_BISTCTL	7'h10
 `define X0_BISTDAT	7'h11
 `define X0_NVMCTL	7'h12
 `define X0_TDPDN	7'h13
 `define X0_HWTRP	7'h14
 `define X0_I2CROUT	7'h15
+
+`define X0_AOPT		7'h17
 
 `define X0_BKPCL	7'h18
 `define X0_BKPCH	7'h19
@@ -183,6 +190,9 @@
 `define X0_XANA0	7'h1c
 `define X0_XANA1	7'h1d
 `define X0_XANA2	7'h1e
+
+`define X0_DACV16	7'h20
+`define X0_DACV17	7'h21
 
 `define X0_DACV8	7'h28
 `define X0_DACV9	7'h29
@@ -193,9 +203,13 @@
 `define X0_DACV14	7'h2e
 `define X0_DACV15	7'h2f
 
-`define X0_DACEN	7'h30
-`define X0_SAREN	7'h31
-`define X0_COMPI	7'h32
+`define X0_DACEN2	7'h30
+`define X0_SAREN2	7'h31
+`define X0_COMPI2	7'h32
+
+`define X0_DACEN3	7'h38
+`define X0_SAREN3	7'h39
+`define X0_COMPI3	7'h3a
 
 `endif // __DEF_SFR_V
 

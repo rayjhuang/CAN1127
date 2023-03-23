@@ -317,8 +317,8 @@ endtask
 //-----------------------------------------------------
 
 `ifdef CAN1121A0 wire wr_crc = `DUT_CORE.u0_fcp.r_wr[5]; `endif
-`ifdef CAN1126A0 wire wr_crc = `DUT_CORE.u0_fcp.r_wr[5]; `endif
-`ifdef CAN1126A0 wire crc_en = `DUT_CORE.u0_fcp.r_crc_en; `endif
+`ifdef CAN1127A0 wire wr_crc = `DUT_CORE.u0_fcp.r_wr[5]; `endif
+`ifdef CAN1127A0 wire crc_en = `DUT_CORE.u0_fcp.r_crc_en; `endif
 
 initial
 #(1000*1000) forever @(posedge `DUT_ANA.OSC_O)

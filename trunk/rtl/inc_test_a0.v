@@ -10,14 +10,15 @@
 // wire [6:0] revid = 'h5a; // 1121a0
 // wire [6:0] revid = 'h2e; // 1124a0
 // wire [6:0] revid = 'h2f; // 1124b0 (a0eco2)
-   wire [6:0] revid = 'h30; // 1126a0
+// wire [6:0] revid = 'h30; // 1126a0
+   wire [6:0] revid = 'h31; // 1127a0
 
    wire [3:0] tsdo_sel = r_do_ts[6:3];
    wire muxo_ts =
 	tsdo_sel=='h0 ? 1'h0 :
 	tsdo_sel=='h1 ? 1'h1 :
-	tsdo_sel=='h2 ? divff_5 :
-	tsdo_sel=='h3 ? divff_8 :
+	tsdo_sel=='h2 ? divff_o :
+	tsdo_sel=='h3 ? 1'h0 :
 	tsdo_sel=='h4 ? dp_comp :
 	tsdo_sel=='h5 ? dm_comp :
 	tsdo_sel=='h6 ? cc1_di :
@@ -78,9 +79,8 @@
    assign CCI2C_EN   = atpg_en ? 'h0 : cci2c_mode;
    assign XTM        = atpg_en ? 'h0 : r_xtm[3:0];
    assign ANA_TM     = atpg_en ? 'h0 : r_ana_tm;
-   assign BCK_REGX   = {r_bck1,r_bck0};
-   assign ANA_REGX[7:0] = r_xana[7:0];
-   assign ANA_REGX[15:8] = atpg_en ? 'h0 : r_xana[15:8];
+   assign BCK_REGX   = atpg_en ? 'h0 : {r_bck1,r_bck0} | {10'h0,frc_lg_on,2'h0,frc_hg_off,2'h0};
+   assign ANA_REGX   = atpg_en ? 'h0 : r_xana[15:0];
    assign LFOSC_ENB  = atpg_en ? 'h0 : r_xana[23], // XANA2[7]
 	  STB_RP     = atpg_en ? 'h0 : x_stb_rp, // XANA2[3] ^ DRP_OSC
 	  RD_ENB     = atpg_en ? 'h1 : x_rd_enb, // XANA2[2] ^ DRP_OSC

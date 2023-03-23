@@ -16,7 +16,7 @@ input		dm_fault, cc1_di, cc2_di, // async.
 		di_rd_det, di_stbovp,
 		i_tmrf,
 		i_vcbyval, dnchk_en,
-output		r_pwrv_upd, aswkup,
+output		r_pwrv_upd, aswkup, lg_dischg, frc_hg_off,
 		ps_pwrdn,
 		r_sleep, r_pwrdn, r_ocdrv_enz,
 		r_osc_stop, r_osc_lo, r_osc_gate,
@@ -104,7 +104,7 @@ input	[4:0]	prx_rcvinf,
 input	[2:0]	ptx_fsm,
 input	[3:0]	prx_fsm, prl_fsm,
 input	[6:0]	prx_setsta,
-input		clk_1500k, clk_500k, clk_500,
+input		clk_1p0m, clk_500,
 		clk, xrstz, xclk,
 output	[31:0]	dbgpo,
 output		srstz, prstz
@@ -152,7 +152,7 @@ output		srstz, prstz
    wire r_ack_hi = r_dec[7]=='h1; // to enable NVM access
    wire cc_stat = prx_rcvinf[3];
    wire cc_idle = prx_rcvinf[4];
-   assign bus_idle = i_i2c_idle & cc_idle & ~prl_cany0 & (~|ptx_fsm);
+   assign bus_idle = i_i2c_idle & cc_idle & ~prl_cany0 & (~|prl_fsm);
 
    wire [7:0] irq03,irq04,irq28,irqAE,irqDF;
    assign o_intr = {
@@ -339,11 +339,11 @@ output		srstz, prstz
    wire lt_reg26_0;
    wire i2c_mode_upd = (we['hca] | (lt_reg26_0^reg26[0])) & bus_idle;
    wire i2c_mode_wdat = we['hca] ? wdat[0] : lt_reg26_0;
-   glreg #(1)       u0_reg26 (clk, rrstz, we['hca], wdat[0], lt_reg26_0); // temp
+   glreg #(1,1'h1)  u0_reg26 (clk, rrstz, we['hca], wdat[0], lt_reg26_0); // temp
    glreg #(1,1'h1)  u1_reg26 (clk, rrstz, i2c_mode_upd, i2c_mode_wdat, reg26[0]); // I2CDEVA[0]
    glreg #(7,7'h70) u2_reg26 (clk, rrstz, we['hca], wdat[7:1], reg26[7:1]); // I2CDEVA[7:1]
    assign r_i2c_deva = reg26[7:1];
-   assign r_hwi2c_en = reg26[0];
+   assign r_hwi2c_en = reg26[0]; // not used since I2CROUT defined
 
    glreg u0_reg27 (clk, rrstz, we['hcb], wdat, reg27); // I2CMSK
 
@@ -508,7 +508,7 @@ output		srstz, prstz
    assign r_fcpre = sfr_r & hit['h97];
 
    assign regA0 = `UNUSED_D4; // MCU(p2)
-   glreg u0_regA1 (clk, rrstz, we['ha2], wdat, regA1); // REGTRM0
+   glreg u0_regA1 (clk, rrstz, we['ha1], wdat, regA1); // REGTRM0
    glreg u0_regA2 (clk, rrstz, we['ha2], wdat, regA2); // REGTRM1
    glreg u0_regA3 (clk, rrstz, we['ha3], wdat, regA3); // REGTRM2
    glreg u0_regA4 (clk, rrstz, we['ha4], wdat, regA4); // REGTRM3
@@ -533,14 +533,14 @@ output		srstz, prstz
         u2_ovp_db  (.o_dbc(reg94[2]),.o_chg(),.i_org(srci[2]),.clk(clk_500),.rstz(rrstz)),
         u1_ocp_db  (.o_dbc(reg94[1]),.o_chg(),.i_org(srci[1]),.clk(clk_500),.rstz(rrstz)),
         u1_uvp_db  (.o_dbc(reg94[0]),.o_chg(),.i_org(srci[0]),.clk(clk_500),.rstz(rrstz)); 
-   dbnc // #(4,15) debounce 15~16 *2us +sync
-        u1_ovp_db  (.o_dbc(m_ovp),   .o_chg(m_ovp_sta),.i_org(srci[2]),  .clk(clk_500k),.rstz(rrstz));
-   dbnc #(3,5) // debounce 5~6 *2/3us +sync
-	u0_otpi_db (.o_dbc(regAD[3]),.o_chg(setAE[3]), .i_org(srci[5]),  .clk(clk_1500k),.rstz(rrstz)), // OTPI
-	u0_ocp_db  (.o_dbc(regAD[1]),.o_chg(setAE[1]), .i_org(srci[1]),  .clk(clk_1500k),.rstz(rrstz)),
-	u0_uvp_db  (.o_dbc(regAD[0]),.o_chg(setAE[0]), .i_org(srci[0]),  .clk(clk_1500k),.rstz(rrstz)),
-        u1_scp_db  (.o_dbc(m_scp),   .o_chg(m_scp_sta),.i_org(srci[3]),  .clk(clk_1500k),.rstz(rrstz)),
-	u0_dmf_db  (.o_dbc(regAD[7]),.o_chg(setAE[7]), .i_org(dm_fault), .clk(clk_1500k),.rstz(rrstz));
+   dbnc #(5,30) // debounce 30~31 *1us +sync
+        u1_ovp_db  (.o_dbc(m_ovp),   .o_chg(m_ovp_sta),.i_org(srci[2]),  .clk(clk_1p0m),.rstz(rrstz));
+   dbnc #(2) // debounce 3~4 *1us +sync
+	u0_otpi_db (.o_dbc(regAD[3]),.o_chg(setAE[3]), .i_org(srci[5]),  .clk(clk_1p0m),.rstz(rrstz)), // OTPI
+	u0_ocp_db  (.o_dbc(regAD[1]),.o_chg(setAE[1]), .i_org(srci[1]),  .clk(clk_1p0m),.rstz(rrstz)),
+	u0_uvp_db  (.o_dbc(regAD[0]),.o_chg(setAE[0]), .i_org(srci[0]),  .clk(clk_1p0m),.rstz(rrstz)),
+        u1_scp_db  (.o_dbc(m_scp),   .o_chg(m_scp_sta),.i_org(srci[3]),  .clk(clk_1p0m),.rstz(rrstz)),
+	u0_dmf_db  (.o_dbc(regAD[7]),.o_chg(setAE[7]), .i_org(dm_fault), .clk(clk_1p0m),.rstz(rrstz));
    dbnc #(2,2) // 2~3T (3 samples) +sync
 	u0_otps_db (.o_dbc(reg94[7]),.o_chg(),         .i_org(srci[5]),  .clk(clk),.rstz(rrstz)), // sync-OTPI
 	u0_cc1_db  (.o_dbc(s_cci2c1),.o_chg(),         .i_org(cc1_di),   .clk(clk),.rstz(rrstz)),
@@ -566,13 +566,39 @@ output		srstz, prstz
    assign regE1 = dac_r_comp; // sync./de-glitch COMPI
    assign {regE2,r_dacwr[12]} = {dac_r_cmpsta,we['he2]}; // CMPSTA
 
-   glreg u0_regE3 (clk, rrstz, we['he3], wdat, regE3); // SRCCTL
+   wire [1:0] lg_pulse_len=3;
+   reg lg_pulse, lg_pulse_12m;
+   reg [4:0] lg_pulse_cnt;
+   wire lg_pulse_start = we['he3] & wdat[7] & wdat[1];
+   always @(posedge clk or negedge rrstz)
+      if (~rrstz) lg_pulse_12m <= 1'h0;
+      else if (lg_pulse_start) lg_pulse_12m <= 1'h1;
+      else if (lg_pulse) lg_pulse_12m <= 1'h0;
+   always @(posedge clk_1p0m or negedge rrstz)
+      if (~rrstz) begin
+         lg_pulse_cnt <= 'h0;
+         lg_pulse <= 1'h0;
+      end else if (lg_pulse_start | lg_pulse_12m) begin
+         lg_pulse <= 1'h1;
+         lg_pulse_cnt <= (lg_pulse_len==2'h0) ? 'd3
+                       : (lg_pulse_len==2'h1) ? 'd7
+                       : (lg_pulse_len==2'h2) ? 'd15 : 'd31;
+      end else begin
+         if (lg_pulse_cnt!='h0) lg_pulse_cnt <= lg_pulse_cnt - 1'h1;
+         else if (lg_pulse) lg_pulse <= 1'h0;
+      end
+     
+   glreg #(6) u0_regE3 (clk, rrstz, we['he3], {wdat[6:2],wdat[0]}, {regE3[6:2],regE3[0]}); // SRCCTL
+   assign regE3[7] = 1'h0; // WO
+   assign regE3[1] = lg_pulse | lg_pulse_12m; // AC
    assign r_srcctl = {
            regE3[7:4],regE3[3:2]&{2{~gating_vconn}},
            regE3[1],  regE3[0]&~gating_pwr}; // gating PWR_EN, FW case should be handled by FW  
 
-   assign wkup_by_dnfault = regE3[7];
+   assign wkup_by_dnfault = regE3[6];
    assign aswkup = auto_clr;
+   assign lg_dischg = lg_pulse;
+   assign frc_hg_off = gating_pwr;
 
    wire [3:0] lt_regE4_3_0; // latch PWR_V_LSB when writing
    glreg #(4,'h4) u1_regE4 (clk, rrstz, r_pwrv_upd, lt_regE4_3_0, regE4[3:0]); // real PWRCTL[3:0]

@@ -22,7 +22,7 @@ initial begin
 	   $display ($time,"ns <%m> NOTE: DUT FW task done");
 	end
 	begin: main
-	#100_000
+	#200_000
 	`I2CMST.init (1); // 400KHz, high bit-rate would cause long IDAT access fails PG0 access
 `ifdef IDATA
 	$display ($time,"ns <%m> switch PG0 to BANK11");

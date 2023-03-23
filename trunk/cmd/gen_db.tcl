@@ -22,6 +22,11 @@
 
 ## SRAM cells
 ## copy from CAN1124
+## @3/15, copy from z:\RD\Process\MXIC\SRAM\MSL18B_1536X8_RW10TM4_16_20221107.FRAME_No_leak\ 
+   read_lib  ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.lib
+   write_lib -format db -output MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db MSL18B_1536X8_RW10TM4_16_20221107_worst_syn
+   read_lib  ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_best_syn.lib
+   write_lib -format db -output MSL18B_1536X8_RW10TM4_16_20221107_best_syn.db MSL18B_1536X8_RW10TM4_16_20221107_best_syn
 
 ## IO cells
 ## copy .v and .lib from CAN1124 and modify them for A0/A1 summary

@@ -100,7 +100,7 @@ begin
 
 	#(1*FCP_UI) ScpSingleBlockRd (8'hc6,8'h00); // Addr=c6 / default=00
 	#(1*FCP_UI) ScpSingleBlockRd (8'hc7,8'h00); // Addr=c7 / default=00
-	#(1*FCP_UI) ScpSingleBlockRd (8'hc8,8'h84); // Addr=c8 / default=00 SREAD_VOUT (10mV)
+	#(1*FCP_UI) ScpSingleBlockRd (8'hc8,8'hc4); // Addr=c8 / default=00 SREAD_VOUT (10mV)
 	#(1*FCP_UI) ScpSingleBlockRd (8'hc9,8'h0c); // Addr=c9 / default=00 SREAD_IOUT (50mA)
 	#(1*FCP_UI) ScpSingleBlockRd (8'hca,8'he1); // Addr=ca / default=E1
 	#(1*FCP_UI) ScpSingleBlockRd (8'hcb,8'h28); // Addr=cb / default=28

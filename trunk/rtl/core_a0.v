@@ -390,6 +390,8 @@ input	[3:0]	dbgsel
    regbank u0_regbank (
 	.srci		(di_pro), // {V5OCP,SCP,OTPI,OVP,OCP,UVP}
 	.aswkup		(aswkup),
+	.lg_dischg	(frc_lg_on),
+	.frc_hg_off	(frc_hg_off),
 	.dnchk_en	(dnchk_en),
 	.dm_fault	(dm_fault), // anatop_can1112b0
 	.di_rd_det	(di_rd_det),
@@ -537,8 +539,7 @@ input	[3:0]	dbgsel
 	.ptx_fsm	(ptx_fsm),
 	.prl_fsm	(prl_fsm),
 	.dbgpo		(sfr_dbgpo),
-	.clk_1500k	(clk_1500k),
-	.clk_500k	(clk_500k),
+	.clk_1p0m	(clk_1p0m),
 	.clk_500	(clk_500),
 	.clk		(mclk),
 	.prstz		(prstz), // output, controlled sync. reset for updphy
@@ -772,7 +773,7 @@ input	[3:0]	dbgsel
    wire dpdm_short = r_accctl[4];
    wire r_ena_dac1comp = x_daclsb[2];
    wire [7:0] r_vcomp, r_idacsh, r_cvofsx, r_sdischg;
-   wire [7:0] r_cvcwdat = (|r_cvcwr[5:3]) ? xram_d : sfr_wdat;
+   wire [7:0] r_cvcwdat = (|r_cvcwr[5:2]) ? xram_d : sfr_wdat;
    cvctl u0_cvctl (
 	.r_cvcwr	(r_cvcwr),
 	.wdat		(r_cvcwdat),
@@ -910,9 +911,8 @@ input	[3:0]	dbgsel
 	.mclk		(mclk),
 	.srstz		(srstz),
 	.atpg_en	(atpg_en),
-	.divff_8	(divff_8), // mclk/8, 50%
-	.divff_5	(divff_5), // mclk/120, 20%
-	.clk_1500k	(clk_1500k),
+	.divff_o	(divff_o), // mclk/12, 50%
+	.clk_1p0m	(clk_1p0m),
 	.clk_500k	(clk_500k),
 	.clk_100k	(clk_100k),
 	.clk_50k	(clk_50k),

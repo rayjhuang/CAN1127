@@ -169,6 +169,11 @@ output	[BIT_PLUS-1:0] o_smpl
    glreg u0 (clk, srstz, upd[gi], wda, r_dacvs[8*gi+:8]);
    end // dacvs
    endgenerate
+   wire [7:0]
+   dbg_dacvs_0 = r_dacvs[8*0+:8],
+   dbg_dacvs_1 = r_dacvs[8*1+:8],
+   dbg_dacvs_2 = r_dacvs[8*2+:8],
+   dbg_dacvs_3 = r_dacvs[8*3+:8];
 
    wire tochg = r_loop // don't issue in manual DAC cycles for init.r_comp (if wanted)
               & dacyc_done &~r_sar_en[cs_ptr] // don't issue in both kind of SAR cycles

@@ -76,17 +76,17 @@ end
 `endif // FW
 
 initial begin
-#100_000
+#200_000
 `ifdef SOP // CCI2C_ENTER(SOP)
 	`I2CMST.sfrw (`RXCTL,'h01); // SOP
 	`UPD.ExpOrdrs = 1; // SOP
 `else // CCI2C_ENTER(SOP"_Debug)
 	`UPD.ExpOrdrs = 5; // SOP"_Debug
 `endif // SOP
-	`BENCH.i2cmst_pullup = 1; `BENCH.cci2c_pullup = 1; `BENCH.i2c_connect = 2;
 	`UPD.DutsGdCrcSpec = 0; // FW not yet programed PRLTX
 	`UPD.SpecRev = 0; // PD2
 	`UPD.CspW (`X0_I2CROUT,'h01); // CCI2C_EN=1
+	`BENCH.i2cmst_pullup = 1; `BENCH.cci2c_pullup = 1; `BENCH.i2c_connect = 2;
 end
 endmodule // stm_isp_cci2c
 

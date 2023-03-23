@@ -17,7 +17,7 @@ output DI , ANA_R; // to ADC
 inout PAD;
 endmodule
 
-module MSL18B_1536X8_RW10TM4_16 ( DO, CK, CSB, OEB, WEB, A, DI );
+module MSL18B_1536X8_RW10TM4_16_20221107 ( DO, CK, CSB, OEB, WEB, A, DI );
 output	[7:0]	DO;
 input		CK;
 input		OEB, CSB;

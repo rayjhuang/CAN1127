@@ -18,7 +18,7 @@
 `define DUT_MCU     `DUT_CORE.u0_mcu
 `define DUT_CCLK    `DUT_MCU.clkcpu
 
-module hardware_rev; // can1126
+module hardware_rev; // can1127
 initial $fsdbDumpvars;
 `ifdef CAN1124B0 parameter REV_ID = 7'h2f; `endif // CAN1124B0
 `ifdef CAN1126A0 parameter REV_ID = 7'h30; `endif // CAN1126A0
@@ -163,6 +163,11 @@ dbg_width_14 = pulse_width_analy.width_acc[14],
 dbg_width_15 = pulse_width_analy.width_acc[15],
 dbg_width_16 = pulse_width_analy.width_acc[16];
 
+// IO cells ////////////////////////////////////////////////////////////////////
+initial begin
+force `DUT.PAD_GPIO_TS.DI = `DUT.PAD_GPIO_TS.IE ? `DUT_ANA.v_RT>=1100 : 1'h0;
+end // initial
+////////////////////////////////////////////////////////////////////////////////
 
 begin: PB // hw_probe
 dig_probe	SLEEP (`DUT_ANA.SLEEP),

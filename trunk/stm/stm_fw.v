@@ -10,6 +10,7 @@ initial begin
 	`I2CMST.init (1); // 400KHz
 	`HW.set_code(0,'h80);
 	`HW.set_code(1,'hfe); // SJMP -2 @PC=0x0
+	#150_000 // add RSTB_5 to RSTB delay
 	#40_000 `I2CMST.sfrw (`X0_NVMCTL,'h18); // multi-pulse
 	#40_000 $display ($time,"ns <%m> starts.....");
 	fork

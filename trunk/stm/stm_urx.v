@@ -17,7 +17,7 @@ initial begin
 #100	`HW.load_dut_fw ("../fw/urx/urx.2.memh");
 	$display ($time,"ns <%m> starts.....");
 
-	#100_000 // POR
+	#200_000 // POR
 	$display ($time,"ns <%m> starts UART on GPIO1/2");
 	`I2CMST.sfrw (`I2CCTL,'h1); // inc
 	#1_200_000 // FW initial
