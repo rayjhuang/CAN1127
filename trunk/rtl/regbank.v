@@ -12,6 +12,7 @@ module regbank (
 // ALL RIGHTS ARE RESERVED
 // =============================================================================
 input	[5:0]	srci, // async.
+input	[1:0]	lg_pulse_len,
 input		dm_fault, cc1_di, cc2_di, // async.
 		di_rd_det, di_stbovp,
 		i_tmrf,
@@ -566,7 +567,6 @@ output		srstz, prstz
    assign regE1 = dac_r_comp; // sync./de-glitch COMPI
    assign {regE2,r_dacwr[12]} = {dac_r_cmpsta,we['he2]}; // CMPSTA
 
-   wire [1:0] lg_pulse_len=3;
    reg lg_pulse, lg_pulse_12m;
    reg [4:0] lg_pulse_cnt;
    wire lg_pulse_start = we['he3] & wdat[7] & wdat[1];

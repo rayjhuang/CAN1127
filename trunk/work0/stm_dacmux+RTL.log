@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Mar 24, 2023 at 16:48:40 CST
+TOOL:	ncverilog	15.20-s024: Started on Mar 24, 2023 at 17:04:55 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -97,13 +97,9 @@ ncverilog
 	-l
 	stm_dacmux+RTL.log
 Recompiling... reason: file '../rtl/dacmux.v' is newer than expected.
-	expected: Fri Mar 24 16:31:25 2023
-	actual:   Fri Mar 24 16:48:08 2023
+	expected: Fri Mar 24 16:48:08 2023
+	actual:   Fri Mar 24 17:04:38 2023
 file: /mnt/app1/ray/project/can1127/rtl/dacmux.v
-	module worklib.dacmux:v
-		errors: 0, warnings: 0
-	module worklib.dac2sar:v
-		errors: 0, warnings: 0
 	module worklib.shmux:v
 		errors: 0, warnings: 0
 file: /mnt/app1/ray/project/can1127/macro/io_udp.v
@@ -122,14 +118,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.dac2sar:v <0x330c3001>
-			streams:  20, words:  5666
-		worklib.dacmux:v <0x1d9d751d>
-			streams:  42, words: 14872
-		worklib.shmux:v <0x35ae0500>
-			streams:  17, words:  6914
-		worklib.stm_dacmux:v <0x74cefd77>
-			streams:  69, words: 150102
+		worklib.shmux:v <0x2f006f1d>
+			streams:  17, words:  6897
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -28866,4 +28856,4 @@ Read dummy cycle.
 Simulation complete via $finish(1) at time 711336820880 PS + 0
 ../stm/stm_task.v:50    `HW_FIN (($time,"ns <%m> NOTE: simulation completed by HW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Mar 24, 2023 at 16:51:25 CST  (total: 00:02:45)
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 24, 2023 at 17:07:36 CST  (total: 00:02:41)

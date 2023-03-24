@@ -169,6 +169,12 @@
 
 // XDATA register (CAN1123)
 `define REGX(X0) {9'h1ff,X0}
+
+`define X0_BCK0		7'h04
+`define X0_BCK1		7'h05
+`define X0_BCK2		7'h06
+`define X0_DMY0		7'h07
+
 `define X0_PWM0		7'h08
 `define X0_PWM1		7'h09
 

@@ -371,7 +371,7 @@ input	[3:0]	dbgsel
    wire [4:0]	r_txnumk, prx_rcvinf;
    wire [3:0]	prx_fsm, prl_fsm;
    wire [2:0]	ptx_fsm, prl_cpmsgid;
-   wire [1:0]	r_spec, r_dat_spec, r_auto_gdcrc, pff_ack, prx_rst;
+   wire [1:0]	r_spec, r_dat_spec, r_auto_gdcrc, pff_ack, prx_rst, lg_pulse_len;
    wire [5:0]	r_dac3;
    wire [15:0]	r_cvofs;
    wire [7:0]	r_comp_opt;
@@ -389,6 +389,7 @@ input	[3:0]	dbgsel
 
    regbank u0_regbank (
 	.srci		(di_pro), // {V5OCP,SCP,OTPI,OVP,OCP,UVP}
+	.lg_pulse_len	(lg_pulse_len),
 	.aswkup		(aswkup),
 	.lg_dischg	(frc_lg_on),
 	.frc_hg_off	(frc_hg_off),
@@ -800,7 +801,7 @@ input	[3:0]	dbgsel
 
    wire [1:0] regx_hitbst;
    wire [6:0] r_do_ts, bist_r_ctl;
-   wire [7:0] r_aopt, r_xtm, bist_r_dat, r_adummyi, r_bck0, r_bck1;
+   wire [7:0] r_aopt, r_xtm, bist_r_dat, r_adummyi, r_bck0, r_bck1, r_bck2;
    wire [23:0] r_xana;
    wire [4:0] di_xanav;
    wire [1:0] r_sap;
@@ -818,6 +819,7 @@ input	[3:0]	dbgsel
    wire [15:0] r_pwm;
    wire [4:0] di_aswk;
    wire [3:0] regx_wrcvc;
+   assign lg_pulse_len = r_bck2[1:0];
    assign {r_cvcwr[2],r_cvcwr[5:3]} = regx_wrcvc;
    regx u0_regx (
 	.di_rd_det	(di_rd_det),
@@ -878,6 +880,7 @@ input	[3:0]	dbgsel
         .bkpt_ena       (bkpt_ena),
 	.r_bck0		(r_bck0),
 	.r_bck1		(r_bck1),
+	.r_bck2		(r_bck2),
 	.r_adummyi	(r_adummyi),
 	.r_xana		(r_xana),
 	.di_xana	(di_xanav),

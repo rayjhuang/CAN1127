@@ -23,7 +23,7 @@ input	[15:0]	r_pwm,
 output	[13:0]	regx_wrdac,
 input	[8*10-1:0] dac_r_vs,
 input	[9:0]	dac_comp, r_dac_en, r_sar_en,
-output	[7:0]	r_aopt, r_xtm, r_adummyi, r_bck0, r_bck1,
+output	[7:0]	r_aopt, r_xtm, r_adummyi, r_bck0, r_bck1, r_bck2,
 output	[5:0]	r_i2crout,
 output  [23:0]  r_xana,
 input	[4:0]	di_xana,
@@ -96,9 +96,10 @@ input		clk, rrstz
    assign  reg03 = UNREGX_D4;
    glreg u0_reg04 (clk, rrstz, we['h04], wdat, reg04); // BCK0
    glreg u0_reg05 (clk, rrstz, we['h05], wdat, reg05); // BCK1
+   glreg u0_reg06 (clk, rrstz, we['h06], wdat, reg06); // BCK2
    assign r_bck0 = reg04;
    assign r_bck1 = reg05;
-   assign  reg06 = UNREGX_D4;
+   assign r_bck2 = reg06;
    glreg u0_reg07 (clk, rrstz, we['h07], wdat, reg07); // DMY0
    assign r_adummyi = reg07;
 

@@ -86,6 +86,8 @@ begin
 	`I2CMST.bkwr (`REGTRM0, 13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`REGTRM4, 13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`X0_AOPT, 13,{8'h00,$random,$random,$random});
+	`I2CMST.bkwr (`X0_BCK0, 13,{8'h00,$random,$random,$random});
+	`I2CMST.bkwr (`X0_BCK1, 13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`ATM,     13,{8'h00,$random,$random,$random});
 	`I2CMST.bkwr (`CMPOPT,  13,{8'h00,$random,$random,$random});
 end
@@ -324,7 +326,7 @@ begin
 	64'h0000_0000_0000_0000, // 18h: 1B[3]:TS/DI, STB_OVP
 	64'h0000_00f0_0008_0000, // 10h: SAP, HWTRP
 	64'h00ff_ffff_ffff_0000, // 08h:
-	64'h00ff_0000_ff00_0000  // 00h:
+	64'h0000_0000_ff00_0000  // 00h:
 	});
 	$display ($time,"ns <%m> starts.....WR1");
 	`I2CMST.bkwr ('h00,'h80,{ // Write-1
@@ -347,7 +349,7 @@ begin
 	64'h00ff_fffe_f6ff_ffff, // 18h: EPR_MODE will be update at PWR_V's update, DI_TS=DN_FAULT
 	64'hff00_30f0_ffff_ff76, // 10h: BIST, HWTRP
 	64'hffff_ffff_ffff_ffff, // 08h:
-	64'hf5ff_ffff_ffff_ffff  // 00h:
+	64'hf5af_ffff_ffff_ffff  // 00h:
 	});
 	$display ($time,"ns <%m> starts.....WR0");
 	`I2CMST.bkwr ('h00,'h80,{ // Write-0
@@ -365,7 +367,7 @@ begin
 	64'h0000_0000_0100_0000, // 18h:
 	64'h0000_00f4_0000_0000, // 10h: SAP, HWTRP, IMP_OSC
 	64'h00ff_ffff_ffff_0000, // 08h:
-	64'h00ff_0000_ff00_0000  // 00h:
+	64'h0000_0000_ff00_0000  // 00h:
 	});
 end
 endtask // TxRegx

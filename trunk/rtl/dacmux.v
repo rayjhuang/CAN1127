@@ -372,9 +372,8 @@ input	clk, srstz
    assign pos_dacis = r_dacis;
    assign sh_hold = ~|r_dacis; 
    always@(negedge clk)
-   	if(~srstz) neg_dacis <= {N_CHNL{1'h0}};
+   	if (~srstz | (|neg_dacis)) neg_dacis <= {N_CHNL{1'h0}};
 	else if (sampl_done) neg_dacis <= r_dacis;
-	else neg_dacis <= {N_CHNL{1'h0}};
 
    always @(posedge clk) // non-overlap
       if (~srstz) r_dacis <= {N_CHNL{1'h0}};
