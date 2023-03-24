@@ -167,9 +167,9 @@ input		i_prefetch
    assign o_idle = cs_bit=='hf;
    assign o_busev = {
 	i2c_p, // STOP (P)
-	i2c_s, // START (S/Sr)
+	cmd_written,
 	dev_ack_nak, // dev.addr ack/nak
-	cmd_written};
+	i2c_s}; // START (S/Sr)
    assign o_dbgpo = {sclfall,sclrise,sdarise,i2c_p,cs_bit[3:0]};
 
 endmodule // i2cslv

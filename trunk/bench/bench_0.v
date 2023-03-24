@@ -143,7 +143,17 @@ begin: EVB
 
    initial `DUT_ANA.v_VIN = 10_000; // for traditional POWER-GOOD check
 
-   wire [15:0] v_VBUS = `DUT_ANA.v_VO;
+// --- CV loop ---
+   reg [15:0] v_VBUS =0;
+   reg [15:0] delta_VO, VO_target;
+   always @(`DUT_ANA.v_DAC_CV) VO_target = `DUT_ANA.v_DAC_CV *10; // x10 CV loop
+   always #1000 if (VO_target!=v_VBUS) begin
+      delta_VO = VO_target - v_VBUS;
+      v_VBUS = v_VBUS + ((delta_VO<=33 && delta_VO>0) ?1
+                          :(delta_VO<0 && delta_VO>=-33) ?-1 :$signed(delta_VO*3/100));
+   end
+
+   assign `DUT_ANA.v_VO = v_VBUS;
    wire PWR_ENABLE    = `DUT_ANA.GATE;
    wire DISCHARGE     = `DUT_ANA.VO_DISCHG;
 

@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Mar 21, 2023 at 18:26:29 CST
+TOOL:	ncverilog	15.20-s024: Started on Mar 23, 2023 at 19:02:43 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -279,9 +279,6 @@ file: ../bench/uart_bhv.v
 file: ../bench/can1127.v
 	module worklib.hardware_rev:v
 		errors: 0, warnings: 0
-file: ../stm/stm_bkpt.v
-	module worklib.stm_bkpt:v
-		errors: 0, warnings: 0
 file: /mnt/app1/ray/project/can1127/rtl/softmacro.v
 	module rtl.glreg:v
 		errors: 0, warnings: 0
@@ -447,19 +444,19 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   5, words:  1313
 		worklib.ana_probe:v <0x60b2fc57>
 			streams:  24, words: 47191
-		worklib.anatop_1127a0:v <0x15351614>
-			streams:  50, words: 26626
-		worklib.bench:v <0x1f279c16>
-			streams:  70, words: 35067
+		worklib.anatop_1127a0:v <0x48bbe3c4>
+			streams:  46, words: 24754
+		worklib.bench:v <0x6b31cac6>
+			streams:  74, words: 36794
 		worklib.bhv_cc_rcver:v <0x38e08eef>
 			streams:  12, words: 12638
 		worklib.bhv_compm_mux:v <0x5ba98385>
 			streams:  15, words:  9721
 		worklib.bhv_usbpd_controller:sv <0x2c7ee789>
 			streams:  30, words: 68747
-		worklib.chiptop_1127a0:v <0x1eadd4e1>
+		worklib.chiptop_1127a0:v <0x60830acf>
 			streams:  30, words: 11152
-		worklib.core_a0:v <0x7700d36b>
+		worklib.core_a0:v <0x6868fe4e>
 			streams: 147, words: 68043
 		worklib.cvctl:v <0x2c492df2>
 			streams:  13, words:  5493
@@ -487,8 +484,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   3, words:   706
 		worklib.filter150us:v <0x54cd47c2>
 			streams:   4, words:  1228
-		worklib.hardware_rev:v <0x499f307c>
-			streams: 1254, words: 207085
+		worklib.hardware_rev:v <0x1de7cb11>
+			streams: 1256, words: 209005
 		worklib.i2c:v <0x05c8bd8d>
 			streams: 106, words: 75929
 		worklib.i2cdbnc:v <0x140279d9>
@@ -547,7 +544,7 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   9, words:  3011
 		worklib.srambist:v <0x72273ba2>
 			streams:  30, words:  9149
-		worklib.stm_bkpt:v <0x0c6dd901>
+		worklib.stm_bkpt:v <0x7d31b424>
 			streams:  32, words: 67335
 		worklib.syncneg:v <0x26f000cd>
 			streams:  21, words:  5359
@@ -587,16 +584,16 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 		UDPs:                         7       1
 		Primitives:                 202      11
 		Timing outputs:              78      30
-		Registers:                 1794    1301
+		Registers:                 1793    1300
 		Scalar wires:              1540       -
 		Expanded wires:            1091     101
-		Vectored wires:            2175       -
+		Vectored wires:            2176       -
 		Named events:                29      22
 		Always blocks:             1150     693
 		Initial blocks:             136     118
 		Parallel blocks:             74      19
 		Cont. assignments:         2305    3061
-		Pseudo assignments:          50      49
+		Pseudo assignments:          51      50
 		Timing checks:              766     108
 		Delayed tcheck signals:      21      14
 		Compilation units:            1       1
@@ -1010,4 +1007,4 @@ Read dummy cycle.
 Simulation complete via $finish(1) at time 4043855280 PS + 0
 ../stm/stm_task.v:54    forever @(posedge `DUT_CCLK) if (`DUT_MCU.port0o==='hed) `HW_FIN (($time,"ns <%m> NOTE: simulation completed by DUT FW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Mar 21, 2023 at 18:26:37 CST  (total: 00:00:08)
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 23, 2023 at 19:02:48 CST  (total: 00:00:05)

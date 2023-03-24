@@ -50,10 +50,11 @@
 #% svn st -q
 #% svn up -r PREV novas.rc
 
+#% svn info
 #% svn sw file:///mnt/app1/git/svn/can1127/trunk
-#% svn sw file:///mnt/app1/git/svn/can1127/branches/try0
+#% svn sw file:///mnt/app1/git/svn/can1127/branches/branch_01
 
-svn copy http://svn.example.com/repos/calc/trunk \
-         http://svn.example.com/repos/calc/branches/my-calc-branch \
-           -m"creating a private branch of /calc/trunk."
+   svn copy file:///mnt/app1/git/svn/can1127/trunk \
+            file:///mnt/app1/git/svn/can1127/branches/branch_01 \
+            -m "creating a new branch of /branches/branch_01"
 

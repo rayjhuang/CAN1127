@@ -178,14 +178,7 @@ reg [15:0] v_DAC_CV; // used in bench_u0.v
 always @(DAC0 or DAC3 or CV2) v_DAC_CV = (DAC0+DAC3*2)*(CV2?2:1); // mV
 
 // --- CV loop of EVB
-reg [15:0] v_VO =0;
-integer delta_VO, VO_target;
-always @(v_DAC_CV) VO_target = v_DAC_CV *10; // EVB
-always #1000 if (VO_target!=v_VO) begin
-   delta_VO = VO_target - v_VO;
-   v_VO = v_VO + ((delta_VO<=33 && delta_VO>0) ?1
-                   :(delta_VO<0 && delta_VO>=-33) ?-1 :$signed(delta_VO*3/100));
-end
+wire [15:0] v_VO; // CSP
 
 
 bhv_compm_mux #(18)

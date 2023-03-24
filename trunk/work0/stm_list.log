@@ -1,0 +1,8 @@
+Fri Mar 24 10:45:55 CST 2023
+all_stm: 74
+all_log: 67
+all_run: 66 	(started)
+all_pas: 66 	(completed)
+all_int: 0 	(interrupted)
+all_ext: 0 	(compiler exited)
+all_err: 0 	(error finished)

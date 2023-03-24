@@ -53,10 +53,7 @@ input [15:0] vin, r_cvofs; // 10mV
 		:vin<768*2 ?vin+2*r_cvofs[2*4+:4] :vin+2*r_cvofs[3*4+:4]; // 10mV
 endfunction
 
-VTARGET VTARGET();
-endmodule // stm_scan_pwrv
+ana_probe VTARGET (`BENCH.EVB.VO_target);
 
-`define PBNAME VTARGET
-`define PBANA (`DUT_ANA.VO_target)
-`include "inc_probe.v"
+endmodule // stm_scan_pwrv
 
