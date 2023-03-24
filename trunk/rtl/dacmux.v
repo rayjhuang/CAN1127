@@ -91,7 +91,9 @@ output	[BIT_PLUS-1:0] o_smpl
    wire [BIT_PTR-1:0] lsbsel = x_daclsb[5:3];
    wire sar10_ch = r_sar10 & (lsbsel==cs_ptr); // the first 8 channels only
    wire [9:0] r_dac1v, r_rpt_v;
+   wire ps_sample = wr_ctl ?r_wdat[4] :r_sample;
    dac2sar u0_dac2sar (
+	.ps_sample	(ps_sample),
 	.r_dacyc	(r_dacyc),
 	.r_dac_t	(r_dac_t),
 	.r_sar10	(sar10_ch),
@@ -113,14 +115,12 @@ output	[BIT_PLUS-1:0] o_smpl
 	.srstz		(srstz)); // u0_dac2sar
 
    wire ps_md4ch  = wr_ctl ?r_wdat[5] :r_md4ch;
-   wire ps_sample = wr_ctl ?r_wdat[4] :r_sample;
    wire [N_CHNL-1:0] app_dacis, pos_dacis;
    shmux #(
 	.N_CHNL		(N_CHNL),
 	.N_DACV		(N_DACV),
 	.BIT_PTR	(BIT_PTR))
     u0_shmux (
-	.ps_sample	(ps_sample),
 	.ps_md4ch	(ps_md4ch),
 	.r_comp_swtch	(r_comp_swtch),
 	.r_semi		(r_semi),
@@ -254,6 +254,7 @@ output	sampl_begn,
 	sampl_done, sh_rst,
 	dacyc_done,
 	sacyc_done,
+	ps_sample,
 output	[9:0]
 	dac_v, // DAC1 code
 	rpt_v, // report value
@@ -266,13 +267,16 @@ input	clk, srstz
 `else
    wire [6:0] T_SDAC = r_dacyc ? 'd23 : 'd11; // successive DAC cycles
 `endif // FPGA
-   wire [6:0] T_SMPL = r_dac_t=='h0 ?'d35 // the sampling cycle
+   wire [6:0] T_SMPL = r_dac_t=='h0 ?'d35 // sampling cycle, N+1 (-3T for sampling time)
                       :r_dac_t=='h1 ?'d47
                       :r_dac_t=='h2 ?'d59 :'d83;
+   wire sacyc_last = sarcyc==(r_sar10 ?'h9 :'h7);
    assign sampl_begn = dacnt=='h1 && sarcyc=='h0 ; // sample begin
-   assign sampl_done = dacnt==(T_SMPL-'h1); // sample done
+   assign sampl_done = ps_sample
+                      ?dacnt==(T_SDAC-'h1) && sacyc_last
+                      :dacnt==(T_SMPL-'h1);
    assign dacyc_done = dacnt==((sarcyc) ? T_SDAC : T_SMPL);
-   assign sacyc_done = sarcyc==(r_sar10 ?'h9 :'h7) && dacyc_done;
+   assign sacyc_done = sacyc_last & dacyc_done;
 
    always @(posedge clk)
       if (~srstz | stop | dacyc_done) 
@@ -323,8 +327,7 @@ parameter BIT_PTR = 'd3, // these assignments equivalent to CAN1121
 parameter N_DACV = 'd8, // see the real value in its instanciation
 parameter N_CHNL = 'd11 // 3-channel switchable (0,4,5)
 )(
-input	ps_sample,
-	ps_md4ch,
+input	ps_md4ch,
 	r_comp_swtch,
 	r_semi,
 	r_loop,
@@ -347,7 +350,7 @@ input	clk, srstz
           cs_ptr = cs_mux[BIT_PTR-1:0];
 
    wire mux_upd = auto_start | semi_start | mxcyc_done;
-   wire [BIT_PTR-1:0] sel_ptr = ps_sample ?ps_ptr :cs_ptr,
+   wire [BIT_PTR-1:0] sel_ptr = cs_ptr,
                       mux_ptr = sel_ptr | ((sel_ptr<'h8)&ps_md4ch ?'h4 :'h0);
    wire [N_CHNL-1:0] tmptr = {{N_CHNL-1{1'h0}},1'h1}<<mux_ptr; // temp
    reg [N_CHNL-1:0] r_dacis, ps_dacis;
@@ -375,12 +378,8 @@ input	clk, srstz
 
    always @(posedge clk) // non-overlap
       if (~srstz) r_dacis <= {N_CHNL{1'h0}};
-      else if (ps_sample) begin
-         if (mux_upd) r_dacis <= ps_dacis;
-         else if (ps_ptr!=cs_ptr && sampl_done) r_dacis <= {N_CHNL{1'h0}}; // 1T non-overlap
-      end
-      else if (stop | sampl_done) r_dacis <= {N_CHNL{1'h0}};
       else if (sampl_begn) r_dacis <= ps_dacis;
+      else if (sampl_done | stop) r_dacis <= {N_CHNL{1'h0}};
 
    always @(posedge clk)
       if (stop) cs_mux[BIT_PTR] <= 1'h1;
