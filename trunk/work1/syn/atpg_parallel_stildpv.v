@@ -1,14 +1,14 @@
 // Verilog STILDPV testbench written by  TetraMAX (TM)  H-2013.03-i130221_204017 
-// Date: Fri Mar 17 16:36:09 2023
+// Date: Thu Mar 30 15:24:49 2023
 // Module tested: chiptop_1127a0
 
 `timescale 1 ns / 1 ns
 
-module chiptop_1127a0_test;
+module bench;
    integer verbose;         // message verbosity level
    integer report_interval; // pattern reporting intervals
    integer diagnostic_msg;  // format miscompares for TetraMAX diagnostics
-   parameter NINPUTS = 23, NOUTPUTS = 22;
+   parameter NINPUTS = 20, NOUTPUTS = 22;
    // The next two variables hold the current value of the TetraMAX pattern number
    // and vector number, while the simulation is progressing. $monitor or $display these
    // variables, or add them to waveform views, to see these values change with time
@@ -18,13 +18,13 @@ module chiptop_1127a0_test;
    wire CSP;  reg CSP_REG ;
    wire CSN;  reg CSN_REG ;
    wire VFB;  reg VFB_REG ;
-   wire COM;  reg COM_REG ;
-   wire LG;  reg LG_REG ;
+   wire COMP;  reg COMP_REG ;
    wire SW;  reg SW_REG ;
-   wire HG;  reg HG_REG ;
    wire BST;  reg BST_REG ;
-   wire GATE;  reg GATE_REG ;
    wire VDRV;  reg VDRV_REG ;
+   wire LG;
+   wire HG;
+   wire GATE;
    wire DP;  reg DP_REG ;
    wire DN;  reg DN_REG ;
    wire CC1;  reg CC1_REG ;
@@ -43,12 +43,9 @@ module chiptop_1127a0_test;
    assign CSP = CSP_REG ;
    assign CSN = CSN_REG ;
    assign VFB = VFB_REG ;
-   assign COM = COM_REG ;
-   assign LG = LG_REG ;
+   assign COMP = COMP_REG ;
    assign SW = SW_REG ;
-   assign HG = HG_REG ;
    assign BST = BST_REG ;
-   assign GATE = GATE_REG ;
    assign VDRV = VDRV_REG ;
    assign DP = DP_REG ;
    assign DN = DN_REG ;
@@ -65,17 +62,17 @@ module chiptop_1127a0_test;
    assign GPIO5 = GPIO5_REG ;
 
    // instantiate the design into the testbench
-   chiptop_1127a0 dut (
+   chiptop_1127a0 U0_DUT (
       .CSP(CSP),
       .CSN(CSN),
       .VFB(VFB),
-      .COM(COM),
-      .LG(LG),
+      .COMP(COMP),
       .SW(SW),
-      .HG(HG),
       .BST(BST),
-      .GATE(GATE),
       .VDRV(VDRV),
+      .LG(LG),
+      .HG(HG),
+      .GATE(GATE),
       .DP(DP),
       .DN(DN),
       .CC1(CC1),
@@ -124,7 +121,7 @@ module chiptop_1127a0_test;
       `ifdef tmax_vcde
          // extended VCD, see Verilog specification, IEEE Std. 1364-2001 section 18.3
          if (verbose >= 1) $display("// %t : opening Extended VCD output file sim_vcde.vcd", $time);
-         $dumpports( dut, "sim_vcde.vcd");
+         $dumpports( U0_DUT, "sim_vcde.vcd");
       `endif
 
       //
@@ -187,7 +184,7 @@ module chiptop_1127a0_test;
       else if (verbose>0) $STILDPV_trace(0,0,1,0,1,report_interval,diagnostic_msg); // verbose=1; + trace proc/macro entries
       else                $STILDPV_trace(0,0,0,0,0,report_interval,diagnostic_msg); // verbose=0; only pattern-interval
 
-      $STILDPV_setup( "./syn/atpg_parallel.stil.gz",,,"chiptop_1127a0_test.dut" );
+      $STILDPV_setup( "./syn/atpg_parallel.stil.gz",,,"bench.U0_DUT" );
       while ( !$STILDPV_done()) #($STILDPV_run( pattern_number, vector_number ));
       $display("Time %t: STIL simulation data completed.",$time);
       $finish; // comment this out if you terminate the simulation from other activities

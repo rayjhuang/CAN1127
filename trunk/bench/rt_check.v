@@ -88,7 +88,7 @@ always @(posedge `DUT_ANA.OSC_O)
 always@*
 `endif // GATE
 begin: chkconn // check connections
-parameter N_ANACHK = 47;
+parameter N_ANACHK = 46;
 reg [N_ANACHK-1:0] map;
         #5 map = {
 	`DUT_ANA.TM[3:0]     	=== `DUT_CORE.u0_regbank.u0_regD9.rdat[7:4], // ATM
@@ -97,9 +97,8 @@ reg [N_ANACHK-1:0] map;
 	`DUT_ANA.LDO3P9V	=== `DUT_CORE.u0_cvctl.u0_sdischg.rdat[7], // reg8F
 	`DUT_ANA.VPP_SEL	=== `DUT_CORE.u0_regx.u0_reg12.rdat[5], // NVMCTL[7]
 	`DUT_ANA.OVP_SEL[1:0]	=== `DUT_CORE.u0_regbank.u0_regF5.rdat[7:6], // CVCTL
-	`DUT_ANA.ANTI_INRUSH	=== `DUT_CORE.u0_regbank.u0_regF5.rdat[5],
-	`DUT_ANA.OCP_EN		=== `DUT_CORE.u0_regbank.u0_regF5.rdat[2], // --- 40
-	`DUT_ANA.CS_EN		=== `DUT_CORE.u0_regbank.u0_regF6.rdat[3],
+	`DUT_ANA.ANTI_INRUSH	=== `DUT_CORE.u0_regbank.u0_regF5.rdat[5], // --- 40
+	`DUT_ANA.OCP_EN		=== `DUT_CORE.u0_regbank.u0_regF5.rdat[2],
 	`DUT_ANA.REGTRM[55:48]	=== `DUT_CORE.u0_regbank.u0_regA7.rdat,
 	`DUT_ANA.REGTRM[47:40]	=== `DUT_CORE.u0_regbank.u0_regA6.rdat,
 	`DUT_ANA.REGTRM[39:32]	=== `DUT_CORE.u0_regbank.u0_regA5.rdat,
@@ -112,13 +111,13 @@ reg [N_ANACHK-1:0] map;
 	`DUT_ANA.UVP_SEL  	=== `DUT_CORE.u0_regx.u0_reg1C.rdat[7], // XANA0
 	`DUT_ANA.DPDN_VTH 	=== `DUT_CORE.u0_regx.u0_reg1C.rdat[5],
 	`DUT_ANA.SEL_CCGAIN	=== `DUT_CORE.u0_regx.u0_reg1C.rdat[3],
-	`DUT_ANA.VFB_SW		=== `DUT_CORE.u0_regx.u0_reg1C.rdat[1],
+	`DUT_ANA.VFB_SWB	=== `DUT_CORE.u0_regx.u0_reg1C.rdat[1],
 	`DUT_ANA.CV2		=== `DUT_CORE.u0_regx.u1_reg1C.rdat[0],
 	`DUT_ANA.LFOSC_ENB	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[7], // XANA2
         `DUT_ANA.OCP_SEL	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[1],
         `DUT_ANA.PWREN_HOLD	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[0],
         `DUT_ANA.HVNG_CPEN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[7], // XANA1
-        `DUT_ANA.CPV_SEL	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[6], // --- 20
+        `DUT_ANA.CPVSEL		=== `DUT_CORE.u0_regx.u0_reg1D.rdat[6], // --- 20
         `DUT_ANA.CLAMPV_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[5],
         `DUT_ANA.DP_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[3],
         `DUT_ANA.DN_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[2],
@@ -134,7 +133,7 @@ reg [N_ANACHK-1:0] map;
         `DUT_ANA.LGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[5] | `DUT_CORE.frc_lg_on,
         `DUT_ANA.HGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[4],
         `DUT_ANA.LGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[3],
-        `DUT_ANA.HGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[2],
+        `DUT_ANA.HGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[2] | `DUT_CORE.frc_hg_off,
         `DUT_ANA.DCM_SEL	=== `DUT_CORE.u0_regx.u0_reg04.rdat[1],
         `DUT_ANA.BST_SET	=== `DUT_CORE.u0_regx.u0_reg04.rdat[0],
         `DUT_ANA.SGP[5]		=== `DUT_CORE.u0_regbank.u0_regF6.rdat[0]}; // --- 1

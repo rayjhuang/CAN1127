@@ -250,11 +250,11 @@ input	sar_ini,
 	auto_sar,
 	busy, stop,
 	sync_i,
+	ps_sample,
 output	sampl_begn,
 	sampl_done, sh_rst,
 	dacyc_done,
 	sacyc_done,
-	ps_sample,
 output	[9:0]
 	dac_v, // DAC1 code
 	rpt_v, // report value

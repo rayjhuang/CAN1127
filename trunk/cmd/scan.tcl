@@ -20,8 +20,6 @@
    set_clock_uncertainty -setup 0.5 [ all_clocks ]
    set_clock_uncertainty -hold  0.5 [ all_clocks ]
 
-   source ../cmd/proc.tcl
-
 #  set_wire_load_model [all_design] -name vis18_wl40 -library $std_cell
    set_wire_load_mode top
    set_operating_conditions PVT_1P62V_125C -library $std_cell
@@ -126,21 +124,25 @@
 #  set_input_delay  10 [ remove_from_collection [ all_inputs ] DI_GPIO[0] ] -clock CLK
 #  set_output_delay 10 [ all_outputs ] -clock CLK
 #  set flatten_ds [ get_designs { *_DW* SNPS_CLOCK_GATE_* } ]; set_flatten true -design $flatten_ds
+   report_clocks
+   report_ideal_network
+   report_disable_timing
+   report_timing_requirements -attributes
+   report_timing_requirements -ignored
+   report_timing_requirements -expanded -nosplit
+   report_dont_touch
+
+   set_input_delay 15 [ get_ports { SDA SCL } ] -clock MCLK
 
    set_false_path -thro U0_CORE/U0_SCAN_EN/Y
+
+   source ../cmd/proc.tcl
 
    set_ideal_network [ get_pins {U0_CORE/U0_CLK_MUX/Y} ]
    set_ideal_network [ get_driving_pin [ get_pins U0_CORE/u0_regbank/srstz ]]
 
    set_ideal_network [ get_pins {U0_CORE/U0_SCAN_EN/Y} ]
    set_dont_touch_network [ get_pins {U0_CORE/U0_SCAN_EN/Y} ]
-
-   set_disable_timing [ get_lib_cells -of PAD_* ] -to DI -from IE
-   set_disable_timing [ get_cells U0_CORE/U0_MCK_BUF ] -to Y -from A
-   set_disable_timing [ get_cells U0_CORE/U0_TCK_BUF ] -to Y -from A
-
-#  set_ideal_network [ get_pins {U0_CORE/U0_TCK_BUF/O} ]
-#  set_dont_touch_network [ get_pins {U0_CORE/U0_TCK_BUF/O} ]
 
    compile -area_effort high -map_effort high
    write_file $top -hierarchy -o ./syn/${top}_scan.ddc

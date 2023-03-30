@@ -26,7 +26,9 @@
    wire [55:0] REGTRM;
    wire [9:0] DAC1;
    wire [10:0] DAC0;
-   wire [7:0] PWR_I, DUMMY_IN;
+   wire [7:0] PWR_I;
+   wire [4:0] DUMMY_IN;
+   wire [3:0] DUMMY_OUT;
    wire [5:0] DAC3_V;
 `ifdef FPGA_SYNTHESIS // FPGA synthesis won't include U0_ANALOG_TOP
 // following signals are from U0_CORE,
@@ -44,7 +46,7 @@
    wire LP_EN		= ANAOPT[5];
    wire DNCHK_EN	= ANAOPT[3];
    wire IRP_EN		= ANAOPT[2];
-   wire CCBFEN		= ANAOPT[0];
+   wire CCFBEN		= ANAOPT[0];
    anatop_1127a0 U0_ANALOG_TOP (
 //	.VIN		(VIN),
 	.CC1		(CC1),
@@ -54,7 +56,7 @@
 	.VFB		(VFB),
 	.CSP		(CSP),
 	.CSN		(CSN),
-	.COM		(COM),
+	.COMP		(COMP),
 	.LG		(LG),
 	.SW		(SW),
 	.HG		(HG),
@@ -75,7 +77,7 @@
 	.EN_GM		(EN_GM),
 	.EN_ODLDO	(EN_ODLDO),
 	.EN_IBUK	(EN_IBUK),
-	.CP_EN		(PWREN),
+	.EN_CP		(PWREN),
 	.EXT_CP		(EXT_CP),
 	.INT_CP		(INT_CP),
 	.PWREN_HOLD	(PWREN_HOLD), // once named CPF_SEL
@@ -192,9 +194,9 @@
 	.OSC_O		(OSC_O),
 	.RD_DET		(RD_DET),
 //	.STB_OVP	(STB_OVP),
-//	.CC_SLOPE	({
-//			 CC_SLOPE[1], // CAN1124A0 added, CAN1126A0 removed
-//			 CC_SLOPE[0]}),
+	.CC_SLOPE	({
+			 CC_SLOPE[1], // CAN1124A0 added, CAN1126A0 removed, CAN1127 follows CAN1124
+			 CC_SLOPE[0]}),
 //	.CABLE_COMP	({
 //			 CABLE_COMP[3],
 //			 CABLE_COMP[2],
@@ -209,7 +211,7 @@
 			 OVP_SEL[0]}),	// CAN1121A0 new
 	.OVP		(OVP),
 	.UVP		(UVP),
-	.PWR_I		({
+	.DAC2		({
                          PWR_I[7], // CAN1121A0 add 1-bit
 			 PWR_I[6],
 			 PWR_I[5],
@@ -219,7 +221,7 @@
 			 PWR_I[1],
 			 PWR_I[0]}),
 	.OCP_EN		(OCP_EN),
-	.CS_EN		(CS_EN),
+//	.CS_EN		(CS_EN),	// CAN1127 follows CAN1124
 //	.IFB_CUT	(IFB_CUT),	// CAN1121A0 new
 	.OCP_SEL	(OCP_SEL),
 	.V5OCP		(V5OCP),
@@ -253,7 +255,7 @@
 	.DNCHK_EN	(DNCHK_EN),		// REGTRM[43]
 	.IRP_EN		(IRP_EN),		// REGTRM[42]
 //	.VBUS_REG_SEL	(VBUS_REG_SEL),		// REGTRM[41]
-	.CCBFEN		(CCBFEN),		// REGTRM[40]
+	.CCFBEN		(CCFBEN),		// REGTRM[40]
 	.DN_FAULT	(DN_FAULT),
 	.REGTRM		({
 			 REGTRM[55],
@@ -315,21 +317,21 @@
 	.SEL_CCGAIN	(SEL_CCGAIN),
 //	.SEL_OCDRV	(SEL_OCDRV),
 //	.SEL_FB		(SEL_FB),
-	.VFB_SW		(VFB_SW),
+	.VFB_SWB	(VFB_SWB),
 	.CLAMPV_EN	(CLAMPV_EN),
-	.CPV_SEL	(CPV_SEL), // lower voltage for PWREN charge pump
+	.CPVSEL		(CPVSEL), // lower voltage for PWREN charge pump
 //	.T3A		(T3A),
 //	.CC_FT		(CC_FT),
 //	.CS_DIR		(CS_DIR),
 	.LFOSC_ENB	(LFOSC_ENB),
 //	.IDAC_EN	(IDAC_EN),
 //	.IDAC_SEN	(IDAC_SEN),
-	.OPTO1		(OPTO1),
-	.OPTO2		(OPTO2),
-	.DUMMY_IN	({
-			 DUMMY_IN[ 7],
-			 DUMMY_IN[ 6],
-			 DUMMY_IN[ 5],
+	.DMY_OUT	({
+			 DUMMY_OUT[3],
+			 DUMMY_OUT[2],
+			 DUMMY_OUT[1],
+			 DUMMY_OUT[0]}),
+	.DMY_IN		({
 			 DUMMY_IN[ 4],
 			 DUMMY_IN[ 3],
 			 DUMMY_IN[ 2],

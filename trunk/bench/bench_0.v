@@ -98,7 +98,7 @@ chiptop_1127a0 U0_DUT ( // for DFP development
 	.CSP		(),
 	.CSN		(),
 	.VFB		(),
-	.COM		(),
+	.COMP		(),
 	.LG		(),
 	.SW		(),
 	.HG		(),

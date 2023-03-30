@@ -292,7 +292,7 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape   
+Orientation = Landscape
 [FileBrowser]
 nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb,/mnt/app1/ray/project/can1127/work0,
 nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,
@@ -631,7 +631,7 @@ pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
 font = COURIER12
 [Text.1]
-viewport = 0 0 1101 975 45
+viewport = 362 0 1101 975 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -1412,7 +1412,7 @@ stopCheckpoints = 0
 genCheckpoints = 0
 reverseDebug = FALSE
 [turboSchema_Printer_Options]
-Orientation = Landscape   
+Orientation = Landscape
 [turbo_library]
 bdb_load_scope = 
 TurboLibs = VSC18VGB15ELV16S_1P62V_150C:worst

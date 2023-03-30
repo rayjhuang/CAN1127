@@ -7,15 +7,29 @@ initial #1 $fsdbDumpvars;
 initial timeout_task (1000*50);
 
 initial begin // to watch the de-bounce
-#(1000*1000)
+#(1000*500)
+	`I2CMST.sfrr (`PROSTA,'h00);
+	`I2CMST.sfrw (`PROCTL,'h14); // OVP/SCP falut enable
+	EN_CP.VAL (0);
+	`I2CMST.sfrw (`SRCCTL,'h01); // EN_CP
+	EN_CP.VAL (1);
+	HGOFF.VAL (0);
+#(1000*500)
 	fork
-	begin
+	#1000 begin
 	   `DUT_ANA.r_ovp = 1; #(1000*50) `DUT_ANA.r_ovp = 0; #(1000*1000)
 	   `DUT_ANA.r_ovp = 1; #(1000*5)  `DUT_ANA.r_ovp = 0; #(1000*1000);
 	end
-	begin
+	#0000 begin
 	   `DUT_ANA.r_scp = 1; #(1000*5)  `DUT_ANA.r_scp = 0; #(1000*1000)
 	   `DUT_ANA.r_scp = 1; #(1000*1)  `DUT_ANA.r_scp = 0; #(1000*1000);
+	end
+	#400 begin // 3T protected
+	   EN_CP.VAL (0);
+	   HGOFF.VAL (1);
+	   `I2CMST.sfrw (`PROSTA,'h14);
+	   EN_CP.VAL (1);
+	   HGOFF.VAL (0);
 	end
 	join
 end
@@ -54,15 +68,10 @@ initial begin
 	#100_000 hw_complete;
 end
 
-GPIO3 GPIO3();
-GPIO4 GPIO4();
+dig_probe HGOFF (`DUT_ANA.HGOFF);
+dig_probe EN_CP (`DUT_ANA.EN_CP);
+dig_probe GPIO3 (`DUT.GPIO3);
+dig_probe GPIO4 (`DUT.GPIO4);
 
 endmodule // stm_pwm
-
-`define PBNAME GPIO3
-`define PBSIG (`DUT.`PBNAME)
-`include "inc_probe.v"
-`define PBNAME GPIO4
-`define PBSIG (`DUT.`PBNAME)
-`include "inc_probe.v"
 

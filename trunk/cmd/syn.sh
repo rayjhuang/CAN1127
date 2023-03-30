@@ -16,7 +16,7 @@
    echo `date` --- start syn.tcl					| tee $log
    dc_shell-xg-t -f ../cmd/syn.tcl |& tee ./syn/syn_$DCODE.log
 
-   set grep_0 = "^0|Logic [01][\'is ]* assumed|sensitivity list|multiple driver|No.*equivalent"
+   set grep_0 = "^0|Logic [01][\'is ]* assumed|sensitivity list|multiple driver|No.*equivalent|stated direction"
    set grep_1 = "|Error:|Can.t |cannot |Unable to |undriven |slack \(VIOLATED.*-[0-9]*\.[0-9]"
    set grep_1 = "$grep_1|Tri-State|Latch|Timing loop"
    grep -E "$grep_0$grep_1" ./syn/syn_$DCODE.log			| tee -a $log
@@ -67,6 +67,7 @@
 ################################################################################
    if ( "$1" =~ "RELEASE*" ) then
    echo $DCODE $log
+   setenv RELC 20230330
    if ( ! -e ../release/$DCODE/ )    mkdir ../release/$DCODE/
    cp -p ./syn/chiptop_1127a0_1.v          ../release/$DCODE/
    cp -p ./syn/chiptop_1127a0.sdc          ../release/$DCODE/
@@ -79,8 +80,8 @@
    cp -p ./syn/atpg_*                      ../release/$DCODE/log/
    endif
    if ( "$1" =~ "*PRESIM" ) then
-   grep '[1-9][0-9]\.' chiptop_1127a0_pre.sdf				| tee -a $log
    pt_shell -f ../cmd/pt_pre.tcl | tee ./syn/pt_pre_$DCODE.log
+   grep '[1-9][0-9]\.' chiptop_1127a0_pre.sdf				| tee -a $log
    ln -sf        ./syn/chiptop_1127a0_2.v     gate.v
    ln -sf            ./chiptop_1127a0_pre.sdf gate.sdf
    ls -l gate.*
@@ -95,7 +96,6 @@
 ################################################################################
    if ( "$1" == "POSTSIM" ) then
    setenv DCODE `date +%Y%m%d`
-   setenv RELC 20230313
    setenv RETC 221110
    setenv RET_PATH ~king/WORK/CAN1127A0_A0571A0/APR_LAYOUT
    echo $RELC $RETC $RET_PATH $DCODE
@@ -123,6 +123,7 @@
 #  ln -sf ../release/$RELC/USB_OK${RETC}.spef.max.cp apr_max.lnk
    pt_shell -f ../cmd/pt_best.tcl | tee ./syn/pt_best_$DCODE.log
    pt_shell -f ../cmd/pt_wrst.tcl | tee ./syn/pt_wrst_$DCODE.log
+   ls -la ./syn/pt_*${DCODE}.log
    grep -E '^0|Error:|Can.t |cannot |Unable ' ./syn/pt_*${DCODE}.log
    grep '^ *slack' ./syn/pt_*${DCODE}.log
    grep 'Total Power' syn/pt_*

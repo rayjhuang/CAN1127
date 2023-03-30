@@ -17,19 +17,19 @@
    wire muxo_ts =
 	tsdo_sel=='h0 ? 1'h0 :
 	tsdo_sel=='h1 ? 1'h1 :
-	tsdo_sel=='h2 ? divff_o :
-	tsdo_sel=='h3 ? 1'h0 :
+	tsdo_sel=='h2 ? divff_o1 :
+	tsdo_sel=='h3 ? x_clk :
 	tsdo_sel=='h4 ? dp_comp :
 	tsdo_sel=='h5 ? dm_comp :
-	tsdo_sel=='h6 ? cc1_di :
-	tsdo_sel=='h7 ? cc2_di :
+	tsdo_sel=='h6 ? pwm_o[0] :
+	tsdo_sel=='h7 ? pwm_o[1] :
 	tsdo_sel=='h8 ? di_xanav[0] : // OCP_160M
-	tsdo_sel=='h9 ? pmem_clk[0] : // a0eco3 // di_pro[1] : // OCP
-	tsdo_sel=='ha ? di_xanav[1] : // OCP_80M
+	tsdo_sel=='h9 ? di_xanav[1] : // OCP_80M
+	tsdo_sel=='ha ? di_pro[1] : // OCP
 	tsdo_sel=='hb ? di_pro[3] : // SCP
 	tsdo_sel=='hc ? di_pro[4] : // V5OCP
 	tsdo_sel=='hd ? di_pro[5] : // OTPI_S
-	tsdo_sel=='he ? 1'h0 :
+	tsdo_sel=='he ? t_pmem_clk : // CODE_0.CLK (negedge)
 	tsdo_sel=='hf ? dm_fault : // DN_FAULT
 	                'hx;
 
@@ -61,14 +61,22 @@
    assign PMEM_SAP   = atpg_en ? 2'h0 : r_sap;
    assign VPP_SEL    = atpg_en ? 1'h0 : r_vpp_en;
 
-   assign lp_en    = r_gate_lp ? r_aopt[5] & r_ocdrv_enz : r_aopt[5];
-   assign dnchk_en = r_imp_osc ? r_aopt[3] ^ di_imposc   : r_aopt[3]; // async. usage
-   wire x_stb_rp   = r_xana[19];
-   wire x_rd_enb   = r_xana[18];
-   wire x_pwren_b  = r_xana[12];
+   assign lp_en      = r_gate_lp ? r_aopt[5] & r_ocdrv_enz : r_aopt[5];
+   assign dnchk_en   = r_imp_osc ? r_aopt[3] ^ di_imposc   : r_aopt[3]; // async. usage
+   wire x_stb_rp     = r_xana[19];
+   wire x_rd_enb     = r_xana[18];
+   wire x_pwren_hold = r_xana[16]; // XANA2[0]
+   wire x_hg_off     = r_bck0[2] | frc_hg_off;
+   wire x_lg_off     = r_bck0[3];
+   wire x_hg_on      = r_bck0[4];
+   wire x_lg_on      = r_bck0[5] | frc_lg_on;
+   wire x_cp_en      = r_srcctl[0];
+   wire x_lg_dischg  = r_srcctl[1];
+   wire x_vc1_en     = r_srcctl[2];
+   wire x_vc2_en     = r_srcctl[3];
    wire [15:0] o_dodat0 = {r_osc_lo,oe_gpio[6:0],muxo_ts,do_gpio[6:0]};
    wire [15:0] o_dodat1 = {sram_web,sram_ceb,lp_en,x_stb_rp,x_rd_enb,sram_a[10:0]};
-   wire [15:0] o_dodat2 = {TX_DAT,TX_EN,2'h0,sram_d[7:0],2'h0,dacmux_sel[17:16]};
+   wire [15:0] o_dodat2 = {TX_DAT,TX_EN,x_lg_dischg,x_cp_en,sram_d[7:0],x_lg_on,x_hg_off,dacmux_sel[17:16]};
 
    assign OCDRV_ENZ  = atpg_en ? 'h1 : r_ocdrv_enz;
    assign PWRDN      = atpg_en ? 'h0 : r_pwrdn;
@@ -79,18 +87,18 @@
    assign CCI2C_EN   = atpg_en ? 'h0 : cci2c_mode;
    assign XTM        = atpg_en ? 'h0 : r_xtm[3:0];
    assign ANA_TM     = atpg_en ? 'h0 : r_ana_tm;
-   assign BCK_REGX   = atpg_en ? 'h0 : {r_bck1,r_bck0} | {10'h0,frc_lg_on,2'h0,frc_hg_off,2'h0};
+   assign BCK_REGX   = atpg_en ? 'h0 : {r_bck1,r_bck0[7:6],x_lg_on,x_hg_on,x_lg_off,x_hg_off,r_bck0[1:0]};
    assign ANA_REGX   = atpg_en ? 'h0 : r_xana[15:0];
    assign LFOSC_ENB  = atpg_en ? 'h0 : r_xana[23], // XANA2[7]
 	  STB_RP     = atpg_en ? 'h0 : x_stb_rp, // XANA2[3] ^ DRP_OSC
 	  RD_ENB     = atpg_en ? 'h1 : x_rd_enb, // XANA2[2] ^ DRP_OSC
 	  OCP_SEL    = r_xana[17], // XANA2[1]
-	  PWREN_HOLD = r_xana[16]; // XANA2[0]
+	  PWREN_HOLD = x_pwren_hold;
 
    assign ANAOPT     = atpg_en ? 'h0 : {r_aopt[7:6],lp_en,r_aopt[4],dnchk_en,r_aopt[2:0]};
    assign REGTRM     = atpg_en ? 56'h0 : r_regtrm;
-   assign DUMMY_IN   = r_adummyi[7:0];
-   assign OSC_STOP   = atpg_en ? 'h0 : r_osc_stop;
+   assign DUMMY_IN   = r_adummyi[4:0];
+   assign OSC_STOP   = atpg_en ? 'h0 : r_osc_stop; // RSTB delay
    assign OSC_LOW    = atpg_en ? 'h0 : r_osc_lo;
    assign DAC3_V     = r_dac3;
 // assign IDAC_SEN   = atpg_en ? 'h0 : r_comp_opt[1];
@@ -132,21 +140,21 @@
 	dpdosel=='h0b ? di_pro[3] : // SCP
 	dpdosel=='h0c ? di_pro[4] : // V5OCP
 	dpdosel=='h0d ? di_pro[5] : // OTPI (OTPI_S, original OTPI)
-	dpdosel=='h0e ? 1'h0 :
+	dpdosel=='h0e ? x_pwren_hold :
 	dpdosel=='h0f ? dm_fault : // CCDDOVP/DN_FAULT
 	dpdosel=='h10 ? pwm_o[0] :
 	dpdosel=='h11 ? pwm_o[1] :
 	dpdosel=='h12 ? r_osc_stop :
 	dpdosel=='h13 ? r_osc_lo :
 	dpdosel=='h14 ? di_rd_det :
-	dpdosel=='h15 ? di_stbovp :
-	dpdosel=='h16 ? r_ocdrv_enz :
+	dpdosel=='h15 ? x_lg_off :
+	dpdosel=='h16 ? x_hg_off :
 	dpdosel=='h17 ? x_rd_enb : // RD_ENB
 	dpdosel=='h18 ? x_stb_rp : // STB_RP
-	dpdosel=='h19 ? 1'h0 :
+	dpdosel=='h19 ? x_lg_on :
 	dpdosel=='h1a ? di_drposc : // DRP_OSC
 	dpdosel=='h1b ? di_imposc : // IMP_OSC
-	dpdosel=='h1c ? sdischg_vin : // VIN_DISCHG
+	dpdosel=='h1c ? x_hg_on :
 	dpdosel=='h1d ? sdischg_vbus : // VBUS_DISCHG
 	dpdosel=='h1e ? r_srcctl[5] : // DISCHG_SEL
 	dpdosel=='h1f ? dnchk_en : // DNCHK_EN
@@ -164,51 +172,52 @@
 	dndosel=='h08 ? di_pro[0] : // UVP
 	dndosel=='h09 ? di_pro[1] : // OCP
 	dndosel=='h0a ? di_pro[2] : // OVP
-	dndosel=='h0b ? di_pro[3] : // SCP
-	dndosel=='h0c ? 1'h0 :
-	dndosel=='h0d ? dac1_comp :
-	dndosel=='h0e ? lp_en :
-	dndosel=='h0f ? di_pro[5] : // OTPI_S
+	dndosel=='h0b ? x_vc1_en :
+	dndosel=='h0c ? x_vc2_en :
+	dndosel=='h0d ? di_pro[5] : // OTPI_S
+	dndosel=='h0e ? x_pwren_hold :
+	dndosel=='h0f ? dac1_comp :
 	dndosel=='h10 ? pwm_o[0] :
 	dndosel=='h11 ? pwm_o[1] :
 	dndosel=='h12 ? r_osc_stop :
 	dndosel=='h13 ? r_osc_lo :
-	dndosel=='h14 ? r_osc_gate :
+	dndosel=='h14 ? t_osc_gate :
 	dndosel=='h15 ? r_sleep :
-	dndosel=='h16 ? r_ocdrv_enz :
-	dndosel=='h17 ? r_pwrdn :
+	dndosel=='h16 ? x_hg_off :
+	dndosel=='h17 ? x_cp_en :
 	dndosel=='h18 ? vpp_zero :
 	dndosel=='h19 ? r_vpp_en :
-	dndosel=='h1a ? r_srcctl[0] : // PWREN_A
-	dndosel=='h1b ? x_pwren_b : // PWREN_B (XANA1[4])
-	dndosel=='h1c ? sdischg_vin : // VIN_DISCHG
+	dndosel=='h1a ? lp_en :
+	dndosel=='h1b ? di_imposc : // IMP_OSC
+	dndosel=='h1c ? x_hg_on :
 	dndosel=='h1d ? sdischg_vbus : // VBUS_DISCHG
 	dndosel=='h1e ? cci2c_cc1_dob :
 	dndosel=='h1f ? cci2c_cc2_dob :
 	                'hx;
 
    assign LDO3P9V    = atpg_en ? 'h0 : r_sdischg[7];
-   assign DO_SRCCTL  = atpg_en ? 'h0 : {r_srcctl[7:5],sdischg_vbus,r_srcctl[3:2],sdischg_vin,r_srcctl[0]};
+   assign DO_SRCCTL  = atpg_en ? 'h0 : {r_srcctl[7:5],sdischg_vbus,x_vc2_en,x_vc1_en,x_lg_dischg,x_cp_en};
    assign DO_DAC0    = dac0_code;
    assign DO_PWR_I   = r_pwr_i;
    assign DO_DPDN    = atpg_en ? 'h0 : {dpdm_ie,r_dpdmctl[7:4],dpdm_short};
    assign DO_VOOC[3:0] = atpg_en ? 'h0 : {DpEna,muxo_dp,DmEna,muxo_dn};
 // assign DO_VOOC[5:4] = r_comp_opt[3:2]; // a0eco, 20221110
    assign DO_CCTRX   = atpg_en ? 'h6 : r_cctrx; // S20UB, S100UB
-   assign DO_CVCTL   = atpg_en ? 'h3 : r_cvctl; // CC_ENB, CV_ENB
+// assign DO_CVCTL   = atpg_en ? 'h3 : r_cvctl; // CC_ENB, CV_ENB
+   assign DO_CVCTL   = r_cvctl;
    assign DO_CCCTL   = atpg_en ? 'h0 : r_ccctl; 
 
    assign SH_HOLD    = atpg_en ? 'h1 : sh_hold;
    assign SH_RST     = atpg_en ? 'h0 : sh_rst;
    assign DAC1_EN    = atpg_en ? 'h0 : r_ena_dac1comp;
 
-   wire [15:0] o_dodat5 = {dac0_code[10:0],cci2c_cc2_dob,cci2c_cc1_dob,dnchk_en,sdischg_vbus,sdischg_vin};
-   wire [15:0] o_dodat6 = {DpEna,muxo_dp,DmEna,muxo_dn,4'h0,r_pwr_i[7:0]};
+   wire [15:0] o_dodat5 = {dac0_code[10:0],cci2c_cc2_dob,cci2c_cc1_dob,dnchk_en,sdischg_vbus,1'h0};
+   wire [15:0] o_dodat6 = {DpEna,muxo_dp,DmEna,muxo_dn,2'h0,x_vc1_en,x_vc2_en,r_pwr_i[7:0]};
 
    reg [15:0] d_dodat;
    always @(posedge mclk)
-      if (sh_rst & sh_hold) // use atpg_en failed in do_syn.cmd in CAN1108
-         d_dodat <= o_dodat0^o_dodat1^o_dodat2^o_dodat3^o_dodat4^o_dodat5^o_dodat6^REVID;
+      if (sh_rst & ~sh_hold) // use atpg_en failed in do_syn.cmd in CAN1108
+         d_dodat <= o_dodat0^o_dodat1^o_dodat2^o_dodat3^o_dodat4^o_dodat5^o_dodat6;
 
    reg [3:0] r_lt_gpi; // {SCL,SDA,GPIO1,GPIO2}
    always @*
@@ -235,21 +244,20 @@
    assign pmem_q1   = atpg_en ? d_dodat[7:0]  : PMEM_Q1;
    assign dac1_comp = atpg_en ? d_dodat[8]    : DAC1_COMP;
    assign di_cc_49  = atpg_en ? d_dodat[9]    : RX_DAT;
-   assign di_sqlch  = atpg_en ? d_dodat[11]   : RX_SQL;
+   assign di_sqlch  = atpg_en ? d_dodat[10]   : RX_SQL;
    assign di_gpio   = atpg_en ? d_dodat[6:0]  : {DI_GPIO[6:5],t_di_gpio4,DI_GPIO[3:0]};
    assign di_pro    = atpg_en ? d_dodat[12:7] : SRCI[5:0];
-   assign cc1_di    = atpg_en ? d_dodat[7]    : CC1_DI; // didn't inverted in analog, 2018/02/01 check
-   assign cc2_di    = atpg_en ? d_dodat[15]   : CC2_DI; // CAN1112_REGTRM_define_20180130.xlsx
-   assign dm_comp   = atpg_en ? d_dodat[12]   : DM_COMP;
-   assign dp_comp   = atpg_en ? d_dodat[13]   : DP_COMP;
-   assign dm_fault  = atpg_en ? d_dodat[15]   : DM_FAULT;
-   assign di_ts     = atpg_en ? d_dodat[11]   : DI_TS;
-   assign di_xanav  = atpg_en ? d_dodat[4:0]  : XANAV[4:0];
-   assign di_rd_det = atpg_en ? d_dodat[12]   : RD_DET;
-   assign di_stbovp = atpg_en ? d_dodat[13]   : STB_OVP;
-   assign di_drposc = atpg_en ? d_dodat[13]   : DRP_OSC;
-   assign di_imposc = atpg_en ? d_dodat[13]   : IMP_OSC;
+   assign cc1_di    = atpg_en ? d_dodat[13]   : CC1_DI; // didn't inverted in analog, 2018/02/01 check
+   assign cc2_di    = atpg_en ? d_dodat[14]   : CC2_DI; // CAN1112_REGTRM_define_20180130.xlsx
+   assign dm_comp   = atpg_en ? d_dodat[15]   : DM_COMP;
+   assign dp_comp   = atpg_en ? d_dodat[11]   : DP_COMP;
+   assign dm_fault  = atpg_en ? d_dodat[12]   : DM_FAULT;
+   assign di_ts     = atpg_en ? d_dodat[13]   : DI_TS;
+   assign di_xanav  = atpg_en ? d_dodat[5:0]  : XANAV;
+   assign di_rd_det = atpg_en ? d_dodat[14]   : RD_DET;
+   assign di_drposc = atpg_en ? d_dodat[15]   : DRP_OSC;
+   assign di_imposc = atpg_en ? d_dodat[6]    : IMP_OSC;
 
    assign di_p0     = {dac1_comp,di_gpio[6:0]}; // may need de-bounce
-   assign di_aswk   = {di_imposc,dm_fault,di_rd_det,di_stbovp,di_drposc};
+   assign di_aswk   = {di_imposc,dm_fault,di_rd_det,1'h0,di_drposc};
 

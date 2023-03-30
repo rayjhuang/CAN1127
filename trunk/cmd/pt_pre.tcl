@@ -46,16 +46,17 @@
         create_clock -period $period -waveform [ list 0 [ expr $period/2 ]] -name MCLK [ get_pins U0_ANALOG_TOP/OSC_O ]
 #	set_propagated_clock *
         set_clock_uncertainty 0.2 [ get_clocks ]
+        set_clock_latency 2.5 MCLK
    }
    proc setclock1 { period } {
         remove_clock -all
         create_clock -period $period -waveform [ list 0 [ expr $period/2 ]] -name TCLK [ get_ports GPIO3 ]
 #	set_propagated_clock *
         set_clock_uncertainty 0.2 [ get_clocks ]
+        set_clock_latency 5.0 TCLK
    }
 
    setclock0 50
-   set_clock_latency 2.5 MCLK
 
 #  set_ideal_network [ get_pins U0_MCLK_ICG/ECK ] ;# if no SDF
    read_sdf $set_sdf

@@ -1,0 +1,1305 @@
+
+                            PrimeTime (R)
+           Version J-2014.06-SP3 for RHEL64 -- Oct 16, 2014
+                Copyright (c) 1988-2014 Synopsys, Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys, Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+set PJ_PATH [ getenv PJ_PATH ] ;# /mnt/app1/ray/project/can1127
+/mnt/app1/ray/project/can1127
+set set_net ./syn/chiptop_1127a0_2.v
+./syn/chiptop_1127a0_2.v
+set set_sdf ./chiptop_1127a0_pre.sdf
+./chiptop_1127a0_pre.sdf
+ls -l $set_net $set_sdf
+-rw-r----- 1 ray canyon 15509894 Mar 30 15:23 ./chiptop_1127a0_pre.sdf
+-rw-r----- 1 ray canyon  2018812 Mar 30 15:23 ./syn/chiptop_1127a0_2.v
+set search_path [ list .                 ${synopsys_root}/libraries/syn    ]
+. /mnt/tools/eda_tool/PT14/libraries/syn
+set set_top chiptop_1127a0
+chiptop_1127a0
+read_verilog -hdl_compiler $PJ_PATH/macro/anatop_1127a0_empty.v
+Beginning read_verilog...
+Variable                Value     Type    Default    Constraints
+----------------------- --------- ------- ---------- ----------------------- 
+verilogout_equation     false     string  false
+verilogout_higher_designs_first true string FALSE
+verilogout_ignore_case  false     string  false
+verilogout_include_files          string  
+verilogout_indirect_inout_connection FALSE string FALSE
+verilogout_inout_is_in  false     string  false
+verilogout_no_tri       false     string  false
+verilogout_show_unconnected_pins true string FALSE
+verilogout_single_bit   false     string  false
+verilogout_unconnected_prefix _UNCNTD_ string SYNOPSYS_UNCONNECTED_
+MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db * MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db dw_foundation.sldb
+Loading db file '/mnt/app1/ray/project/can1127/work1/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/std_worst.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/STX018SIO1P4M_WORST.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db'
+Loading db file '/mnt/tools/eda_tool/PT14/libraries/syn/dw_foundation.sldb'
+Loading db file '/mnt/tools/eda_tool/PT14/libraries/syn/gtech.db'
+Loading db file '/mnt/tools/eda_tool/PT14/libraries/syn/standard.sldb'
+  Loading link library 'MSL18B_1536X8_RW10TM4_16_20221107_worst_syn'
+  Loading link library 'worst'
+  Loading link library 'STX018SIO1P4M_WORST'
+  Loading link library 'ATO0008KX8MX180LBX4DA_SS_1p620v_125c'
+  Loading link library 'gtech'
+Loading verilog file '/mnt/app1/ray/project/can1127/macro/anatop_1127a0_empty.v'
+Running PRESTO HDLC
+Compiling source file /mnt/app1/ray/project/can1127/macro/anatop_1127a0_empty.v
+Presto compilation completed successfully.
+Loaded 1 design.
+anatop_1127a0
+1
+read_verilog $set_net
+Loading verilog file '/mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v'
+Information: tri converted to a wire with no special attributes
+	at line 68 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 69 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 70 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 71 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 72 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 73 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 74 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 75 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 76 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 77 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 78 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 79 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 80 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 81 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 82 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 83 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 84 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 85 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 86 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 87 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 88 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+Information: tri converted to a wire with no special attributes
+	at line 542 in /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v (SVR-21)
+1
+current_design $set_top
+{"chiptop_1127a0"}
+set target_library [ list 		MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db 		std_worst.db 		STX018SIO1P4M_WORST.db 		ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db    ]
+MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db
+set synthetic_library [ list dw_foundation.sldb ]
+dw_foundation.sldb
+set link_library [ concat {*} $target_library $synthetic_library ]
+* MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db dw_foundation.sldb
+echo $target_library
+MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db
+link
+Loading db file '/mnt/app1/ray/project/can1127/work1/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/std_worst.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/STX018SIO1P4M_WORST.db'
+Loading db file '/mnt/app1/ray/project/can1127/work1/ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db'
+Loading db file '/mnt/tools/eda_tool/PT14/libraries/syn/dw_foundation.sldb'
+Linking design chiptop_1127a0...
+Information: 431 (64.33%) library cells are unused in library worst.....
+Information: 53 (94.64%) library cells are unused in library STX018SIO1P4M_WORST.....
+Information: total 484 library cells are unused.
+Warning: Some timing arcs have been disabled for breaking timing loops
+	or because of constant propagation. Use the 'report_disable_timing'
+	command to get the list of these disabled timing arcs. (PTE-003)
+Design 'chiptop_1127a0' was successfully linked.
+Information: Removing 613 unneeded designs..... (LNK-034)
+1
+current_design $set_top
+{"chiptop_1127a0"}
+report_reference
+****************************************
+Report : reference
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:00 2023
+****************************************
+
+
+Attributes:
+    b - black-box (unknown)
+    h - hierarchical
+    n - noncombinational
+    u - contains unmapped logic
+    A - abstracted timing model
+    E - extracted timing model
+    S - Stamp timing model
+    Q - Quick timing model (QTM)
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+--------------------------------------------------------------------------------
+ATO0008KX8MX180LBX4DA
+                   ATO0008KX8MX180LBX4DA_SS_1p620v_125c
+                                 394560.00   2        789120.00    b,n
+BUFX12             worst           31.05     1          31.05      
+IOBMURUDA_A0       STX018SIO1P4M_WORST
+                                    0.00     1           0.00      
+IOBMURUDA_A1       STX018SIO1P4M_WORST
+                                    0.00     6           0.00      
+IODMURUDA_A0       STX018SIO1P4M_WORST
+                                    0.00     2           0.00      
+MSL18B_1536X8_RW10TM4_16_20221107
+                   MSL18B_1536X8_RW10TM4_16_20221107_worst_syn
+                                 110710.77   1        110710.77    b,n
+anatop_1127a0                       0.00     1           0.00      h
+core_a0                          441555.47   1        441555.47    h
+--------------------------------------------------------------------------------
+Total 8 references                                    1341417.25
+1
+report_disable_timing -nosplit
+Warning: Some timing arcs have been disabled for breaking timing loops
+	or because of constant propagation. Use the 'report_disable_timing'
+	command to get the list of these disabled timing arcs. (PTE-003)
+CASE_INFO: Case analysis arc disabling performed using 4 thread(s).
+CASE_INFO: Case analysis arc disabling processed 205 cell(s)
+CASE_STATS: TID[ 6] Cell Count[21]
+CASE_STATS: TID[12] Cell Count[21]
+CASE_STATS: TID[11] Cell Count[36]
+CASE_STATS: TID[ 0] Cell Count[127]
+Information: Performing logical update. (UITE-499)
+****************************************
+Report : disable_timing
+	-nosplit
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:00 2023
+****************************************
+
+Flags :     c  case-analysis
+            C  Conditional arc
+            d  default conditional arc
+            f  false net-arc
+            l  loop breaking
+            L  db inherited loop breaking
+	    m  mode
+            p  propagated constant
+            u  user-defined
+            U  User-defined library arcs
+
+Cell or Port                From    To      Sense           Flag  Reason
+--------------------------------------------------------------------------------
+PAD_TST                     IE      DI      negative_unate  p     IE = 1
+PAD_TST                     IE      DI      positive_unate  p     IE = 1
+PAD_TST                     OE      PAD     enable_low      p     OE = 0
+PAD_TST                     OE      PAD     disable_high    p     OE = 0
+PAD_TST                     DO      PAD     positive_unate  p     DO = 0
+U0_CORE/u0_mcu/u_watchdog/U131 A    Y       positive_unate  p     B = 0
+U0_CORE/u0_mcu/u_watchdog/U131 B    Y       negative_unate  p     B = 0
+U0_CORE/u0_mcu/u_watchdog/U131 B    Y       positive_unate  p     B = 0
+U0_CORE/u0_i2cslv/db_scl/U5 B       Y       negative_unate  p     B = 0
+U0_CORE/u0_i2cslv/db_sda/U5 A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_watchdog/U90 A     Y       negative_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U90 A     Y       positive_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U90 B     Y       negative_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U91 A     Y       negative_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U91 A     Y       positive_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U91 B     Y       negative_unate  p     A = 1
+U0_CORE/u0_mcu/u_watchdog/U35 A     Y       negative_unate  p     B = 1
+U0_CORE/u0_mcu/u_watchdog/U35 B     Y       negative_unate  p     B = 1
+U0_CORE/u0_mcu/u_watchdog/U35 B     Y       positive_unate  p     B = 1
+U0_CORE/u0_mcu/u_isr/U230   E       Y       negative_unate  p     E = 0
+U0_CORE/u0_i2cslv/db_scl/U6 A       Y       negative_unate  p     A = 1
+U0_CORE/u0_i2cslv/db_sda/U6 C       Y       negative_unate  p     C = 0
+U0_CORE/u0_mcu/u_watchdog/U83 B     Y       negative_unate  p     B = 1
+U0_CORE/u0_mcu/u_watchdog/U83 C     Y       negative_unate  p     C = 0
+U0_CORE/u0_mcu/u_watchdog/U83 D     Y       negative_unate  p     B = 1, C = 0
+U0_CORE/u0_mcu/u_isr/U207   A       Y       positive_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U207   B       Y       positive_unate  p     B = 0
+U0_CORE/u0_regbank/u0_regDF/U26 D   Y       negative_unate  p     D = 0
+U0_CORE/u0_mcu/u_isr/U196   E       Y       negative_unate  p     E = 0
+U0_CORE/u0_regbank/u0_regAE/U10 A   Y       negative_unate  p     A = 1
+U0_CORE/u0_regbank/u0_regAE/U12 D   Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U281         A       Y       negative_unate  p     C = 1
+U0_CORE/u0_mpb/U281         B       Y       negative_unate  p     C = 1
+U0_CORE/u0_mpb/U281         C       Y       negative_unate  p     C = 1
+U0_CORE/u0_regbank/U575     A       Y       negative_unate  p     B = 0
+U0_CORE/u0_regbank/U575     B       Y       negative_unate  p     B = 0
+U0_CORE/u0_regbank/u0_reg28/U13 D   Y       negative_unate  p     D = 0
+U0_CORE/u0_regbank/drstz_reg_0_ C   D       hold_clk_rise   p     D = 1
+U0_CORE/u0_regbank/drstz_reg_0_ C   D       setup_clk_rise  p     D = 1
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U29 D Y  negative_unate  p     D = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U17 D   Y       negative_unate  p     D = 0
+U0_CORE/u0_fcp/u0_dpdmacc/u0_idsync/d_org_reg_0_ C D hold_clk_rise p D = 0
+U0_CORE/u0_fcp/u0_dpdmacc/u0_idsync/d_org_reg_0_ C D setup_clk_rise p D = 0
+U0_CORE/u0_regx/lt_aswk_reg_5_ C    D       hold_clk_rise   p     D = 1
+U0_CORE/u0_regx/lt_aswk_reg_5_ C    D       setup_clk_rise  p     D = 1
+U0_CORE/u0_regx/lt_aswk_reg_1_ C    D       hold_clk_rise   p     D = 0
+U0_CORE/u0_regx/lt_aswk_reg_1_ C    D       setup_clk_rise  p     D = 0
+U0_CORE/u0_mcu/U110         B       Y       positive_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U218   B       Y       negative_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U218   C       Y       negative_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U201   A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_isr/U223   D       Y       negative_unate  p     D = 1
+U0_CORE/u0_mpb/U138         D       Y       negative_unate  p     D = 1
+U0_CORE/u0_mpb/U138         E       Y       negative_unate  p     E = 1
+U0_CORE/u0_regbank/U379     B       Y       positive_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U162   B       Y       negative_unate  c     B = 1; Y = 1
+U0_CORE/u0_mcu/u_isr/U97    B       Y       negative_unate  p     B = 1
+U0_CORE/u0_mcu/u_isr/U97    C       Y       negative_unate  p     B = 1
+U0_CORE/u0_mcu/u_isr/U107   C       Y       negative_unate  p     D = 1
+U0_CORE/u0_mcu/u_isr/U107   D       Y       negative_unate  p     D = 1
+U0_CORE/u0_mcu/u_isr/U111   A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_isr/U111   C       Y       negative_unate  p     D = 0, A = 0
+U0_CORE/u0_mcu/u_isr/U111   D       Y       negative_unate  p     D = 0
+U0_CORE/u0_mcu/u_isr/U116   C       Y       negative_unate  p     C = 1
+U0_CORE/u0_regbank/U378     B       Y       positive_unate  p     B = 0
+U0_CORE/u0_regbank/U380     B       Y       positive_unate  p     B = 0
+U0_CORE/u0_regbank/U381     B       Y       positive_unate  p     B = 0
+U0_CORE/u0_regbank/U382     B       Y       positive_unate  p     B = 0
+U0_CORE/u0_mcu/u_isr/U65    A       Y       negative_unate  p     A = 1
+U0_CORE/u0_mcu/u_isr/U96    C       Y       positive_unate  p     C = 1
+U0_CORE/u0_mcu/u_isr/U96    D       Y       positive_unate  p     D = 1
+U0_CORE/u0_mpb/U40          D0      Y       negative_unate  p     D0 = 1
+U0_CORE/u0_mpb/U40          S       Y       negative_unate  c     D0 = 1
+U0_CORE/u0_regbank/srl_133/U2979 A  Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/srl_133/U2710 A  Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_sfrmux/U399 C      Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_sfrmux/U399 D      Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_isr/U122   B       Y       negative_unate  p     B = 1
+U0_CORE/u0_regbank/srl_133/U3714 A  Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_sfrmux/U64 C       Y       negative_unate  p     C = 0
+U0_CORE/u0_mcu/u_sfrmux/U300 E      Y       negative_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U300 F      Y       negative_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U426 C      Y       positive_unate  p     C = 0
+U0_CORE/u0_mpb/U129         B       Y       positive_unate  p     B = 0
+U0_CORE/u0_mpb/U220         B       Y       negative_unate  p     B = 1
+U0_CORE/u0_mpb/U220         C       Y       negative_unate  p     C = 1
+U0_CORE/u0_regbank/srl_133/U3535 A  Y       negative_unate  p     A = 0
+U0_CORE/u0_regx/u0_reg10/U2 D0      Y       positive_unate  c     S = 1
+U0_CORE/u0_regx/u0_reg10/U2 S       Y       negative_unate  p     S = 1
+U0_CORE/u0_regx/u0_reg10/U2 S       Y       positive_unate  p     S = 1
+U0_CORE/u0_mcu/u_sfrmux/U364 E      Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U364 F      Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U83 E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U83 F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U294 A      Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_sfrmux/U294 B      Y       negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_sfrmux/U395 G      Y       positive_unate  p     G = 0
+U0_CORE/u0_mcu/u_sfrmux/U395 H      Y       positive_unate  p     G = 0
+U0_CORE/u0_mcu/u_sfrmux/U336 E      Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U336 F      Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_sfrmux/U243 C      Y       positive_unate  p     C = 1
+U0_CORE/u0_mpb/U41          B       Y       positive_unate  p     B = 0
+U0_CORE/u0_regbank/srl_133/U3307 D0 Y       negative_unate  p     D0 = 0
+U0_CORE/u0_regbank/srl_133/U3307 S  Y       positive_unate  c     D0 = 0
+U0_CORE/u0_regbank/srl_133/U3371 D0 Y       negative_unate  p     D0 = 0
+U0_CORE/u0_regbank/srl_133/U3371 S  Y       positive_unate  c     D0 = 0
+U0_CORE/u0_regbank/srl_133/U3404 D0 Y       negative_unate  p     D0 = 0
+U0_CORE/u0_regbank/srl_133/U3404 S  Y       positive_unate  c     D0 = 0
+U0_CORE/u0_mpb/U87          A       Y       negative_unate  p     C = 1
+U0_CORE/u0_mpb/U87          B       Y       negative_unate  p     C = 1
+U0_CORE/u0_mpb/U87          C       Y       negative_unate  p     C = 1
+U0_CORE/u0_mpb/U116         D1      Y       positive_unate  p     D1 = 1
+U0_CORE/u0_mpb/U116         S       Y       negative_unate  c     D1 = 1
+U0_CORE/u0_mpb/U267         D       Y       positive_unate  p     D = 1
+U0_CORE/u0_mpb/U309         A       Y       negative_unate  c     A = 1; Y = 1
+U0_CORE/u0_mpb/U15          C       Y       positive_unate  p     C = 1
+U0_CORE/u0_mpb/U262         B       Y       positive_unate  p     B = 1
+U0_CORE/u0_mpb/U208         B       Y       negative_unate  p     B = 1
+U0_CORE/u0_mpb/U208         C       Y       negative_unate  p     D = 1, B = 1
+U0_CORE/u0_mpb/U208         D       Y       negative_unate  p     D = 1
+U0_CORE/u0_mpb/U289         A       Y       positive_unate  p     A = 1
+U0_CORE/u0_mpb/U250         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U250         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U253         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U253         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U256         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U256         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U259         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U259         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U274         B       Y       positive_unate  p     C = 1
+U0_CORE/u0_mpb/U274         C       Y       positive_unate  p     C = 1
+U0_CORE/u0_mpb/U125         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U125         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U222         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U222         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U236         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U236         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U244         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U244         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U21 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U23 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U11 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U13 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U15 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U9 A    Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U17 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regDF/U19 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U30 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U20 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U22 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U24 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U26 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U28 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U16 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_reg28/U18 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U21 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U23 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U25 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U27 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U27 C   Y       negative_unate  p     C = 1
+U0_CORE/u0_regbank/u0_regAE/U29 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U15 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U17 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_regbank/u0_regAE/U19 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U20 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U22 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U24 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U26 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U12 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U14 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U16 A Y  negative_unate  p     A = 0
+U0_CORE/u0_fcp/u0_fcpegn/u0_fcpsta/U18 A Y  negative_unate  p     A = 0
+U0_CORE/u0_mcu/u_i2c/U272   A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U318         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U318         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U73          C       Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U73          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mpb/U62          C       Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U62          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mpb/U63          C       Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U63          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mpb/U53          C       Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U53          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mpb/U46          A       Y       positive_unate  p     B = 1
+U0_CORE/u0_mpb/U46          B       Y       positive_unate  p     B = 1
+U0_CORE/u0_mpb/U47          C       Y       negative_unate  p     D = 0
+U0_CORE/u0_mpb/U47          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mpb/U268         C       Y       negative_unate  p     D = 1
+U0_CORE/u0_mpb/U268         D       Y       negative_unate  p     D = 1
+U0_CORE/u0_mpb/U282         A       Y       negative_unate  p     B = 1
+U0_CORE/u0_mpb/U282         B       Y       negative_unate  p     B = 1
+U0_CORE/u0_mpb/U282         C       Y       negative_unate  p     B = 1
+U0_CORE/u0_mpb/U13          D       Y       positive_unate  p     D = 0
+U0_CORE/u0_mcu/u_cpu/U2996  C       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2996  D       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2997  C       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2997  D       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2998  C       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2998  D       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2999  C       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2999  D       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U3000  C       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U3000  D       Y       positive_unate  p     C = 0
+U0_CORE/u0_mcu/u_cpu/U2975  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2975  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2976  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2976  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2977  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2977  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2978  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2978  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2979  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2979  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2980  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2980  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2981  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2981  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2982  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2982  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2983  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2983  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2984  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2984  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2985  E       Y       positive_unate  p     E = 0
+U0_CORE/u0_mcu/u_cpu/U2985  F       Y       positive_unate  p     E = 0
+U0_CORE/u0_mpb/U280         A       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U280         B       Y       negative_unate  p     A = 0
+U0_CORE/u0_mpb/U261         D2      Y       negative_unate  p     D2 = 0
+U0_CORE/u0_mpb/U261         S1      Y       negative_unate  c     D2 = 0
+U0_CORE/u0_mpb/U260         A       Y       negative_unate  p     A = 1
+U0_CORE/u0_dacmux/u0_cmpsta/U30 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U28 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U20 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U22 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U24 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U26 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U12 A   Y       negative_unate  p     A = 0
+U0_CORE/u0_dacmux/u0_cmpsta/U14 A   Y       negative_unate  p     A = 0
+
+1
+#  set_wire_load_model -name 60000
+set_wire_load_mode top
+1
+proc setclock0 { period } {
+        remove_clock -all
+        create_clock -period $period -waveform [ list 0 [ expr $period/2 ]] -name MCLK [ get_pins U0_ANALOG_TOP/OSC_O ]
+#	set_propagated_clock *
+        set_clock_uncertainty 0.2 [ get_clocks ]
+        set_clock_latency 2.5 MCLK
+   }
+proc setclock1 { period } {
+        remove_clock -all
+        create_clock -period $period -waveform [ list 0 [ expr $period/2 ]] -name TCLK [ get_ports GPIO3 ]
+#	set_propagated_clock *
+        set_clock_uncertainty 0.2 [ get_clocks ]
+        set_clock_latency 5.0 TCLK
+   }
+setclock0 50
+Warning: Creating a clock on internal pin 'U0_ANALOG_TOP/OSC_O'. (UITE-130)
+Warning: Creating 'clock' on a hierarchical pin 'U0_ANALOG_TOP/OSC_O'. (UITE-137)
+1
+#  set_ideal_network [ get_pins U0_MCLK_ICG/ECK ] ;# if no SDF
+read_sdf $set_sdf
+Information: Merging of parallel arcs is disabled by read_sdf. (SDF-040)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/U949/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DMY_OUT[3]' to pin 'U0_CORE/U647/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DMY_OUT[2]' to pin 'U0_CORE/U646/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DMY_OUT[1]' to pin 'U0_CORE/U645/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DMY_OUT[0]' to pin 'U0_CORE/U644/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/U623/B'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/OCP_80M' to pin 'U0_CORE/U607/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/OCP_160M' to pin 'U0_CORE/U606/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DP_COMP' to pin 'U0_CORE/U605/B'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RX_SQL' to pin 'U0_CORE/U574/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RD_DET' to pin 'U0_CORE/U573/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DN_COMP' to pin 'U0_CORE/U572/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/OVP' to pin 'U0_CORE/U571/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/OTPI' to pin 'U0_CORE/U570/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/CC1_DI' to pin 'U0_CORE/U569/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/CC2_DI' to pin 'U0_CORE/U568/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RX_DAT' to pin 'U0_CORE/U566/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/COMP_O' to pin 'U0_CORE/U565/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V5OCP' to pin 'U0_CORE/U564/B'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/SCP' to pin 'U0_CORE/U563/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/IMP_OSC' to pin 'U0_CORE/U529/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/UVP' to pin 'U0_CORE/U526/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DN_FAULT' to pin 'U0_CORE/U524/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/OCP' to pin 'U0_CORE/U523/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/DRP_OSC' to pin 'U0_CORE/U502/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/U485/E'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/r_lt_gpi_reg_1_/XG'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/r_lt_gpi_reg_3_/XG'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/r_lt_gpi_reg_0_/XG'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/r_lt_gpi_reg_2_/XG'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB' to pin 'U0_CORE/u0_regbank/U9/A'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RD_DET' to pin 'U0_CORE/U0_DCLKMUX/D0'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/VPP_OTP' to pin 'U0_CODE_1_/VDDP'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/VPP_OTP' to pin 'U0_CODE_0_/VDDP'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/TS_ANA_P' to pin 'PAD_GPIO_TS/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO_TS/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO_TS/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/GP5_ANA_P' to pin 'PAD_GPIO5/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO5/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO5/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/GP4_ANA_P' to pin 'PAD_GPIO4/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO4/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO4/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/GP3_ANA_P' to pin 'PAD_GPIO3/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO3/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO3/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/GP2_ANA_P' to pin 'PAD_GPIO2/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO2/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO2/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/GP1_ANA_P' to pin 'PAD_GPIO1/ANA_P'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_GPIO1/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_GPIO1/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_TST/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_TST/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_SDA/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_SDA/VB'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/RSTB_5' to pin 'PAD_SCL/RSTB_5'. (PTE-014)
+Error: No net timing arc from pin 'U0_ANALOG_TOP/V1P1' to pin 'PAD_SCL/VB'. (PTE-014)
+
+****************************************
+Report : read_sdf /mnt/app1/ray/project/can1127/work1/chiptop_1127a0_pre.sdf
+	-load_delay cell
+	-analysis_type on_chip_variation
+	-min_type sdf_min
+	-max_type sdf_max
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+        58 error(s)
+        Number of annotated cell delay arcs :     65461
+        Number of annotated net delay arcs  :     62158
+        Number of annotated timing checks   :     44381
+        Number of annotated constraints     :         2
+        TEMPERATURE: 125.00 (min)  125.00 (max)
+        VOLTAGE    : 1.62 (min)  1.62 (max)
+        PROCESS    : PVT_1P62V_125C (min)  PVT_1P62V_125C (max)
+1
+#  set_output_delay 10 -clock hclk [ remove_from_collection [ all_outputs ] [ get_ports {XDAT_*}]]
+#  set_output_delay 5  -clock hclk [ get_ports {XDAT_WEB XDAT_CEB}]
+#  set_output_delay 3  -clock hclk [ get_ports {XDAT_A*}]
+#  set_output_delay 6  -clock hclk [ get_ports {XDAT_D*}]
+set_disable_timing U0_CORE/U0_MCK_BUF -to Y -from A
+1
+set_disable_timing U0_CORE/U0_TCK_BUF -to Y -from A
+1
+set_disable_timing [ get_lib_cells -of PAD_* ] -to DI -from IE
+1
+set_multicycle_path 1 -to { U0_CODE_*/CSB U0_CODE_*/PGM U0_CODE_*/A* U0_CODE_*/RE U0_CODE_*/TWLB* }
+1
+#  set_disable_timing [ get_timing_arcs -to { U0_CODE/PDIN* } -from { U0_CODE/PWE } ]
+#  set_disable_timing [ get_timing_arcs -to { U0_CODE/PA* }   -from { U0_CODE/PWE } ]
+#  set_false_path -thro U0_CODE/PDOUT*
+#  set_false_path -to   U0_CORE/d_dodat_reg*
+report_timing -nosplit -delay max -path end -max 10
+Warning: Zero transition time will be used at to pins of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-066)
+Warning: No clock-gating check is inferred for clock MCLK 
+	at pins U0_CORE/U0_CLK_MUX/D1 and U0_CORE/U0_CLK_MUX/D0 of cell U0_CORE/U0_CLK_MUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock MCLK 
+	at pins U0_CORE/U0_CLK_MUX/S and U0_CORE/U0_CLK_MUX/D0 of cell U0_CORE/U0_CLK_MUX. (PTE-060)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-slack_lesser_than 0.00
+	-max_paths 10
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+No paths with slack less than 0.00.
+
+1
+report_timing -nosplit -delay min -path end -max 10
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-slack_lesser_than 0.00
+	-max_paths 10
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+No paths with slack less than 0.00.
+
+1
+#  report_timing -nosplit -to [ get_ports GPIO* ] ;# scan chain output
+#  report_timing -nosplit -to u0_ictlr/neg_r_pulse_reg/D
+#  set_false_path -from {i_rstz i_clk atpg_en di_tst } -to DO_GPIO*
+report_timing -nosplit -to   [ get_pins { U0_SRAM/WEB U0_SRAM/CEB U0_SRAM/DI* }]
+Warning: No pin objects matched 'U0_SRAM/CEB' (SEL-004)
+****************************************
+Report : timing
+	-path_type full
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+
+  Startpoint: U0_CORE/u0_updphy/u0_updprl/cs_prcl_reg_3_
+               (rising edge-triggered flip-flop clocked by MCLK)
+  Endpoint: U0_SRAM (rising edge-triggered flip-flop clocked by MCLK)
+  Path Group: MCLK
+  Path Type: max
+
+  Point                                                          Incr       Path
+  -------------------------------------------------------------------------------------
+  clock MCLK (rise edge)                                         0.00       0.00
+  clock network delay (ideal)                                    2.50       2.50
+  U0_CORE/u0_updphy/u0_updprl/cs_prcl_reg_3_/C (SDFFQX2)         0.00       2.50 r
+  U0_CORE/u0_updphy/u0_updprl/cs_prcl_reg_3_/Q (SDFFQX2)         0.72 *     3.22 r
+  U0_CORE/u0_updphy/u0_updprl/U10/Y (NAND21X2)                   0.30 *     3.52 r
+  U0_CORE/u0_updphy/u0_updprl/U84/Y (NAND21X2)                   0.34 *     3.86 r
+  U0_CORE/u0_updphy/u0_updprl/U42/Y (BUFX3)                      0.22 *     4.08 r
+  U0_CORE/u0_updphy/u0_updprl/U66/Y (OAI221X1)                   0.41 *     4.49 f
+  U0_CORE/u0_updphy/U200/Y (MUX2X2)                              0.57 *     5.06 f
+  U0_CORE/u0_updphy/u0_phytx/U10/Y (MUX2IX4)                     0.25 *     5.31 r
+  U0_CORE/u0_updphy/u0_phytx/U70/Y (NAND21X2)                    0.15 *     5.46 f
+  U0_CORE/u0_updphy/u0_phytx/U35/Y (MUX2IX2)                     0.26 *     5.73 r
+  U0_CORE/u0_updphy/u0_phytx/U34/Y (NAND21X2)                    0.19 *     5.92 f
+  U0_CORE/u0_updphy/u0_phytx/U72/Y (NAND2X2)                     0.14 *     6.06 r
+  U0_CORE/u0_updphy/u0_phytx/U61/Y (NAND21X2)                    0.16 *     6.21 f
+  U0_CORE/u0_updphy/u0_phytx/U15/Y (NAND21X4)                    0.14 *     6.35 r
+  U0_CORE/u0_updphy/u0_phytx/U54/Y (INVX1)                       0.15 *     6.50 f
+  U0_CORE/u0_updphy/u0_phytx/U64/Y (NAND2X1)                     0.15 *     6.65 r
+  U0_CORE/u0_updphy/u0_phytx/U65/Y (NAND2X2)                     0.15 *     6.81 f
+  U0_CORE/u0_updphy/u0_phytx/U16/Y (NOR41X2)                     0.35 *     7.16 r
+  U0_CORE/u0_updphy/u0_phytx/U336/Y (NAND21X1)                   0.35 *     7.51 r
+  U0_CORE/u0_updphy/U201/Y (AND2X2)                              0.26 *     7.77 r
+  U0_CORE/u0_updphy/u0_updprl/U212/Y (NAND21X2)                  0.10 *     7.87 f
+  U0_CORE/u0_updphy/u0_updprl/U60/Y (OAI22AX1)                   0.34 *     8.21 r
+  U0_CORE/u0_mpb/U98/Y (INVX2)                                   0.21 *     8.43 f
+  U0_CORE/u0_mpb/U100/Y (NAND21X2)                               0.15 *     8.58 r
+  U0_CORE/u0_mpb/U83/Y (MUX2IX2)                                 0.28 *     8.87 r
+  U0_CORE/u0_mpb/U10/Y (AND2X2)                                  0.36 *     9.22 r
+  U0_CORE/u0_mcu/U13/Y (INVX2)                                   0.13 *     9.35 f
+  U0_CORE/u0_mcu/U12/Y (AND2X1)                                  0.25 *     9.60 f
+  U0_CORE/u0_mcu/U38/Y (NAND2X1)                                 0.13 *     9.73 r
+  U0_CORE/u0_mcu/U49/Y (AND3X4)                                  0.41 *    10.14 r
+  U0_CORE/u0_mcu/U11/Y (INVX6)                                   0.16 *    10.30 f
+  U0_CORE/u0_regbank/srl_133/U2787/Y (INVX8)                     0.14 *    10.44 r
+  U0_CORE/u0_regbank/srl_133/U2750/Y (BUFX8)                     0.24 *    10.68 r
+  U0_CORE/u0_regbank/srl_133/U2796/Y (INVXL)                     0.45 *    11.13 f
+  U0_CORE/u0_regbank/srl_133/U2930/Y (INVXL)                     0.55 *    11.68 r
+  U0_CORE/u0_regbank/srl_133/U2974/Y (INVXL)                     0.78 *    12.46 f
+  U0_CORE/u0_regbank/srl_133/U3548/Y (MUX2IXL)                   0.47 *    12.93 r
+  U0_CORE/u0_regbank/srl_133/U3547/Y (MUX2IXL)                   0.36 *    13.29 f
+  U0_CORE/u0_regbank/srl_133/U3334/Y (MUX2XL)                    0.60 *    13.89 f
+  U0_CORE/u0_regbank/srl_133/U3285/Y (MUX2IXL)                   0.33 *    14.22 r
+  U0_CORE/u0_regbank/srl_133/U3284/Y (MUX2IXL)                   0.38 *    14.60 f
+  U0_CORE/u0_regbank/srl_133/U3514/Y (MUX2IXL)                   0.39 *    14.99 r
+  U0_CORE/u0_regbank/srl_133/U3512/Y (MUX2IXL)                   0.38 *    15.37 f
+  U0_CORE/u0_mcu/u_sfrmux/U330/Y (AOI222XL)                      0.75 *    16.12 r
+  U0_CORE/u0_mcu/u_sfrmux/U331/Y (NAND4X1)                       0.36 *    16.48 f
+  U0_CORE/u0_mcu/u_sfrmux/U267/Y (OR4X1)                         0.99 *    17.47 f
+  U0_CORE/u0_mcu/u_cpu/U1212/Y (INVX1)                           0.22 *    17.69 r
+  U0_CORE/u0_mcu/u_cpu/U123/Y (OA222X1)                          0.73 *    18.43 r
+  U0_CORE/u0_mcu/u_cpu/U3318/Y (MAJ3X1)                          0.44 *    18.86 r
+  U0_CORE/u0_mcu/u_cpu/U3319/Y (MAJ3X1)                          0.51 *    19.38 r
+  U0_CORE/u0_mcu/u_cpu/U3320/Y (MAJ3X1)                          0.53 *    19.91 r
+  U0_CORE/u0_mcu/u_cpu/U3321/Y (MAJ3X1)                          0.48 *    20.39 r
+  U0_CORE/u0_mcu/u_cpu/U1742/Y (XNOR3X1)                         0.89 *    21.28 r
+  U0_CORE/u0_mcu/u_cpu/U1227/Y (OAI22XL)                         0.37 *    21.65 f
+  U0_CORE/u0_mcu/u_cpu/U1225/Y (GEN2XL)                          0.85 *    22.50 f
+  U0_CORE/u0_mcu/u_cpu/U195/Y (NOR4XL)                           0.60 *    23.10 r
+  U0_CORE/u0_mcu/u_cpu/U1744/Y (OAI222XL)                        0.89 *    23.99 f
+  U0_CORE/u0_mpb/U185/Y (AO22X1)                                 0.63 *    24.62 f
+  U0_CORE/u0_mpb/U184/Y (NAND21X1)                               0.25 *    24.87 f
+  U0_CORE/U380/Y (AOI22X1)                                       0.40 *    25.27 r
+  U0_CORE/U169/Y (INVX1)                                         0.21 *    25.48 f
+  U0_SRAM/DI[7] (MSL18B_1536X8_RW10TM4_16_20221107)              0.00 *    25.48 f
+  data arrival time                                                        25.48
+
+  clock MCLK (rise edge)                                        50.00      50.00
+  clock network delay (ideal)                                    2.50      52.50
+  clock reconvergence pessimism                                  0.00      52.50
+  clock uncertainty                                             -0.20      52.30
+  U0_SRAM/CK (MSL18B_1536X8_RW10TM4_16_20221107)                           52.30 r
+  library setup time                                            -1.90 *    50.40
+  data required time                                                       50.40
+  -------------------------------------------------------------------------------------
+  data required time                                                       50.40
+  data arrival time                                                       -25.48
+  -------------------------------------------------------------------------------------
+  slack (MET)                                                              24.92
+
+
+1
+report_timing -nosplit -from [ get_pins { U0_SRAM/DO* }]
+****************************************
+Report : timing
+	-path_type full
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+Warning: There are 8 invalid start points. (UITE-416)
+
+  Startpoint: U0_SRAM (rising edge-triggered flip-flop clocked by MCLK)
+  Endpoint: U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_12_
+               (falling edge-triggered flip-flop clocked by MCLK)
+  Path Group: MCLK
+  Path Type: max
+
+  Point                                                             Incr       Path
+  ----------------------------------------------------------------------------------------
+  clock MCLK (rise edge)                                            0.00       0.00
+  clock network delay (ideal)                                       2.50       2.50
+  U0_SRAM/CK (MSL18B_1536X8_RW10TM4_16_20221107)                    0.00       2.50 r
+  U0_SRAM/DO[7] (MSL18B_1536X8_RW10TM4_16_20221107) <-              5.44 *     7.94 f
+  U0_CORE/U25/Y (AO21X1)                                            0.70 *     8.64 f
+  U0_CORE/U201/Y (AOI221X1)                                         0.53 *     9.17 r
+  U0_CORE/U4/Y (INVXL)                                              0.28 *     9.45 f
+  U0_CORE/u0_mcu/u_cpu/U12/Y (INVX2)                                0.18 *     9.63 r
+  U0_CORE/u0_mcu/u_cpu/U176/Y (OAI21BBX1)                           0.37 *     9.99 r
+  U0_CORE/u0_mcu/u_cpu/U17/Y (OAI222X1)                             0.71 *    10.71 f
+  U0_CORE/u0_mcu/u_cpu/U46/Y (INVX2)                                0.08 *    10.79 r
+  U0_CORE/u0_mcu/u_cpu/U262/Y (NAND8X1)                             0.55 *    11.34 f
+  U0_CORE/u0_mcu/u_cpu/U264/Y (INVX2)                               0.18 *    11.52 r
+  U0_CORE/u0_mcu/u_cpu/U3313/Y (AO44X4)                             0.52 *    12.04 r
+  U0_CORE/u0_mcu/u_cpu/U1094/Y (INVX3)                              0.09 *    12.14 f
+  U0_CORE/u0_mcu/u_cpu/U3322/Y (AO33X4)                             0.34 *    12.48 f
+  U0_CORE/u0_mcu/u_cpu/U307/Y (NAND21X2)                            0.13 *    12.61 r
+  U0_CORE/u0_mcu/u_cpu/U314/Y (NAND3X4)                             0.16 *    12.76 f
+  U0_CORE/u0_mcu/u_cpu/U328/Y (NAND21X2)                            0.15 *    12.91 r
+  U0_CORE/u0_mcu/u_cpu/U287/Y (INVX4)                               0.14 *    13.05 f
+  U0_CORE/u0_mcu/u_cpu/U277/Y (NOR32X4)                             0.21 *    13.25 r
+  U0_CORE/u0_mcu/u_cpu/U21/Y (MUX2IX2)                              0.20 *    13.46 f
+  U0_CORE/u0_mpb/U72/Y (AOI222XL)                                   0.81 *    14.26 r
+  U0_CORE/u0_mpb/U73/Y (OAI2B11X4)                                  0.86 *    15.13 f
+  U0_CORE/u0_regx/U70/Y (NAND32X1)                                  0.39 *    15.52 f
+  U0_CORE/u0_regx/U52/Y (INVX2)                                     0.15 *    15.67 r
+  U0_CORE/u0_regx/U18/Y (AND2XL)                                    0.31 *    15.98 r
+  U0_CORE/U19/Y (INVX1)                                             0.16 *    16.15 f
+  U0_CORE/U950/Y (NAND21X1)                                         0.15 *    16.30 r
+  U0_CORE/U951/Y (NOR8X2)                                           0.41 *    16.71 f
+  U0_CORE/U9/Y (MUX2IX2)                                            0.25 *    16.96 f
+  U0_CORE/u0_dacmux/U164/Y (OAI21BBX1)                              0.39 *    17.34 f
+  U0_CORE/u0_dacmux/U90/Y (MUX2IX2)                                 0.25 *    17.60 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U10/Y (MUX2IX2)                      0.38 *    17.98 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U107/Y (NOR32X4)                     0.14 *    18.12 f
+  U0_CORE/u0_dacmux/u0_shmux/U29/Y (NAND21X4)                       0.15 *    18.27 r
+  U0_CORE/u0_dacmux/u0_shmux/U15/Y (INVX3)                          0.13 *    18.40 f
+  U0_CORE/u0_dacmux/u0_shmux/U615/Y (AND2XL)                        0.29 *    18.69 f
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_12_/D (SDFFNQX4)         0.00 *    18.69 f
+  data arrival time                                                           18.69
+
+  clock MCLK (fall edge)                                           25.00      25.00
+  clock network delay (ideal)                                       2.50      27.50
+  clock reconvergence pessimism                                     0.00      27.50
+  clock uncertainty                                                -0.20      27.30
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_12_/XC (SDFFNQX4)                  27.30 f
+  library setup time                                               -0.83 *    26.47
+  data required time                                                          26.47
+  ----------------------------------------------------------------------------------------
+  data required time                                                          26.47
+  data arrival time                                                          -18.69
+  ----------------------------------------------------------------------------------------
+  slack (MET)                                                                  7.78
+
+
+1
+report_timing -path_type full_clock_expanded -nosplit
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+
+  Startpoint: U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_
+               (rising edge-triggered flip-flop clocked by MCLK)
+  Endpoint: U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_
+               (falling edge-triggered flip-flop clocked by MCLK)
+  Path Group: MCLK
+  Path Type: max
+
+  Point                                                            Incr       Path
+  ---------------------------------------------------------------------------------------
+  clock MCLK (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                      2.50       2.50
+  U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_/C (SDFFRQXX2)              0.00       2.50 r
+  U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_/Q (SDFFRQXX2)              0.70 *     3.20 f
+  U0_CORE/u0_dacmux/U28/Y (INVX4)                                  0.16 *     3.36 r
+  U0_CORE/u0_dacmux/U95/Y (INVX4)                                  0.13 *     3.49 f
+  U0_CORE/u0_dacmux/add_235_I18/U13/Y (AND2X1)                     0.29 *     3.78 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_1/CO (FAD1X1)                   0.62 *     4.40 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_2/CO (FAD1X1)                   0.67 *     5.07 f
+  U0_CORE/u0_dacmux/add_235_I18/U10/Y (NAND2XL)                    0.26 *     5.33 r
+  U0_CORE/u0_dacmux/add_235_I18/U2/Y (NAND3X1)                     0.32 *     5.65 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_4/CO (FAD1X1)                   0.66 *     6.31 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_5/CO (FAD1X1)                   0.67 *     6.98 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_6/CO (FAD1X1)                   0.67 *     7.64 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_7/CO (FAD1X1)                   0.62 *     8.27 f
+  U0_CORE/u0_dacmux/add_235_I18/U1/Y (NAND2XL)                     0.26 *     8.53 r
+  U0_CORE/u0_dacmux/add_235_I18/U3/Y (NAND2X1)                     0.19 *     8.72 f
+  U0_CORE/u0_dacmux/U44/Y (NAND21X1)                               0.14 *     8.86 r
+  U0_CORE/u0_dacmux/U261/Y (INVX1)                                 0.25 *     9.11 f
+  U0_CORE/u0_dacmux/U495/Y (AO21XL)                                0.57 *     9.68 f
+  U0_CORE/u0_regx/srl_66/U2660/Y (MUX2IX1)                         0.31 *     9.99 r
+  U0_CORE/u0_regx/srl_66/U2050/Y (NAND21X1)                        0.18 *    10.17 f
+  U0_CORE/u0_regx/srl_66/U2508/Y (INVX1)                           0.11 *    10.28 r
+  U0_CORE/u0_regx/srl_66/U2506/Y (MUX2IX1)                         0.23 *    10.51 f
+  U0_CORE/u0_regx/srl_66/U2415/Y (MUX2IX1)                         0.30 *    10.81 r
+  U0_CORE/u0_regx/srl_66/U2293/Y (MUX2IX1)                         0.33 *    11.14 f
+  U0_CORE/u0_regx/srl_66/U2237/Y (MUX2IX1)                         0.37 *    11.51 r
+  U0_CORE/u0_regx/srl_66/U2236/Y (MUX2IX2)                         0.36 *    11.86 f
+  U0_CORE/U211/Y (INVX2)                                           0.14 *    12.00 r
+  U0_CORE/U209/Y (OAI211X1)                                        0.34 *    12.34 f
+  U0_CORE/u0_mcu/u_cpu/U548/Y (INVX2)                              0.21 *    12.55 r
+  U0_CORE/u0_mcu/u_cpu/U1098/Y (OAI221X1)                          0.52 *    13.07 f
+  U0_CORE/u0_mcu/u_cpu/U1003/Y (INVX1)                             0.20 *    13.27 r
+  U0_CORE/u0_mcu/u_cpu/U262/Y (NAND8X1)                            0.55 *    13.82 f
+  U0_CORE/u0_mcu/u_cpu/U264/Y (INVX2)                              0.18 *    14.00 r
+  U0_CORE/u0_mcu/u_cpu/U3313/Y (AO44X4)                            0.52 *    14.52 r
+  U0_CORE/u0_mcu/u_cpu/U1094/Y (INVX3)                             0.09 *    14.62 f
+  U0_CORE/u0_mcu/u_cpu/U3322/Y (AO33X4)                            0.34 *    14.96 f
+  U0_CORE/u0_mcu/u_cpu/U307/Y (NAND21X2)                           0.13 *    15.09 r
+  U0_CORE/u0_mcu/u_cpu/U314/Y (NAND3X4)                            0.16 *    15.24 f
+  U0_CORE/u0_mcu/u_cpu/U328/Y (NAND21X2)                           0.15 *    15.39 r
+  U0_CORE/u0_mcu/u_cpu/U287/Y (INVX4)                              0.14 *    15.53 f
+  U0_CORE/u0_mcu/u_cpu/U277/Y (NOR32X4)                            0.21 *    15.73 r
+  U0_CORE/u0_mcu/u_cpu/U21/Y (MUX2IX2)                             0.20 *    15.94 f
+  U0_CORE/u0_mpb/U72/Y (AOI222XL)                                  0.81 *    16.74 r
+  U0_CORE/u0_mpb/U73/Y (OAI2B11X4)                                 0.86 *    17.61 f
+  U0_CORE/u0_regx/U70/Y (NAND32X1)                                 0.39 *    18.00 f
+  U0_CORE/u0_regx/U52/Y (INVX2)                                    0.15 *    18.15 r
+  U0_CORE/u0_regx/U18/Y (AND2XL)                                   0.31 *    18.46 r
+  U0_CORE/U19/Y (INVX1)                                            0.16 *    18.63 f
+  U0_CORE/U950/Y (NAND21X1)                                        0.15 *    18.78 r
+  U0_CORE/U951/Y (NOR8X2)                                          0.41 *    19.19 f
+  U0_CORE/U9/Y (MUX2IX2)                                           0.25 *    19.44 f
+  U0_CORE/u0_dacmux/U164/Y (OAI21BBX1)                             0.39 *    19.82 f
+  U0_CORE/u0_dacmux/U90/Y (MUX2IX2)                                0.25 *    20.08 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U10/Y (MUX2IX2)                     0.38 *    20.46 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U107/Y (NOR32X4)                    0.14 *    20.60 f
+  U0_CORE/u0_dacmux/u0_shmux/U29/Y (NAND21X4)                      0.15 *    20.75 r
+  U0_CORE/u0_dacmux/u0_shmux/U14/Y (INVX3)                         0.13 *    20.88 f
+  U0_CORE/u0_dacmux/u0_shmux/U613/Y (AND2XL)                       0.29 *    21.17 f
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_/D (SDFFNQX4)         0.00 *    21.17 f
+  data arrival time                                                          21.17
+
+  clock MCLK (fall edge)                                          25.00      25.00
+  clock network delay (ideal)                                      2.50      27.50
+  clock reconvergence pessimism                                    0.00      27.50
+  clock uncertainty                                               -0.20      27.30
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_/XC (SDFFNQX4)                  27.30 f
+  library setup time                                              -0.83 *    26.47
+  data required time                                                         26.47
+  ---------------------------------------------------------------------------------------
+  data required time                                                         26.47
+  data arrival time                                                         -21.17
+  ---------------------------------------------------------------------------------------
+  slack (MET)                                                                 5.30
+
+
+1
+report_timing -path_type full_clock_expanded -nosplit -delay_type min
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:02 2023
+****************************************
+
+
+  Startpoint: U0_CORE/u0_regbank/u4_regD4/mem_reg_0_
+               (rising edge-triggered flip-flop clocked by MCLK)
+  Endpoint: U0_CORE/u0_regbank/u1_regD4/mem_reg_0_
+               (removal check against rising-edge clock MCLK)
+  Path Group: **async_default**
+  Path Type: min
+
+  Point                                                        Incr       Path
+  -----------------------------------------------------------------------------------
+  clock MCLK (rise edge)                                       0.00       0.00
+  clock network delay (ideal)                                  2.50       2.50
+  U0_CORE/u0_regbank/u4_regD4/mem_reg_0_/C (SDFFRQX1)          0.00       2.50 r
+  U0_CORE/u0_regbank/u4_regD4/mem_reg_0_/Q (SDFFRQX1)          0.70 *     3.20 f
+  U0_CORE/u0_regbank/U0_MASK_4/Y (AND2X1)                      0.24 *     3.43 f
+  U0_CORE/u0_regbank/U623/Y (OAI21BX1)                         0.30 *     3.73 r
+  U0_CORE/u0_regbank/u1_regD4/mem_reg_0_/XR (SDFFRQX1)         0.00 *     3.73 r
+  data arrival time                                                       3.73
+
+  clock MCLK (rise edge)                                       0.00       0.00
+  clock network delay (ideal)                                  2.50       2.50
+  clock reconvergence pessimism                                0.00       2.50
+  clock uncertainty                                            0.20       2.70
+  U0_CORE/u0_regbank/u1_regD4/mem_reg_0_/C (SDFFRQX1)                     2.70 r
+  library removal time                                         0.52 *     3.22
+  data required time                                                      3.22
+  -----------------------------------------------------------------------------------
+  data required time                                                      3.22
+  data arrival time                                                      -3.73
+  -----------------------------------------------------------------------------------
+  slack (MET)                                                             0.51
+
+
+1
+#  set power_enable_analysis true
+#  report_power ;# Information: Checked out license 'PrimeTime-PX' (PT-019)
+setclock1 50
+Information: Abandoning fast timing updates. (PTE-018)
+Warning: Creating a clock source on inout port 'GPIO3'. (UITE-123)
+1
+report_timing -path_type full_clock_expanded -nosplit
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_CLK_MUX/D0 and U0_CORE/U0_CLK_MUX/D1 of cell U0_CORE/U0_CLK_MUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_CLK_MUX/S and U0_CORE/U0_CLK_MUX/D1 of cell U0_CORE/U0_CLK_MUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_DCLKMUX/D0 and U0_CORE/U0_DCLKMUX/D1 of cell U0_CORE/U0_DCLKMUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_DCLKMUX/S and U0_CORE/U0_DCLKMUX/D1 of cell U0_CORE/U0_DCLKMUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_ACLKMUX/D0 and U0_CORE/U0_ACLKMUX/D1 of cell U0_CORE/U0_ACLKMUX. (PTE-060)
+Warning: No clock-gating check is inferred for clock TCLK 
+	at pins U0_CORE/U0_ACLKMUX/S and U0_CORE/U0_ACLKMUX/D1 of cell U0_CORE/U0_ACLKMUX. (PTE-060)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+
+  Startpoint: U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_
+               (rising edge-triggered flip-flop clocked by TCLK)
+  Endpoint: U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_
+               (falling edge-triggered flip-flop clocked by TCLK)
+  Path Group: TCLK
+  Path Type: max
+
+  Point                                                            Incr       Path
+  ---------------------------------------------------------------------------------------
+  clock TCLK (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                      5.00       5.00
+  U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_/C (SDFFRQXX2)              0.00       5.00 r
+  U0_CORE/u0_dacmux/u0_adofs/mem_reg_0_/Q (SDFFRQXX2)              0.70 *     5.70 f
+  U0_CORE/u0_dacmux/U28/Y (INVX4)                                  0.16 *     5.86 r
+  U0_CORE/u0_dacmux/U95/Y (INVX4)                                  0.13 *     5.99 f
+  U0_CORE/u0_dacmux/add_235_I18/U13/Y (AND2X1)                     0.29 *     6.28 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_1/CO (FAD1X1)                   0.62 *     6.90 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_2/CO (FAD1X1)                   0.67 *     7.57 f
+  U0_CORE/u0_dacmux/add_235_I18/U10/Y (NAND2XL)                    0.26 *     7.83 r
+  U0_CORE/u0_dacmux/add_235_I18/U2/Y (NAND3X1)                     0.32 *     8.15 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_4/CO (FAD1X1)                   0.66 *     8.81 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_5/CO (FAD1X1)                   0.67 *     9.48 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_6/CO (FAD1X1)                   0.67 *    10.14 f
+  U0_CORE/u0_dacmux/add_235_I18/U1_7/CO (FAD1X1)                   0.62 *    10.77 f
+  U0_CORE/u0_dacmux/add_235_I18/U1/Y (NAND2XL)                     0.26 *    11.03 r
+  U0_CORE/u0_dacmux/add_235_I18/U3/Y (NAND2X1)                     0.19 *    11.22 f
+  U0_CORE/u0_dacmux/U44/Y (NAND21X1)                               0.14 *    11.36 r
+  U0_CORE/u0_dacmux/U261/Y (INVX1)                                 0.25 *    11.61 f
+  U0_CORE/u0_dacmux/U495/Y (AO21XL)                                0.57 *    12.18 f
+  U0_CORE/u0_regx/srl_66/U2660/Y (MUX2IX1)                         0.31 *    12.49 r
+  U0_CORE/u0_regx/srl_66/U2050/Y (NAND21X1)                        0.18 *    12.67 f
+  U0_CORE/u0_regx/srl_66/U2508/Y (INVX1)                           0.11 *    12.78 r
+  U0_CORE/u0_regx/srl_66/U2506/Y (MUX2IX1)                         0.23 *    13.01 f
+  U0_CORE/u0_regx/srl_66/U2415/Y (MUX2IX1)                         0.30 *    13.31 r
+  U0_CORE/u0_regx/srl_66/U2293/Y (MUX2IX1)                         0.33 *    13.64 f
+  U0_CORE/u0_regx/srl_66/U2237/Y (MUX2IX1)                         0.37 *    14.01 r
+  U0_CORE/u0_regx/srl_66/U2236/Y (MUX2IX2)                         0.36 *    14.36 f
+  U0_CORE/U211/Y (INVX2)                                           0.14 *    14.50 r
+  U0_CORE/U209/Y (OAI211X1)                                        0.34 *    14.84 f
+  U0_CORE/u0_mcu/u_cpu/U548/Y (INVX2)                              0.21 *    15.05 r
+  U0_CORE/u0_mcu/u_cpu/U1098/Y (OAI221X1)                          0.52 *    15.57 f
+  U0_CORE/u0_mcu/u_cpu/U1003/Y (INVX1)                             0.20 *    15.77 r
+  U0_CORE/u0_mcu/u_cpu/U262/Y (NAND8X1)                            0.55 *    16.32 f
+  U0_CORE/u0_mcu/u_cpu/U264/Y (INVX2)                              0.18 *    16.50 r
+  U0_CORE/u0_mcu/u_cpu/U3313/Y (AO44X4)                            0.52 *    17.02 r
+  U0_CORE/u0_mcu/u_cpu/U1094/Y (INVX3)                             0.09 *    17.12 f
+  U0_CORE/u0_mcu/u_cpu/U3322/Y (AO33X4)                            0.34 *    17.46 f
+  U0_CORE/u0_mcu/u_cpu/U307/Y (NAND21X2)                           0.13 *    17.59 r
+  U0_CORE/u0_mcu/u_cpu/U314/Y (NAND3X4)                            0.16 *    17.74 f
+  U0_CORE/u0_mcu/u_cpu/U328/Y (NAND21X2)                           0.15 *    17.89 r
+  U0_CORE/u0_mcu/u_cpu/U287/Y (INVX4)                              0.14 *    18.03 f
+  U0_CORE/u0_mcu/u_cpu/U277/Y (NOR32X4)                            0.21 *    18.23 r
+  U0_CORE/u0_mcu/u_cpu/U21/Y (MUX2IX2)                             0.20 *    18.44 f
+  U0_CORE/u0_mpb/U72/Y (AOI222XL)                                  0.81 *    19.24 r
+  U0_CORE/u0_mpb/U73/Y (OAI2B11X4)                                 0.86 *    20.11 f
+  U0_CORE/u0_regx/U70/Y (NAND32X1)                                 0.39 *    20.50 f
+  U0_CORE/u0_regx/U52/Y (INVX2)                                    0.15 *    20.65 r
+  U0_CORE/u0_regx/U18/Y (AND2XL)                                   0.31 *    20.96 r
+  U0_CORE/U19/Y (INVX1)                                            0.16 *    21.13 f
+  U0_CORE/U950/Y (NAND21X1)                                        0.15 *    21.28 r
+  U0_CORE/U951/Y (NOR8X2)                                          0.41 *    21.69 f
+  U0_CORE/U9/Y (MUX2IX2)                                           0.25 *    21.94 f
+  U0_CORE/u0_dacmux/U164/Y (OAI21BBX1)                             0.39 *    22.32 f
+  U0_CORE/u0_dacmux/U90/Y (MUX2IX2)                                0.25 *    22.58 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U10/Y (MUX2IX2)                     0.38 *    22.96 r
+  U0_CORE/u0_dacmux/u0_dac2sar/U107/Y (NOR32X4)                    0.14 *    23.10 f
+  U0_CORE/u0_dacmux/u0_shmux/U29/Y (NAND21X4)                      0.15 *    23.25 r
+  U0_CORE/u0_dacmux/u0_shmux/U14/Y (INVX3)                         0.13 *    23.38 f
+  U0_CORE/u0_dacmux/u0_shmux/U613/Y (AND2XL)                       0.29 *    23.67 f
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_/D (SDFFNQX4)         0.00 *    23.67 f
+  data arrival time                                                          23.67
+
+  clock TCLK (fall edge)                                          25.00      25.00
+  clock network delay (ideal)                                      5.00      30.00
+  clock reconvergence pessimism                                    0.00      30.00
+  clock uncertainty                                               -0.20      29.80
+  U0_CORE/u0_dacmux/u0_shmux/neg_dacis_reg_4_/XC (SDFFNQX4)                  29.80 f
+  library setup time                                              -0.83 *    28.97
+  data required time                                                         28.97
+  ---------------------------------------------------------------------------------------
+  data required time                                                         28.97
+  data arrival time                                                         -23.67
+  ---------------------------------------------------------------------------------------
+  slack (MET)                                                                 5.30
+
+
+1
+report_timing -path_type full_clock_expanded -nosplit -delay_type min
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+
+  Startpoint: U0_CORE/u0_regx/d_we16_reg
+               (rising edge-triggered flip-flop clocked by TCLK)
+  Endpoint: U0_CORE/u0_regx/lt_aswk_reg_0_
+               (removal check against rising-edge clock TCLK)
+  Path Group: **async_default**
+  Path Type: min
+
+  Point                                                Incr       Path
+  ---------------------------------------------------------------------------
+  clock TCLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                          5.00       5.00
+  U0_CORE/u0_regx/d_we16_reg/C (SDFFQX1)               0.00       5.00 r
+  U0_CORE/u0_regx/d_we16_reg/Q (SDFFQX1)               0.63 *     5.63 f
+  U0_CORE/u0_regx/U179/Y (INVX1)                       0.09 *     5.73 r
+  U0_CORE/u0_regx/U32/Y (OA21X1)                       0.60 *     6.32 r
+  U0_CORE/u0_regx/lt_aswk_reg_0_/XR (SDFFRQX1)         0.00 *     6.32 r
+  data arrival time                                               6.32
+
+  clock TCLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                          5.00       5.00
+  clock reconvergence pessimism                        0.00       5.00
+  clock uncertainty                                    0.20       5.20
+  U0_CORE/u0_regx/lt_aswk_reg_0_/C (SDFFRQX1)                     5.20 r
+  library removal time                                 0.65 *     5.85
+  data required time                                              5.85
+  ---------------------------------------------------------------------------
+  data required time                                              5.85
+  data arrival time                                              -6.32
+  ---------------------------------------------------------------------------
+  slack (MET)                                                     0.47
+
+
+1
+set output_list [ get_ports { GPIO4 GPIO5 } ]
+{"GPIO4", "GPIO5"}
+set_output_delay 0 -clock TCLK $output_list
+1
+foreach_in_collection pp $output_list {
+      report_timing -nosplit -delay max -path end -to $pp
+      report_timing -nosplit -delay min -path end -to $pp
+   }
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+GPIO4 (inout)                      24.01 f*       54.80         0.00    30.79
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+GPIO4 (inout)                       8.66 r*        5.20         0.00     3.46
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+GPIO5 (inout)                      24.35 f*       54.80         0.00    30.45
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+GPIO5 (inout)                       8.66 r*        5.20         0.00     3.46
+
+set input_list [ get_ports { SDA SCL GPIO1 } ]
+{"SDA", "SCL", "GPIO1"}
+set_input_delay 0 -clock TCLK $input_list
+1
+foreach_in_collection pp $input_list {
+      puts [ get_object_name $pp ]
+      report_timing -nosplit -delay max -path end -from $pp
+      report_timing -nosplit -delay min -path end -from $pp
+   }
+SDA
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_mcu/u_cpu/cpu_resume_ff1_reg/D (SDFFQX1)    10.36 r*    54.22     0.00    43.86
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_mcu/u_i2c/write_data_r_reg/SIN (SDFFQX1)     6.49 r*     4.87     0.00     1.62
+
+SCL
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_dacmux/u0_dac2sar/sh_rst_n_reg/SIN (SDFFNQX1)     6.80 f*    28.70     0.00    21.91
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_mcu/u_syncneg/p0_ff1_reg_0_/D (SDFFQX1)     6.79 r*     4.85     0.00     1.94
+
+GPIO1
+****************************************
+Report : timing
+	-path_type end
+	-delay_type max
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_ictlr/ck_n_reg_1_/SMC (SDFFNQXL)     7.16 f*    29.02     0.00    21.86
+
+****************************************
+Report : timing
+	-path_type end
+	-delay_type min
+	-max_paths 1
+	-sort_by slack
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:03 2023
+****************************************
+
+Endpoint                        Path Delay     Path Required    CRP     Slack
+------------------------------------------------------------------------------
+U0_CORE/u0_dacmux/u0_compi/clk_gate_mem_reg/latch/SE (CLKDLXL)     6.63 r*     5.02     0.00     1.61
+
+#  exit
+Information: Defining new variable 'set_net'. (CMD-041)
+Information: Defining new variable 'pp'. (CMD-041)
+Information: Defining new variable 'set_sdf'. (CMD-041)
+Information: Defining new variable 'output_list'. (CMD-041)
+Information: Defining new variable 'synthetic_library'. (CMD-041)
+Information: Defining new variable 'set_top'. (CMD-041)
+Information: Defining new variable 'PJ_PATH'. (CMD-041)
+Information: Defining new variable 'input_list'. (CMD-041)
+pt_shell> reporT_cl[K[K[K[Kt_clocks
+****************************************
+Report : clock
+Design : chiptop_1127a0
+Version: J-2014.06-SP3
+Date   : Thu Mar 30 16:09:27 2023
+****************************************
+
+
+Attributes:
+    p - Propagated clock
+    G - Generated  clock
+    I - Inactive   clock
+
+Clock          Period   Waveform            Attrs     Sources
+-------------------------------------------------------------------------------
+TCLK            50.00   {0 25}                        {GPIO3}
+
+1
+pt_shell> quit
+
+Timing updates: 5 (5 implicit, 0 explicit) (2 incremental, 2 full, 1 logical)
+Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
+Maximum memory usage for this session: 604.26 MB
+CPU usage for this session: 4 seconds 
+Elapsed time for this session: 59 seconds
+Diagnostics summary: 58 errors, 16 warnings, 38 informationals
+
+Thank you for using pt_shell!

@@ -16,7 +16,7 @@ inout		DN ,
 inout		VFB ,
 inout		CSP , CSN ,
 // === B U C K  PAD ============================================================
-inout		COM, SW, BST, VDRV,
+inout		COMP, SW, BST, VDRV,
 output		LG, HG, GATE,
 // === B U C K  interface part =================================================
 input		BST_SET ,
@@ -28,7 +28,7 @@ input	[1:0]	FSW ,
 input		EN_OSC ,
 input		MAXDS ,
 		EN_GM , EN_ODLDO , EN_IBUK ,
-		CP_EN , EXT_CP , INT_CP , ANTI_INRUSH , PWREN_HOLD ,
+		EN_CP , EXT_CP , INT_CP , ANTI_INRUSH , PWREN_HOLD ,
 // === P D  interface part =====================================================
 input   [1:0]   RP_SEL ,
 input		RP1_EN ,
@@ -49,7 +49,8 @@ input		DPDN_SHORT ,
 input		DP_2V7_EN , DN_2V7_EN ,
 input		DP_0P6V_EN , DN_0P6V_EN ,
 input		DP_DWN_EN , DN_DWN_EN ,
-input	[7:0]	PWR_I ,
+input	[1:0]	CC_SLOPE ,
+input	[7:0]	DAC2 ,
 input	[5:0]	DAC3,
 input	[9:0]	DAC1 ,
 input		CV2 , LFOSC_ENB ,
@@ -67,7 +68,7 @@ input		CMP_SEL_CC2_4 ,
 input		CMP_SEL_CC1_4 ,
 input		CMP_SEL_DP , CMP_SEL_DP_3 ,
 input		CMP_SEL_DN , CMP_SEL_DN_3 ,
-input		OCP_EN , CS_EN ,
+input		OCP_EN ,
 output		COMP_O ,
 input		CCI2C_EN ,
 		UVP_SEL ,
@@ -103,7 +104,6 @@ input		DPDEN , DPDO , DPIE ,
 		DNDEN , DNDO , DNIE ,
 //		IDEN ,  IDDO ,
 //tput		IDIN ,
-input   [7:0]   DUMMY_IN ,
 input	        CP_CLKX2 ,	// REGTRM[47]
 		SEL_CONST_OVP ,	// REGTRM[46]
 		LP_EN ,		// REGTRM[45]
@@ -111,20 +111,21 @@ input	        CP_CLKX2 ,	// REGTRM[47]
 		DNCHK_EN ,	// REGTRM[43]
 		IRP_EN ,	// REGTRM[42]
 //		VBUS_REG_SEL ,	// REGTRM[41]
-		CCBFEN ,	// REGTRM[40]
+		CCFBEN ,	// REGTRM[40]
 input   [55:0]  REGTRM ,
 input		AD_RST , AD_HOLD ,
 output		DN_FAULT ,
 input		
-		SEL_CCGAIN , VFB_SW ,
+		SEL_CCGAIN , VFB_SWB ,
 //		SEL_OCDRV , SEL_FB ,
-		CPV_SEL ,
+		CPVSEL ,
 		CLAMPV_EN ,
 input		HVNG_CPEN , // CPF_SEL ,
 		OCP_SEL ,
 //		IDAC_EN , IDAC_SEN ,
 output		OCP_80M , OCP_160M ,
-output		OPTO1 , OPTO2,
+output	[3:0]	DMY_OUT ,
+input	[4:0]	DMY_IN ,
 // =============================================================================
 output		VPP_OTP ,
 //tput		VDD , // 1.8V power supply for core logic/IO cells/OTP/SRAM
@@ -147,16 +148,16 @@ assign #1 CC2 = CCI2C_EN & CC2_DOB ? 1'h0 : 1'hz; // digital output only
 assign #1 CC1_DI = v_CC1>=1800 && CCI2C_EN; // 1.0~2.6V
 assign #1 CC2_DI = v_CC2>=1800 && CCI2C_EN; // 1.0~2.6V
 
-assign #110 GATE = CP_EN & EXT_CP & ~PWREN_HOLD; // bypass mode by the external MOS
-assign #100 HG   = CP_EN & INT_CP & ~PWREN_HOLD  // bypass mode by the internal MOS
+assign #110 GATE = EN_CP & EXT_CP & ~PWREN_HOLD; // bypass mode by the external MOS
+assign #100 HG   = EN_CP & INT_CP & ~PWREN_HOLD  // bypass mode by the internal MOS
                  | EN_DRV & EN_ODLDO; // PWM
 
 reg r_otpi=0, r_ovp=0, r_ocp=0, r_scp=0, r_uvp=0, r_v5ocp=0, r_dn_fault=0;
 assign {V5OCP, OTPI, OVP, OCP, SCP, UVP} = {r_v5ocp, r_otpi, r_ovp, r_ocp, r_scp, r_uvp};
 assign DN_FAULT = r_dn_fault;
 
-reg r_ocp80m=0, r_ocp160m=0, r_opto1=0, r_opto2=0;
-assign {OCP_80M, OCP_160M, OPTO1, OPTO2} = {r_ocp80m, r_ocp160m, r_opto1, r_opto2};
+reg r_ocp80m=0, r_ocp160m=0, r_opto0=0, r_opto1=0, r_opto2=0, r_opto3=0;
+assign {OCP_80M, OCP_160M, DMY_OUT} = {r_ocp80m, r_ocp160m, r_opto3, r_opto2, r_opto1, r_opto0};
 
 assign #1 DP_COMP = v_DP > 1200;
 assign #1 DN_COMP = v_DN > 1200;
@@ -168,6 +169,7 @@ assign #1 DN_COMP = v_DN > 1200;
 reg [15:0] v_VIN=0, v_CSP=0, v_RT=1000, v_GP5=0, v_GP4=0, v_GP3=0, v_GP2=0, v_GP1=0; // mV
 
 // --- current sense amplifier
+wire CS_EN = OCP_EN; // Rice: from CAN1124, not tend to extract it from all OCP comparators enable signal
 wire [15:0]
 v_IFB = CS_EN
 	? v_CSP * (SEL_CCGAIN ? 200.0 : 100.0) /3
@@ -242,7 +244,10 @@ assign #1 COMP_O = DAC1_EN ? comp_o : 'h0;
 	d_rstz =0;
 	#30_000
 	fork
-	   #700 r_rstz =1; // 8-clock after
+	   begin
+	      repeat (8) @(posedge OSC_O); // 8-clock after
+	      #10 r_rstz =1;
+	   end
 	   forever
 		@(r_rstz) if (r_rstz) #100_000 d_rstz =1; // 100us after
 		                else  #100     d_rstz =0;
@@ -254,7 +259,7 @@ assign #1 COMP_O = DAC1_EN ? comp_o : 'h0;
 	join
    end
 
-   wire PWREN = GATE | HG | CP_EN;
+   wire PWREN = GATE | HG | EN_CP;
    always @(negedge OSC_LOW) #5 disable osc_low;
    always @(PWREN) $display ($time,"ns <%m> power enable -> %d",PWREN);
    always @(VO_DISCHG) $display ($time,"ns <%m> VO (VBUS) discharge -> %d",VO_DISCHG);

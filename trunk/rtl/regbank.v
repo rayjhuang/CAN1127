@@ -14,10 +14,10 @@ module regbank (
 input	[5:0]	srci, // async.
 input	[1:0]	lg_pulse_len,
 input		dm_fault, cc1_di, cc2_di, // async.
-		di_rd_det, di_stbovp,
+		di_rd_det,
 		i_tmrf,
 		i_vcbyval, dnchk_en,
-output		r_pwrv_upd, aswkup, lg_dischg, frc_hg_off,
+output		r_pwrv_upd, aswkup, lg_dischg, gating_pwr,
 		ps_pwrdn,
 		r_sleep, r_pwrdn, r_ocdrv_enz,
 		r_osc_stop, r_osc_lo, r_osc_gate,
@@ -388,15 +388,12 @@ output		srstz, prstz
    glreg #(3) u4_regD4 (clk, rrstz, we['hd4], wdat[7:5], regD4[7:5]); // OSCCTL
    wire wkup_osc_low  = regD4[5]; // don't clear OSC_LOW by wake-up for wake-up-to-100KHz
    wire wkup_by_rddet = regD4[6];
-   wire wkup_by_stbov = regD4[7];
    wire dmf_wkup = dm_fault & dnchk_en;
    AND2X1 U0_MASK_0 (.A(oscdwn_en),      .B(as_p0_chg),.Y(p0_chg_clr));
-   AND2X1 U0_MASK_1 (.A(wkup_by_stbov),  .B(di_stbovp),.Y(di_stbovp_clr));
    AND2X1 U0_MASK_2 (.A(wkup_by_rddet),  .B(di_rd_det),.Y(di_rd_det_clr));
    AND2X1 U0_MASK_3 (.A(wkup_by_dnfault),.B(dmf_wkup), .Y(dm_fault_clr));
    wire auto_clr = ~rrstz | (p0_chg_clr // async. clear OSC STOP/LOW/GATE
 			| di_rd_det_clr
-			| di_stbovp_clr
 			| dm_fault_clr
 			| i_tmrf);
    wire pwrdn_rstz    = atpg_en | ~(auto_clr); // also clear OCDRV_ENZ
@@ -418,6 +415,7 @@ output		srstz, prstz
 
    wire ps_regD4_3 = we['hd4] & wdat[3];
    assign ps_pwrdn = ps_regD4_3 & ps_oscdwn_en;
+   assign wkup_by_dnfault = regD4[7];
 
    reg [3:0] osc_gate_n;
    assign r_osc_gate = |osc_gate_n; // 20210514 from CAN1123
@@ -558,8 +556,8 @@ output		srstz, prstz
    assign setAE[6] = 1'h0;
 
    glsta u0_regAE (clk, rrstz, 1'h0, setAE, clrAE, regAE, irqAE); // PROSTA
-   wire gating_pwr = |{regAE[4]&regAF[4],regAE[2]&regAF[2]}; // sync./async. B0ECO
-   wire gating_vconn = regAE[5]&regAF[5] | regAD[5]&i_vcbyval; // gating VCONN by value
+   assign gating_pwr = |{regAE[4]&regAF[4],regAE[2]&regAF[2]}; // sync./async. B0ECO
+   wire   gating_vconn = regAE[5]&regAF[5] | regAD[5]&i_vcbyval; // gating VCONN by value
 
    glreg u0_regAF (clk, rrstz, we['haf], wdat, regAF); // PROCTL
 
@@ -569,7 +567,7 @@ output		srstz, prstz
 
    reg lg_pulse, lg_pulse_12m;
    reg [4:0] lg_pulse_cnt;
-   wire lg_pulse_start = we['he3] & wdat[7] & wdat[1];
+   wire lg_pulse_start = we['he3] & wdat[1];
    always @(posedge clk or negedge rrstz)
       if (~rrstz) lg_pulse_12m <= 1'h0;
       else if (lg_pulse_start) lg_pulse_12m <= 1'h1;
@@ -588,17 +586,14 @@ output		srstz, prstz
          else if (lg_pulse) lg_pulse <= 1'h0;
       end
      
-   glreg #(6) u0_regE3 (clk, rrstz, we['he3], {wdat[6:2],wdat[0]}, {regE3[6:2],regE3[0]}); // SRCCTL
-   assign regE3[7] = 1'h0; // WO
+   glreg #(7) u0_regE3 (clk, rrstz, we['he3], {wdat[7:2],wdat[0]}, {regE3[7:2],regE3[0]}); // SRCCTL
    assign regE3[1] = lg_pulse | lg_pulse_12m; // AC
    assign r_srcctl = {
            regE3[7:4],regE3[3:2]&{2{~gating_vconn}},
            regE3[1],  regE3[0]&~gating_pwr}; // gating PWR_EN, FW case should be handled by FW  
 
-   assign wkup_by_dnfault = regE3[6];
    assign aswkup = auto_clr;
    assign lg_dischg = lg_pulse;
-   assign frc_hg_off = gating_pwr;
 
    wire [3:0] lt_regE4_3_0; // latch PWR_V_LSB when writing
    glreg #(4,'h4) u1_regE4 (clk, rrstz, r_pwrv_upd, lt_regE4_3_0, regE4[3:0]); // real PWRCTL[3:0]

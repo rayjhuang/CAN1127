@@ -9,7 +9,7 @@ parameter UNREGX_D4 = 8'hff
 //=====================
 input		regx_r, // cmd/addr hit (pre-state read-ack)
 		regx_w, // already hit (write-ack)
-		di_drposc, di_imposc, di_rd_det, di_stbovp, clk_500k,
+		di_drposc, di_imposc, di_rd_det, clk_500k,
 output		r_imp_osc,
 input	[6:0]	regx_addr, // cmd/addr phase
 input   [7:0]   regx_wdat,
@@ -26,7 +26,7 @@ input	[9:0]	dac_comp, r_dac_en, r_sar_en,
 output	[7:0]	r_aopt, r_xtm, r_adummyi, r_bck0, r_bck1, r_bck2,
 output	[5:0]	r_i2crout,
 output  [23:0]  r_xana,
-input	[4:0]	di_xana,
+input	[5:0]	di_xanav,
 input	[3:0]	lt_gpi,
 input		di_tst,
 output  [14:0]  bkpt_pc,
@@ -189,19 +189,19 @@ input		clk, rrstz
    assign r_xana = {reg1E[7:4],stb_rp,rd_enb,reg1E[1:0],reg1D,reg1C};
    assign r_imp_osc = reg1E[6];
 
-   assign  reg1F[5] = 'h0;
    dbnc #(2,2) // 2~3T (3 samples) +sync
-	u0_dosc_db (.o_dbc(reg14[1]),.o_chg(),.i_org(di_imposc), .clk(clk),.rstz(rrstz)),
-	u0_iosc_db (.o_dbc(reg14[2]),.o_chg(),.i_org(di_drposc), .clk(clk),.rstz(rrstz)),
-	u0_xana_db (.o_dbc(reg1F[0]),.o_chg(),.i_org(di_xana[0]),.clk(clk),.rstz(rrstz)), // OCP_80M
-	u1_xana_db (.o_dbc(reg1F[1]),.o_chg(),.i_org(di_xana[1]),.clk(clk),.rstz(rrstz)), // OCP_160M
-	u2_xana_db (.o_dbc(reg1F[2]),.o_chg(),.i_org(di_xana[2]),.clk(clk),.rstz(rrstz)),
-	u3_xana_db (.o_dbc(reg1F[3]),.o_chg(),.i_org(di_xana[3]),.clk(clk),.rstz(rrstz)),
-	u4_xana_db (.o_dbc(reg1F[4]),.o_chg(),.i_org(di_xana[4]),.clk(clk),.rstz(rrstz));
+	u0_dosc_db (.o_dbc(reg14[1]),.o_chg(),.i_org(di_imposc),  .clk(clk),.rstz(rrstz)),
+	u0_iosc_db (.o_dbc(reg14[2]),.o_chg(),.i_org(di_drposc),  .clk(clk),.rstz(rrstz)),
+	u0_xana_db (.o_dbc(reg1F[0]),.o_chg(),.i_org(di_xanav[0]),.clk(clk),.rstz(rrstz)), // OCP_80M
+	u1_xana_db (.o_dbc(reg1F[1]),.o_chg(),.i_org(di_xanav[1]),.clk(clk),.rstz(rrstz)), // OCP_160M
+	u2_xana_db (.o_dbc(reg1F[2]),.o_chg(),.i_org(di_xanav[2]),.clk(clk),.rstz(rrstz)),
+	u3_xana_db (.o_dbc(reg1F[3]),.o_chg(),.i_org(di_xanav[3]),.clk(clk),.rstz(rrstz)),
+	u4_xana_db (.o_dbc(reg1F[4]),.o_chg(),.i_org(di_xanav[4]),.clk(clk),.rstz(rrstz)),
+	u5_xana_db (.o_dbc(reg1F[5]),.o_chg(),.i_org(di_xanav[5]),.clk(clk),.rstz(rrstz));
    dbnc // #(4,15) debounce 15~16 *2us +sync
         // this 2 bits are not used to control
-	u0_sbov_db (.o_dbc(reg1F[6]),.o_chg(),.i_org(di_stbovp),.clk(clk_500k),.rstz(rrstz)),
-	u0_rdet_db (.o_dbc(reg1F[7]),.o_chg(),.i_org(di_rd_det),.clk(clk_500k),.rstz(rrstz));
+	u6_xana_db (.o_dbc(reg1F[6]),.o_chg(),.i_org(di_xanav[0]),.clk(clk_500k),.rstz(rrstz)), // OCP_80M
+	u0_rdet_db (.o_dbc(reg1F[7]),.o_chg(),.i_org(di_rd_det),  .clk(clk_500k),.rstz(rrstz));
 
    assign {reg20,regx_wrdac[12]} = {dac_r_vs[8*8+:8],we['h20]}; // DACV16
    assign {reg21,regx_wrdac[13]} = {dac_r_vs[8*9+:8],we['h21]}; // DACV17

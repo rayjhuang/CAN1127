@@ -174,7 +174,7 @@ dig_probe	SLEEP (`DUT_ANA.SLEEP),
 		OSC_LOW (`DUT_ANA.OSC_LOW),
 		PWR_ENABLE (`DUT_ANA.PWREN),
 		DISCHARGE  (`DUT_ANA.VO_DISCHG);
-ana_probe	PWR_I ({8'h0,`DUT_ANA.PWR_I});
+ana_probe	PWR_I ({8'h0,`DUT_ANA.DAC2});
 end // hw_probe
 
 `include "../../can1126/bench/mem_dump.v" // longer path for UVM0

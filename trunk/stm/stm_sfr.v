@@ -145,7 +145,7 @@ begin
 	64'hfefe_fefe_fefe_fefe,
 	64'h00ff_ff67_ffff_fe00, // F0: DACCTL(busy)
 	64'h2000_0000_0000_00ff, // E8: md0~5, arcon
-	64'hffff_ffff_7d00_0000, // E0: COMPI, CMPSTA, SCRCTL[1]:LG_DISCHG
+	64'hffff_ffff_fd00_0000, // E0: COMPI, CMPSTA, SCRCTL[1]:LG_DISCHG
 	64'hxxff_f800_ffff_bf00, // D8: i2cadr, i2csta, P0STA
 	64'hff98_f0e0_2200_f200, // D0: GPIO5, RWBUF, EXGP, GPIOP, GPIOSL/H, STB_OVP/PWRDN cleared
 	64'hff00_xxxx_00e1_3700, // C8(r24): I2CDEVA, I2CEV, I2CBUF

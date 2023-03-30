@@ -42,8 +42,19 @@
 #  set_input_delay  7 -clock SCLK [ all_inputs ]
 #  set_output_delay 5 -clock SCLK [ all_outputs ]
  
-   set_input_delay 10 -clock MCLK [ all_inputs ]
-   set_output_delay 7 -clock MCLK [ all_outputs ]
+   set_input_delay  30 -clock MCLK [ all_inputs ]
+   set_output_delay 20 -clock MCLK [ all_outputs ]
+
+   set anatop_n [ get_pins { U0_ANALOG_TOP/CMP_SEL_* U0_ANALOG_TOP/AD_RST } ]
+   set_output_delay 10 -clock MCLK $anatop_n
+   set anatop_i [ filter_collection [ get_pins -of U0_ANALOG_TOP ] "pin_direction == in" ]
+   set anatop_i [ remove_from_collection $anatop_i $anatop_n ]
+   set_output_delay 15 -clock MCLK $anatop_i
+
+   set anatop_o [ filter_collection [ get_pins -of U0_ANALOG_TOP ] "pin_direction == out" ]
+   set anatop_o [ remove_from_collection $anatop_o [ get_pins { U0_ANALOG_TOP/OSC_O U0_ANALOG_TOP/RSTB } ]]
+   set_input_delay  31 -clock MCLK $anatop_o
+ 
 #  set_max_transition 1.98 $top
    set_clock_uncertainty -setup 0.5 [all_clocks]
    set_clock_uncertainty -hold  0.5 [all_clocks]
@@ -63,10 +74,13 @@
 #  set_false_path -from [get_clocks SCLK] -to [get_clocks MCLK]
 #  set_false_path -from [get_clocks MCLK] -to [get_clocks CLK1]
 #  set_false_path -from [get_clocks CLK1] -to [get_clocks MCLK]
+   set_false_path -from $anatop_o -to [ all_outputs ]
+   set_false_path -from $anatop_o -to $anatop_i
 
    set_disable_timing [ get_lib_cells -of PAD_* ] -to DI -from IE
    set_disable_timing [ get_cells U0_CORE/U0_MCK_BUF ] -to Y -from A
    set_disable_timing [ get_cells U0_CORE/U0_TCK_BUF ] -to Y -from A
+   set_disable_timing [ get_cells U0_CORE/U0_BUF_NEG* ] -to Y -from A
 
    set_fix_multiple_port_nets -all -buffer_constants -feedthroughs
 #  set_wire_load_model [all_design] -name vis18_wl40 -library $std_cell
@@ -110,6 +124,9 @@
    report_constraint -all_violators -verbose
 
    source ../cmd/proc.tcl
+   list_col $anatop_n
+   list_col $anatop_i
+   list_col $anatop_o
    reg_summary
    icg_summary true
    disconnect_pins [ get_pins { U0*/VSS U0*/VDD } ]

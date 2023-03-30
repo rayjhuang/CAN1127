@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Mar 24, 2023 at 17:04:55 CST
+TOOL:	ncverilog	15.20-s024: Started on Mar 30, 2023 at 13:53:23 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -96,13 +96,227 @@ ncverilog
 	../stm/stm_dacmux.v
 	-l
 	stm_dacmux+RTL.log
-Recompiling... reason: file '../rtl/dacmux.v' is newer than expected.
-	expected: Fri Mar 24 16:48:08 2023
-	actual:   Fri Mar 24 17:04:38 2023
+file: /mnt/app1/ray/project/can1127/rtl/phycrc.v
+	module worklib.phycrc:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/phyff.v
+	module worklib.phyff:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/phyidd.v
+	module worklib.phyidd:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/phyrx.v
+	module worklib.phyrx:v
+		errors: 0, warnings: 0
+	module worklib.phyrx_db:v
+		errors: 0, warnings: 0
+	module worklib.phyrx_adp:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/phytx.v
+	module worklib.phytx:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/prltmr.v
+	module worklib.PrlTimer_1112a0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/updprl.v
+	module worklib.updprl:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/updphy.v
+	module worklib.updphy:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/extint.v
+	module worklib.extint:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/i2c.v
+	module worklib.i2c:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/isr.v
+	module worklib.isr:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/mdu.v
+	module worklib.mdu:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/pmurstctrl.v
+	module worklib.pmurstctrl:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/ports.v
+	module worklib.ports:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/mcu51_cpu.v
+	module worklib.mcu51_cpu:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/serial0.v
+	module worklib.serial0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/softrstctrl.v
+	module worklib.softrstctrl:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/syncneg.v
+	module worklib.syncneg:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/timer0.v
+	module worklib.timer0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/timer1.v
+	module worklib.timer1:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/wakeupctrl.v
+	module worklib.wakeupctrl:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/watchdog.v
+	module worklib.watchdog:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/mcu51.v
+	module worklib.mcu51:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mcu/sfrmux.v
+	module worklib.sfrmux:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/i2cslv.v
+	module worklib.i2cslv:v
+		errors: 0, warnings: 0
+	module worklib.i2cdbnc:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/dpdmacc.v
+	module worklib.dpdmacc:v
+		errors: 0, warnings: 0
+	module worklib.filter150us:v
+		errors: 0, warnings: 0
+	module worklib.ff_sync:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/fcp.v
+	module worklib.fcp:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/fcpegn.v
+	module worklib.fcpegn:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/fcpcrc.v
+	module worklib.fcpcrc:v
+		errors: 0, warnings: 0
 file: /mnt/app1/ray/project/can1127/rtl/dacmux.v
+	module worklib.dacmux:v
+		errors: 0, warnings: 0
+	module worklib.dac2sar:v
+		errors: 0, warnings: 0
 	module worklib.shmux:v
 		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/mpb.v
+	module worklib.mpb:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/regbank.v
+	module worklib.regbank:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/regx.v
+	module worklib.regx:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/ictlr.v
+	module worklib.ictlr:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/srambist.v
+	module worklib.srambist:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/divclk.v
+	module worklib.divclk:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/cvctl.v
+	module worklib.cvctl:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/core_a0.v
+	module worklib.core_a0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/chiptop_1127a0.v
+	module worklib.chiptop_1127a0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/anatop_1127a0.v
+	module worklib.anatop_1127a0:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/bhv_cc_rcver.v
+	module worklib.bhv_cc_rcver:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/bhv_compm_mux.v
+	module worklib.bhv_compm_mux:v
+		errors: 0, warnings: 0
+file: ../bench/bench_0.v
+	module worklib.bench:v
+		errors: 0, warnings: 0
+file: ../bench/rc_network.v
+	module worklib.jumper:v
+		errors: 0, warnings: 0
+	module worklib.rc_driver:v
+		errors: 0, warnings: 0
+	module worklib.vcompos:v
+		errors: 0, warnings: 0
+file: ../bench/usb_port.v
+	module worklib.usb_port:v
+		errors: 0, warnings: 0
+	module worklib.usb_connector:v
+		errors: 0, warnings: 0
+	module worklib.usb_dd_composer:v
+		errors: 0, warnings: 0
+file: ../bench/bhv_updphy.sv
+	module worklib.usbpd_phy:sv
+		errors: 0, warnings: 0
+file: ../bench/bhv_usbpd_controller.sv
+	module worklib.bhv_usbpd_controller:sv
+		errors: 0, warnings: 0
+file: ../bench/usbpd_analyzer.sv
+	module worklib.usbpd_analyzer:sv
+		errors: 0, warnings: 0
+file: ../bench/m51_synthe.v
+	module worklib.m51_synthe:v
+		errors: 0, warnings: 0
+file: ../bench/probe.v
+	module worklib.ana_probe:v
+		errors: 0, warnings: 0
+	module worklib.dig_probe:v
+		errors: 0, warnings: 0
+file: ../bench/mpsse/mpsse_mst_i2c.v
+	module worklib.mpsse_mst_i2c:v
+		errors: 0, warnings: 0
+file: ../bench/uart_bhv.v
+	module worklib.uart_bhv:v
+		errors: 0, warnings: 0
+file: ../bench/can1127.v
+	module worklib.hardware_rev:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/rtl/softmacro.v
+	module rtl.glreg:v
+		errors: 0, warnings: 0
+	module rtl.glsta:v
+		errors: 0, warnings: 0
+	module rtl.dbnc:v
+		errors: 0, warnings: 0
+	module rtl.glpwm:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/std.v
+	module std_1.AND2X1:v
+		errors: 0, warnings: 0
+	module std_1.CKBUFX1:v
+		errors: 0, warnings: 0
+	module std_1.CKMUX2X1:v
+		errors: 0, warnings: 0
+	module std_1.CLKDLX1:v
+		errors: 0, warnings: 0
+	module std_1.INVX1:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/io.v
+	module io.IODMURUDA_A0:v
+		errors: 0, warnings: 0
+	module io.IOBMURUDA_A0:v
+		errors: 0, warnings: 0
+	module io.IOBMURUDA_A1:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/ATO0008KX8MX180LBX4DA.v
+	module ATO0008KX8MX180LBX4DA.ATO0008KX8MX180LBX4DA:v
+		errors: 0, warnings: 0
+file: /mnt/app1/ray/project/can1127/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_SS.v
+	module MSL18B_1536X8_RW10TM4_16_20221107_SS.MSL18B_1536X8_RW10TM4_16_20221107:v
+		errors: 0, warnings: 0
 file: /mnt/app1/ray/project/can1127/macro/io_udp.v
+	module io_udp.IOBPURUDA_A0_func:v
+		errors: 0, warnings: 0
+	module io_udp.IOBPURUDA_A1_func:v
+		errors: 0, warnings: 0
 ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/softmacro.v" given but not used.
 ncvlog: *W,LIBNOU: Library "/mnt/app1/ray/project/can1127/fpga/ATO0008KX8VI150BG33NA_FPGA.v" given but not used.
 ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
@@ -118,25 +332,269 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
+		ATO0008KX8MX180LBX4DA.ATO0008KX8MX180LBX4DA:v <0x0fc72c37>
+			streams: 552, words: 1121391
+		ATO0008KX8MX180LBX4DA.ATO0008KX8MX180LBX4DA:v <0x404611c0>
+			streams: 552, words: 1121391
+		MSL18B_1536X8_RW10TM4_16_20221107_SS.MSL18B_1536X8_RW10TM4_16_20221107:v <0x3611e329>
+			streams:   3, words:  3967
+		io.IODMURUDA_A0:v <0x22e7f078>
+			streams:   1, words:   123
+		rtl.dbnc:v <0x22105fb1>
+			streams:   8, words:  2368
+		rtl.dbnc:v <0x2ceac1e2>
+			streams:   8, words:  2368
+		rtl.dbnc:v <0x347c1008>
+			streams:   8, words:  2368
+		rtl.dbnc:v <0x4295ed67>
+			streams:   8, words:  2366
+		rtl.dbnc:v <0x59fccf71>
+			streams:   8, words:  2366
+		rtl.dbnc:v <0x5dfcd3d5>
+			streams:   8, words:  2366
+		rtl.glpwm:v <0x62029565>
+			streams:   4, words:   996
+		rtl.glreg:v <0x0e8a417a>
+			streams:   2, words:   749
+		rtl.glreg:v <0x0eab2b59>
+			streams:   2, words:   668
+		rtl.glreg:v <0x10b02093>
+			streams:   2, words:   801
+		rtl.glreg:v <0x150b54ea>
+			streams:   2, words:   691
+		rtl.glreg:v <0x16050992>
+			streams:   2, words:   762
+		rtl.glreg:v <0x17901bc6>
+			streams:   2, words:   691
+		rtl.glreg:v <0x1c08d0e1>
+			streams:   2, words:   707
+		rtl.glreg:v <0x26475dbc>
+			streams:   2, words:   749
+		rtl.glreg:v <0x31dde92f>
+			streams:   2, words:   752
+		rtl.glreg:v <0x3346a603>
+			streams:   2, words:   752
+		rtl.glreg:v <0x3457c7cd>
+			streams:   2, words:   691
+		rtl.glreg:v <0x387d3c55>
+			streams:   2, words:   802
+		rtl.glreg:v <0x3c22f016>
+			streams:   2, words:   749
+		rtl.glreg:v <0x45b2a3ce>
+			streams:   2, words:   704
+		rtl.glreg:v <0x4633986f>
+			streams:   2, words:   805
+		rtl.glreg:v <0x47b61ae3>
+			streams:   2, words:   802
+		rtl.glreg:v <0x4abbb2c8>
+			streams:   2, words:   707
+		rtl.glreg:v <0x4c2fa6a2>
+			streams:   2, words:   818
+		rtl.glreg:v <0x4cd338a0>
+			streams:   2, words:   815
+		rtl.glreg:v <0x4e2ad560>
+			streams:   2, words:   650
+		rtl.glreg:v <0x5417a6af>
+			streams:   2, words:   652
+		rtl.glreg:v <0x5656df41>
+			streams:   2, words:   650
+		rtl.glreg:v <0x568ce983>
+			streams:   2, words:   652
+		rtl.glreg:v <0x57388884>
+			streams:   2, words:   802
+		rtl.glreg:v <0x669feed4>
+			streams:   2, words:   818
+		rtl.glreg:v <0x670b76c4>
+			streams:   2, words:   802
+		rtl.glreg:v <0x6b10d7c7>
+			streams:   2, words:   632
+		rtl.glreg:v <0x6b1ea22e>
+			streams:   2, words:   704
+		rtl.glreg:v <0x70155f30>
+			streams:   2, words:   704
+		rtl.glreg:v <0x73cdf5ff>
+			streams:   2, words:   749
+		rtl.glreg:v <0x76641ba3>
+			streams:   2, words:   802
+		rtl.glreg:v <0x76e5a542>
+			streams:   2, words:   704
+		rtl.glreg:v <0x79752aa6>
+			streams:   2, words:   815
+		rtl.glreg:v <0x7c8a6354>
+			streams:   2, words:   638
+		rtl.glreg:v <0x7d8169f9>
+			streams:   2, words:   704
+		rtl.glreg:v <0x7e112c78>
+			streams:   2, words:   638
+		rtl.glreg:v <0x7e6a073e>
+			streams:   6, words:  1866
+		rtl.glsta:v <0x0ce6aeeb>
+			streams:   4, words:  1021
+		rtl.glsta:v <0x56b588fa>
+			streams:   4, words:   813
+		std_1.CLKDLX1:v <0x0a8945e2>
+			streams:   0, words:     0
+		std_1.CLKDLX1:v <0x37a9b2a8>
+			streams:   0, words:     0
+		std_1.CLKDLX1:v <0x54453a2f>
+			streams:   0, words:     0
+		std_1.CLKDLX1:v <0x6965cd65>
+			streams:   0, words:     0
+		worklib.PrlTimer_1112a0:v <0x31b5dec2>
+			streams:   5, words:  1313
+		worklib.ana_probe:v <0x25537a72>
+			streams:  24, words: 47191
+		worklib.ana_probe:v <0x40af113a>
+			streams:  24, words: 47830
+		worklib.anatop_1127a0:v <0x388c894f>
+			streams:  48, words: 27196
+		worklib.bench:v <0x28f77b9f>
+			streams:  74, words: 39061
+		worklib.bhv_cc_rcver:v <0x7868bf5b>
+			streams:  12, words: 12638
+		worklib.bhv_compm_mux:v <0x75ce4c4e>
+			streams:  18, words:  9966
+		worklib.bhv_usbpd_controller:sv <0x64972771>
+			streams:  30, words: 68747
+		worklib.chiptop_1127a0:v <0x7661803f>
+			streams:  31, words: 11315
+		worklib.core_a0:v <0x285c8f52>
+			streams: 151, words: 68914
+		worklib.cvctl:v <0x6e4e875a>
+			streams:  13, words:  5493
+		worklib.dac2sar:v <0x00467821>
+			streams:  20, words:  5666
+		worklib.dacmux:v <0x1d9d751d>
+			streams:  42, words: 14872
+		worklib.dig_probe:v <0x0eb2e9ad>
+			streams:  21, words: 37696
+		worklib.dig_probe:v <0x14b9a9ef>
+			streams:  21, words: 37696
+		worklib.divclk:v <0x725cfe15>
+			streams:  14, words:  4490
+		worklib.dpdmacc:v <0x3ed0350e>
+			streams:   1, words:  1211
+		worklib.extint:v <0x2820b752>
+			streams:  43, words: 18894
+		worklib.fcp:v <0x231ce2cc>
+			streams:   1, words:   240
+		worklib.fcpcrc:v <0x1a5f3abd>
+			streams:   2, words:  2045
+		worklib.fcpegn:v <0x1d9c48bf>
+			streams:  56, words: 35623
+		worklib.ff_sync:v <0x6ded5e0b>
+			streams:   3, words:   706
+		worklib.filter150us:v <0x3c6f2813>
+			streams:   4, words:  1228
+		worklib.hardware_rev:v <0x0c4f0af9>
+			streams: 1256, words: 209005
+		worklib.i2c:v <0x71120237>
+			streams: 106, words: 75929
+		worklib.i2cdbnc:v <0x371ee0c1>
+			streams:   5, words:  2045
+		worklib.i2cslv:v <0x77bc0b51>
+			streams:  31, words: 13762
+		worklib.ictlr:v <0x24297c60>
+			streams:  68, words: 36904
+		worklib.isr:v <0x5c93d604>
+			streams:  96, words: 48629
+		worklib.jumper:v <0x26b3195e>
+			streams:   6, words:  3578
+		worklib.m51_synthe:v <0x60f8b603>
+			streams:  57, words: 82375
+		worklib.mcu51:v <0x3abeefa6>
+			streams:  23, words:  4904
+		worklib.mcu51_cpu:v <0x6561880d>
+			streams: 214, words: 220512
+		worklib.mdu:v <0x2e04aae5>
+			streams:  41, words: 43718
+		worklib.mpb:v <0x394b6a82>
+			streams:  52, words: 22956
+		worklib.mpsse_mst_i2c:v <0x5cefac63>
+			streams:  68, words: 109676
+		worklib.phycrc:v <0x01b97463>
+			streams:   6, words:  3033
+		worklib.phyff:v <0x41f85e98>
+			streams:   9, words:  4497
+		worklib.phyidd:v <0x7ca3717a>
+			streams:  13, words:  4817
+		worklib.phyrx:v <0x54f2df3f>
+			streams:  39, words: 20603
+		worklib.phyrx_adp:v <0x63fa9c56>
+			streams:  21, words:  7515
+		worklib.phyrx_db:v <0x62aca115>
+			streams:  10, words:  4279
+		worklib.phytx:v <0x255f882b>
+			streams:  36, words: 19081
+		worklib.pmurstctrl:v <0x4dc26812>
+			streams:   0, words:     0
+		worklib.ports:v <0x04b2335c>
+			streams:   2, words:   527
+		worklib.rc_driver:v <0x65d40b42>
+			streams:   4, words:  5168
+		worklib.regbank:v <0x7f050f6d>
+			streams: 131, words: 45620
+		worklib.regx:v <0x06ebd6fb>
+			streams:  73, words: 32286
+		worklib.serial0:v <0x6019b2b5>
+			streams:  92, words: 43839
+		worklib.sfrmux:v <0x4757b8a6>
+			streams:   4, words: 11683
 		worklib.shmux:v <0x2f006f1d>
 			streams:  17, words:  6897
+		worklib.softrstctrl:v <0x0461ca64>
+			streams:   9, words:  3011
+		worklib.srambist:v <0x1864ad4b>
+			streams:  30, words:  9149
+		worklib.stm_dacmux:v <0x2c3eb8fb>
+			streams:  69, words: 150108
+		worklib.syncneg:v <0x78c4fcdf>
+			streams:  21, words:  5359
+		worklib.timer0:v <0x4980e191>
+			streams:  26, words: 11419
+		worklib.timer1:v <0x7b808ab5>
+			streams:  26, words: 10298
+		worklib.uart_bhv:v <0x668701f7>
+			streams:  10, words: 30278
+		worklib.updphy:v <0x4ffd8cdf>
+			streams:  19, words:  5479
+		worklib.updprl:v <0x0081779e>
+			streams:  24, words: 10059
+		worklib.usb_connector:v <0x6569a784>
+			streams:  24, words: 19170
+		worklib.usb_dd_composer:v <0x3da8b678>
+			streams:   9, words: 11138
+		worklib.usb_port:v <0x20c44d00>
+			streams:   3, words:  1069
+		worklib.usbpd_analyzer:sv <0x3b61b3ff>
+			streams:  19, words: 40298
+		worklib.usbpd_phy:sv <0x59274796>
+			streams:  17, words: 31575
+		worklib.usbpd_phy:sv <0x5edbf839>
+			streams:  17, words: 31811
+		worklib.vcompos:v <0x1f3dc34d>
+			streams:   2, words:  4214
+		worklib.wakeupctrl:v <0x5fea3ee9>
+			streams:   1, words:  1984
+		worklib.watchdog:v <0x470854cb>
+			streams:  33, words: 13557
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                      Instances  Unique
-		Modules:                    314      82
+		Modules:                    318      82
 		UDPs:                         7       1
-		Primitives:                 202      11
-		Timing outputs:              78      30
-		Registers:                 1817    1324
-		Scalar wires:              1541       -
-		Expanded wires:            1475     108
+		Primitives:                 204      11
+		Timing outputs:              80      30
+		Registers:                 1825    1329
+		Scalar wires:              1550       -
+		Expanded wires:            1483     110
 		Vectored wires:            2169       -
 		Named events:                29      22
-		Always blocks:             1151     694
-		Initial blocks:             136     118
+		Always blocks:             1153     694
+		Initial blocks:             138     120
 		Parallel blocks:             74      19
-		Cont. assignments:         2308    3062
+		Cont. assignments:         2316    3068
 		Pseudo assignments:          51      50
 		Timing checks:              766     108
 		Delayed tcheck signals:      21      14
@@ -28856,4 +29314,4 @@ Read dummy cycle.
 Simulation complete via $finish(1) at time 711336820880 PS + 0
 ../stm/stm_task.v:50    `HW_FIN (($time,"ns <%m> NOTE: simulation completed by HW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Mar 24, 2023 at 17:07:36 CST  (total: 00:02:41)
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 30, 2023 at 13:56:26 CST  (total: 00:03:03)

@@ -73,48 +73,71 @@
    ADD MApped Points U0_CORE/u0_fcp/u0_fcpegn/u0_fcpctl/mem_reg[7] U0_CORE/u0_fcp/u0_fcpegn/u0_fcpctl/mem_reg_7_/U$1 -NOINVert
 // ADD MApped Points U0_CORE/u0_regbank/u1_regE4/mem_reg[0] U0_CORE/u0_regbank/u1_regE4/mem_reg_0_/U$1 -NOINVert
 // ADD MApped Points U0_CORE/u0_regbank/u1_regE4/mem_reg[1] U0_CORE/u0_regbank/u1_regE4/mem_reg_1_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[0] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_0_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[1] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_1_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[2] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_2_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[3] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_3_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[4] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_4_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[5] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_5_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[6] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_6_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[7] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_7_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[8] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_8_/U$1 -NOINVert
-// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[9] U0_CORE/u0_dacmux/u0_dac1v/mem_reg_9_/U$1 -NOINVert
-// ADD MApped Points /U0_CORE/u0_regbank/u1_regE4/mem_reg[2] /U0_CORE/u0_regbank/u1_regE4/mem_reg_2_/U$1 -NOINVert
-// ADD MApped Points /U0_CORE/u0_dacmux/sh_rst_n_reg /U0_CORE/u0_dacmux/sh_rst_n_reg/U$1 -NOINVert
-   ADD MApped Points U0_CORE/u0_divclk/U0_D1P5M_ICG/U$1 U0_CORE/u0_divclk/U0_D1P5M_ICG/U$1 -NOINVert
-   ADD MApped Points U0_CORE/u0_divclk/U0_D1P5M_ICG/U$1 U0_CORE/u0_divclk/U0_D1P5M_ICG/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[0]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_0_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[1]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_1_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[2]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_2_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[3]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_3_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[4]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_4_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[5]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_5_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[6]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_6_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[7]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_7_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[8]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_8_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/u0_dac1v/mem_reg[9]  U0_CORE/u0_dacmux/u0_dac1v/mem_reg_9_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_regbank/u1_regE4/mem_reg[2] U0_CORE/u0_regbank/u1_regE4/mem_reg_2_/U$1 -NOINVert
+// ADD MApped Points U0_CORE/u0_dacmux/sh_rst_n_reg         U0_CORE/u0_dacmux/sh_rst_n_reg/U$1 -NOINVert
+
+   ADD MApped Points U0_CORE/u0_divclk/U0_D1P0M_ICG/U$1 U0_CORE/u0_divclk/U0_D1P0M_ICG/U$1 -NOINVert
    ADD MApped Points U0_CORE/u0_divclk/U0_D500K_ICG/U$1 U0_CORE/u0_divclk/U0_D500K_ICG/U$1 -NOINVert
    ADD MApped Points U0_CORE/u0_divclk/U0_D100K_ICG/U$1 U0_CORE/u0_divclk/U0_D100K_ICG/U$1 -NOINVert
    ADD MApped Points U0_CORE/u0_divclk/U0_D50K_ICG/U$1  U0_CORE/u0_divclk/U0_D50K_ICG/U$1  -NOINVert
    ADD MApped Points U0_CORE/u0_divclk/U0_D0P5K_ICG/U$1 U0_CORE/u0_divclk/U0_D0P5K_ICG/U$1 -NOINVert
 
-// DELete COmpared Points
-// DELete MApped Points
+   ADD MApped Points PAD_TST PAD_TST -NOINVert
 
-   REPort UNmapped Points -TYpe DFF
+// DELete MApped Points
 
    ADD COmpared Points -All
 // ADD COmpared Points U0_CORE/d_dodat_reg*
-// COMpare -NONEQ_Print -ABORT_Print
+
+// DELete COmpared Points
+// DELete COmpared Points /U0_CORE/u0_ictlr/c_ptr_reg[3] -Golden
+
    REPort COmpared Points
+
+   REPort UNmapped Points -TYpe DFF
+   REPort UNmapped Points -TYpe BBOX
+// REPort UNmapped Points -TYpe DLAT
+   REPort FLoating Signals -Undriven -Golden -All
+
+   DATE
+   SET COmpare Effort High
+   COMpare -NONEQ_Print -ABORT_Print
 
 //----------------------------
 // To resolve Abort point
 //----------------------------
-// REPort compare data -abort
+// REPort COmpare Data -CLASS ABort
+   DATE
    SET COmpare Effort super
-   COMpare -NONEQ_Print
+   COMpare -NONEQ_Print -ABORT_Print
 
    DATE
 // EXIt -Force
 // SYSTEM
 // TCLMODE
 // SET GUi
-// SET SYstem Mode Setup
-// SET ROot Module
 // DOFile ../cmd/do_syn.cmd
+
+//----------------------------
+// debug@20230329
+//----------------------------
+// SET SYstem Mode Setup
+// SET ROot Module -Golden ictlr
+// REPort FLoating Signals -Undriven -Golden -Net -All
+
+// SET ROot Module -Revised ictlr_a0
+// ADD PIn Constraints 0 test_se -Revised
+// SET System Mode LEc
+// ADD COmpared Points -All
+// COMpare -NONEQ_Print
 

@@ -38,7 +38,7 @@ inout		GPIO6, // for AFE
 `else // !FPGA
 inout		CSP, CSN,
 inout		VFB,
-inout		COM, SW, BST, VDRV,
+inout		COMP, SW, BST, VDRV,
 output		LG, HG, GATE,
 `endif // FPGA
 inout		DP, DN, CC1, CC2,
@@ -136,15 +136,14 @@ inout		GPIO3, GPIO4, GPIO5
    assign HGON		= bck_regx0[4];
    assign LGON		= bck_regx0[5];
    assign EN_DRV	= bck_regx0[6];
+   assign INT_CP	= bck_regx0[7];
    assign FSW		= bck_regx1[1:0];
    assign EN_OSC	= bck_regx1[2];
    assign MAXDS		= bck_regx1[3];
    assign EN_GM		= bck_regx1[4];
    assign EN_ODLDO	= bck_regx1[5];
    assign EN_IBUK	= bck_regx1[6];
-
    assign EXT_CP	= bck_regx1[7];
-   assign INT_CP	= bck_regx0[7];
 
    wire [7:0] do_cvctl, do_srcctl, do_ccctl, do_cctrx, do_pwr_i;
    wire [7:0] do_xana0, do_xana1;
@@ -152,7 +151,7 @@ inout		GPIO3, GPIO4, GPIO5
    wire [3:0] do_regx_xtm, do_vooc;
    assign {
 	HVNG_CPEN,	// XANA1[7]
-	CPV_SEL,	// XANA1[6]
+	CPVSEL,		// XANA1[6]
 	CLAMPV_EN,	// XANA1[5]
 	PWREN_B_rv,	// XANA1[4]
 	DP_0P6V_EN,	// XANA1[3]
@@ -167,7 +166,7 @@ inout		GPIO3, GPIO4, GPIO5
 	VBUS_400K_rv,	// XANA0[4]
 	SEL_CCGAIN,	// XANA0[3]
 	SEL_OCDRV_rv,	// XANA0[2]
-	VFB_SW,		// XANA0[1]
+	VFB_SWB,	// XANA0[1]
 	CV2		// XANA0[0]
 	} = do_xana0;
    assign {
@@ -205,7 +204,7 @@ inout		GPIO3, GPIO4, GPIO5
 	DPDN_SHORT} = do_dpdm;
    assign {
 	CC_SLOPE[1], // LDO9V, CAN1126A0 removed
-	CC_SLOPE[0], // CC_SLOPE, CAN1126A0 removed
+	CC_SLOPE[0], // CC_SLOPE, CAN1126A0 removed, CAN1127 follows CAN1124
 	DISCHG_SEL,
 	VO_DISCHG, // CAN1127-renamed
 	VCONN_EN[1:0],
@@ -216,15 +215,13 @@ inout		GPIO3, GPIO4, GPIO5
 	LSR,
 	TFA,
 	TRA,
-	CS_EN, // CAN1112 removed, CAN1126A0: pk_set -> CS_EN
+	CS_EN_rv, // CAN1112 removed, CAN1126A0: pk_set -> CS_EN
 	S100U, // CAN1127 remove B suffix
 	S20U,  // CAN1127 remove B suffix
 	GP5_20U
 	} = do_cctrx;
-   wire [4:0] di_xanav = {
-	1'h0,
-	OPTO2,
-	OPTO1,
+   wire [5:0] di_xanav = {
+	DUMMY_OUT, // [3:0]
 	OCP_80M,
 	OCP_160M};
    wire [5:0] srci = {
@@ -304,7 +301,6 @@ inout		GPIO3, GPIO4, GPIO5
 	.OSC_STOP	(OSC_STOP),
 	.OSC_LOW	(OSC_LOW),
 	.RD_DET		(RD_DET),
-	.STB_OVP	(1'h0),
 	.DAC1_EN	(DAC1_EN),
 	.DAC1_V		(DAC1),
 	.SAMPL_SEL	(SAMPL_SEL),

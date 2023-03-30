@@ -8,7 +8,7 @@ module core_a0 (
 // ALL RIGHTS ARE RESERVED
 // =============================================================================
 input	[5:0]	SRCI,
-input	[4:0]	XANAV,
+input	[5:0]	XANAV,
 output	[15:0]	BCK_REGX,
 output	[15:0]	ANA_REGX,	// XANA1,XANA0
 output		LFOSC_ENB,	// XANA2[7]
@@ -36,7 +36,7 @@ output	[7:0]	SRAM_D,
 input	[7:0]	SRAM_RDAT,
 // -----------------------------------------------------------------------------
 input		RX_DAT, RX_SQL,
-		RD_DET, STB_OVP,
+		RD_DET,
 output		TX_DAT, TX_EN,
 		OSC_STOP, OSC_LOW,
 		SLEEP, PWRDN, OCDRV_ENZ,
@@ -52,7 +52,8 @@ output	[1:0]	GPIO_IE,
 output	[3:0]	DO_TS,
 input		DI_TS,
 output	[55:0]	REGTRM,
-output	[7:0]	ANAOPT, DUMMY_IN,
+output	[7:0]	ANAOPT,
+output	[4:0]	DUMMY_IN,
 output  [5:0]   DAC3_V,
 input		i_clk, i_rstz,
 		atpg_en, di_tst,
@@ -100,11 +101,17 @@ input	[3:0]	dbgsel
    CKMUX2X1 U0_CLK_MUX (.D1(DI_GPIO[4]),.D0(i_clk), .S(tclk_sel),.Y(s_clk));
    CKMUX2X1 U0_DCLKMUX (.D1(DI_GPIO[4]),.D0(RD_DET),.S(tclk_sel),.Y(detclk_ps[0]));
    CKMUX2X1 U0_ACLKMUX (.D1(DI_GPIO[4]),.D0(aswkup),.S(tclk_sel),.Y(aswclk_ps[0]));
+
+   // disable_timing to these cells for test outputs
    CKBUFX1  U0_MCK_BUF (.A(i_clk),.Y(x_clk)); // output to debug, don't balance, for disable timing
-   CKBUFX1  U0_TCK_BUF (.A(DI_GPIO[4]),.Y(t_di_gpio4)); // for di_gpio4 in atpg
+   CKBUFX1  U0_TCK_BUF (.A(DI_GPIO[4]),.Y(t_di_gpio4)); // for di_gpio4 (GPIO3) in atpg
 // CLKBUFX1 U0_TCK_BUF (.A(DI_GPIO[4]),.Y(tclk)); // for ideal network
 
-   wire r_osc_gate;
+   wire [1:0] pmem_clk;
+   CKBUFX1  U0_BUF_NEG0 (.A(pmem_clk[0]),.Y(t_pmem_clk)); // for pmem_clk[0]
+   CKBUFX1  U0_BUF_NEG1 (.A(pmem_csb),   .Y(t_pmem_csb)); // for pmem_csb
+   CKBUFX1  U0_BUF_NEG2 (.A(r_osc_gate), .Y(t_osc_gate)); // for r_osc_gate
+
    wire #3 osc_en = ~r_osc_gate; // propagation delay for the hold time requirement
    CLKDLX1 U0_MCLK_ICG (.E(osc_en),.CK(s_clk),.SE(atpg_en),.ECK(g_clk));
    wire #2 mclk = g_clk; // clock tree latancy
@@ -287,7 +294,7 @@ input	[3:0]	dbgsel
    wire [15:0] pmem_a;
    wire [14:0] bkpt_pc, r_inst_ofs;
    wire [7:0] pmem_q0, pmem_q1;
-   wire [1:0] pmem_clk, pmem_twlb, wd_twlb;
+   wire [1:0] pmem_twlb, wd_twlb;
 
    ictlr u0_ictlr (
 	.hit_ps		(hit_ps),
@@ -392,11 +399,10 @@ input	[3:0]	dbgsel
 	.lg_pulse_len	(lg_pulse_len),
 	.aswkup		(aswkup),
 	.lg_dischg	(frc_lg_on),
-	.frc_hg_off	(frc_hg_off),
+	.gating_pwr	(gating_pwr),
 	.dnchk_en	(dnchk_en),
 	.dm_fault	(dm_fault), // anatop_can1112b0
 	.di_rd_det	(di_rd_det),
-	.di_stbovp	(di_stbovp),
 	.cc1_di		(cc1_di),
 	.cc2_di		(cc2_di),
 	.i_tmrf		(t0_intr),
@@ -796,14 +802,14 @@ input	[3:0]	dbgsel
 	.clk		(mclk),
 	.srstz		(srstz)
    ); // u0_cvctl
-   wire sdischg_vin  = ~(r_sdischg[5] &~sdischg_duty | r_otpi_gate) & r_srcctl[1];
+// wire sdischg_vin  = ~(r_sdischg[5] &~sdischg_duty | r_otpi_gate) & r_srcctl[1];
    wire sdischg_vbus = ~(r_sdischg[6] &~sdischg_duty | r_otpi_gate) & r_srcctl[4];
 
    wire [1:0] regx_hitbst;
    wire [6:0] r_do_ts, bist_r_ctl;
    wire [7:0] r_aopt, r_xtm, bist_r_dat, r_adummyi, r_bck0, r_bck1, r_bck2;
    wire [23:0] r_xana;
-   wire [4:0] di_xanav;
+   wire [5:0] di_xanav;
    wire [1:0] r_sap;
    wire [3:0] r_dpdo_sel, r_dndo_sel;
    wire [6:0] regx_addr = xram_a[6:0];
@@ -820,10 +826,11 @@ input	[3:0]	dbgsel
    wire [4:0] di_aswk;
    wire [3:0] regx_wrcvc;
    assign lg_pulse_len = r_bck2[1:0];
+   wire hg_gate_enb = r_bck2[2];
+   wire frc_hg_off = gating_pwr & ~hg_gate_enb;
    assign {r_cvcwr[2],r_cvcwr[5:3]} = regx_wrcvc;
    regx u0_regx (
 	.di_rd_det	(di_rd_det),
-	.di_stbovp	(di_stbovp),
 	.di_drposc	(di_drposc),
 	.di_imposc	(di_imposc),
 	.r_imp_osc	(r_imp_osc),
@@ -883,7 +890,7 @@ input	[3:0]	dbgsel
 	.r_bck2		(r_bck2),
 	.r_adummyi	(r_adummyi),
 	.r_xana		(r_xana),
-	.di_xana	(di_xanav),
+	.di_xanav	(di_xanav),
 	.r_aopt		(r_aopt),
 	.r_xtm		(r_xtm),
 	.r_i2crout	(r_i2crout),
@@ -914,7 +921,8 @@ input	[3:0]	dbgsel
 	.mclk		(mclk),
 	.srstz		(srstz),
 	.atpg_en	(atpg_en),
-	.divff_o	(divff_o), // mclk/12, 50%
+	.divff_o1	(divff_o1),
+	.divff_o2	(),
 	.clk_1p0m	(clk_1p0m),
 	.clk_500k	(clk_500k),
 	.clk_100k	(clk_100k),

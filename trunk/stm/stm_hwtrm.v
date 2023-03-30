@@ -110,7 +110,8 @@ initial begin: main
 		`I2CMST.sfrw (`SAREN,'hff);
 		`I2CMST.sfrw (`DACLSB,'h04);
 		`I2CMST.sfrw (`DACCTL,'hcf); // slowest ADC (FPGA case takes longer)
-		`I2CMST.sfrw (`CCTRX,'h08); // CS_EN
+//		`I2CMST.sfrw (`CCTRX,'h08); // CS_EN
+		`I2CMST.sfrw (`CVCTL,'h04); // OCP_EN
  
 		`DUT_ANA.v_VIN =30_000; // for DACV0 to over flow
 		`DUT_ANA.v_CSP =54; // (e1)
@@ -138,14 +139,14 @@ initial begin: main
 
 #1000           `I2CMST.sfrw(`CCOFS,'h32); // set DAC2_TRIM=+50LSB
                 `I2CMST.sfrw(`PWR_I,'d80);   //set PWR_I = 2A
-                 if(`DUT_ANA.PWR_I != 'd130) begin
+                 if(`DUT_ANA.DAC2 != 'd130) begin
                          $display($time,"ns<%m> Error: PWR_I value isn't 82h");
                    #1000 $finish;
                  end       
 
 #1000           `I2CMST.sfrw(`CCOFS,'hce); // set DAC2_TRIM=-50LSB
                 `I2CMST.sfrw(`PWR_I,'d120);  //set PWR_I = 3A
-                 if(`DUT_ANA.PWR_I != 'd70) begin
+                 if(`DUT_ANA.DAC2 != 'd70) begin
                          $display($time,"ns<%m> Error: PWR_I value isn't 46h");
                    #1000 $finish;
                  end

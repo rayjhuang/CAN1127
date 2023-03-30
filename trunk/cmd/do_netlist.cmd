@@ -3,7 +3,7 @@
    SET log file lec_netlist_$DCODE.log -replace
    SET system mode setup
    PRINTENV DCODE
-   PRINTENV RELC     // 20221021
+   PRINTENV RELC     // 20230330
    PRINTENV RETC     // 221022
    PRINTENV RET_PATH // ~king/WORK/CAN1127A0_A0543A0/APR_LAYOUT
    PRINTENV PJ_PATH  // /mnt/app1/ray/project/can????
@@ -25,11 +25,11 @@
    REAd DEsign -Verilog   -root chiptop_1127a0 -Revised $TAR
 
    SET flatten model -gated_clock -seq_constant
-
    SET system mode lec
    ADD COmpared points -all
-   REPort COmpared Points
+// REPort COmpared Points
+   DATE
    COMpare -NONEQ_Print
-
+   DATE
    EXIt -F
 

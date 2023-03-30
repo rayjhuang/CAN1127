@@ -3,28 +3,28 @@ STIL 1.0 {
 }
 Header {
     Title "Minimal STIL for design `chiptop_1127a0'";
-    Date "Tue Mar 14 17:24:08 2023";
+    Date "Thu Mar 30 15:24:05 2023";
     Source "DFT Compiler H-2013.03-SP1";
 }
 Signals {
     "TST" In;
+    "GATE" Out;
+    "HG" Out;
+    "LG" Out;
     "BST" InOut;
     "CC1" InOut;
     "CC2" InOut;
-    "COM" InOut;
+    "COMP" InOut;
     "CSN" InOut;
     "CSP" InOut;
     "DN" InOut;
     "DP" InOut;
-    "GATE" InOut;
     "GPIO1" InOut;
     "GPIO2" InOut;
     "GPIO3" InOut;
     "GPIO4" InOut;
     "GPIO5" InOut;
     "GPIO_TS" InOut;
-    "HG" InOut;
-    "LG" InOut;
     "SCL" InOut;
     "SDA" InOut;
     "SW" InOut;
@@ -40,23 +40,24 @@ SignalGroups {
         ScanOut;
     }
     "all_inputs" = '"TST"';
-    "all_bidirectionals" = '"BST" + "CC1" + "CC2" + "COM" + "CSN" + "CSP" + "DN" 
-    + "DP" + "GATE" + "GPIO1" + "GPIO2" + "GPIO3" + "GPIO4" + "GPIO5" + 
-    "GPIO_TS" + "HG" + "LG" + "SCL" + "SDA" + "SW" + "VDRV" + "VFB"';
-    "all_ports" = '"all_inputs" + "all_bidirectionals"';
+    "all_outputs" = '"GATE" + "HG" + "LG"';
+    "all_bidirectionals" = '"BST" + "CC1" + "CC2" + "COMP" + "CSN" + "CSP" + 
+    "DN" + "DP" + "GPIO1" + "GPIO2" + "GPIO3" + "GPIO4" + "GPIO5" + "GPIO_TS" + 
+    "SCL" + "SDA" + "SW" + "VDRV" + "VFB"';
+    "all_ports" = '"all_inputs" + "all_outputs" + "all_bidirectionals"';
     "_pi" = '"all_inputs" + "all_bidirectionals"';
-    "_po" = '"all_bidirectionals"';
+    "_po" = '"all_outputs" + "all_bidirectionals"';
 }
 ScanStructures {
     ScanChain "chain_0" {
-        ScanLength 1621;
+        ScanLength 1628;
         ScanIn "SCL";
         ScanOut "GPIO4";
         ScanEnable "GPIO1";
         ScanMasterClock "GPIO3";
     }
     ScanChain "chain_1" {
-        ScanLength 1620;
+        ScanLength 1627;
         ScanIn "SDA";
         ScanOut "GPIO5";
         ScanEnable "GPIO1";
@@ -85,6 +86,30 @@ Timing {
             "all_inputs" {
                 N {
                     '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '15ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '15ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '15ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '15ns' L;
                 }
             }
             "GPIO3" {
@@ -207,6 +232,30 @@ Timing {
                     '15ns' L;
                 }
             }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '15ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '15ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '15ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '15ns' L;
+                }
+            }
             "GPIO3" {
                 P {
                     '0ns' D;
@@ -280,6 +329,30 @@ Timing {
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
+                    '15ns' L;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '15ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '15ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '15ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
                     '15ns' L;
                 }
             }
@@ -359,6 +432,30 @@ Timing {
                     '15ns' L;
                 }
             }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '15ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '15ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '15ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '15ns' L;
+                }
+            }
             "GPIO3" {
                 P {
                     '0ns' D;
@@ -435,6 +532,30 @@ Timing {
                     '15ns' L;
                 }
             }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '15ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '15ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '15ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '15ns' L;
+                }
+            }
             "GPIO3" {
                 P {
                     '0ns' D;
@@ -469,23 +590,23 @@ Procedures {
     "multiclock_capture" {
         W "_multiclock_capture_WFT_";
         C {
+            "GATE" = X;
+            "HG" = X;
+            "LG" = X;
             "BST" = X;
             "CC1" = X;
             "CC2" = X;
-            "COM" = X;
+            "COMP" = X;
             "CSN" = X;
             "CSP" = X;
             "DN" = X;
             "DP" = X;
-            "GATE" = X;
             "GPIO1" = X;
             "GPIO2" = X;
             "GPIO3" = 0;
             "GPIO4" = X;
             "GPIO5" = X;
             "GPIO_TS" = X;
-            "HG" = X;
-            "LG" = X;
             "SCL" = X;
             "SDA" = X;
             "SW" = X;
@@ -497,29 +618,29 @@ Procedures {
         }
         V {
             "_po" = \r22 #;
-            "_pi" = \r23 #;
+            "_pi" = \r20 #;
         }
     }
     "allclock_capture" {
         W "_allclock_capture_WFT_";
         C {
+            "GATE" = X;
+            "HG" = X;
+            "LG" = X;
             "BST" = X;
             "CC1" = X;
             "CC2" = X;
-            "COM" = X;
+            "COMP" = X;
             "CSN" = X;
             "CSP" = X;
             "DN" = X;
             "DP" = X;
-            "GATE" = X;
             "GPIO1" = X;
             "GPIO2" = X;
             "GPIO3" = 0;
             "GPIO4" = X;
             "GPIO5" = X;
             "GPIO_TS" = X;
-            "HG" = X;
-            "LG" = X;
             "SCL" = X;
             "SDA" = X;
             "SW" = X;
@@ -531,29 +652,29 @@ Procedures {
         }
         V {
             "_po" = \r22 #;
-            "_pi" = \r23 #;
+            "_pi" = \r20 #;
         }
     }
     "allclock_launch" {
         W "_allclock_launch_WFT_";
         C {
+            "GATE" = X;
+            "HG" = X;
+            "LG" = X;
             "BST" = X;
             "CC1" = X;
             "CC2" = X;
-            "COM" = X;
+            "COMP" = X;
             "CSN" = X;
             "CSP" = X;
             "DN" = X;
             "DP" = X;
-            "GATE" = X;
             "GPIO1" = X;
             "GPIO2" = X;
             "GPIO3" = 0;
             "GPIO4" = X;
             "GPIO5" = X;
             "GPIO_TS" = X;
-            "HG" = X;
-            "LG" = X;
             "SCL" = X;
             "SDA" = X;
             "SW" = X;
@@ -565,29 +686,29 @@ Procedures {
         }
         V {
             "_po" = \r22 #;
-            "_pi" = \r23 #;
+            "_pi" = \r20 #;
         }
     }
     "allclock_launch_capture" {
         W "_allclock_launch_capture_WFT_";
         C {
+            "GATE" = X;
+            "HG" = X;
+            "LG" = X;
             "BST" = X;
             "CC1" = X;
             "CC2" = X;
-            "COM" = X;
+            "COMP" = X;
             "CSN" = X;
             "CSP" = X;
             "DN" = X;
             "DP" = X;
-            "GATE" = X;
             "GPIO1" = X;
             "GPIO2" = X;
             "GPIO3" = 0;
             "GPIO4" = X;
             "GPIO5" = X;
             "GPIO_TS" = X;
-            "HG" = X;
-            "LG" = X;
             "SCL" = X;
             "SDA" = X;
             "SW" = X;
@@ -599,7 +720,7 @@ Procedures {
         }
         V {
             "_po" = \r22 #;
-            "_pi" = \r23 #;
+            "_pi" = \r20 #;
         }
     }
 }
@@ -611,20 +732,17 @@ MacroDefs {
             "BST" = Z;
             "CC1" = Z;
             "CC2" = Z;
-            "COM" = Z;
+            "COMP" = Z;
             "CSN" = Z;
             "CSP" = Z;
             "DN" = Z;
             "DP" = Z;
-            "GATE" = Z;
             "GPIO1" = Z;
             "GPIO2" = Z;
             "GPIO3" = 0;
             "GPIO4" = Z;
             "GPIO5" = Z;
             "GPIO_TS" = Z;
-            "HG" = Z;
-            "LG" = Z;
             "SCL" = Z;
             "SDA" = Z;
             "SW" = Z;

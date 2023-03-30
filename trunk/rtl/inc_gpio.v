@@ -60,21 +60,21 @@
 	do_opt[gpio_s3], do_opt[gpio_s2],
 	do_opt[gpio_s1], do_opt[gpio_s0]} & (|tm[1:0] ?'h0f :|tm[15:2] ?'h03 :'h7f)
 //		| (tm[0]  ?'h0 :'h0) // ATPG
-		| (tm[1]  ?{x_clk,     xrstz,    1'h0,                           4'h0} :'h0)
-		| (tm[2]  ?{di_cc,     cc_rxd,   prx_bmc,  cc_idle,   di_sqlch,  2'h0} :'h0)
-		| (tm[3]  ?{di_cc_49,  cc_rxd,   di_cc_49, cc_idle,   di_sqlch,  2'h0} :'h0)
-		| (tm[4]  ?{do_cc,     oe_cc,    slvo_sda, cc2_di ,   cc1_di,    2'h0} :'h0)
-		| (tm[5]  ?{dac1_comp, dp_comp,  di_cc_49, di_cc_49,  di_sqlch,  2'h0} :'h0)
-		| (tm[6]  ?{di_pro[4], di_pro[2:0],                   mirq,      2'h0} :'h0)
-		| (tm[7]  ?{di_pro[3:0],                              di_pro[5], 2'h0} :'h0)
-		| (tm[8]  ?{cc_flip,   do_cc,    oe_cc,    reti,      mirq,      2'h0} :'h0)
-		| (tm[9]  ?{dpdm_short,dm_2v7_en,dm_dwn_en,reti,      mirq,      2'h0} :'h0)
-		| (tm[10] ?{t0tf,      r_osc_lo, t1tr,     t0tr,      r_osc_stop,2'h0} :'h0)
-		| (tm[11] ?{comp_smpl[3:0],                           dac1_comp, 2'h0} :'h0)
-		| (tm[12] ?{pmem_pgm,  pmem_re,  pmem_csb, r_vpp_en,  |pmem_clk, 2'h0} :'h0)
-		| (tm[13] ?{fcp_oe,    fcp_do,   dm_comp,  reti,      mirq,      2'h0} :'h0)
-		| (tm[14] ?{t0tf,      t1tf,     t1tr,     t0tr,      mirq,      2'h0} :'h0)
-		| (tm[15] ?{t0tr,      mrst,     t1tr,     reti,      mirq,      2'h0} :'h0);
+		| (tm[1]  ?{x_clk,     xrstz,    1'h0,                              4'h0} :'h0)
+		| (tm[2]  ?{di_cc,     cc_rxd,   prx_bmc,    cc_idle,   di_sqlch,   2'h0} :'h0)
+		| (tm[3]  ?{di_cc_49,  cc_rxd,   di_cc_49,   cc_idle,   di_sqlch,   2'h0} :'h0)
+		| (tm[4]  ?{do_cc,     oe_cc,    slvo_sda,   cc2_di ,   cc1_di,     2'h0} :'h0)
+		| (tm[5]  ?{dac1_comp, dp_comp,  di_cc_49,   di_cc_49,  di_sqlch,   2'h0} :'h0)
+		| (tm[6]  ?{di_pro[4], di_pro[2:0],                     mirq,       2'h0} :'h0)
+		| (tm[7]  ?{di_pro[3:0],                                di_pro[5],  2'h0} :'h0)
+		| (tm[8]  ?{cc_flip,   do_cc,    oe_cc,      reti,      mirq,       2'h0} :'h0)
+		| (tm[9]  ?{dpdm_short,dm_2v7_en,dm_dwn_en,  reti,      mirq,       2'h0} :'h0)
+		| (tm[10] ?{t0tf,      r_osc_lo, t1tr,       t0tr,      r_osc_stop, 2'h0} :'h0)
+		| (tm[11] ?{comp_smpl[3:0],                             dac1_comp,  2'h0} :'h0)
+		| (tm[12] ?{pmem_pgm,  pmem_re,  t_pmem_csb, r_vpp_en,  t_pmem_clk, 2'h0} :'h0)
+		| (tm[13] ?{fcp_oe,    fcp_do,   dm_comp,    reti,      mirq,       2'h0} :'h0)
+		| (tm[14] ?{t0tf,      t1tf,     t1tr,       t0tr,      mirq,       2'h0} :'h0)
+		| (tm[15] ?{t0tr,      mrst,     t1tr,       reti,      mirq,       2'h0} :'h0);
 
    assign oe_gpio = ((~xrstz & di_tst) ?'h70 :'h7f) & (r_gpio_oe & ~{3'h0,
 		(gpio_s3=='h0) & do_scl | (gpio_s3=='h1) & do_sda | (gpio_s3=='h7) & ~s0_rxdoe,
