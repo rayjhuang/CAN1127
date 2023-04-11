@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Mar 30, 2023 at 13:49:59 CST
+TOOL:	ncverilog	15.20-s024: Started on Mar 30, 2023 at 19:01:59 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -446,8 +446,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:  24, words: 47191
 		worklib.anatop_1127a0:v <0x146d17f7>
 			streams:  48, words: 25929
-		worklib.bench:v <0x25453cd8>
-			streams:  74, words: 38326
+		worklib.bench:v <0x3c101290>
+			streams:  72, words: 35007
 		worklib.bhv_cc_rcver:v <0x38e08eef>
 			streams:  12, words: 12638
 		worklib.bhv_compm_mux:v <0x5ba98385>
@@ -456,7 +456,7 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:  30, words: 68747
 		worklib.chiptop_1127a0:v <0x3632ecbe>
 			streams:  31, words: 11315
-		worklib.core_a0:v <0x297bffbe>
+		worklib.core_a0:v <0x27424a18>
 			streams: 151, words: 68914
 		worklib.cvctl:v <0x2c492df2>
 			streams:  13, words:  5493
@@ -484,8 +484,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   3, words:   706
 		worklib.filter150us:v <0x54cd47c2>
 			streams:   4, words:  1228
-		worklib.hardware_rev:v <0x380f306f>
-			streams: 1256, words: 209005
+		worklib.hardware_rev:v <0x7609c43c>
+			streams: 1259, words: 214971
 		worklib.i2c:v <0x05c8bd8d>
 			streams: 106, words: 75929
 		worklib.i2cdbnc:v <0x140279d9>
@@ -500,7 +500,7 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   6, words:  3578
 		worklib.m51_synthe:v <0x32969e2d>
 			streams:  57, words: 82375
-		worklib.mcu51:v <0x1b823132>
+		worklib.mcu51:v <0x53e1751c>
 			streams:  23, words:  4904
 		worklib.mcu51_cpu:v <0x209abc60>
 			streams: 214, words: 220512
@@ -544,7 +544,7 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   9, words:  3011
 		worklib.srambist:v <0x72273ba2>
 			streams:  30, words:  9149
-		worklib.stm_bkpt:v <0x14d6c4f1>
+		worklib.stm_bkpt:v <0x07877ae7>
 			streams:  32, words: 67335
 		worklib.syncneg:v <0x26f000cd>
 			streams:  21, words:  5359
@@ -589,7 +589,7 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 		Expanded wires:            1099     103
 		Vectored wires:            2176       -
 		Named events:                29      22
-		Always blocks:             1152     693
+		Always blocks:             1153     694
 		Initial blocks:             138     120
 		Parallel blocks:             74      19
 		Cont. assignments:         2313    3068
@@ -1007,4 +1007,4 @@ Read dummy cycle.
 Simulation complete via $finish(1) at time 4043855280 PS + 0
 ../stm/stm_task.v:54    forever @(posedge `DUT_CCLK) if (`DUT_MCU.port0o==='hed) `HW_FIN (($time,"ns <%m> NOTE: simulation completed by DUT FW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Mar 30, 2023 at 13:50:08 CST  (total: 00:00:09)
+TOOL:	ncverilog	15.20-s024: Exiting on Mar 30, 2023 at 19:02:05 CST  (total: 00:00:06)

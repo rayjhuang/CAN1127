@@ -21,8 +21,8 @@
 
 ## dft clock
    set period 50
-   set tRise [ expr $period/2-5 ]
-   set tFall [ expr $period-10 ]
+   set tRise [ expr 30 ]
+   set tFall [ expr 40 ]
 #  create_clock -period $period -waveform [ list $tRise $tFall ] -name dft_clk [ get_ports GPIO3 ]
 #  set_clock_uncertainty -setup 0.5 [ all_clocks ]
 #  set_clock_uncertainty -hold  0.5 [ all_clocks ]
@@ -39,7 +39,7 @@
 ## man test_variables
 #  set test_default_bidir_delay 1.0
    set test_default_period $period
-   set test_default_strobe [ expr $tRise-5 ]
+   set test_default_strobe [ expr $tRise-1 ]
    set test_protocol_add_cycle false
    set test_stil_netlist_format verilog
    print_variable_group test

@@ -127,7 +127,7 @@ begin
 	#(1000*10) fork: chk2
 	   forever @(`DUT_CORE.i_clk) osc = osc+1;
 	   #(1000*10) disable chk2;
-	   @(`DUT_CORE.mclk) `HW_FIN (($time,"ns <%m> ERROR: OSC should be gated"))
+	   @(`DUT_MCLK) `HW_FIN (($time,"ns <%m> ERROR: OSC should be gated"))
 	join
 	if (osc<100) `HW_FIN (($time,"ns <%m> ERROR: OSC expected"))
 

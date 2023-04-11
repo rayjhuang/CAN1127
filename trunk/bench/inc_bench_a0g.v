@@ -1,6 +1,17 @@
 
-`ifdef GATE
 // included by bench.v
+
+initial begin
+`ifdef VCD // vcs: VCD if needed
+	$dumpfile ("bench_g.vcd");
+	$dumpvars (9,`BENCH);
+	forever #100_000 $dumpflush;
+`else
+	$fsdbDumpfile ("bench_g.fsdb");
+	$fsdbDumpvars; // no signal in VCS?
+	forever #100_000 $fsdbDumpflush;
+`endif // VCD
+end
 
 //pulldown (`DUT.U0_CODE.VSS);
 //pulldown (`DUT.U0_CODE.HV_VSS);
@@ -87,6 +98,4 @@ end
 `define MF_CELL `DUT_CORE.u0_regbank.drstz_reg_0_
        `MF_TASK0 `undef MF_CELL
                  `undef MF_MSG
-
-`endif // GATE
 

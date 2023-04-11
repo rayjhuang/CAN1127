@@ -122,6 +122,7 @@ IfShowModule = {TRUE, FALSE}
 version = Verdi3_J-2014.12-SP2
 152174613 = disabled
 152174615 = disabled
+50528660 = disabled
 [Editor]
 editorName = TurboEditor
 [Emacs]
@@ -294,14 +295,15 @@ Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb,/mnt/app1/ray/project/can1127/work0,
-nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,
+nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_ver.vcd.fsdb,/mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_gen.vcd.fsdb,/mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb,/mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb,/mnt/app1/ray/pr\
+oject/can1127/workmin,
+nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work1/bench_a.rc,/mnt/app1/ray/project/can1127/work0,/mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work1,
 [Form]
 version = Verdi3_J-2014.12-SP2
 wave/getSignal.fm = 100,100,965,579
 wave/restoreSig.fm = 100,100,723,530
 wave/openWFile.fm = 100,100,823,688
-wave/saveSig.fm = 100,100,723,530
+wave/saveSig.fm = 228,192,723,530
 openfile.fm = 100,100,723,530
 [General]
 autoSaveSession = FALSE
@@ -310,11 +312,11 @@ SyncBrowserDir = TRUE
 bDisplayWelcome = FALSE
 bKeepUndockedWidgetsOnTop = FALSE
 bUndockNewCreatedWindow = TRUE
+version = Verdi3_J-2014.12-SP2
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
-version = Verdi3_J-2014.12-SP2
 SignalCaseInSensitive = FALSE
 ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
@@ -440,7 +442,8 @@ saveFsdbStat = TRUE
 savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
-QwUserAskDlg = 412,470,324,222
+QwWarnMsgDlg = 670,422,600,250
+QwUserAskDlg = 442,608,324,134
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -516,7 +519,7 @@ iscCmdSep = FALSE
 interactive_fsdb_file = inter.fsdb
 invokeSimPath = work
 vcs_svPath = simv
-vcs_svOption = 
+vcs_svOption =  
 thirdpartyIdx = -1
 simType = vcssv
 interactiveDebugging = FALSE
@@ -631,7 +634,7 @@ pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
 font = COURIER12
 [Text.1]
-viewport = 362 0 1101 975 45
+viewport = 577 0 1101 975 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -974,8 +977,11 @@ curveWindow_Drag&Drop_Mode = TRUE
 hspiceIncOpenMode = TRUE
 pcSelectMode = TRUE
 hierarchyDelimiter = /
-RecentFile1 = /mnt/app1/ray/project/can1127/work0/bench_0.rc
-RecentFile2 = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb
+RecentFile1 = /mnt/app1/ray/project/can1127/work1/bench_a.rc
+RecentFile2 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_ver.vcd.fsdb
+RecentFile3 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_gen.vcd.fsdb
+RecentFile4 = /mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb
+RecentFile5 = /mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto
@@ -1135,13 +1141,13 @@ tsClkSkewSave = True
 tsClkSkewSetting = 0
 tsMaxForLoopToUnroll = 0
 tsBBoxSave = True
-tsBBoxSetting = 
+tsBBoxSetting =  
 tsBBoxEmptyModule = False
 tsBBoxIgnoreProtected = False
 tsIPSave = True
-tsIPSetting = 
-tsSymLibSetting = 
-tsSimModelSetting = 
+tsIPSetting =  
+tsSymLibSetting =  
+tsSimModelSetting =  
 tsCellModelSetting = 0
 tsContBAError = FALSE
 tsMaxLeafNum = 32768

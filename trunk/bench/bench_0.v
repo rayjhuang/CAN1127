@@ -2,12 +2,14 @@
 `include "def_bench.v"
 module bench;
 
+`ifdef GATE
+`include "inc_bench_a0g.v"
+`else
 initial begin
 	$fsdbDumpfile ("bench_0.fsdb");
 	$fsdbDumpvars;
 end
-
-`include "inc_bench_a0g.v"
+`endif
 
 `ifdef FPGA
 reg r1_rstz; // reset button of DUT (DFP)

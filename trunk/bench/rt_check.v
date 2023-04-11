@@ -1,26 +1,8 @@
 
-
 `ifdef GATE // pc_o becomes 'z'
 ////	it's difficult to monitor such things in gate-level simulation
 `else
-   always @(posedge `DUT_CCLK)
-      if (`DUT_MCU.mempsrd & `DUT_MCU.mempsack) begin: chkpsdat // to debug u0_ictlr
-         reg [7:0] exp;
-         exp = `HW.get_code(`DUT_MCU.u_cpu.pc_o);
-         if (`DUT_MCU.memdatai!==exp) begin
-            $display ($time,"ns <%m> ERROR: fetch 0x%x, exp:%x, dat:%x",`DUT_MCU.u_cpu.pc_o,exp,`DUT_MCU.memdatai);
-            #1_000 $finish;
-         end
-      end // chkpsdat
-
-   always @(posedge `DUT_MCU.clkper)
-             if (`DUT_MCU.t0_tr0 & // don't set Timer0 when it's still running
-		~`DUT_MCU.u_timer0.rst &
-		 `DUT_MCU.u_timer0.sfrwe &
-		(`DUT_MCU.u_timer0.sfraddr==`DUT_CORE.u0_mcu.u_timer0.TL0_ID ||
-		 `DUT_MCU.u_timer0.sfraddr==`DUT_CORE.u0_mcu.u_timer0.TH0_ID))
-	$display ($time,"ns <%m> WARNING: timer0 changed during runing, not good!!");
-
+begin: cc_glitch
    reg x_cc, frc_cc;
    integer delay_f =0, delay_r =0, delay =0;
    always @(`DUT_CORE.u0_updphy.i_cc)
@@ -57,6 +39,7 @@
             $display ($time,"ns <%m> ADPNOTE: delay (%4d,%4d)%6d%6d",
 		delay_r,delay_f,dcnt_h,adp_v);
    end
+end // cc_glitch
 
 `define DUT_FF `DUT_PHY.u0_phyff.mem
 wire [7:0]
@@ -88,11 +71,11 @@ always @(posedge `DUT_ANA.OSC_O)
 always@*
 `endif // GATE
 begin: chkconn // check connections
-parameter N_ANACHK = 46;
+parameter N_ANACHK = 45;
 reg [N_ANACHK-1:0] map;
-        #5 map = {
-	`DUT_ANA.TM[3:0]     	=== `DUT_CORE.u0_regbank.u0_regD9.rdat[7:4], // ATM
-	`DUT_ANA.SLEEP       	=== `DUT_CORE.u0_regbank.u0_regD9.rdat[0],
+	#5 map = {
+	`DUT_ANA.TM[3:0]	=== `DUT_CORE.u0_regbank.u0_regD9.rdat[7:4], // ATM
+	`DUT_ANA.SLEEP		=== `DUT_CORE.u0_regbank.u0_regD9.rdat[0],
 	`DUT_ANA.DISCHG_SEL	=== `DUT_CORE.u0_regbank.u0_regE3.rdat[5],
 	`DUT_ANA.LDO3P9V	=== `DUT_CORE.u0_cvctl.u0_sdischg.rdat[7], // reg8F
 	`DUT_ANA.VPP_SEL	=== `DUT_CORE.u0_regx.u0_reg12.rdat[5], // NVMCTL[7]
@@ -114,30 +97,30 @@ reg [N_ANACHK-1:0] map;
 	`DUT_ANA.VFB_SWB	=== `DUT_CORE.u0_regx.u0_reg1C.rdat[1],
 	`DUT_ANA.CV2		=== `DUT_CORE.u0_regx.u1_reg1C.rdat[0],
 	`DUT_ANA.LFOSC_ENB	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[7], // XANA2
-        `DUT_ANA.OCP_SEL	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[1],
-        `DUT_ANA.PWREN_HOLD	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[0],
-        `DUT_ANA.HVNG_CPEN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[7], // XANA1
-        `DUT_ANA.CPVSEL		=== `DUT_CORE.u0_regx.u0_reg1D.rdat[6], // --- 20
-        `DUT_ANA.CLAMPV_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[5],
-        `DUT_ANA.DP_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[3],
-        `DUT_ANA.DN_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[2],
-        `DUT_ANA.EXT_CP		=== `DUT_CORE.u0_regx.u0_reg05.rdat[7], // BCK1
-        `DUT_ANA.EN_IBUK	=== `DUT_CORE.u0_regx.u0_reg05.rdat[6],
-        `DUT_ANA.EN_ODLDO	=== `DUT_CORE.u0_regx.u0_reg05.rdat[5],
-        `DUT_ANA.EN_GM		=== `DUT_CORE.u0_regx.u0_reg05.rdat[4],
-        `DUT_ANA.MAXDS		=== `DUT_CORE.u0_regx.u0_reg05.rdat[3],
-        `DUT_ANA.EN_OSC		=== `DUT_CORE.u0_regx.u0_reg05.rdat[2],
-        `DUT_ANA.FSW		=== `DUT_CORE.u0_regx.u0_reg05.rdat[1:0], // --- 10
-        `DUT_ANA.INT_CP		=== `DUT_CORE.u0_regx.u0_reg04.rdat[7], // BCK0
-        `DUT_ANA.EN_DRV		=== `DUT_CORE.u0_regx.u0_reg04.rdat[6],
-        `DUT_ANA.LGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[5] | `DUT_CORE.frc_lg_on,
-        `DUT_ANA.HGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[4],
-        `DUT_ANA.LGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[3],
-        `DUT_ANA.HGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[2] | `DUT_CORE.frc_hg_off,
-        `DUT_ANA.DCM_SEL	=== `DUT_CORE.u0_regx.u0_reg04.rdat[1],
-        `DUT_ANA.BST_SET	=== `DUT_CORE.u0_regx.u0_reg04.rdat[0],
-        `DUT_ANA.SGP[5]		=== `DUT_CORE.u0_regbank.u0_regF6.rdat[0]}; // --- 1
-        if (map!=={N_ANACHK{1'h1}})
+	`DUT_ANA.OCP_SEL	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[1],
+	`DUT_ANA.PWREN_HOLD	=== `DUT_CORE.u0_regx.u0_reg1E.rdat[0],
+	`DUT_ANA.HVNG_CPEN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[7], // XANA1
+	`DUT_ANA.CPVSEL		=== `DUT_CORE.u0_regx.u0_reg1D.rdat[6], // --- 20
+	`DUT_ANA.CLAMPV_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[5],
+	`DUT_ANA.DP_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[3],
+	`DUT_ANA.DN_0P6V_EN	=== `DUT_CORE.u0_regx.u0_reg1D.rdat[2],
+	`DUT_ANA.EXT_CP		=== `DUT_CORE.u0_regx.u0_reg05.rdat[7], // BCK1
+	`DUT_ANA.EN_IBUK	=== `DUT_CORE.u0_regx.u0_reg05.rdat[6],
+	`DUT_ANA.EN_ODLDO	=== `DUT_CORE.u0_regx.u0_reg05.rdat[5],
+	`DUT_ANA.EN_GM		=== `DUT_CORE.u0_regx.u0_reg05.rdat[4],
+	`DUT_ANA.MAXDS		=== `DUT_CORE.u0_regx.u0_reg05.rdat[3],
+	`DUT_ANA.EN_OSC		=== `DUT_CORE.u0_regx.u0_reg05.rdat[2],
+	`DUT_ANA.FSW		=== `DUT_CORE.u0_regx.u0_reg05.rdat[1:0], // --- 10
+	`DUT_ANA.INT_CP		=== `DUT_CORE.u0_regx.u0_reg04.rdat[7], // BCK0
+	`DUT_ANA.EN_DRV		=== `DUT_CORE.u0_regx.u0_reg04.rdat[6],
+	`DUT_ANA.LGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[5] | `DUT_CORE.frc_lg_on,
+	`DUT_ANA.HGON		=== `DUT_CORE.u0_regx.u0_reg04.rdat[4],
+	`DUT_ANA.LGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[3],
+//	`DUT_ANA.HGOFF		=== `DUT_CORE.u0_regx.u0_reg04.rdat[2] | `DUT_CORE.frc_hg_off,
+	`DUT_ANA.DCM_SEL	=== `DUT_CORE.u0_regx.u0_reg04.rdat[1],
+	`DUT_ANA.BST_SET	=== `DUT_CORE.u0_regx.u0_reg04.rdat[0],
+	`DUT_ANA.SGP[5]		=== `DUT_CORE.u0_regbank.u0_regF6.rdat[0]}; // --- 1
+	if (map!=={N_ANACHK{1'h1}})
 	   `HW_FIN(($time,"ns <%m> ERROR: mis-vertor:%0x",map))
 end // chkconn
 

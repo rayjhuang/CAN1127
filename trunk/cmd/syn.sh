@@ -96,8 +96,8 @@
 ################################################################################
    if ( "$1" == "POSTSIM" ) then
    setenv DCODE `date +%Y%m%d`
-   setenv RETC 221110
-   setenv RET_PATH ~king/WORK/CAN1127A0_A0571A0/APR_LAYOUT
+   setenv RETC 230406
+   setenv RET_PATH ~king/WORK/CAN1127A0_A0585A0/APR_LAYOUT
    echo $RELC $RETC $RET_PATH $DCODE
    ls -ld ${RET_PATH}/*${RETC}.*
    cp -p ${RET_PATH}/USB_OK${RETC}.v        ../release/$RELC/USB_OK${RETC}.v.cp

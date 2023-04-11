@@ -18,7 +18,7 @@ wire	[3:0]	nRetry = (SpecRev==2) ? 3
 
 usbpd_phy UPDPHY (.rxd(rxd),.txd(),.txoe());
 packet prlpkt = new;
-wire [15:0] pkt_header = prlpkt.rx_data[0+:16];
+wire [15:0] pkt_header = prlpkt.get_header();
 
 task rcvmsg (input [15:0] timeout);
 	fork

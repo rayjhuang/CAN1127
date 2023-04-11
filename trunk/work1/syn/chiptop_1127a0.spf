@@ -3,7 +3,7 @@ STIL 1.0 {
 }
 Header {
     Title "Minimal STIL for design `chiptop_1127a0'";
-    Date "Thu Mar 30 15:24:05 2023";
+    Date "Mon Apr 10 13:40:10 2023";
     Source "DFT Compiler H-2013.03-SP1";
 }
 Signals {
@@ -91,31 +91,31 @@ Timing {
             "all_outputs" {
                 X {
                     '0ns' X;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_outputs" {
                 H {
                     '0ns' X;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_outputs" {
                 T {
                     '0ns' X;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_outputs" {
                 L {
                     '0ns' X;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "GPIO3" {
                 P {
                     '0ns' D;
-                    '20ns' U;
+                    '30ns' U;
                     '40ns' D;
                 }
             }
@@ -142,25 +142,25 @@ Timing {
             "all_bidirectionals" {
                 X {
                     '0ns' Z;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_bidirectionals" {
                 H {
                     '0ns' Z;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_bidirectionals" {
                 T {
                     '0ns' Z;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
         }
@@ -211,55 +211,55 @@ Timing {
             "all_bidirectionals" {
                 X {
                     '0ns' Z;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_bidirectionals" {
                 H {
                     '0ns' Z;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_bidirectionals" {
                 T {
                     '0ns' Z;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "all_outputs" {
                 X {
                     '0ns' X;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_outputs" {
                 H {
                     '0ns' X;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_outputs" {
                 T {
                     '0ns' X;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_outputs" {
                 L {
                     '0ns' X;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "GPIO3" {
                 P {
                     '0ns' D;
-                    '20ns' U;
+                    '30ns' U;
                     '40ns' D;
                 }
             }
@@ -311,55 +311,55 @@ Timing {
             "all_bidirectionals" {
                 X {
                     '0ns' Z;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_bidirectionals" {
                 H {
                     '0ns' Z;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_bidirectionals" {
                 T {
                     '0ns' Z;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "all_outputs" {
                 X {
                     '0ns' X;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_outputs" {
                 H {
                     '0ns' X;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_outputs" {
                 T {
                     '0ns' X;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_outputs" {
                 L {
                     '0ns' X;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "GPIO3" {
                 P {
                     '0ns' D;
-                    '20ns' U;
+                    '30ns' U;
                     '40ns' D;
                 }
             }
@@ -411,55 +411,55 @@ Timing {
             "all_bidirectionals" {
                 X {
                     '0ns' Z;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_bidirectionals" {
                 H {
                     '0ns' Z;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_bidirectionals" {
                 T {
                     '0ns' Z;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "all_outputs" {
                 X {
                     '0ns' X;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_outputs" {
                 H {
                     '0ns' X;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_outputs" {
                 T {
                     '0ns' X;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_outputs" {
                 L {
                     '0ns' X;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "GPIO3" {
                 P {
                     '0ns' D;
-                    '20ns' U;
+                    '30ns' U;
                     '40ns' D;
                 }
             }
@@ -511,55 +511,55 @@ Timing {
             "all_bidirectionals" {
                 X {
                     '0ns' Z;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_bidirectionals" {
                 H {
                     '0ns' Z;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_bidirectionals" {
                 T {
                     '0ns' Z;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_bidirectionals" {
                 L {
                     '0ns' Z;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "all_outputs" {
                 X {
                     '0ns' X;
-                    '15ns' X;
+                    '29ns' X;
                 }
             }
             "all_outputs" {
                 H {
                     '0ns' X;
-                    '15ns' H;
+                    '29ns' H;
                 }
             }
             "all_outputs" {
                 T {
                     '0ns' X;
-                    '15ns' T;
+                    '29ns' T;
                 }
             }
             "all_outputs" {
                 L {
                     '0ns' X;
-                    '15ns' L;
+                    '29ns' L;
                 }
             }
             "GPIO3" {
                 P {
                     '0ns' D;
-                    '20ns' U;
+                    '30ns' U;
                     '40ns' D;
                 }
             }

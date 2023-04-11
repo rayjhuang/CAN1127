@@ -4,8 +4,8 @@
    SET system mode setup
    PRINTENV DCODE
    PRINTENV RELC     // 20230330
-   PRINTENV RETC     // 221026
-   PRINTENV RET_PATH // ~king/WORK/CAN1127A0_A0543A0/APR_LAYOUT
+   PRINTENV RETC     // 230406
+   PRINTENV RET_PATH // ~king/WORK/CAN1127A0_A0585A0/APR_LAYOUT
    PRINTENV PJ_PATH  // /mnt/app1/ray/project/can????
    ls -l gate*
 

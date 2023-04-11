@@ -248,6 +248,11 @@ class packet extends bmc_codec; // packet buffer for RX
       rx_data[rx_ncnt++*4+:4] = dat;
    endtask // push_nibble
 
+   function [15:0] get_rx_ncnt;   get_rx_ncnt   = rx_ncnt;   endfunction
+   function [15:0] get_bicnt;     get_bicnt     = bicnt;     endfunction
+   function [15:0] get_eop_bit;   get_eop_bit   = eop_bit;   endfunction
+   function [15:0] get_ordrs_bit; get_ordrs_bit = ordrs_bit; endfunction
+
    function [2:0]  get_ordrs;  if (ordrs_bit)   get_ordrs  = dec_ordrs(bitstr[ordrs_bit-:20]); endfunction
    function [15:0] get_header; if (rx_ncnt>=4)  get_header = rx_data[0+:16]; endfunction
    function [4:0]  get_msgtyp; if (rx_ncnt>=4)  get_msgtyp = rx_data[0+:5]; endfunction
@@ -303,7 +308,7 @@ output txd, txoe
 
    function void show;
       $display ($time,"ns <%m> bit_rate: %0dKHz", bit_rate);
-      $display ($time,"ns <%m> duty: %0d%", duty);
+      $display ($time,"ns <%m> duty: %0d%%", duty);
       $display ($time,"ns <%m> jitter: %0dns", jitter);
    endfunction // show
 

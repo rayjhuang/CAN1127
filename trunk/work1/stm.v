@@ -1,1 +1,1 @@
-../stm/stm_gpio.v
+../stm/stm_sfr.v

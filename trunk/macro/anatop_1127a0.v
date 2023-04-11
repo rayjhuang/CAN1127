@@ -249,8 +249,8 @@ assign #1 COMP_O = DAC1_EN ? comp_o : 'h0;
 	      #10 r_rstz =1;
 	   end
 	   forever
-		@(r_rstz) if (r_rstz) #100_000 d_rstz =1; // 100us after
-		                else  #100     d_rstz =0;
+		@(r_rstz) if (r_rstz) #10_000 d_rstz =1; // 100us after, shorten modeling
+		                else  #100    d_rstz =0;
 	   forever
 		if (OSC_STOP) #5                 r_clk =0;
 		else if (OSC_LOW) begin:osc_low

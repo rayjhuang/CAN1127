@@ -77,13 +77,23 @@
 #  set_false_path -thro U0_CODE/PDOUT*
 #  set_false_path -to   U0_CORE/d_dodat_reg*
 
+   set anatop_n [ get_pins { U0_ANALOG_TOP/CMP_SEL_* U0_ANALOG_TOP/AD_RST } ]
+   set_output_delay 10 -clock MCLK $anatop_n
+   set anatop_i [ filter_collection [ get_pins -of U0_ANALOG_TOP ] "pin_direction == in" ]
+   set anatop_i [ remove_from_collection $anatop_i $anatop_n ]
+   set_output_delay 15 -clock MCLK $anatop_i
+
+   set anatop_o [ filter_collection [ get_pins -of U0_ANALOG_TOP ] "pin_direction == out" ]
+   set anatop_o [ remove_from_collection $anatop_o [ get_pins { U0_ANALOG_TOP/OSC_O U0_ANALOG_TOP/RSTB } ]]
+   set_input_delay  30 -clock MCLK $anatop_o
+
    report_timing -nosplit -delay max -path end -max 10
    report_timing -nosplit -delay min -path end -max 10
 #  report_timing -nosplit -to [ get_ports GPIO* ] ;# scan chain output
 #  report_timing -nosplit -to u0_ictlr/neg_r_pulse_reg/D
 
 #  set_false_path -from {i_rstz i_clk atpg_en di_tst } -to DO_GPIO*
-   report_timing -nosplit -to   [ get_pins { U0_SRAM/WEB U0_SRAM/CEB U0_SRAM/DI* }]
+   report_timing -nosplit -to   [ get_pins { U0_SRAM/WEB U0_SRAM/CSB U0_SRAM/DI* }]
    report_timing -nosplit -from [ get_pins { U0_SRAM/DO* }]
 
    report_timing -path_type full_clock_expanded -nosplit
@@ -93,8 +103,11 @@
 #  report_power ;# Information: Checked out license 'PrimeTime-PX' (PT-019)
 
    setclock1 50
+
    report_timing -path_type full_clock_expanded -nosplit
    report_timing -path_type full_clock_expanded -nosplit -delay_type min
+
+   set_case_analysis 1 U0_CORE/atpg_en
 
    set output_list [ get_ports { GPIO4 GPIO5 } ]
    set_output_delay 0 -clock TCLK $output_list

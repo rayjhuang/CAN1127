@@ -37,7 +37,7 @@ input [15:0] adr;
 `endif	               : 'h00); // OTP erased state
 endfunction // get_code
 
-function void set_code;
+task set_code;
 input [15:0] adr;
 input [7:0] pdat;
 	if (adr<OTP_SIZE) begin
@@ -57,14 +57,15 @@ input [7:0] pdat;
 	else if (adr>='h8000 && adr<'h9800)
 	   `MON51_C[adr[12:0]] = pdat; // not inverted
 `endif
-endfunction // set_code
+endtask: set_code
 
-function void init_dut_fw;
+// function void init_dut_fw; // vcs dosen't like 'void'
+task init_dut_fw;
 integer adr;
 	for (adr=0;adr<OTP_SIZE;adr=adr+1) set_code (adr,'hff);
-endfunction // init_dut_fw
+endtask: init_dut_fw
 
-function void load_dut_fw;
+task load_dut_fw;
 input [256*8-1:0] fn;
 reg [15:0] adr;
 reg [15:0] word_mem [0:OTP_SIZE/2-1];
@@ -86,7 +87,7 @@ begin
 	for (adr=0;adr<OTP_SIZE;adr=adr+1) set_code (adr,code_mem[adr]);
 	$display ($time,"ns <%m> NOTE: load firmware %0s (revid:%02x)", fn, REV_ID);
 end
-endfunction // load_dut_fw
+endtask: load_dut_fw
 
 task dut_hit_rate (
 input [31:0] period =0 // evaluated period, us
@@ -168,6 +169,41 @@ initial begin
 force `DUT.PAD_GPIO_TS.DI = `DUT.PAD_GPIO_TS.IE ? `DUT_ANA.v_RT>=1100 : 1'h0;
 end // initial
 ////////////////////////////////////////////////////////////////////////////////
+
+
+`ifdef GATE // pc_o becomes 'z'
+////	it's difficult to monitor such things in gate-level simulation
+`else
+   always @(posedge `DUT_CCLK) begin: mcu_check
+      if (`DUT_MCU.mempsrd & `DUT_MCU.mempsack) begin: chk_psdat // to debug u0_ictlr
+         reg [7:0] exp;
+         exp = `HW.get_code(`DUT_MCU.u_cpu.pc_o);
+         if (`DUT_MCU.memdatai!==exp) begin
+            $display ($time,"ns <%m> ERROR: fetch 0x%x, exp:%x, dat:%x",`DUT_MCU.u_cpu.pc_o,exp,`DUT_MCU.memdatai);
+            #500 $finish;
+         end
+      end // chk_psdat
+
+      if (`DUT_CORE.iram_ce & `DUT_CORE.xram_ce) begin: chk_sram
+         $display ($time,"ns <%m> ERROR: uni-SRAM architecture violation");
+         #500 $finish;
+      end // chk_sram
+      if ((8'h0 + `DUT_MCU.mempswr + `DUT_MCU.memwr
+                + `DUT_MCU.mempsrd + `DUT_MCU.memrd) >1) begin: chk_vonn
+         $display ($time,"ns <%m> ERROR: Von Nuemann architecture violation");
+         #500 $finish;
+      end // chk_vonn
+
+      if (`DUT_MCU.t0_tr0 & // don't set Timer0 when it's still running
+		~`DUT_MCU.u_timer0.rst &
+		 `DUT_MCU.u_timer0.sfrwe &
+		(`DUT_MCU.u_timer0.sfraddr==`DUT_CORE.u0_mcu.u_timer0.TL0_ID ||
+		 `DUT_MCU.u_timer0.sfraddr==`DUT_CORE.u0_mcu.u_timer0.TH0_ID)) begin: chk_tmr0
+	 $display ($time,"ns <%m> WARNING: timer0 changed during runing, not good!!");
+      end // chk_tmr0
+   end // mcu_check
+`endif // GATE
+
 
 begin: PB // hw_probe
 dig_probe	SLEEP (`DUT_ANA.SLEEP),
