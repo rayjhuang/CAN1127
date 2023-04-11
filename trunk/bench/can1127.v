@@ -14,7 +14,7 @@
 `endif
 `define DUT_ANA     `DUT.U0_ANALOG_TOP
 `define DUT_CORE    `DUT.U0_CORE
-`define DUT_MCLK    `DUT_CORE.i_clk
+`define DUT_MCLK    `DUT_CORE.U0_MCLK_ICG.ECK
 `define DUT_MCU     `DUT_CORE.u0_mcu
 `define DUT_CCLK    `DUT_MCU.clkcpu
 

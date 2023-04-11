@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Mar 30, 2023 at 19:01:59 CST
+TOOL:	ncverilog	15.20-s024: Started on Apr 11, 2023 at 17:45:57 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -436,6 +436,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   0, words:     0
 		std_1.CLKDLX1:v <0x3fea27db>
 			streams:   0, words:     0
+		std_1.CLKDLX1:v <0x4392b290>
+			streams:   0, words:     0
 		std_1.CLKDLX1:v <0x5c06af5c>
 			streams:   0, words:     0
 		std_1.CLKDLX1:v <0x61265816>
@@ -444,19 +446,19 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   5, words:  1313
 		worklib.ana_probe:v <0x60b2fc57>
 			streams:  24, words: 47191
-		worklib.anatop_1127a0:v <0x146d17f7>
+		worklib.anatop_1127a0:v <0x6570d022>
 			streams:  48, words: 25929
-		worklib.bench:v <0x3c101290>
-			streams:  72, words: 35007
+		worklib.bench:v <0x364ad975>
+			streams:  72, words: 34862
 		worklib.bhv_cc_rcver:v <0x38e08eef>
 			streams:  12, words: 12638
 		worklib.bhv_compm_mux:v <0x5ba98385>
 			streams:  15, words:  9721
-		worklib.bhv_usbpd_controller:sv <0x2c7ee789>
-			streams:  30, words: 68747
+		worklib.bhv_usbpd_controller:sv <0x1814f192>
+			streams:  30, words: 68818
 		worklib.chiptop_1127a0:v <0x3632ecbe>
 			streams:  31, words: 11315
-		worklib.core_a0:v <0x27424a18>
+		worklib.core_a0:v <0x3ad32245>
 			streams: 151, words: 68914
 		worklib.cvctl:v <0x2c492df2>
 			streams:  13, words:  5493
@@ -484,8 +486,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   3, words:   706
 		worklib.filter150us:v <0x54cd47c2>
 			streams:   4, words:  1228
-		worklib.hardware_rev:v <0x7609c43c>
-			streams: 1259, words: 214971
+		worklib.hardware_rev:v <0x0be8c7d5>
+			streams: 1257, words: 214817
 		worklib.i2c:v <0x05c8bd8d>
 			streams: 106, words: 75929
 		worklib.i2cdbnc:v <0x140279d9>
@@ -544,8 +546,8 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:   9, words:  3011
 		worklib.srambist:v <0x72273ba2>
 			streams:  30, words:  9149
-		worklib.stm_bkpt:v <0x07877ae7>
-			streams:  32, words: 67335
+		worklib.stm_bkpt:v <0x5bb0f083>
+			streams:  32, words: 67281
 		worklib.syncneg:v <0x26f000cd>
 			streams:  21, words:  5359
 		worklib.timer0:v <0x266c127d>
@@ -558,17 +560,17 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 			streams:  19, words:  5479
 		worklib.updprl:v <0x75a3eba3>
 			streams:  24, words: 10059
-		worklib.usb_connector:v <0x4e8878d2>
+		worklib.usb_connector:v <0x135a80d8>
 			streams:  24, words: 19047
-		worklib.usb_dd_composer:v <0x03ea01d8>
+		worklib.usb_dd_composer:v <0x5f1494dd>
 			streams:   9, words: 11080
-		worklib.usb_port:v <0x7f663af1>
+		worklib.usb_port:v <0x16854085>
 			streams:   3, words:   835
-		worklib.usbpd_analyzer:sv <0x6f33f5a3>
-			streams:  19, words: 40298
-		worklib.usbpd_phy:sv <0x6000040a>
+		worklib.usbpd_analyzer:sv <0x3d53c42b>
+			streams:  18, words: 40007
+		worklib.usbpd_phy:sv <0x6a0aca28>
 			streams:  17, words: 31811
-		worklib.usbpd_phy:sv <0x67fcbba5>
+		worklib.usbpd_phy:sv <0x6df67587>
 			streams:  17, words: 31575
 		worklib.vcompos:v <0x79503309>
 			streams:   2, words:  4214
@@ -584,15 +586,15 @@ ncvlog: *W,SPDUSD: Include directory ../stm given but not used.
 		UDPs:                         7       1
 		Primitives:                 204      11
 		Timing outputs:              80      30
-		Registers:                 1801    1305
+		Registers:                 1805    1309
 		Scalar wires:              1550       -
 		Expanded wires:            1099     103
-		Vectored wires:            2176       -
+		Vectored wires:            2175       -
 		Named events:                29      22
-		Always blocks:             1153     694
+		Always blocks:             1151     692
 		Initial blocks:             138     120
 		Parallel blocks:             74      19
-		Cont. assignments:         2313    3068
+		Cont. assignments:         2312    3067
 		Pseudo assignments:          51      50
 		Timing checks:              766     108
 		Delayed tcheck signals:      21      14
@@ -634,331 +636,331 @@ FSDB Dumper for IUS, Release Verdi3_J-2014.12-SP2, Linux x86_64/64bit, 05/07/201
 30214000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
                30297ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 00
 30297000 MSL18B_1536X8_RW10TM4_16_20221107 @ bench.U0_DUT.U0_SRAM.Unknown, pin CSB is unknown
+Read dummy cycle.
+
+Read dummy cycle.
+
                50000ns <stm_bkpt> starts.....
                50000ns <bench.U0_I2CMST.init> SSE master initialized, mode: SMB(2)
+               91096ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+               91679ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+               92263ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
+               92847ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+               93431ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
+               94015ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
+               94598ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 07
+               95182ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
+               95766ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 09
+               96350ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0a
+               96934ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0b
+               97517ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0c
+               98101ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0d
+               98685ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0e
+               99269ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0f
+               99853ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 10
+              100436ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 11
+              101020ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 12
+              101604ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
+              102188ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 14
+              102772ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
+              103355ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
+              103939ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 17
+              104523ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
+              105107ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 19
+              105691ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1a
+              106274ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1b
+              106858ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1c
+              107442ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1d
+              108026ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1e
+              108610ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1f
+              109193ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 20
+              109777ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 21
+              110361ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 22
+              110945ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 23
+              111529ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 24
+              112112ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 25
+              112696ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 26
+              113280ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 27
+              113864ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 28
+              114448ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 29
+              115031ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2a
+              115615ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2b
+              116199ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2c
+              116783ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2d
+              117367ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2e
+              117950ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2f
+              118534ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 30
+              119118ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 31
+              119702ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 32
+              120286ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 33
+              120869ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 34
+              121453ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 35
+              122037ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 36
+              122621ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 37
+              123205ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 38
+              123788ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 39
+              124372ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3a
+              124956ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3b
+              125540ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3c
+              126124ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3d
+              126707ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3e
+              127291ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3f
+              127875ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 40
+              128459ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 41
+              129043ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 42
+              129626ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 43
+              130210ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 44
+              130794ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 45
+              131378ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 46
+              131962ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 47
+              132545ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 48
+              133129ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 49
+              133713ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4a
+              134297ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4b
+              134881ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4c
+              135464ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4d
+              136048ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4e
+              136632ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4f
+              137216ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 50
+              137800ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 51
+              138383ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 52
+              138967ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 53
+              139551ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 54
+              140135ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 55
+              140719ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 56
+              141302ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 57
+              141886ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 58
+              142470ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 59
+              143054ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5a
+              143638ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5b
+              144221ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5c
+              144805ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5d
+              145389ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5e
+              145973ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5f
+              146557ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 60
+              147140ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 61
+              147724ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 62
+              148308ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 63
+              148892ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 64
+              149476ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 65
+              150059ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 66
+              150643ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 67
+              151227ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 68
+              151811ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 69
+              152395ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6a
+              152978ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6b
+              153562ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6c
+              154146ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6d
+              154730ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6e
+              155314ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6f
+              155897ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 70
+              156481ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 71
+              157065ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 72
+              157649ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 73
+              158233ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 74
+              158816ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 75
+              159400ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 76
+              159984ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 77
+              160568ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 78
+              161152ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 79
+              161735ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7a
+              162319ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7b
+              162903ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7c
+              163487ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7d
+              164071ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7e
+              164654ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7f
+              165238ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 80
+              165822ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 81
+              166406ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 82
+              166990ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 83
+              167573ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 84
+              168157ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 85
+              168741ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 86
+              169325ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 87
+              169909ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 88
+              170492ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 89
+              171076ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8a
+              171660ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8b
+              172244ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8c
+              172828ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8d
+              173411ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8e
+              173995ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8f
+              174579ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 90
+              175163ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 91
+              175747ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 92
+              176330ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 93
+              176914ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 94
+              177498ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 95
+              178082ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 96
+              178666ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 97
+              179249ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 98
+              179833ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 99
+              180417ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9a
+              181001ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9b
+              181585ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9c
+              182168ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9d
+              182752ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9e
+              183336ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9f
+              183920ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a0
+              184504ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a1
+              185087ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a2
+              185671ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a3
+              186255ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a4
+              186839ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a5
+              187423ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a6
+              188006ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a7
+              188590ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a8
+              189174ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a9
+              189758ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: aa
+              190342ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ab
+              190925ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ac
+              191509ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ad
+              192093ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ae
+              192677ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: af
+              193261ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b0
+              193844ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b1
+              194428ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b2
+              195012ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b3
+              195596ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b4
+              196180ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b5
+              196763ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b6
+              197347ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b7
+              197931ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b8
+              198515ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b9
+              199099ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ba
+              199682ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bb
+              200266ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bc
+              200850ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bd
+              201434ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: be
+              202018ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bf
+              202601ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c0
+              203185ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c1
+              203769ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c2
+              204353ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c3
+              204937ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c4
+              205520ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c5
+              206104ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c6
+              206688ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c7
+              207272ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c8
+              207856ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c9
+              208439ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ca
+              209023ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cb
+              209607ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cc
+              210191ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cd
+              210775ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ce
+              211358ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cf
+              211942ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d0
+              212526ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d1
+              213110ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d2
+              213694ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d3
+              214277ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d4
+              214861ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d5
+              215445ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d6
+              216029ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d7
+              216613ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d8
+              217196ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d9
+              217780ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: da
+              218364ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: db
+              218948ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dc
+              219532ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dd
+              220115ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: de
+              220699ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: df
+              221283ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
+              221867ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
+              222451ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e2
+              223034ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e3
+              223618ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e4
+              224202ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e5
+              224786ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e6
+              225370ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e7
+              225953ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e8
+              226537ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e9
+              227121ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ea
+              227705ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: eb
+              228289ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ec
+              229540ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ef
+              230374ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f0
+              230957ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f1
+              231541ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f2
+              232125ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f3
+              232709ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f4
+              233293ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f5
+              233876ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f6
+              234460ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f7
+              235044ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f8
+              235628ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f9
+              236212ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fa
+              236795ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fb
+              237379ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fc
+              237963ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fd
+              238547ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fe
+              239631ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ff
+              239631ns <stm_bkpt> NOTE: GPO completed.
+              243801ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
+              251974ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+              261482ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+              270989ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+              277995ns <stm_bkpt> NOTE: GPIO PU/PD completed.
+              280497ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
+              281665ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 00
+              285501ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
+              377995ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
 Read dummy cycle.
 
 Read dummy cycle.
 
-              181168ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
-              181751ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
-              182335ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
-              182919ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
-              183503ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
-              184087ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
-              184670ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 07
-              185254ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
-              185838ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 09
-              186422ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0a
-              187006ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0b
-              187589ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0c
-              188173ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0d
-              188757ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0e
-              189341ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 0f
-              189925ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 10
-              190508ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 11
-              191092ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 12
-              191676ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
-              192260ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 14
-              192844ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
-              193427ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
-              194011ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 17
-              194595ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
-              195179ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 19
-              195763ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1a
-              196346ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1b
-              196930ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1c
-              197514ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1d
-              198098ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1e
-              198682ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 1f
-              199265ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 20
-              199849ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 21
-              200433ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 22
-              201017ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 23
-              201601ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 24
-              202184ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 25
-              202768ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 26
-              203352ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 27
-              203936ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 28
-              204520ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 29
-              205103ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2a
-              205687ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2b
-              206271ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2c
-              206855ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2d
-              207439ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2e
-              208022ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 2f
-              208606ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 30
-              209190ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 31
-              209774ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 32
-              210358ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 33
-              210941ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 34
-              211525ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 35
-              212109ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 36
-              212693ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 37
-              213277ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 38
-              213860ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 39
-              214444ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3a
-              215028ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3b
-              215612ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3c
-              216196ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3d
-              216779ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3e
-              217363ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 3f
-              217947ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 40
-              218531ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 41
-              219115ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 42
-              219698ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 43
-              220282ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 44
-              220866ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 45
-              221450ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 46
-              222034ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 47
-              222617ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 48
-              223201ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 49
-              223785ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4a
-              224369ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4b
-              224953ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4c
-              225536ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4d
-              226120ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4e
-              226704ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 4f
-              227288ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 50
-              227872ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 51
-              228455ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 52
-              229039ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 53
-              229623ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 54
-              230207ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 55
-              230791ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 56
-              231374ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 57
-              231958ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 58
-              232542ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 59
-              233126ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5a
-              233710ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5b
-              234293ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5c
-              234877ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5d
-              235461ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5e
-              236045ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 5f
-              236629ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 60
-              237212ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 61
-              237796ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 62
-              238380ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 63
-              238964ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 64
-              239548ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 65
-              240131ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 66
-              240715ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 67
-              241299ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 68
-              241883ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 69
-              242467ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6a
-              243050ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6b
-              243634ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6c
-              244218ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6d
-              244802ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6e
-              245386ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 6f
-              245969ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 70
-              246553ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 71
-              247137ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 72
-              247721ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 73
-              248305ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 74
-              248888ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 75
-              249472ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 76
-              250056ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 77
-              250640ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 78
-              251224ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 79
-              251807ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7a
-              252391ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7b
-              252975ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7c
-              253559ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7d
-              254143ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7e
-              254726ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 7f
-              255310ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 80
-              255894ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 81
-              256478ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 82
-              257062ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 83
-              257645ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 84
-              258229ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 85
-              258813ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 86
-              259397ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 87
-              259981ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 88
-              260564ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 89
-              261148ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8a
-              261732ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8b
-              262316ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8c
-              262900ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8d
-              263483ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8e
-              264067ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 8f
-              264651ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 90
-              265235ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 91
-              265819ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 92
-              266402ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 93
-              266986ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 94
-              267570ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 95
-              268154ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 96
-              268738ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 97
-              269321ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 98
-              269905ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 99
-              270489ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9a
-              271073ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9b
-              271657ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9c
-              272240ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9d
-              272824ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9e
-              273408ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 9f
-              273992ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a0
-              274576ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a1
-              275159ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a2
-              275743ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a3
-              276327ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a4
-              276911ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a5
-              277495ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a6
-              278078ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a7
-              278662ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a8
-              279246ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: a9
-              279830ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: aa
-              280414ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ab
-              280997ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ac
-              281581ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ad
-              282165ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ae
-              282749ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: af
-              283333ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b0
-              283916ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b1
-              284500ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b2
-              285084ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b3
-              285668ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b4
-              286252ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b5
-              286835ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b6
-              287419ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b7
-              288003ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b8
-              288587ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: b9
-              289171ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ba
-              289754ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bb
-              290338ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bc
-              290922ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bd
-              291506ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: be
-              292090ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: bf
-              292673ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c0
-              293257ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c1
-              293841ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c2
-              294425ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c3
-              295009ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c4
-              295592ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c5
-              296176ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c6
-              296760ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c7
-              297344ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c8
-              297928ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: c9
-              298511ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ca
-              299095ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cb
-              299679ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cc
-              300263ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cd
-              300847ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ce
-              301430ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: cf
-              302014ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d0
-              302598ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d1
-              303182ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d2
-              303766ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d3
-              304349ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d4
-              304933ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d5
-              305517ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d6
-              306101ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d7
-              306685ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d8
-              307268ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: d9
-              307852ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: da
-              308436ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: db
-              309020ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dc
-              309604ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: dd
-              310187ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: de
-              310771ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: df
-              311355ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
-              311939ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
-              312523ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e2
-              313106ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e3
-              313690ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e4
-              314274ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e5
-              314858ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e6
-              315442ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e7
-              316025ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e8
-              316609ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e9
-              317193ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ea
-              317777ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: eb
-              318361ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ec
-              319612ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ef
-              320446ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f0
-              321029ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f1
-              321613ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f2
-              322197ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f3
-              322781ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f4
-              323365ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f5
-              323948ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f6
-              324532ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f7
-              325116ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f8
-              325700ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: f9
-              326284ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fa
-              326867ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fb
-              327451ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fc
-              328035ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fd
-              328619ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: fe
-              329703ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ff
-              329703ns <stm_bkpt> NOTE: GPO completed.
-              333873ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e0
-              342046ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
-              351554ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
-              361061ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
-              368067ns <stm_bkpt> NOTE: GPIO PU/PD completed.
-              370569ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 08
-              371737ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 00
-              375573ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: e1
-              468067ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
+              718910ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
 Read dummy cycle.
 
 Read dummy cycle.
 
-              808982ns <stm_bkpt.try_bkpt> bkpt@pc:0xce
+              748621ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
 Read dummy cycle.
 
 Read dummy cycle.
 
-              838693ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 01
+             1059224ns <stm_bkpt.try_bkpt> bkpt@pc:0xcf
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1149296ns <stm_bkpt.try_bkpt> bkpt@pc:0xcf
+             1087392ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1177464ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 02
+             1397065ns <stm_bkpt.try_bkpt> bkpt@pc:0xd0
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1487137ns <stm_bkpt.try_bkpt> bkpt@pc:0xd0
+             1427330ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1517402ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 03
+             1739616ns <stm_bkpt.try_bkpt> bkpt@pc:0xd3
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1829688ns <stm_bkpt.try_bkpt> bkpt@pc:0xd3
+             1768937ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
 Read dummy cycle.
 
 Read dummy cycle.
 
-             1859009ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 04
+             2079508ns <stm_bkpt.try_bkpt> bkpt@pc:0xd4
 Read dummy cycle.
 
 Read dummy cycle.
 
-             2169580ns <stm_bkpt.try_bkpt> bkpt@pc:0xd4
+             2109542ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
 Read dummy cycle.
 
 Read dummy cycle.
 
-             2199614ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 05
-Read dummy cycle.
-
-Read dummy cycle.
-
-             2510947ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
-             2511069ns <stm_bkpt.try_bkpt> bkpt@pc:0xcb
+             2420875ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 06
+             2420997ns <stm_bkpt.try_bkpt> bkpt@pc:0xcb
 Read dummy cycle.
 
 Read dummy cycle.
@@ -967,44 +969,44 @@ Read dummy cycle.
 
 Read dummy cycle.
 
-             2849097ns <stm_bkpt.try_bkpt> bkpt@pc:0xc9
+             2759025ns <stm_bkpt.try_bkpt> bkpt@pc:0xc9
 Read dummy cycle.
 
 Read dummy cycle.
 
-             2877573ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
+             2787501ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 13
 Read dummy cycle.
 
 Read dummy cycle.
 
-             3188059ns <stm_bkpt.try_bkpt> bkpt@pc:0xc8
+             3097987ns <stm_bkpt.try_bkpt> bkpt@pc:0xc8
 Read dummy cycle.
 
 Read dummy cycle.
 
-             3218012ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
+             3127940ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 15
 Read dummy cycle.
 
 Read dummy cycle.
 
-             3528606ns <stm_bkpt.try_bkpt> bkpt@pc:0xc6
+             3438534ns <stm_bkpt.try_bkpt> bkpt@pc:0xc6
 Read dummy cycle.
 
 Read dummy cycle.
 
-             3558117ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
+             3468045ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 16
 Read dummy cycle.
 
 Read dummy cycle.
 
-             3869783ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
+             3779711ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: 18
 Read dummy cycle.
 
 Read dummy cycle.
 
-             4043672ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ed
-             4043755ns <stm_bkpt.fw_ending> NOTE: simulation completed by DUT FW
-Simulation complete via $finish(1) at time 4043855280 PS + 0
+             3953600ns <stm_bkpt.fw_ending> NOTE: DUT P0-report: ed
+             3953683ns <stm_bkpt.fw_ending> NOTE: simulation completed by DUT FW
+Simulation complete via $finish(1) at time 3953783280 PS + 0
 ../stm/stm_task.v:54    forever @(posedge `DUT_CCLK) if (`DUT_MCU.port0o==='hed) `HW_FIN (($time,"ns <%m> NOTE: simulation completed by DUT FW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Mar 30, 2023 at 19:02:05 CST  (total: 00:00:06)
+TOOL:	ncverilog	15.20-s024: Exiting on Apr 11, 2023 at 17:46:03 CST  (total: 00:00:06)

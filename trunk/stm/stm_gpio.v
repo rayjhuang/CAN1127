@@ -125,7 +125,7 @@ begin
 	osc =0;
 	`I2CMST.sfrw ('h12,'h03); // PG0_CMD(3): gating OSC
 	#(1000*10) fork: chk2
-	   forever @(`DUT_CORE.i_clk) osc = osc+1;
+	   forever @(`DUT_ANA.OSC_O) osc = osc+1;
 	   #(1000*10) disable chk2;
 	   @(`DUT_MCLK) `HW_FIN (($time,"ns <%m> ERROR: OSC should be gated"))
 	join
