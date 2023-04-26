@@ -46,8 +46,7 @@
 #  mv bench_a.vcd.fsdb atpg_serial_99+3_gen.vcd.fsdb
 #  mv bench_a.vcd.fsdb atpg_serial_99+3_ver.vcd.fsdb
 
-   grep -H 'simulation .* completed' atpg_*.log
-   grep 'patterns completed' atpg_*.log
+   grep -H 'simulation .*completed' *.log
    grep -E "expected to be|End of STIL" atpg_*.log | grep -v 'to be Z'
    grep 'Signal .* expected' atpg_* | grep -v 'expected to be Z'
 

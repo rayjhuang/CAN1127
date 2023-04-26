@@ -1,1 +1,1 @@
-../release/20230330/USB_OK230406.v.cpx
+../release/20230330/USB_OK230424.v.cpx

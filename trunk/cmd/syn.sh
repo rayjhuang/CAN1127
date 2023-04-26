@@ -96,7 +96,7 @@
 ################################################################################
    if ( "$1" == "POSTSIM" ) then
    setenv DCODE `date +%Y%m%d`
-   setenv RETC 230406
+   setenv RETC 230424
    setenv RET_PATH ~king/WORK/CAN1127A0_A0585A0/APR_LAYOUT
    echo $RELC $RETC $RET_PATH $DCODE
    ls -ld ${RET_PATH}/*${RETC}.*
@@ -104,6 +104,8 @@
    cp -p ${RET_PATH}/USB_OK${RETC}.spef     ../release/$RELC/USB_OK${RETC}.spef.cp
 #  cp -p ${RET_PATH}/USB_OK${RETC}.spef.min ../release/$RELC/USB_OK${RETC}.spef.min.cp
 #  cp -p ${RET_PATH}/USB_OK${RETC}.spef.max ../release/$RELC/USB_OK${RETC}.spef.max.cp
+
+   diff ../release/$RELC/chiptop_1127a0.sdc $RET_PATH/../DES230329/
 
    cat ../release/$RELC/USB_OK${RETC}.v.cp | \
    sed '/ATO000.*U0_CODE_/a, .VSS () , .VDD () , .VDDP (VPP_OTP)' | \

@@ -3,7 +3,7 @@
 //	SCL
 //	SDA
 //	GPIO1
-//	GPIO3: PP 20 40 after POR
+//	GPIO3: PP 30 40 after POR
 //	GPIO4
 //	GPIO5
 	10000XX;

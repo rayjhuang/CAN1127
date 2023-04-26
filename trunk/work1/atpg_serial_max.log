@@ -10,900 +10,6 @@ Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
   performance enable module specific capability in pli.tab file
 
 
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236494
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15667' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236495
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15670' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236496
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15673' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236497
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15676' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236498
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15679' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236499
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15682' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236500
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15685' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236501
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15688' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236502
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15691' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236503
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15694' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236504
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15697' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236505
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15700' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236506
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15703' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236507
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15706' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236508
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15709' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236509
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15712' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236510
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15715' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236511
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15718' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236512
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15721' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236513
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15724' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236514
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15727' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236515
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15730' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236516
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15733' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236517
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15736' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236518
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15739' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236519
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15742' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236520
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15745' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236521
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15748' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236522
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15751' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236523
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15754' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236524
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15757' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236525
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15760' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236526
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15763' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236527
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15766' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236528
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15769' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236529
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15772' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236530
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15775' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236531
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15778' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236532
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15781' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236533
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15784' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236534
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15787' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236535
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15790' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236536
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15793' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236537
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15796' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236538
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15799' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236539
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15802' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236540
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15805' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236541
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15808' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236542
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15811' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236543
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15814' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236544
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15817' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236545
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15820' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236546
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15823' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236547
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15826' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236548
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15829' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236549
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15832' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236550
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15835' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236551
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15838' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236552
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15841' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236553
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15844' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236554
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15847' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236555
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15850' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236556
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15853' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236558
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15859' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236559
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15862' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236560
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15865' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236561
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15868' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236562
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15871' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236563
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15874' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236564
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15877' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236565
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15880' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236566
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15883' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236567
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15886' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236568
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15889' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236569
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15892' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236570
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15895' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236571
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15898' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236572
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15901' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236573
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15904' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236574
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15907' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236575
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15910' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236576
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15913' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236577
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15916' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236578
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15919' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236579
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15922' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236580
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15925' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236581
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15928' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236582
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15931' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236583
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15934' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236584
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15937' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236585
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15940' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236586
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15943' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236587
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15946' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236588
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15949' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236589
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15952' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236590
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15955' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236591
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15958' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236592
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15961' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236593
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15964' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236594
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15967' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236595
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15970' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236596
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15973' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236597
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15976' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236598
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15979' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236599
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15982' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236600
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15985' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236601
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15988' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236602
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15991' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236603
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15994' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236604
-  Implicit wire 'SYNOPSYS_UNCONNECTED_15997' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236605
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16000' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236606
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16003' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236607
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16006' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236608
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16009' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236609
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16012' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236610
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16015' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236611
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16018' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236612
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16021' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236613
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16024' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236614
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16027' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236615
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16030' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236616
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16033' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236617
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16036' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236618
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16039' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236619
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16042' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236620
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16045' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236621
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16048' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236622
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16051' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236623
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16054' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236624
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16057' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236625
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16060' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236626
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16063' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236627
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16066' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236628
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16069' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236629
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16072' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236630
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16075' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236631
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16078' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236632
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16081' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236633
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16084' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236634
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16087' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236635
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16090' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236636
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16093' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236637
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16096' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236638
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16099' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236639
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16102' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236640
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16105' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236641
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16108' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236642
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16111' does not have any driver, please 
-  make sure this is intended.
-
-
-Warning-[IWNF] Implicit wire has no fanin
-./gate.v, 236643
-  Implicit wire 'SYNOPSYS_UNCONNECTED_16114' does not have any driver, please 
-  make sure this is intended.
-
-
 Warning-[CWUC] Concatenations with unsized constants
 ../stm/stm_atpg.v, 206
 "'h00000060"
@@ -922,13 +28,40 @@ Warning-[CWUC] Concatenations with unsized constants
    ***    Turnoff delay: "FROM_FILE"
    ***    Approximation (mipd) policy: "MAXIMUM"
 
-   ***    SDF annotation begin: Mon Apr 10 16:30:59 2023
+   ***    SDF annotation begin: Tue Apr 25 18:08:15 2023
 
 
 SDF Info: +pulse_r/100, +pulse_e/100 in effect
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 20
+chiptop_ss.sdf, 515
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_8_"
+  SDF Error: Port \A[11]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ss.sdf, 1020
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_0_"
+  SDF Error: Port \A[0]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ss.sdf, 1525
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_7_"
+  SDF Error: Port \A[10]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ss.sdf, 1535
 module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
   SDF Error: Port \Q[5]  specified in SDF file using INTERCONNECT does not 
   exist.
@@ -937,61 +70,34 @@ module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 517
-module: INVXL, "instance: bench.U0_DUT.U6"
-  SDF Error: Port \A[1]  specified in SDF file using INTERCONNECT does not 
+chiptop_ss.sdf, 2030
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_9_"
+  SDF Error: Port \A[12]  specified in SDF file using INTERCONNECT does not 
   exist.
   If this warning is not expected, please check if bit select is escaped with 
   a backslash in the SDF.
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 1024
-module: INVX1, "instance: bench.U0_DUT.U0_CORE.U383"
-  SDF Error: Port \A[10]  specified in SDF file using INTERCONNECT does not 
+chiptop_ss.sdf, 2535
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_10_"
+  SDF Error: Port \A[13]  specified in SDF file using INTERCONNECT does not 
   exist.
   If this warning is not expected, please check if bit select is escaped with 
   a backslash in the SDF.
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 1531
-module: INVXL, "instance: bench.U0_DUT.U7"
-  SDF Error: Port \A[0]  specified in SDF file using INTERCONNECT does not 
+chiptop_ss.sdf, 3040
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_11_"
+  SDF Error: Port \A[14]  specified in SDF file using INTERCONNECT does not 
   exist.
   If this warning is not expected, please check if bit select is escaped with 
   a backslash in the SDF.
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 2038
-module: INVXL, "instance: bench.U0_DUT.U5"
-  SDF Error: Port \A[2]  specified in SDF file using INTERCONNECT does not 
-  exist.
-  If this warning is not expected, please check if bit select is escaped with 
-  a backslash in the SDF.
-
-
-Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 2545
-module: AO22X1, "instance: bench.U0_DUT.U0_CORE.U956"
-  SDF Error: Port \A[3]  specified in SDF file using INTERCONNECT does not 
-  exist.
-  If this warning is not expected, please check if bit select is escaped with 
-  a backslash in the SDF.
-
-
-Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 3052
-module: AO22X4, "instance: bench.U0_DUT.U0_CORE.U363"
-  SDF Error: Port \A[4]  specified in SDF file using INTERCONNECT does not 
-  exist.
-  If this warning is not expected, please check if bit select is escaped with 
-  a backslash in the SDF.
-
-
-Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 3062
+chiptop_ss.sdf, 3050
 module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
   SDF Error: Port \Q[3]  specified in SDF file using INTERCONNECT does not 
   exist.
@@ -1000,18 +106,18 @@ module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 3559
-module: AO22X1, "instance: bench.U0_DUT.U0_CORE.U954"
-  SDF Error: Port \A[6]  specified in SDF file using INTERCONNECT does not 
+chiptop_ss.sdf, 3545
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_1_"
+  SDF Error: Port \A[1]  specified in SDF file using INTERCONNECT does not 
   exist.
   If this warning is not expected, please check if bit select is escaped with 
   a backslash in the SDF.
 
 
 Warning-[SDFCOM_PONF] Port not found
-chiptop_ss.sdf, 4066
-module: AO22X1, "instance: bench.U0_DUT.U0_CORE.U953"
-  SDF Error: Port \A[5]  specified in SDF file using INTERCONNECT does not 
+chiptop_ss.sdf, 4050
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_12_"
+  SDF Error: Port \A[15]  specified in SDF file using INTERCONNECT does not 
   exist.
   If this warning is not expected, please check if bit select is escaped with 
   a backslash in the SDF.
@@ -1019,774 +125,792 @@ module: AO22X1, "instance: bench.U0_DUT.U0_CORE.U953"
 All future errors not reported; use +sdfverbose to report them.
 All future warnings not reported; use +sdfverbose to report them.
 
-          Total errors: 22555
+          Total errors: 22735
           Total warnings: 61
-   ***    SDF annotation completed: Mon Apr 10 16:31:00 2023
+   ***    SDF annotation completed: Tue Apr 25 18:08:16 2023
 
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 89264
+./gate.v, 86080
 "TST"
   Port "TST" declared as input in module "chiptop_1127a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 83509
+./gate.v, 80246
 "o_dbc"
   Port "o_dbc" declared as output in module "ff_sync_2" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 82931
+./gate.v, 79659
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH5_0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 81131
+./gate.v, 77857
 "r_ctl"
   Port "r_ctl" declared as output in module "fcpegn_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 80930
+./gate.v, 77659
 "rdat"
   Port "rdat" declared as output in module "glreg_8_00000000" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 79754
+./gate.v, 76507
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_22" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 79690
+./gate.v, 76429
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_21" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 76109
+./gate.v, 73097
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_3" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 76063
+./gate.v, 73038
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_2" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 76020
+./gate.v, 72991
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_1" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 75966
+./gate.v, 72944
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_0" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 75875
+./gate.v, 72859
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_a0_1" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 75761
+./gate.v, 72755
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_a0_0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72595
+./gate.v, 69558
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH1_1" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72533
+./gate.v, 69508
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_9" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72461
+./gate.v, 69439
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_8" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72389
+./gate.v, 69366
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_7" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72289
+./gate.v, 69262
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_7" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72248
+./gate.v, 69218
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_6" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72205
+./gate.v, 69176
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_5" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72163
+./gate.v, 69135
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_4" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 72119
+./gate.v, 69089
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH6_0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 71896
+./gate.v, 68882
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_12" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 71826
+./gate.v, 68811
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_11" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 70643
+./gate.v, 67636
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH1_0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 70586
+./gate.v, 67598
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH5_1" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 70072
+./gate.v, 67026
 "r_pwm"
   Port "r_pwm" declared as output in module "glpwm_a0_0" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 70017
+./gate.v, 66973
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 69840
+./gate.v, 66780
 "r_pwm"
   Port "r_pwm" declared as output in module "glpwm_a0_1" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 69773
+./gate.v, 66734
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_1" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 67320
+./gate.v, 64294
 "rxd0o"
   Port "rxd0o" declared as output in module "mcu51_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 67320
+./gate.v, 64294
 "txd0"
   Port "txd0" declared as output in module "mcu51_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 66806
+./gate.v, 63850
 "t0_tf0"
   Port "t0_tf0" declared as output in module "timer0_a0" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 66806
+./gate.v, 63850
 "t0_tr0"
   Port "t0_tr0" declared as output in module "timer0_a0" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 63779
+./gate.v, 61045
 "i2fr"
   Port "i2fr" declared as output in module "extint_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 63779
+./gate.v, 61045
 "i3fr"
   Port "i3fr" declared as output in module "extint_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 49725
+./gate.v, 47422
 "instr"
   Port "instr" declared as output in module "mcu51_cpu_a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 49725
+./gate.v, 47422
 "pc_o"
   Port "pc_o" declared as output in module "mcu51_cpu_a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 42713
+./gate.v, 40787
 "rxd0o"
   Port "rxd0o" declared as output in module "serial0_a0" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 42713
+./gate.v, 40787
 "txd0"
   Port "txd0" declared as output in module "serial0_a0" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 27027
+./gate.v, 26704
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH7_2" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26974
+./gate.v, 26658
 "rdat"
   Port "rdat" declared as output in module "glreg_4_00000004" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26835
+./gate.v, 26514
 "rdat"
   Port "rdat" declared as output in module "glreg_8_0000001f" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26529
+./gate.v, 26207
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_14" may need
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26291
+./gate.v, 25969
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_9" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26291
+./gate.v, 25969
 "o_chg"
   Port "o_chg" declared as output in module "dbnc_WIDTH2_TIMEOUT2_9" may need 
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26133
+./gate.v, 25811
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_2" may need
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 26029
+./gate.v, 25710
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_1" may need
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25927
+./gate.v, 25605
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_0" may need
   to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25741
+./gate.v, 25435
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_4" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25742
+./gate.v, 25436
 "o_chg"
   Port "o_chg" declared as output in module "dbnc_WIDTH2_4" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25693
+./gate.v, 25375
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_3" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25694
+./gate.v, 25376
 "o_chg"
   Port "o_chg" declared as output in module "dbnc_WIDTH2_3" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25640
+./gate.v, 25319
 "o_dbc"
   Port "o_dbc" declared as output in module "dbnc_WIDTH2_2" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25641
+./gate.v, 25320
 "o_chg"
   Port "o_chg" declared as output in module "dbnc_WIDTH2_2" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25592
+./gate.v, 25260
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_63" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25523
+./gate.v, 25186
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_62" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25452
+./gate.v, 25118
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_61" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25373
+./gate.v, 25052
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_60" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25306
+./gate.v, 24975
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_59" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25244
+./gate.v, 24906
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_58" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25170
+./gate.v, 24831
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_57" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 25038
+./gate.v, 24685
 "rdat"
   Port "rdat" declared as output in module "glreg_8_000000f0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 24963
+./gate.v, 24610
 "rdat"
   Port "rdat" declared as output in module "glreg_8_00000098" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 24896
+./gate.v, 24531
 "rdat"
   Port "rdat" declared as output in module "glreg_8_00000032" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 24473
+./gate.v, 24078
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH4" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 24310
+./gate.v, 23922
 "rdat"
   Port "rdat" declared as output in module "glreg_8_00000001" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 24230
+./gate.v, 23850
 "rdat"
   Port "rdat" declared as output in module "glreg_8_00000011" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 23296
+./gate.v, 22931
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_75" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 23075
+./gate.v, 22726
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_73" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 23007
+./gate.v, 22654
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_72" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 22947
+./gate.v, 22585
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_71" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 22670
+./gate.v, 22314
 "rdat"
   Port "rdat" declared as output in module "glsta_a0_6" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 22612
+./gate.v, 22257
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH8_6" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 22497
+./gate.v, 22139
 "rdat"
   Port "rdat" declared as output in module "glsta_a0_5" may need to be inout. 
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 22449
+./gate.v, 22078
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH8_5" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 21675
+./gate.v, 21319
 "rise"
   Port "rise" declared as output in module "i2cdbnc_a0_1" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 21628
+./gate.v, 21264
 "rise"
   Port "rise" declared as output in module "i2cdbnc_a0_0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 19558
+./gate.v, 19185
+"prx_bmc"
+  Port "prx_bmc" declared as output in module "phyrx_a0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 19188
 "prx_rcvdords"
   Port "prx_rcvdords" declared as output in module "phyrx_a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 19558
+./gate.v, 19188
 "prx_rxcode"
   Port "prx_rxcode" declared as output in module "phyrx_a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 19558
-"prx_fifowdat"
-  Port "prx_fifowdat" declared as output in module "phyrx_a0" may need to be 
-  inout. Coercing to inout.
-
-
-Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 19559
+./gate.v, 19189
 "prx_setsta"
   Port "prx_setsta" declared as output in module "phyrx_a0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 12334
+./gate.v, 11861
 "fifowdat"
   Port "fifowdat" declared as output in module "phyff_DEPTH_NUM34_DEPTH_NBT6" 
   may need to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 5700
-"rdat"
-  Port "rdat" declared as output in module "glreg_a0_27" may need to be inout.
-  Coercing to inout.
-
-
-Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 5594
+./gate.v, 5394
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_26" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 5519
-"rdat"
-  Port "rdat" declared as output in module "glreg_WIDTH2_1" may need to be 
-  inout. Coercing to inout.
-
-
-Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 5475
+./gate.v, 5305
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH2_0" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 5067
+./gate.v, 5010
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_36" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4996
+./gate.v, 4942
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_35" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4929
+./gate.v, 4873
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_34" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4862
+./gate.v, 4805
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_33" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4790
+./gate.v, 4732
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_32" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4719
+./gate.v, 4673
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_31" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4648
+./gate.v, 4601
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_30" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4414
+./gate.v, 4371
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_44" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4346
+./gate.v, 4303
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_43" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4279
+./gate.v, 4232
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_42" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4211
+./gate.v, 4158
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_41" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4140
+./gate.v, 4088
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_40" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 4058
+./gate.v, 4013
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_39" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 3983
+./gate.v, 3949
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_38" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 3900
+./gate.v, 3884
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_37" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1723
+./gate.v, 1643
 "busy"
   Port "busy" declared as output in module "shmux_00000005_00000012_00000012" 
   may need to be inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1586
+./gate.v, 1514
 "rdat"
   Port "rdat" declared as output in module "glreg_WIDTH7_1" may need to be 
   inout. Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1394
+./gate.v, 1433
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_49" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1357
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_48" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1263
+./gate.v, 1234
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_47" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1190
+./gate.v, 1159
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_46" may need to be inout.
   Coercing to inout.
 
 
 Lint-[PCTIO-L] Ports coerced to inout
-./gate.v, 1117
+./gate.v, 1090
 "rdat"
   Port "rdat" declared as output in module "glreg_a0_45" may need to be inout.
   Coercing to inout.
 
-974 modules and 9 UDPs read.
-	However, due to incremental compilation, only 1 module needs to be compiled.
+981 modules and 9 UDPs read.
+	However, due to incremental compilation, only 28 modules need to be compiled.
+Generating code for _VCSgd_bench_1
 Generating code for _VCSgd_stm_atpg_Qlfyoc_1
+Generating code for _VCSgd_CLKDLNXL_1
+Generating code for _VCSgd_CLKDLX1_1
+Generating code for _VCSgd_CLKDLX2_1
+Generating code for _VCSgd_CLKDLX4_1
+Generating code for _VCSgd_CLKDLXL_1
+Generating code for _VCSgd_DLNQX1_1
+Generating code for _VCSgd_SDFFNQX1_1
+Generating code for _VCSgd_SDFFNQX4_1
+Generating code for _VCSgd_SDFFNQXL_1
+Generating code for _VCSgd_SDFFNQXX4_1
+Generating code for _VCSgd_SDFFNRQX1_1
+Generating code for _VCSgd_SDFFQX1_1
+Generating code for _VCSgd_SDFFQX2_1
+Generating code for _VCSgd_SDFFQX4_1
+Generating code for _VCSgd_SDFFQXL_1
+Generating code for _VCSgd_SDFFQXX4_1
+Generating code for _VCSgd_SDFFRQX1_1
+Generating code for _VCSgd_SDFFRQX2_1
+Generating code for _VCSgd_SDFFRQX4_1
+Generating code for _VCSgd_SDFFRQXL_1
+Generating code for _VCSgd_SDFFRQXX2_1
+Generating code for _VCSgd_SDFFSQX1_1
+Generating code for _VCSgd_SDFFSQX2_1
+Generating code for _VCSgd_SDFFSQX4_1
+Generating code for _VCSgd_SDFFSQXX1_1
+Generating code for _VCSgd_MSL18B_1536_20221107_kiuK3d_1
 ld -r -o pre_vcsobj_0_1.o --whole-archive pre_vcsobj_0_1.a --no-whole-archive
 ld -r -o pre_vcsobj_1_1.o --whole-archive pre_vcsobj_1_1.a --no-whole-archive
-ld -r -o pre_vcsobj_1_2.o --whole-archive pre_vcsobj_1_2.a --no-whole-archive
-ld -r -o pre_vcsobj_1_3.o --whole-archive pre_vcsobj_1_3.a --no-whole-archive
 ../simv up to date
 Command: ./simv +v2k +acc +no_notifier +vcs+lic+wait +tetramax -q +nowarnTFIPC +define+tmax_msg=1+tmax_rpt=10 +define+CAN1127A0+EMPTY -a atpg_serial_max.log +define+MAX+VEC_GEN=atpg_serial_max.vec
 Doing SDF annotation ...... Done
@@ -1799,8 +923,8 @@ DPV: Enabling trace of STIL Proc/Macro entry at time 0
 DPV Info: Detected a Normal Scan mode.
 DPV: Starting event thread 1 for /"_burst_"/"_pattern_", V# 1
 DPV: Entered Macro "test_setup" on start of thread 1
-                   5ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
                    5ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+                   6ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
 DPV: Entered Procedure "load_unload", time 100000, V# 3
 DPV: Starting Serial Execution of TetraMAX pattern 0, time 100000, V# 3
 DPV: Entered Procedure "multiclock_capture", time 81550000, V# 1632
