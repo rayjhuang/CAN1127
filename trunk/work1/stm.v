@@ -1,1 +1,1 @@
-../stm/stm_sfr.v
+../stm/stm_atpg.v

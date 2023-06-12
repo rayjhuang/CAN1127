@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s024: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s024: Started on Apr 11, 2023 at 17:49:22 CST
+TOOL:	ncverilog	15.20-s024: Started on Apr 26, 2023 at 17:16:20 CST
 ncverilog
 	+ncaccess+rc
 	+nowarn+NONPRT
@@ -278,9 +278,6 @@ file: ../bench/uart_bhv.v
 		errors: 0, warnings: 0
 file: ../bench/can1127.v
 	module worklib.hardware_rev:v
-		errors: 0, warnings: 0
-file: ../stm/stm_dacmux.v
-	module worklib.stm_dacmux:v
 		errors: 0, warnings: 0
 file: /mnt/app1/ray/project/can1127/rtl/softmacro.v
 	module rtl.glreg:v
@@ -29319,4 +29316,4 @@ Read dummy cycle.
 Simulation complete via $finish(1) at time 711336820880 PS + 0
 ../stm/stm_task.v:50    `HW_FIN (($time,"ns <%m> NOTE: simulation completed by HW"))
 ncsim> exit
-TOOL:	ncverilog	15.20-s024: Exiting on Apr 11, 2023 at 17:52:29 CST  (total: 00:03:07)
+TOOL:	ncverilog	15.20-s024: Exiting on Apr 26, 2023 at 17:19:32 CST  (total: 00:03:12)

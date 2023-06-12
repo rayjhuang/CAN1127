@@ -37,7 +37,7 @@ pulldown (pull0) (pd_scl);   tranif1 (pd_scl,  `DUT.SCL,  pd_ena); // and expect
 initial begin
 `ifdef MAX $sdf_annotate ("chiptop_ss.sdf",`DUT,,,"MAXIMUM");
 `elsif MIN $sdf_annotate ("chiptop_ff.sdf",`DUT,,,"MINIMUM");
-`else "ERROR: no SDF case specified"
+`else ERROR: no SDF case specified;
 `endif
 	force `DUT.U0_ANALOG_TOP.RSTB = 0; #80
 	force `DUT.U0_ANALOG_TOP.RSTB = 1; // for the test_setup cycle
@@ -174,6 +174,7 @@ module bench; // a very simple bench for verfying vectors
       .DN(DN),
       .CC1(CC1),
       .CC2(CC2),
+      .GPIO_TS(GPIO_TS),
       .TST(TST),
       .SCL(SCL),
       .SDA(SDA),

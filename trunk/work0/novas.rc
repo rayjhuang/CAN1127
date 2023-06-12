@@ -293,17 +293,17 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape     
+Orientation = Landscape    
 [FileBrowser]
 nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.fsdb,/mnt/app1/ray/project/can1127/work0,
 nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,
 [Form]
 version = Verdi3_J-2014.12-SP2
 wave/unknownSave.fm = 140,140,520,275
-wave/getSignal.fm = 100,100,965,579
-wave/restoreSig.fm = 100,100,723,530
 wave/saveSig.fm = 100,100,723,530
 wave/openWFile.fm = 100,100,823,688
+wave/getSignal.fm = 100,100,965,579
+wave/restoreSig.fm = 100,100,723,530
 [General]
 autoSaveSession = FALSE
 TclAutoSource = 
@@ -311,11 +311,11 @@ SyncBrowserDir = TRUE
 bDisplayWelcome = FALSE
 bKeepUndockedWidgetsOnTop = FALSE
 bUndockNewCreatedWindow = TRUE
-version = Verdi3_J-2014.12-SP2
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
+version = Verdi3_J-2014.12-SP2
 SignalCaseInSensitive = FALSE
 ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
@@ -517,7 +517,7 @@ iscCmdSep = FALSE
 interactive_fsdb_file = inter.fsdb
 invokeSimPath = work
 vcs_svPath = simv
-vcs_svOption =  
+vcs_svOption = 
 thirdpartyIdx = -1
 simType = vcssv
 interactiveDebugging = FALSE
@@ -731,8 +731,8 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-getSignalForm = 0 0 965 579 100 400 100 30
-viewPort = 50 214 960 332 100 65
+getSignalForm = 100 100 965 579 100 400 100 30
+viewPort = 0 217 1910 525 226 65
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 33
@@ -1136,13 +1136,13 @@ tsClkSkewSave = True
 tsClkSkewSetting = 0
 tsMaxForLoopToUnroll = 0
 tsBBoxSave = True
-tsBBoxSetting =  
+tsBBoxSetting = 
 tsBBoxEmptyModule = False
 tsBBoxIgnoreProtected = False
 tsIPSave = True
-tsIPSetting =  
-tsSymLibSetting =  
-tsSimModelSetting =  
+tsIPSetting = 
+tsSymLibSetting = 
+tsSimModelSetting = 
 tsCellModelSetting = 0
 tsContBAError = FALSE
 tsMaxLeafNum = 32768
@@ -1413,7 +1413,7 @@ stopCheckpoints = 0
 genCheckpoints = 0
 reverseDebug = FALSE
 [turboSchema_Printer_Options]
-Orientation = Landscape     
+Orientation = Landscape    
 [turbo_library]
 bdb_load_scope = 
 [uvmFactory]
@@ -1441,7 +1441,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 50 214 960 332 100 65
+viewPort = 0 217 1910 525 226 65
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]
