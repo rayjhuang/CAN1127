@@ -53,7 +53,9 @@
    diff ../workmin/atpg_serial_99+3.vec  ../work1/
    diff ../workmin/atpg_serial_8.vec     ../work1/
    diff ../workmin/atpg_serial_min.vec   ../work1/atpg_serial_max.vec
-   sed 's/^P.*\t/\t/' ../workmin/atpg_serial_min.vec > ../release/$RELC/atpg_serial_${DCODE}.sd
+#  sed 's/^P.*\t/\t/' ../workmin/atpg_serial_min.vec > ../release/$RELC/atpg_serial_${DCODE}.sd
+   sed '/P0000:/,/P0001:/s/^\(\s*1...1\)..;/\1XX;/' ../workmin/atpg_serial_min.vec | \
+   sed 's/^P.*\t/\t/'                                > ../release/$RELC/atpg_serial_${DCODE}.sdx
 
    vcs $VCSOPT $VCSDUT -l atpg_serial_99+3_ver.log +define+GATE+MIN+VEC_VER=\"atpg_serial_99+3.vec\"+VCD
    vcs $VCSOPT $VCSDUT -l atpg_serial_99+3_ver.log +define+GATE+MAX+VEC_VER=\"atpg_serial_99+3.vec\"+VCD
