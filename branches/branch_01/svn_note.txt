@@ -52,9 +52,10 @@
 
 #% svn info
 #% svn sw file:///mnt/app1/git/svn/can1127/trunk
-#% svn sw file:///mnt/app1/git/svn/can1127/branches/branch_01
 
    svn copy file:///mnt/app1/git/svn/can1127/trunk \
             file:///mnt/app1/git/svn/can1127/branches/branch_01 \
-            -m "creating a new branch of /branches/branch_01"
+            -m "creating a new branch for an additional zero-bit write"
+   svn sw file:///mnt/app1/git/svn/can1127/branches/branch_01
+   svn ci -m "commit the copied/modified branch"
 

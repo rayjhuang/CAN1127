@@ -84,6 +84,7 @@ initial begin
 	#(1000*100) test_wr_1 ('h3022,$random);
 	#(1000*100) test_wr_1 ('h3044,$random);
 	#(1000*100) test_wr_1 ('h2200,$random);
+	#(1000*100) test_wr_1 ('h2201,'hff); // zero-bit write
 
 	#(1000*100) test_wr_256 ('h0014);
 	#(1000*100) test_wr_256 ('h0fa0);
