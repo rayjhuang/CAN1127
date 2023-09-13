@@ -1,0 +1,969 @@
+Command: vcs -full64 +v2k +acc +no_notifier +vcs+lic+wait -notice -R -Mupdate +tetramax \
+-q +nowarnTFIPC -P /mnt/tools/verdi/2013.07/share/PLI/VCS/LINUX64/novas.tab /mnt/tools/verdi/2013.07/share/PLI/VCS/LINUX64/pli.a \
+-P /mnt/tools/txs/2013.03/amd64/stildpv/lib/stildpv_vcs.tab /mnt/tools/txs/2013.03/amd64/stildpv/lib/libstildpv.a \
++define+tmax_msg=1+tmax_rpt=10 -timescale=1ns/1ps -negdelay ./syn/atpg_chain_stildpv.v \
+-f ../cmd/macro.f ./gate.v ../stm/stm_atpg.v +define+CAN1127A0+EMPTY -l atpg_chain_min.log \
++define+MIN+VCD
+
+Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
+  ACC/CLI capabilities have been enabled for the entire design. For faster 
+  performance enable module specific capability in pli.tab file
+
+
+   ***   $sdf_annotate() version 1.2R
+   ***    SDF file: "chiptop_ff.sdf"
+   ***    Annotation scope: bench.U0_DUT
+   ***    MTM selection: "MINIMUM"
+   ***    No SCALE FACTORS argument specified
+   ***    No SCALE TYPE argument specified
+   ***    SCALE FACTORS defaulted to "1.0:1.0:1.0":
+   ***    SCALE TYPE defaulted to: "FROM_MTM"
+   ***    Turnoff delay: "FROM_FILE"
+   ***    Approximation (mipd) policy: "MAXIMUM"
+
+   ***    SDF annotation begin: Tue Apr 25 17:42:01 2023
+
+
+SDF Info: +pulse_r/100, +pulse_e/100 in effect
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 515
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_0_"
+  SDF Error: Port \A[0]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 1020
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_7_"
+  SDF Error: Port \A[10]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 1525
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_8_"
+  SDF Error: Port \A[11]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 1535
+module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
+  SDF Error: Port \Q[5]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 2030
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_9_"
+  SDF Error: Port \A[12]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 2535
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_10_"
+  SDF Error: Port \A[13]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 3040
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_11_"
+  SDF Error: Port \A[14]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 3545
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_2_"
+  SDF Error: Port \A[2]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 4050
+module: SDFFQX2, "instance: bench.U0_DUT.U0_CORE.u0_ictlr.adr_p_reg_12_"
+  SDF Error: Port \A[15]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+
+Warning-[SDFCOM_PONF] Port not found
+chiptop_ff.sdf, 4060
+module: ATO0008KX8MX180LBX4DA, "instance: bench.U0_DUT.U0_CODE_0_"
+  SDF Error: Port \Q[3]  specified in SDF file using INTERCONNECT does not 
+  exist.
+  If this warning is not expected, please check if bit select is escaped with 
+  a backslash in the SDF.
+
+All future errors not reported; use +sdfverbose to report them.
+All future warnings not reported; use +sdfverbose to report them.
+
+          Total errors: 22477
+          Total warnings: 61
+   ***    SDF annotation completed: Tue Apr 25 17:42:01 2023
+
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 129928
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.U1032.A to 
+  bench.U0_DUT.U0_CORE.U1032.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 176027
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_mcu.u_isr.U117.B 
+  to bench.U0_DUT.U0_CORE.u0_mcu.u_isr.U117.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 176298
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_mcu.u_isr.U121.A 
+  to bench.U0_DUT.U0_CORE.u0_mcu.u_isr.U121.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 216303
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_mcu.u_cpu.U1442.B
+  to bench.U0_DUT.U0_CORE.u0_mcu.u_cpu.U1442.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 321839
+  SDF Warning: Negative IOPATH Delay 
+  bench.U0_DUT.U0_CORE.u0_regbank.srl_133.U3692.A to 
+  bench.U0_DUT.U0_CORE.u0_regbank.srl_133.U3692.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 372873
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_ictlr.U1192.A to 
+  bench.U0_DUT.U0_CORE.u0_ictlr.U1192.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 374333
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_ictlr.U1013.C to 
+  bench.U0_DUT.U0_CORE.u0_ictlr.U1013.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Warning-[SDFCOM_NIOD] Negative IOPATH Delay encountered
+chiptop_ff.sdf, 375047
+  SDF Warning: Negative IOPATH Delay bench.U0_DUT.U0_CORE.u0_ictlr.U1027.A to 
+  bench.U0_DUT.U0_CORE.u0_ictlr.U1027.Y is replaced by 0.
+  This negative value cannot be handled with switch -negdelay. Please check 
+  SDF files.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 80246
+"o_dbc"
+  Port "o_dbc" declared as output in module "ff_sync_2" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 79659
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH5_0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 77857
+"r_ctl"
+  Port "r_ctl" declared as output in module "fcpegn_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 77659
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_00000000" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 76507
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_22" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 76429
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_21" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 73097
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_3" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 73038
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_2" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 72991
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_1" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 72944
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_0" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 72859
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_a0_1" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 72755
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_a0_0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69558
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH1_1" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69508
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_9" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69439
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_8" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69366
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_7" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69262
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_7" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69218
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_6" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69176
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_5" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69135
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_4" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 69089
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH6_0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 68882
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_12" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 68811
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_11" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 67636
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH1_0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 67598
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH5_1" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 67026
+"r_pwm"
+  Port "r_pwm" declared as output in module "glpwm_a0_0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 66973
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 66780
+"r_pwm"
+  Port "r_pwm" declared as output in module "glpwm_a0_1" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 66734
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_1" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 64294
+"rxd0o"
+  Port "rxd0o" declared as output in module "mcu51_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 64294
+"txd0"
+  Port "txd0" declared as output in module "mcu51_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 63850
+"t0_tf0"
+  Port "t0_tf0" declared as output in module "timer0_a0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 63850
+"t0_tr0"
+  Port "t0_tr0" declared as output in module "timer0_a0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 61045
+"i2fr"
+  Port "i2fr" declared as output in module "extint_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 61045
+"i3fr"
+  Port "i3fr" declared as output in module "extint_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 47422
+"instr"
+  Port "instr" declared as output in module "mcu51_cpu_a0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 47422
+"pc_o"
+  Port "pc_o" declared as output in module "mcu51_cpu_a0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 40787
+"rxd0o"
+  Port "rxd0o" declared as output in module "serial0_a0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 40787
+"txd0"
+  Port "txd0" declared as output in module "serial0_a0" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 26704
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH7_2" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 26658
+"rdat"
+  Port "rdat" declared as output in module "glreg_4_00000004" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 26514
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_0000001f" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 26207
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_14" may need
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25969
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_TIMEOUT2_9" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25969
+"o_chg"
+  Port "o_chg" declared as output in module "dbnc_WIDTH2_TIMEOUT2_9" may need 
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25811
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_2" may need
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25710
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_1" may need
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25605
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH4_TIMEOUT14_0" may need
+  to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25435
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_4" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25436
+"o_chg"
+  Port "o_chg" declared as output in module "dbnc_WIDTH2_4" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25375
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_3" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25376
+"o_chg"
+  Port "o_chg" declared as output in module "dbnc_WIDTH2_3" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25319
+"o_dbc"
+  Port "o_dbc" declared as output in module "dbnc_WIDTH2_2" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25320
+"o_chg"
+  Port "o_chg" declared as output in module "dbnc_WIDTH2_2" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25260
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_63" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25186
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_62" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25118
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_61" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 25052
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_60" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24975
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_59" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24906
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_58" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24831
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_57" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24685
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_000000f0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24610
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_00000098" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24531
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_00000032" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 24078
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH4" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 23922
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_00000001" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 23850
+"rdat"
+  Port "rdat" declared as output in module "glreg_8_00000011" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22931
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_75" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22726
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_73" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22654
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_72" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22585
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_71" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22314
+"rdat"
+  Port "rdat" declared as output in module "glsta_a0_6" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22257
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH8_6" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22139
+"rdat"
+  Port "rdat" declared as output in module "glsta_a0_5" may need to be inout. 
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 22078
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH8_5" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 21319
+"rise"
+  Port "rise" declared as output in module "i2cdbnc_a0_1" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 21264
+"rise"
+  Port "rise" declared as output in module "i2cdbnc_a0_0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 19185
+"prx_bmc"
+  Port "prx_bmc" declared as output in module "phyrx_a0" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 19188
+"prx_rcvdords"
+  Port "prx_rcvdords" declared as output in module "phyrx_a0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 19188
+"prx_rxcode"
+  Port "prx_rxcode" declared as output in module "phyrx_a0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 19189
+"prx_setsta"
+  Port "prx_setsta" declared as output in module "phyrx_a0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 11861
+"fifowdat"
+  Port "fifowdat" declared as output in module "phyff_DEPTH_NUM34_DEPTH_NBT6" 
+  may need to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 5394
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_26" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 5305
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH2_0" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 5010
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_36" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4942
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_35" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4873
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_34" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4805
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_33" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4732
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_32" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4673
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_31" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4601
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_30" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4371
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_44" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4303
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_43" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4232
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_42" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4158
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_41" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4088
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_40" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 4013
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_39" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 3949
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_38" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 3884
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_37" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1643
+"busy"
+  Port "busy" declared as output in module "shmux_00000005_00000012_00000012" 
+  may need to be inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1514
+"rdat"
+  Port "rdat" declared as output in module "glreg_WIDTH7_1" may need to be 
+  inout. Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1433
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_49" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1357
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_48" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1234
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_47" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1159
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_46" may need to be inout.
+  Coercing to inout.
+
+
+Lint-[PCTIO-L] Ports coerced to inout
+./gate.v, 1090
+"rdat"
+  Port "rdat" declared as output in module "glreg_a0_45" may need to be inout.
+  Coercing to inout.
+
+981 modules and 9 UDPs read.
+	However, due to incremental compilation, only 1 module needs to be compiled.
+Generating code for _VCSgd_bench_1
+ld -r -o pre_vcsobj_0_1.o --whole-archive pre_vcsobj_0_1.a --no-whole-archive
+ld -r -o pre_vcsobj_1_1.o --whole-archive pre_vcsobj_1_1.a --no-whole-archive
+ld -r -o pre_vcsobj_1_2.o --whole-archive pre_vcsobj_1_2.a --no-whole-archive
+../simv up to date
+Command: ./simv +v2k +acc +no_notifier +vcs+lic+wait +tetramax -q +nowarnTFIPC +define+tmax_msg=1+tmax_rpt=10 +define+CAN1127A0+EMPTY -a atpg_chain_min.log +define+MIN+VCD
+Doing SDF annotation ...... Done
+DPV: Enabling trace of Threads (Pattern blocks) at time 0
+DPV: Enabling trace of STIL Proc/Macro entry at time 0
+//     Verilog DPV Version H-2013.03
+//     Copyright (c) 2002-2013 by Synopsys, Inc.
+//              ALL RIGHTS RESERVED
+//
+DPV Info: Detected a Normal Scan mode.
+DPV: Starting event thread 1 for /"_burst_"/"_pattern_", V# 1
+DPV: Entered Macro "test_setup" on start of thread 1
+                   2ns <bench.U0_DUT.U0_ANALOG_TOP> cable orientation -> 0
+                   2ns <bench.U0_DUT.U0_ANALOG_TOP> VO (VBUS) discharge -> 0
+DPV: Entered Procedure "load_unload", time 100000, V# 3
+DPV: Starting Serial Execution of TetraMAX pattern 0, time 100000, V# 3
+DPV: Entered Procedure "multiclock_capture", time 81550000, V# 1632
+DPV: Signal SCL expected to be Z was 0
+     At time 81579000, V# 1632
+     With WaveformTable "_multiclock_capture_WFT_"
+     Current Call Stack: "multiclock_capture"
+DPV: Signal SDA expected to be Z was 0
+     At time 81579000, V# 1632
+     With WaveformTable "_multiclock_capture_WFT_"
+     Current Call Stack: "multiclock_capture"
+DPV: Entered Procedure "load_unload", time 81600000, V# 1633
+DPV: Starting Serial Execution of TetraMAX pattern 0 (unload), time 81600000, V# 1633
+DPV: End of STIL data; validation of 1 patterns FAILED with 2 output mismatches
+Time       163050.00 ns: STIL simulation data completed.
+$finish called from file "./syn/atpg_chain_stildpv.v", line 183.
+$finish at simulation time       163050.00 ns

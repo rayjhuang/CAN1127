@@ -1,0 +1,178 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version H-2013.03-SP1 for RHEL64 -- Apr 21, 2013
+               Copyright (c) 1988-2013 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+Variable                Value     Type    Default    Constraints
+----------------------- --------- ------- ---------- ----------------------- 
+verilogout_equation     false     string  false
+verilogout_higher_designs_first true string FALSE
+verilogout_ignore_case  false     string  false
+verilogout_include_files          string  
+verilogout_indirect_inout_connection FALSE string FALSE
+verilogout_no_tri       false     string  false
+verilogout_show_unconnected_pins true string FALSE
+verilogout_single_bit   false     string  false
+verilogout_unconnected_prefix _UNCNTD_ string SYNOPSYS_UNCONNECTED_
+MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db * MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db std_worst.db STX018SIO1P4M_WORST.db ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db dw_foundation.sldb
+#  mkdir ~/project/$PJ_NAME/work1
+#     cd ~/project/$PJ_NAME/work1
+#  mkdir ./work ./syn
+#  cp ~/project/can1126/work1/novas.rc .
+#  cp ~/project/can1126/work1/.synopsys_dc.setup .
+#  cp ~/project/can1126/work1/stm.v       . -l
+#  cp ~/project/can1124/work1/std*        . -l
+#  cp ~/project/can1124/work1/worst.lib++ . -l
+#  cp ~/project/can1124/work1/ATO0008KX8MX180LBX4DA_* .
+#  source ~king/.cshrc
+if { [ catch { getenv "PJ_PATH" } msg ] } {
+      puts $msg
+      exit -1
+   }
+set PJ_PATH [ getenv PJ_PATH ]
+/mnt/app1/ray/project/can1127
+enable_write_lib_mode
+Warning: This dc_shell session is for library operations only. You should not perform optimization on the design. Please exit when you are finished with the library operation. (UIL-93)
+1
+## standard cell
+## link from /mnt/app1/ray/project/lib/mxic/8262A_L18B_STDCELL_V7/20210416_L18B_1.8V_7T/synopsys/1.8v/
+## SRAM cells
+## copy from CAN1124
+## @3/15, copy from z:\RD\Process\MXIC\SRAM\MSL18B_1536X8_RW10TM4_16_20221107.FRAME_No_leak\ 
+read_lib  ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.lib
+Reading '/mnt/app1/ray/project/can1127/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.lib' ...
+Technology library 'MSL18B_1536X8_RW10TM4_16_20221107_worst_syn' read successfully
+1
+write_lib -format db -output MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db MSL18B_1536X8_RW10TM4_16_20221107_worst_syn
+Wrote the 'MSL18B_1536X8_RW10TM4_16_20221107_worst_syn' library to '/mnt/app1/ray/project/can1127/work1/MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db' successfully.
+1
+read_lib  ${PJ_PATH}/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_best_syn.lib
+Reading '/mnt/app1/ray/project/can1127/macro/sram/MSL18B_1536X8_RW10TM4_16_20221107_best_syn.lib' ...
+Technology library 'MSL18B_1536X8_RW10TM4_16_20221107_best_syn' read successfully
+1
+write_lib -format db -output MSL18B_1536X8_RW10TM4_16_20221107_best_syn.db MSL18B_1536X8_RW10TM4_16_20221107_best_syn
+Wrote the 'MSL18B_1536X8_RW10TM4_16_20221107_best_syn' library to '/mnt/app1/ray/project/can1127/work1/MSL18B_1536X8_RW10TM4_16_20221107_best_syn.db' successfully.
+1
+## IO cells
+## copy .v and .lib from CAN1124 and modify them for A0/A1 summary
+read_lib  ${PJ_PATH}/macro/STX018SIO1P4M_WORST.lib
+Reading '/mnt/app1/ray/project/can1127/macro/STX018SIO1P4M_WORST.lib' ...
+Warning: Line 1426, Cell 'IOBMURUDA_A1', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IOBMURUDA_A1' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 1425, Cell 'IOBMURUDA_A1', pin 'ANA_P', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 1427, Cell 'IOBMURUDA_A1', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 1428, Cell 'IOBMURUDA_A1', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2067, Cell 'IOBMURUDA_A0', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IOBMURUDA_A0' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 2068, Cell 'IOBMURUDA_A0', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2069, Cell 'IOBMURUDA_A0', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2705, Cell 'IODMURUDA_A0', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IODMURUDA_A0' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 2759, Cell 'IODMURUDA_A0', pin 'PAD', Missing a timing arc of timing_type 'three_state_disable'
+	between 'DO' and 'PAD' pins in the 'IODMURUDA_A0' cell. (LBDB-35)
+Warning: Line 2706, Cell 'IODMURUDA_A0', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2707, Cell 'IODMURUDA_A0', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 3346, Cell 'BCTB2N3S_UUDA', The 'ANA' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 3350, Cell 'BCTB2N3S_UUDA', The 'PD' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 3354, Cell 'BCTB2N3S_UUDA', The 'PU' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 3310, Cell 'BCTB2N3S_UUDA', Cell 'BCTB2N3S_UUDA' contains unused input pin(s).
+	It is labeled dont_use and dont_touch. (LIBG-211)
+Warning: Line 3346, Cell 'BCTB2N3S_UUDA', pin 'ANA', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 3850, Cell 'BCTB2N3S_UUDAW', The 'ANA' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3854, Cell 'BCTB2N3S_UUDAW', The 'PD' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3858, Cell 'BCTB2N3S_UUDAW', The 'PU' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3814, Cell 'BCTB2N3S_UUDAW', Cell 'BCTB2N3S_UUDAW' contains unused input pin(s).
+	It is labeled dont_use and dont_touch. (LIBG-211)
+Warning: Line 3850, Cell 'BCTB2N3S_UUDAW', pin 'ANA', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 21485, Cell 'OSCL40C53S', The 'OSCL40C53S' pad cell has more than one pad pin. 
+ (LBDB-207)
+Warning: Line 21501, Cell 'OSCL40C53S', pin 'PADO', The 'PADO' pad pin is missing a 'drive_current' attribute. (LBDB-205)
+Warning: Line 3, The 'default_leakage_power_density' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 45, The 'CMOS_3V' input_voltage group is not used by any input pin in the library. (LBDB-611)
+Warning: Line 59, The 'CMOS_3V' output_voltage group is not used by any output pin in the library. (LBDB-611)
+Technology library 'STX018SIO1P4M_WORST' read successfully
+1
+write_lib -format db -output STX018SIO1P4M_WORST.db STX018SIO1P4M_WORST
+Wrote the 'STX018SIO1P4M_WORST' library to '/mnt/app1/ray/project/can1127/work1/STX018SIO1P4M_WORST.db' successfully.
+1
+read_lib  ${PJ_PATH}/macro/STX018SIO1P4M_BEST.lib
+Reading '/mnt/app1/ray/project/can1127/macro/STX018SIO1P4M_BEST.lib' ...
+Warning: Line 1453, Cell 'BCTB2N3S_UUDA', The 'ANA' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 1457, Cell 'BCTB2N3S_UUDA', The 'PD' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 1461, Cell 'BCTB2N3S_UUDA', The 'PU' pin/bus is unused in the 'BCTB2N3S_UUDA' cell.
+ (LIBG-37)
+Warning: Line 1417, Cell 'BCTB2N3S_UUDA', Cell 'BCTB2N3S_UUDA' contains unused input pin(s).
+	It is labeled dont_use and dont_touch. (LIBG-211)
+Warning: Line 1453, Cell 'BCTB2N3S_UUDA', pin 'ANA', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 1949, Cell 'IOBMURUDA_A1', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IOBMURUDA_A1' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 1948, Cell 'IOBMURUDA_A1', pin 'ANA_P', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 1950, Cell 'IOBMURUDA_A1', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 1951, Cell 'IOBMURUDA_A1', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2580, Cell 'IOBMURUDA_A0', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IOBMURUDA_A0' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 2581, Cell 'IOBMURUDA_A0', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 2582, Cell 'IOBMURUDA_A0', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 3208, Cell 'IODMURUDA_A0', pin 'ANA_R', The 'ANA_R' Pin/bus on the 'IODMURUDA_A0' cell has no 'function' attribute.
+	The cell becomes a black box. (LIBG-16)
+Warning: Line 3263, Cell 'IODMURUDA_A0', pin 'PAD', Missing a timing arc of timing_type 'three_state_disable'
+	between 'DO' and 'PAD' pins in the 'IODMURUDA_A0' cell. (LBDB-35)
+Warning: Line 3209, Cell 'IODMURUDA_A0', pin 'RSTB_5', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 3210, Cell 'IODMURUDA_A0', pin 'VB', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 3840, Cell 'BCTB2N3S_UUDAW', The 'ANA' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3844, Cell 'BCTB2N3S_UUDAW', The 'PD' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3848, Cell 'BCTB2N3S_UUDAW', The 'PU' pin/bus is unused in the 'BCTB2N3S_UUDAW' cell.
+ (LIBG-37)
+Warning: Line 3804, Cell 'BCTB2N3S_UUDAW', Cell 'BCTB2N3S_UUDAW' contains unused input pin(s).
+	It is labeled dont_use and dont_touch. (LIBG-211)
+Warning: Line 3840, Cell 'BCTB2N3S_UUDAW', pin 'ANA', The 'capacitance' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 21863, Cell 'OSCL40C53S', The 'OSCL40C53S' pad cell has more than one pad pin. 
+ (LBDB-207)
+Warning: Line 21879, Cell 'OSCL40C53S', pin 'PADO', The 'PADO' pad pin is missing a 'drive_current' attribute. (LBDB-205)
+Warning: Line 3, The 'default_leakage_power_density' attribute is not specified. Using 0.00. (LBDB-172)
+Warning: Line 45, The 'CMOS_3V' input_voltage group is not used by any input pin in the library. (LBDB-611)
+Warning: Line 59, The 'CMOS_3V' output_voltage group is not used by any output pin in the library. (LBDB-611)
+Technology library 'STX018SIO1P4M_BEST' read successfully
+1
+write_lib -format db -output STX018SIO1P4M_BEST.db STX018SIO1P4M_BEST
+Wrote the 'STX018SIO1P4M_BEST' library to '/mnt/app1/ray/project/can1127/work1/STX018SIO1P4M_BEST.db' successfully.
+1
+## OTP cells
+## .db in Z:\RD\Project\CAN1124\Project flow\OTP\Preliminary_Design_Kit_ATO0008KX8MX180LBX4DA_V0_11\Library_Model\v0_2 is too new
+## copy from /mnt/app1/ray/project/lib/mxic/8262A_L18B_STDCELL_V7/Preliminary_Design_Kit_ATO0008KX8MX180LBX4DA_V0_11/...lib
+## copy from CAN1124
+exit 1
+
+Memory usage for main task 181 Mbytes.
+Memory usage for this session 181 Mbytes.
+CPU usage for this session 7 seconds ( 0.00 hours ).
+
+Thank you...

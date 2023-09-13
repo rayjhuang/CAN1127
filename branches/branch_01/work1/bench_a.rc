@@ -1,0 +1,67 @@
+Magic 271485
+Revision Verdi3_J-2014.12-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 413 1910 533 144 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -e interfacePort "" "/mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 104359474.120000
+cursor 40638000.000000
+marker 30377800.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 13
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "atpg"
+activeDirFile "" "/mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb"
+addSignal -h 15 /bench/U0_DUT/SDA
+addSignal -h 15 -holdScope SCL
+addSignal -h 15 -holdScope GPIO1
+addSignal -h 15 -holdScope GPIO2
+addSignal -h 15 -holdScope GPIO3
+addSignal -h 15 -holdScope GPIO4
+addSignal -h 15 -holdScope GPIO5
+addSignal -h 15 -holdScope TST
+addSignal -h 15 /bench/U0_DUT/U0_ANALOG_TOP/RSTB
+addSignal -h 15 -UNSIGNED -HEX /bench/vector_number
+addSignal -h 15 -UNSIGNED -HEX -holdScope pattern_number
+addSignal -h 15 /bench/U0_DUT/U0_ANALOG_TOP/OSC_O
+addSignal -h 15 -holdScope d_rstz
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

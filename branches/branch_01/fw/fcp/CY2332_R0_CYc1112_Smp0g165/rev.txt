@@ -1,0 +1,399 @@
+20180222 CY2316CAV100.011
+         NotYet           01. delete: HVDCP type B(20V) functionation
+         Yes              02. fixed bug: After DR_Swap, port data role error
+         NotYet           03. Add: implement QC2 and QC3 power profile implement
+         NotAnyMore       04. fixed bug: Small step time issue
+         NotYet           05. fixed bug: APDO 5V to APDO 3V issue
+         NotYet           06. fixed bug: Cable-Compensation is not disable in PPS mode 
+         NotYet           07. fixed bug: when loading is 3A, OCP error of type-c
+         NotYet           08. fixed bug: request min current is 1A in PPS mode
+         NotYet           09. fixed bug: TD.PD.VDMD.E4 Applicability for Ellisys
+         Yes              10. fixed bug: TD.PD.VNDI3.E9 Source Capabilities Extended for Ellisys
+         Fixed            11. fixed bug: OCP noise issue
+                          note: QC2.0, QC3.0 not test
+
+20180321 CY2316CAV100.012 duty-based debounce F2HR signals (30ms)
+20180402                  do not stay in DCP after PD connected
+                          do not sacrifice the 6th PDO in 2nd Nego option
+                          (load PDO table after option table)
+                          re-load PDO table must also re-load DAC mapping table (for PDO_V_DAC[1])
+20180402 CY2316CAV100.013 reset Fault-to-Hr de-bounce timer during discharging
+20180411 CY2316CAV100.014 re-define the 2nd Nego.
+20180412 CY2316CAV100.015 re-define the 1st Nego. if 2nd Nego. enabled
+
+20180326 update FW for PDO3 (3.3-11V, 3A)
+20180327 add DN_COMP implementation (add dn_comp_b pin)
+         (AFE re-work 3.)
+20180327 auto turn off DP/DN/CC pull-up/down when driving things
+         (AFE re-work 4. for enhance DN diving strength)
+20180329 AFE re-work 5. for enlarge discharging current,
+         'cause the FW's discharging period must be shorter than recovery period
+20180417 create and move to \cy2311r3\ (version CY2311R3 for CAN1112)
+         fixed bug of optioned CC mode transition
+
+20180425 CY2316CAV100.sim replace timer 1 with the 1-ms timer
+                          move those 1-ms ISR tasks to OneMsProc()
+20180509                  V5OCP repeated more, check STA later
+20180515 CY2316CAV100.y10 turn off DISCHARGE if CL/ms
+20180516 CY2316CAV100.y11 fix bDevSta_PPSRdy=0 condition
+         CY2311R3SMPL.000
+20180528                  Reject to APDO request by a PD2.0 Request Message
+20180528                  2.88V-to-HR only in CL
+20180529                  CL in detached/recovery don't effect
+20180601                  reserve TCODE space
+                          let a detachment interrput a Hard Reset procedure
+20180603                  fix NoResponseTimer problem when nCapsCount is not defined
+                          PE start-up with Type-C Rp instead of SnkTxNG
+                          start those extra messages with SnkTxNG
+                          don't error if the extra DR_Swap is not responded
+20180604 CY2311R3SMPL.001 add '?CO?OTP(0x920)'
+20180606 CY2311R3SMPL.002 modify u8NumSrcPdo according to bPESta_PD2 to eliminate APDO(s)
+                          (like CY2316CAV100.021)
+20180608 CY2311R3SMPL.003 detach at Rp-only instead of Rd absent
+20180614 CY2311R3SMPL.004 enable CC_PROT
+20180614 CY2311R3SMPLx004 no voltage downward discharging
+                          disable OCP
+
+20180703 CY2311R3SMPLx005 rev. for Tommy's found 6-PDO retry problem
+                          (this doesn't happen in cy2332r0 because of 1-ms ISR is short)
+
+20180704 CY2332R0SMPL.000 move to the new product name (remove x004 testing)
+20180706                  revise VCONN turn-on procedure
+20180710                  copy qc.c from cy2311r2
+                          fix that V5OCP also causes fault-to-off
+                          add SetPE2PMEv() for setting bEventPM only during attached
+20180712 CY2332R0SMPL.001 PWR_I stepping
+20180716                  initial PWR_I by Rp instead of PDO1
+                          QC2/3 power profile PWR_I part
+20180723 CY2332R0SMPL.002 fix sleep mode problem, CC_PROT must =0 when SLEEP=1
+20180725                  re-define DIS_STOP_CV when SLEEP=1
+20180726 CY2332R0SMPL.003 postpone PWR_I calc in QC3
+20180727 CY2332R0SMPL.004 limit PPS Request current above 1A
+20180730 CY2332R0SMPL.005 define/add fine-tune table
+                          offset to PWR_V
+                          CCTRX
+20180730 CY2332R0SMPL.006 add CLUVP offset into fine-tune table
+20180802 CY2332R0SMPL.007 wilder power good
+20180803 CY2332R0SMPL.008 update fine-tune default values
+20180806 CY2332R0SMPL.009 re-define/add fine-tune for 10.24V
+                          turn off VBUS before re-assign PWR_I
+20180807 CY2332R0SMPL.010 add option CC_PROT=0 (initial and exiting sleep)
+         CY2332R0SMPL.011 add option NODISCHG
+20180809 CY2332R0SMPL.012 PPS_Status Real Time Flags=0x08
+                          let received HR terminate re-transmition
+
+20180809 CY2332R0SMPL.013 earlier reset PE for detachment
+                          transition downward discharge enabled by current>600mA
+                          add option ALDISCHG
+20180810                  fix OTP threshold chnaging conditions
+         CY2332R0SMPL.014 fix the new-gen UVLO bug
+         CY2332R0SMPL.015 let CL to turn-off DISCHARGE
+         CY2332R0SMPL.016 stop discharging when transition done
+                          miss-updating FW header (still .015)
+20180830 CY2332R0SMPL.017 QC3-to-QC2 by other than 5V
+20180904                  add control to OCP_EN for sleep mode
+                          add control to OVPINT in QC3 voltage downward transiton
+20180906 CY2332R0SMPL.018 OVP shall be independent to CL mode
+                          turn off UVP in CL mode (bug! fixed in CY2332R0SMPL.032)
+                          refine optioned CL mode behavior (PM by !IS_OCP_EN)
+                          set CABLE_COMP only in initial
+20180907                  set OVP_SEL 125% if CABLE_COMP >=2 (60mOhm)
+                          SOP' vs CAPTI and VCONN_Swap, DR_Swap
+         CY2332R0SMPL.019 refine Ra, VCONN, cable-checked status
+20180913 CY2332R0SMPL.020 enable CC mode in QC
+                          OVP auto-restart in QC3
+20180914 CY2332R0SMPL.021 re-clarify protocol error, unsupported, unrecognized messages of PD2/3
+20180917 CY2332R0SMPL.022 remove debug code
+20180920                  refine T_CHUNK_NOT_SUPPORTED and T_SINK_TX
+                          reject extended messages in PD2
+20180921                  SourcePPSCommTimer shall stop/restart when leaving/entering PE_SRC_Ready
+                          refine Try_VCONN_ON timing
+         CY2332R0SMPL.023 QC4+ needs going PD from QC20/30, but QC30 cannot support in CAN1112A
+20180922 CY2332R0SMPL.024 fix a bug caused by using timer1 in PRL/PHY
+20180925                  QC30-to-QC4 support
+20180928 CY2332R0SMPL.025 OTP default value in FW 0xC -> 0xB (S100U/S20U/S2U are low active)
+20181007 CY2332R0SMPL.026 remove bEventTC
+                          re-define PE reset, to reset PRL/PHY as well, right before enabling PD and detaching start
+                          check up when does timer1 be used for tReceive?
+20181008                     the change before 'backup beore revise QC30' found
+         CY2332R0SMPL.027 add 100mA for QC2/3
+         CY2332R0SMPL.028 remove bEventCnti
+20181015 CY2332R0SMPL.029 re-define 2nd nego, follows CY2316CAV100.024
+                          send PPS_Status for responding Get_PPS_Status not according to PPS mode, follow CY2316CAV100.030
+20181017                  if requested 0A, a min. ability should be maintained
+                          define a macro CONFIG_QC23_TO_QC4_SUPPORT
+20181021 CY2332R0SMPL.030 fix bug of AMS start (Alert) interrupted by sink (Get_PPS_Status)
+                          refine otp.c for min. code size
+                          fix bug of sending HR when PRLTX busy
+20181022 CY2332R0SMPL.031 clearing bEv* on the top of their procedures, so the procedure can do self-retry
+                          QC30_240US by 5us DAC (120us/ADC, for alpha site)
+                          QC30_216US by 3us DAC (72us/ADC)
+                          set bProCLChg only when PPS, follow CY2316CAV100.036
+20181023                  stop tranistion in DetachToDefault(),           data=89.6 code=7851
+         CY2332R0SMPL.032 resume OVP after QC2 transition downward,                 code=7852
+                          fix bug of UVP in CL mode                       data=88.6
+                          CC_PROT=0 and DIS_STOP_CV=1 in CAN1112A (sleep/awake)     code=7812
+                          revise GetTemperature()                         data=89.6 code=7752
+                          add power-good tune in fine-tune table          data=88.4 code=7777
+                          make sure those bit assignments work                      code=7769
+20181021 CY2332R0SMPL.033 let QC20/QC30 -> PD and PD -> QC2 by a Hard Reset         code=7779
+20181031 CY2332R0SMPL.034 fix bug of stopping SourcePPSCommTimer
+                          revise Status Data Block according to PDr30v12
+                          revise voltage stepping to by 2                           code=7778
+20181031 CY2332R0SMPL.035 revise voltage stepping to by back to 1
+                          In QC, to reset NoResponseTimer                           code=7783
+20181031 CY2332R0SMPL.036 revise PM_TIMER_DISCHG_DELAY for longer discharging (+30ms)
+                          and add PM_TIMER_PWRGD_DELAY_R, follows CY2316CAV100.057
+                          sleep to turn off TS current source                       code=7793
+                          fix bug of NoResponseTimer casused by fix SourcePPSCommTimer
+20181101                  fix bug of VCONN discharge
+                          20180928 rev. 0xC -> 0xB should be used to set CCTRX instead of mapping table
+                          add protocol error in PE_SRC_Discovery                    code=7804
+
+20181120 CY2332R0SMPL.037 support QC Class B                                        code=7834
+                          disable OCP temporarily when stepping                     code=7845
+20181121 CY2332R0SMPLx037 rename D- (Dn -> DM as possible)                          code=7842
+20181121 CY2332R0SMPL.038 delay to resume OVP in QC stepping down                   code=7856
+20181121 CY2332R0SMPL.039 fix re-transmission                                       code=7891
+20181128 CY2332R0SMPL.040 1-step/250us stepping
+20181203 CY2332R0SMPL.041 remove u8StatePrlRx and bEventPRLRX                       code=7844
+20181204 CY2332R0SMPL.042 add config.h (new rev. rule)
+
+20181114 CY2332R0SMPL.100 for CAN1112B0, re-start from .100
+                          remove macro CAN1112B0
+                          QC3 by HW accumulator                           data=87.4 code=7764
+20181115                  re-transmission by start tReceive timely                  code=7771
+20181116 CYa1112_TYPL.101 re-define a version control rule
+                          fix a bug from solving re-transmission                    code=7784
+20181119 CYa1112_TYPL.102 turn off OCP during stepping                              code=7787
+20181119 CYa1112_TYPL.103 delay to resume OVP in QC                                 code=7807
+20181119                  prevent D+/D- accumulator from overflow                   code=7830
+20181203 CYa1112_TYPL.104 remove u8StatePrlRx and bEventPRLRX                       code=7783
+20181204                  merge Rev.A with QC Class B                               code=7800
+
+20181204 CY?1112_TYPL.?42 merge Rev.A to Rev.B                                      code=7800 / 7844 (CAN1112Ax will fadeout)
+20181205 CY?1112_TYPL.?43 add algorthm of DAC0 improvement                          code=7864 / 7908
+20181207                  add #CFG_QC_CLASSB and turn it off                        code=7847 / 7891
+                          add rev. rule for adding #CFG_*
+                          reset QcCntiStep                                          code=7847 / 7897
+20181210 CY?1112_TYPL.?44 add CFG_QC3_EXIT_ALL                                      code=7835 / 7884
+                          enter QC3 only from QC2-5V                                code=7850 / 7900
+                          use both D+/D- 2.7V
+20181211                  QC3 transits after pulse active (.044)                    code=7852 / 7911
+                          QC3 transits after pulse active (.144)        data=86/7.4 code=7865 / 7911
+                          detached in stepping                                      code=7867 / 7913
+20181213 CY?1112_TYPL.?45 add 2nd Nego with NumPDO=6 (don't check APPLE VID)        code=7881 / 7927
+20181214                  redefine S2U for CAN1112B0
+                          summarize QC class B
+20181219                  add Sleep mode 3.6V for CAN1112B0
+20181220 CY?1112_TYP_.?45 completed SVDM, interruptible VDM                         code=7911 / 7957
+20181221                  summarize CC TX setting for Eye-Diagram
+20181224                  a few renames for trying introduce qc.c to CY2311R2       code=     / 7956
+                          intro1110.h                                               code=7910 / 7956 / 7901 (B0/AX/1110CX)
+20181227                  N O T E : Use On-chip Arithmetic Unit only in CAN1112
+20181228 CY?1112_TYP_.?46 re-transmission caused by discarded got problem           code=7913/7959/7914
+20190103 CY?1112_TYP_.?47 macro OTT to shrink code size 404 bytes (-/7555/7510)
+20190104                  add dynpdp.h/c, CFG_DYNPDP (93.7,7938)                    code=7912/7958/7913
+20190111                  add 'Tools' group, add rev.txt into 'Source Group 1'
+20190121                  fix QC3 <1ms pluse & modify Isense channel register       code=7890/
+<<<<<<< HEAD
+20190129                  branch CAN1112B0_KPOS                                     code=8051/
+20190212                  fix sleep issue                                           code=8048/
+20190213                  fix UVP ,offtime 2.5s and add OCP offset +300mA           code=8110/
+20190213                  add PPS OCP offset 250mA else 300mA                       code=8130/
+20190304 CYb1112_TxmK.147 set initial SET_ANALOG_DIS_STOP_CV(1)                     code=8124/
+=======
+20190212 CY?1112_TYP_.?48 T_PD_DEBOUNCE=16
+20190213                  clear bTCAttched in PE_SRC_Error_Recovery                 code=7896
+                          not count to sleep in PE_SRC_Error_Recovery               code=7896
+20190215                  PE_SRC_Error_Recovery -> PE_SRC_Startup                   code=7894
+                          CAN1110X has not SKIP_V_*
+20190220 CY?1112_TYP_.?49 don't discharge when CL=1                                 code=7896
+                          ADC channel of IFB should be on (B0)
+20190221                  fix power transition timing if optioned CC enabled        code=7899
+20190222 CY?1112_TYP_.?50 fix specials of CAN1110 (IFB_CONN/CABLE_DET)              code=7899/7956 (B0/1110CX)
+20190224 CY?1112_TYP_.?51 add QC3 192us-pulse support by 2us-DAC cycles             code=7899/7974
+                          move TypeCResetRp() to PM for HR need                     code=7904/7977
+                          no UVP in PPS                                             code=7905/7978
+20190227                  add SKIP_V_1025()                                         code=7943/7978
+                          add slow stepping of PWR_I                                code=7966/8001
+20190304                  fix QC3 glitch filter                                     code=7966/7996
+>>>>>>> 852e4c4a08409759cff386ebbdab3327aed35b81
+20190305                  merge from origin/HEAD                                    code=8181/
+                          favor size with Global Register Coloring                  code=8157/
+         CY?111?_Txm_.?51 define CFG_KPOS0 for KPOS functions                       code=7966/7996/8168 (B0/1110CX/KPOS)
+                          favor size (KPOS data=88.5)                               code=7951/7981/8153
+20190306 CYb1112_Txm_.152 merge origin/HEAD from KPOS
+20190308 CY21110_Txm_.x52 test CAN1110F-20L                                         code=7995
+20190308 CY21110_Txm_.y52 add PWR_I calibration for CAN1110                         code=8008
+20190311 CYd1112_Txm_.152 add scp.c, scp.h for CFG_MODE1                  data=90.4 code=8030
+20190312 CYb1112_Txm_.152 introduce CAN1112BX...                                    code=7951/7981
+         CYb1112_Txm_.153 merge from y52
+         CYb1112_Txm_.153 merge from x52 (data=87.4 code=8022)
+<<<<<<< HEAD
+         CYb1112_Txm_.154 ENTER_QC3_ALL, enter QC3 in all QC2 modes                 code=7938/8011
+20190320 CY21110_Txt1.254 introduce twoport.h (data=89.0 code=7957)                 code=7941/8014
+         CYc1112_Txm_.155 add latching Type-A
+20190321                  plug Type-A in Type-C (no PD)
+                          disable APPLE mode when Type-C attached
+20190322                  VDM table error in OTT
+                          use 8-bit DIV for PowerGood (code=7994)                   code=7923/7996
+20190323                  transition right after entering QC                        code=7928/8001
+         CYc1112_Txm_.156 use divider                                               code=7903/7976
+                          OTT with option/trim table x3 (code=7505/7578)
+20190326 CYc1112_Txm_.157 optimize GetTemperature()
+                          OTT fix VID=0 to erase VDM table (7506/7579)              code=7881/7954
+20190327                  summarize REGTRM[47] of CAN1112B1 (AOPT)                  code=7878/7954
+-------
+20190415                  PM_TIMER_PWRGD_DELAY_N=120                      data=86.4 code=7880
+20190415 CYc1112_Txm_.159 revision amending
+-------
+20190408                  respond DR_Swap by PDO1[25] (DRD)                         code=7887
+                          ACK S/U-VDM envn in DFP                                   code=7881
+20190409 CYc1112_Txm_.158 remove PolicyManagerProc() and bEventPM         data=86.5 code=7846/7922
+20190415                  add error handling for AMS initiators           data=86.6 code=7900/7976
+20190416                  PM_TIMER_PWRGD_DELAY_N=120
+                          cancel optioned DR_Swap if UFP                            code=7908/7984
+                          SetSnkTxOK/NG() for AMS                                   code=7910
+                          add CFG_TWOPORT error handling (data=89.2 code=8029)
+                          refine AMS                                                code=7926/8002
+                          remove HI_CCOMP, add PWRGD_VFB
+                          fix CFG_DYNPDP (data=91.1 code=8048, CFG_TWOPORT data=89.2 code=8022)
+20190417                  summarize bPrlRcvd                                        code=7930/8006
+                          eliminate the dummy PM_STATE_ATTACHED_2NDNEGO             code=7915/7991
+                          remove unused PM_STATE_ATTACHED_TRANS_PST/AMS2            code=7910/7986
+=======
+         CYb1112_Txm_.154 ENTER_QC3_ALL, enter QC3 in all QC2 modes                 code=7938
+20190318                  add digital CC                                  data=91.6 code=8118
+20190403 CYb1112_Txm_.d54 modify in CC mode OCP & CC mode PWR_I value               code=8110
+20190417 CYb1112_Txm_.d54 fix digital CC issue                                      code=8162
+>>>>>>> remotes/origin/Digital_CC
+20190418 CYc1112_Txc0.158 remove digital CC Voltage limit and add always CC mode    code=8125
+20190418 CYc1112_Txm_.160 merge from digital CC (data=92.0 code=8132)
+<<<<<<< HEAD
+                          remove Timer1 of CAN1112                                  code=7904
+                          remove CFG_CAN1110AB
+                          in CFG_TWOPORT with TS, GetTemperature() returned fixed values
+                          CFG_TWOPORT use GPIO output mode instead of pullup/down
+                          move OTT/MTT to CFG_CHAR2                                 code=7901/7983
+20190420                  CFG_DYNPDP for CAN1112 (data=90.1/91.1 code=7936/8023)
+                          PPS20V (21V Request) doesn't matter, PPS-FIXED transition does
+                          add low discharge state                                   code=7908/7990
+20190422 CYc1112_Tmxx.x60 introduce power.c/h
+                          INIT_ANALOG_IFB_CONNECTED() runs only once                code=7898/7977
+                          add 20190418 digital-CC update (data=92.1 code=8108)
+                          CFG_CAN1110F
+                          IFB CON/CUT: CC/OCP (except CFG_CAN1110CX)                code=7913/7995
+                          PWR_I calibration for CAN1112X (differs from CAN1110)     code=7940/
+                          PWR_V calibration for CAN1112X                            code=7993/
+20190428 CYc1112_Tma0i160 support Apple Data Exchange (data=94.0 data=9635)
+         CYc1112_Tmxx.160 remove GetPwrV(), GetPwrI()                     data=87.0 code=7966/8047
+20190503 CYc1112_Tmxx.160 fix CRC_TIMEOUT (code=9636)                     data=87.0 code=7969/8050
+20190506                  always SVDM1.0 in PD2.0                                   code=7972
+=======
+20190418 CYc1112_Txc0.158 remove digital CC Voltage limit and add always CC mode    code=8125
+>>>>>>> remotes/origin/Digital_CC
+20190508                  merge from digital CC (data=92.2 code=8169)               code=7962
+20190509                  fix bug of bProCLChg (Alert repeatedly)                   code=7962
+20190513                  revise power.c                                  data=88.0 code=7932/8013
+                          change GET_TYPA_ATT() for TS detection (code=8240)
+20190515                  CAN1110C- power-good on VFB (as CY2311R2)       data=89.0 code=    /8013
+                          merge PwrTrans_Improve                                    code=7938/8019
+20190521 CYc1112_Tmc0z160 fix IS_OCP_EN() and IS_CLVAL() of CFG_DIGITAL_CC (data=90.1 code=8093)
+                          add OCP debounce (data=91.2 code=8124)
+20190604 CYc1112_Tmc0a160 refine Leo's revision
+                          simulation for Type-C, CLUVP, FIXED-PPS (code=8134)
+20190523 CYc1112_Tmt2a160 modify Type-A attach debounce time and T_PD_DEBOUNCE (data=89.4 code=8246)
+20190528 CYc1112_Tmt2b160 fix bug of Type-A-QC plug Type-C (data=89.3 code=8235)    code=7932
+                          LOW_DISCHG to exclude PPS-PPS transition (code=8243)      code=7940
+20190530 CYc1112_Tmxxx161 add CFG_PDO1_ONLY                               data=88.0 code=7942
+         CYc1112_Tmxxy161 without CFG_PDO1_ONLY                           data=87.7 code=7826
+20190531 CYc1112_Tmxxz161 fix bPMExtra_PdoOpt                                       code=7827/7902
+20190604 CYc1112_Tmxxa161 merge from fix_DIGITAL_CC (code=8023)                     code=7827/7902 (CFG_CAN1110CX)
+                          CFG_TWOPORT (code=8128/7826)
+20190606 CYc1112_Tmxxx162 revise the MTTable searching algorithm                    code=7834/7909/7915
+                          revise the defaut values of mapping table                 code=7826/7901/7907
+20190614 CY21112_Tmxxz262 error handling for Accept to VCONN_Swap                   code=7821/7896
+20190620 CYc1112_Tmt3a162 add TWOPORT_CFG_TS_GPIO3_GPIO4 (code=8149/8114)
+20190621 CYc1112_Tmt3b162 add CC1/CC2 channels for QC3 for CAN1110/CFG_TWOPORT (code=8149/8114)
+20190626 CY21110_Tmt1c262 plug Type-C in QC3 fail
+                          re-start Type-A by T_TP_ATT_DEBOUNCE (code=8170/8123)
+20190702 CY21110_Tmxxd262 add CAN1110 ADC CH0 (VIN/IS)
+20190710 CY21110_Tmxxe262 QC3 2.8A 10V to CLUVP fail to restart (code=7900)
+20190701 CY21110_Tmt1f262 restart VBUS-A in 200ms (code=8163/8123)
+20190712 CYc1112_Tmxxg162 not OTP in stepping, resume OVP after discharge off       code=7817/7899
+20190715                  remove IFB_CUT switching codes                            code=7808
+                          set OVP_SEL 125% if CABLE_COMP >2 (90mOhm and above, refer to 20180907)
+20190717                  fixed CC transition, delay OVP-resume after discharge off code=7830/7918
+20190718 CYc1112_Tmxxx162 add OTP OVP latch and add constant power                  code=7902
+<<<<<<< HEAD
+                          debounced OVP
+20190718 CYc1112_Tmg0.163 merge to google
+                          ignore OVP in voltage transition (code=7885)              code=7806/7891
+20190718 CYc1112_Tmt3a163 HR when nego. rejected (code=8158)                        code=7810
+20190718 CYc1112_Tmt3a163 HR when nego. rejected (code=8158)
+20190722 CYc1112_Tmt3a163 add 1A+1C VBUS-A ON and D+>0.325 is Aattach (code=8261)   code=7810
+
+         CYc1112_Tmg0h162 modify OCP Latch bug (code=7916)
+         CYc1112_Tmg0b163 fix OTP latch function (code=7901)                        code=7822/7907
+         CYc1112_Tmxxb163
+20190723 CYc1112_Tmt3e163 merge 1C+1A to HEAD (code=8198)                           code=7822
+20190731 CYc1112_Tmt3h163 delete TS S2U (code=8198)                                 code=7822
+20190722 try CFG_CHECKSUM
+         CYc1112_Tmd0d163 revise CFG_DYNPDP (code=8237/7967)
+         CYc1112_Tmd1d163 add CFG_CCA1 (code=8589)
+                          add DYNPDP1, TYPA_DETACH_2S for CFG_DYNPDP (code=8613)
+20190728 CYc1112_Tmxxf163 improve tReceive (start the packet in ISR)                code=7840/7913
+20190730 CYc1112_Tmd0g163 fix Type-A-detech PDO-recovery function
+                 Tod0     support 0.5W granularity (code=8274/7995)
+         CYc1112_Tmd1g163 (code=8642)
+         CYc1112_Tmb0j163 add CFG_BBI2C (code=7863)
+20190801 CYc1112_Tmt4i163 add TWOPORT_CFG_GPIO5_GPIO3_GPIO4 (code=8250)             code=7840
+20190807 CYc1112_Tmd9l163 remove DYNPDP1, add DYNPDP_CFG_TS_*, DYNPDP_CFG_GPIO5_* (code=8673)
+20190813 CYc1112_Tmxxm163 debounced OVP by compiler option                          code=7884/7960
+20190808 CY21110_Tod0m263 Debug DYNPDP_RESET function (code=7994)
+20190816 CYc1112_Tmd9n163 Debug CCA1 typec att & det, sleep mode, root control      code=8655
+         CYc1112_Tmxx.164 merge to master                                           code=7884/7960
+=======
+20190718 CYc1112_Tmxxh162 modify OCP Latch bug                                      code=7916
+20190730 CYc1112_Tmxxi162 modify step,enable hardware OVP and detaching 0.8V->2V    code=7893
+20190802 CYc1112_Tmxxj162 modify power constant issue                               code=7904
+20190813 CYc1112_Tmg0l162 disable OVP in sleep mode and modify google(Tmxx -> Tmg0) code=7938
+         CYc1112_Tmg0.162 fixed SCP latch issue                                     code=7941
+<<<<<<< HEAD
+>>>>>>> remotes/origin/salcomp(google)
+20190820 CYc1112_Tmxxx164 merge Google to master
+                          remove debounced OVP 
+                          disable OVP in sleep mode and V-Bus off                   code=7870
+=======
+20190823 CYc1112_Tmg1.162 set pps power limited                                     code=7960 
+20190827 CYc1112_Tmg2.162 disable cable compensation in PPS 
+                          fixed PD2.0 not respond NAK to Discover Identity 
+20190829 CYc1112_Tmg3.162 fixed first request bug in constant power                 code=7972 
+20190909 CYc1112_Tmg4.162 disable OVP in occurring SCP                              code=7985 
+>>>>>>> remotes/origin/salcomp(google)
+20191002 CYc1112_Tmxxy164 merge Google to master, let g4.->g5.->g5x->g5y...         code=7907
+         CYc1112_Tmg5y164                                                           code=7998
+         CYc1112_Tmxxz164 merge 1C+1A_TSloatt to master                             code=7907
+         CYc1112_Tmt3z164 TS pin is low attach
+                          TS pin initially floating/pullup CFG_TS_ATT_PULLHI        code=8260
+20191003 CYc1112_Tmxxa164 voltage stepping in logical                     data=85.7 code=7879
+vvvvvvv remotes/origin/DYNPDP_1C+1A
+20190808 CY21110_Tod0m263 Debug DYNPDP_RESET function (code=7994)
+20190923 CY21110_Tod0.263 add CFG_DYNPDP_QC if necessary (code=8144)
+20191003 CYc1112_Tmxxb164 merge from DYNPDP_1C+1A                                   code=7879
+                 Tmd0b164 rename CFG_DYNPDP_QC -> CFG_DYNPDP_SHARE_QC_PWR           code=8288
+20191004 CYc1112_Tmxxc164 CC stepping in logical                          data=84.7 code=7854/7924
+20191009                  modify CFG_CHECKSUM for V2TABLE
+                          revise TWOPORT_CFG_TS_GPIO3_GPIO4 to TWOPORT_CFG_TSZ_GPIO3_GPIO4
+         CYc1112_Tmt3d164 D+/D- short in CFG_TWOPORT                                code=8204
+20191017 Cyc1112_Tmt3e164 C+A OCP C not OCP in 4.4A                                 code=8201
+20191017 CYc1112_Tmxxe164 fixed V-Bus OVP latch issue 
+                          add discharge V-bus maximum time                          code=7893
+20191008 CYc1112_Tmd9c164 2C1A add BIST share test mode                             code=8803
+20191017 CYc1112_Tmd9d164 2C1A add PPS power share function                         code=8907
+20191021 CYc1112_Tmd9e164 2C1A modify root control                                  code=8862
+20191017 CYc1112_Tmxxf164 merge from 2C1A                                 data=88.1 code=7939
+                 Tmd9f164                                                data=102.0 code=8901
+                 Tmb0h164 merge from 1C_BBI2C                            data=110.1 code=8095
+20230321 CYc1112_Smp0g165 CAN1127 development (from can1121/fw/fcp2/)  data=159.2.1 code=8448

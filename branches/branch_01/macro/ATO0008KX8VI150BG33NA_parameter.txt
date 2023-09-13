@@ -1,0 +1,93 @@
+//----------------------------------------------------------------------------
+// Revision history:
+// Rev 0.2  21/05/21: Update Tcd definition from rising CLK trigger (32ns max.) to falling CLK trigger (7ns max.)
+// Rev 0.1  20/05/20: First creation based on datasheet V0.14
+//----------------------------------------------------------------------------
+// Module Name    : ATO0004KX8VI150BG33NA_parameter
+//----------------------------------------------------------------------------
+// Pin List
+//		A[numAddr-1:0]: Address (I) 
+//		Q[numQBIT-1:0]: Data output (O)
+//		CSB: Chip select, low active
+//		CLK: R/W strobe; signal from system Clock
+//		PGM: Program enable, high active (I) 
+//		RE: Read enable 
+//		SAP: Test pin.Set high.
+//		TWLB: 00: Normal main array turn on;01:Odd main array;10:Even main array;11:redundant row
+//		VDDP: High voltage pin for program, low for read. VH=3.7v (logi 1) VL=1.8v(logic 0) (P) 
+//	  	VSS: GND (P)
+//	  	VDD: Core supply voltage
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+	parameter test_case = 1; 	
+	
+	parameter AX_start = 15;
+	parameter AX_end = 9;
+	parameter AQ_start = 8;
+	parameter AQ_end = 6;
+	parameter AY_start = 5;
+	parameter AY_end = 0;
+	parameter numRedundantRow = 1;    // # of redundant rows
+	parameter Reserve_address_en = 0; // Enable reserved address in redundant row check
+
+	parameter numAY = AY_start - AY_end + 1;   //6;
+	parameter numAQ = AQ_start - AQ_end + 1;   //3;
+	parameter numAX = AX_start - AX_end + 1;   //6;
+	parameter numAddr = numAY + numAQ + numAX;  //15;
+	parameter numQBIT = 2**numAQ;   //8;
+
+	
+	// numABit_line == numAY + numAQ;  1 line is equal to bits in a row
+	parameter numABit_line = numAY + numAQ;  // 9 addr bits per line in input file
+	parameter numBit_Line = 2**numABit_line;  // No bits/line in input file
+	parameter numLofY = 2**(numAY+numAQ)/numBit_Line;  //No of lines for 1 X row
+	parameter numALine = numAddr - numABit_line; //15-9=6 addr lines in input file
+	parameter numMainLine = 2**numALine; //2^(15-9), Lines main mem in input file
+	parameter numTotLine = numMainLine + numRedundantRow; // Total lines: main+redundant
+	
+	//parameter AXML_start =  // Total lines: main+redundant
+	//parameter AXML_end =  // Total lines: main+redundant
+	
+	parameter numX = 2**numAX;
+	parameter numY = 2**numAY;
+	 
+	//TTiming check for PROGRAM 
+        parameter TTr1s_pp = 100.000000;
+        parameter TTr1h_pp = 100.000000;
+        parameter TTr2s_pp = 100.000000;
+        parameter TTr2h_pp = 100.000000;
+       
+        parameter TTvs_pp = 10_000.000000;  //sc
+        parameter TTvh_pp = 1_000.000000;    //sc
+	parameter TTas_pp = 10.000000;
+        parameter TTah_pp = 10.000000;
+        parameter TTws_pp = 10.000000;
+        parameter TTwh_pp = 10.000000;
+        parameter TTrs_pp = 10.000000;
+        parameter TTrh_pp = 10.000000;
+        parameter TTss_pp = 7.000000;
+        parameter TTsh_pp = 7.000000;
+        parameter TTsw_min_pp = 9000.000000;
+        parameter TTsw_max_pp = 11000.000000;
+
+	//TTiming check for READ 
+        parameter TTts_pr = 100.000000;  //sc
+        parameter TTth_pr = 100_000_000.000000;    //sc
+   
+        parameter TTvs_pr = 10_000.000000;  //sc
+        parameter TTvh_pr = 1_000.000000;    //sc
+
+        parameter TTas_pr = 10.000000;
+        parameter TTah_pr = 10.000000;
+        parameter TTws_pr = 10.000000;
+        parameter TTwh_pr = 10.000000;
+        parameter TTrs_pr = 10.000000;
+        parameter TTrh_pr = 10.000000;
+        //parameter TTqh_pr = 0.000000;
+        parameter TTcyc = 50.000000; //
+        parameter TTckh = 25.000000; //
+        parameter TTckl = 25.000000; //
+        parameter TTras = 7.000000;
+        parameter TTrah = 7.000000;
+        parameter TTcd =  7.000000;  //
+        parameter TThold = 5.000000;
