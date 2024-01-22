@@ -1,0 +1,111 @@
+                          CONFORMAL (R)
+                   Version 10.10-s400 (24-May-2011) (64 bit executable)
+   Copyright (c) Cadence Design Systems, Inc., 1997-2011. All Rights Reserved
+
+
+This program is proprietary and confidential information belonging to
+Cadence Design Systems, Inc., and may be used and disclosed only as authorized
+in a license agreement controlling such use and disclosure.
+
+// Command:    SET SYstem Mode Setup
+// Command:    PRINTENV DCODE    // 20210922
+Variable 'DCODE' = '20240119'
+// Command:    PRINTENV PJ_PATH  // /mnt/app1/steven/project/can1127
+Variable 'PJ_PATH' = '/mnt/app1/ray/project/can1127'
+// Command:    DATE
+Fri Jan 19 19:54:08 2024
+// Command:    REAd LIbrary -Both -REPlace $PJ_PATH/rtl/softmacro.v -VERILOG2K
+// Parsing file /mnt/app1/ray/project/can1127/rtl/softmacro.v ...
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:3)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:1)
+// Warning: (RTL6.1) X created due to the assignment of value X (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:1)
+// Note: Read VERILOG library successfully
+// Command:    REAd DEsign -VERILOG2K -ROOT dacmux -Golden  $PJ_PATH/rtl/dacmux.v
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacmux.v ...
+// Golden root module is set to 'dacmux'
+// Warning: (RTL1.4) Assignment with LHS bit width is greater than RHS bit width (occurrence:1)
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:13)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:37)
+// Warning: (RTL1.9) Parameter bit width does not match RHS bit width (occurrence:1)
+// Warning: (RTL5.3) Case expressions/items are resized (occurrence:18)
+// Warning: (RTL7.3) Array index in RHS might be out of range (occurrence:28)
+// Warning: (RTL7.10) Comparison with signed and unsigned operands (occurrence:1)
+// Warning: (RTL7.10a) Comparison with different data sizes (occurrence:13)
+// Warning: (RTL7.10b) Ternary branches have different data sizes (occurrence:21)
+// Warning: (RTL7.10c) Bit-wise operation with different data sizes (occurrence:3)
+// Warning: (RTL10) Both posedge and negedge are used in different always/process (occurrence:6)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:32)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:6)
+// Warning: (IGN2.1) Delay values(s) are ignored (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:16)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1)
+// Warning: (HRC3.15) Parameter positional association occurs in an instantiation (occurrence:5)
+// Warning: (HRC3.16) A wire is declared, but not used in the module (occurrence:4)
+// Note: Read VERILOG design successfully
+// Command:    REAd DEsign -VERILOG2K -ROOT dacmux -Revised $PJ_PATH/rtl/dacmux_equ.v
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacmux_equ.v ...
+// Revised root module is set to 'dacmux'
+// Warning: (RTL1.4) Assignment with LHS bit width is greater than RHS bit width (occurrence:1)
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:13)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:37)
+// Warning: (RTL1.9) Parameter bit width does not match RHS bit width (occurrence:1)
+// Warning: (RTL5.3) Case expressions/items are resized (occurrence:18)
+// Warning: (RTL7.3) Array index in RHS might be out of range (occurrence:28)
+// Warning: (RTL7.10) Comparison with signed and unsigned operands (occurrence:1)
+// Warning: (RTL7.10a) Comparison with different data sizes (occurrence:13)
+// Warning: (RTL7.10b) Ternary branches have different data sizes (occurrence:21)
+// Warning: (RTL7.10c) Bit-wise operation with different data sizes (occurrence:3)
+// Warning: (RTL10) Both posedge and negedge are used in different always/process (occurrence:6)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:32)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:6)
+// Warning: (IGN2.1) Delay values(s) are ignored (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:16)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:4)
+// Warning: (HRC3.15) Parameter positional association occurs in an instantiation (occurrence:5)
+// Warning: (HRC3.16) A wire is declared, but not used in the module (occurrence:4)
+// Note: Read VERILOG design successfully
+// Command:    SET System Mode LEc
+// Processing Golden ...
+// Modeling Golden ...
+// Warning: (F34) Converted 35 X assignment(s) as don't care(s)
+// Processing Revised ...
+// Modeling Revised ...
+// Warning: (F34.3) Converted 35 X assignment(s) as E(s)
+// Warning: Golden and Revised have different numbers of key points:
+// Golden  key points = 636
+// Revised key points = 671
+// Mapping key points ...
+// Warning: Revised has 35 unmapped key points
+================================================================================
+Mapped points: SYSTEM class
+--------------------------------------------------------------------------------
+Mapped points     PI     PO     DFF       Total   
+--------------------------------------------------------------------------------
+Golden            43     272    321       636     
+--------------------------------------------------------------------------------
+Revised           43     272    321       636     
+================================================================================
+Unmapped points:
+================================================================================
+Revised:
+--------------------------------------------------------------------------------
+Unmapped points   E         Total   
+--------------------------------------------------------------------------------
+Not-mapped        35        35      
+================================================================================
+// Warning: Key point mapping is incomplete
+// Command:    REPort UNmapped Points -TYpe DFF
+
+0 unmapped points reported
+// Command:    ADD COmpared Points -All
+// 593 compared points added to compare list
+// Command:    COMpare -NONEQ_Print -ABORT_Print
+================================================================================
+Compared points      PO     DFF       Total   
+--------------------------------------------------------------------------------
+Equivalent           272    321       593     
+================================================================================
+// Command:    DATE
+Fri Jan 19 19:54:11 2024
+// Command: exit
