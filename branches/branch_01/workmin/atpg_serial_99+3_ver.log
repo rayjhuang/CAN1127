@@ -12,9 +12,9 @@ Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
 
 Warning-[TFIPC] Too few instance port connections
   The following instance has fewer port connections than the module definition
-  "../stm/stm_atpg.v", 172: chiptop_1127a0 U0_DUT( .DP (DP),  .DN (DN),  .CC1 
-  (CC1),  .CC2 (CC2),  .TST (TST),  .SCL (SCL),  .SDA (SDA),  .GPIO1 (GPIO1), 
-  .GPIO2 (GPIO2),  .GPIO3 (GPIO3) ...
+  "../stm/stm_atpg.v", 166: chiptop_1127a0 U0_DUT( .DP (DP),  .DN (DN),  .CC1 
+  (CC1),  .CC2 (CC2),  .GPIO_TS (GPIO_TS),  .TST (TST),  .SCL (SCL),  .SDA 
+  (SDA),  .GPIO1 (GPIO1),  .GPIO2 (GP ...
   
 
 
@@ -29,7 +29,7 @@ Warning-[TFIPC] Too few instance port connections
    ***    Turnoff delay: "FROM_FILE"
    ***    Approximation (mipd) policy: "MAXIMUM"
 
-   ***    SDF annotation begin: Wed Apr 26 09:29:54 2023
+   ***    SDF annotation begin: Tue Mar  5 18:48:08 2024
 
 
 SDF Info: +pulse_r/100, +pulse_e/100 in effect
@@ -128,7 +128,7 @@ All future warnings not reported; use +sdfverbose to report them.
 
           Total errors: 22477
           Total warnings: 61
-   ***    SDF annotation completed: Wed Apr 26 09:29:54 2023
+   ***    SDF annotation completed: Tue Mar  5 18:48:09 2024
 
 
 
@@ -2090,7 +2090,7 @@ Doing SDF annotation ...... Done
 
                    0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO1
 
-                   0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO3: PP 30 40 after POR
+                   0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO3: PP 20 40 after POR
 
                    0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO4
 
@@ -2118,5 +2118,5 @@ Doing SDF annotation ...... Done
               250000ns <bench> vector: 5000, mismatch: 0
               300000ns <bench> vector: 6000, mismatch: 0
               326050ns <stm_atpg.vector_verify> NOTE: simulation completed at vector: 6521
-$finish called from file "../stm/stm_atpg.v", line 157.
+$finish called from file "../stm/stm_atpg.v", line 152.
 $finish at simulation time            326050000

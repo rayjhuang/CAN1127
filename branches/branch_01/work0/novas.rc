@@ -301,9 +301,9 @@ nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/a
 version = Verdi3_J-2014.12-SP2
 wave/unknownSave.fm = 140,140,520,275
 wave/openWFile.fm = 100,100,823,688
+wave/saveSig.fm = 100,100,723,530
 wave/getSignal.fm = 100,100,965,579
 wave/restoreSig.fm = 100,100,723,530
-wave/saveSig.fm = 100,100,723,530
 [General]
 autoSaveSession = FALSE
 TclAutoSource = 
@@ -441,7 +441,7 @@ savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
 QwUserAskDlg = 417,493,324,120
-QwWarnMsgDlg = 780,748,600,250
+QwWarnMsgDlg = 785,718,600,250
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -632,7 +632,7 @@ pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
 font = COURIER12
 [Text.1]
-viewport = 402 0 1129 975 45
+viewport = 162 0 1129 945 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE

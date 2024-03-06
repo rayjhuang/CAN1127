@@ -12,9 +12,9 @@ Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
 
 Warning-[TFIPC] Too few instance port connections
   The following instance has fewer port connections than the module definition
-  "../stm/stm_atpg.v", 172: chiptop_1127a0 U0_DUT( .DP (DP),  .DN (DN),  .CC1 
-  (CC1),  .CC2 (CC2),  .TST (TST),  .SCL (SCL),  .SDA (SDA),  .GPIO1 (GPIO1), 
-  .GPIO2 (GPIO2),  .GPIO3 (GPIO3) ...
+  "../stm/stm_atpg.v", 166: chiptop_1127a0 U0_DUT( .DP (DP),  .DN (DN),  .CC1 
+  (CC1),  .CC2 (CC2),  .GPIO_TS (GPIO_TS),  .TST (TST),  .SCL (SCL),  .SDA 
+  (SDA),  .GPIO1 (GPIO1),  .GPIO2 (GP ...
   
 
 
@@ -29,7 +29,7 @@ Warning-[TFIPC] Too few instance port connections
    ***    Turnoff delay: "FROM_FILE"
    ***    Approximation (mipd) policy: "MAXIMUM"
 
-   ***    SDF annotation begin: Wed Apr 26 11:38:16 2023
+   ***    SDF annotation begin: Wed Mar  6 13:11:44 2024
 
 
 SDF Info: +pulse_r/100, +pulse_e/100 in effect
@@ -128,7 +128,7 @@ All future warnings not reported; use +sdfverbose to report them.
 
           Total errors: 22735
           Total warnings: 61
-   ***    SDF annotation completed: Wed Apr 26 11:38:17 2023
+   ***    SDF annotation completed: Wed Mar  6 13:11:44 2024
 
 
 
@@ -5792,7 +5792,7 @@ Doing SDF annotation ...... Done
 
                    0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO1
 
-                   0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO3: PP 30 40 after POR
+                   0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO3: PP 20 40 after POR
 
                    0ns <stm_atpg.vector_verify> vector_number:0,vec_str://	GPIO4
 
@@ -5828,27 +5828,27 @@ Doing SDF annotation ...... Done
               650000ns <bench> vector: 13000, mismatch: 0
               700000ns <bench> vector: 14000, mismatch: 0
               750000ns <bench> vector: 15000, mismatch: 0
-              799450ns <stm_atpg.vector_verify> vector_number:15989,vec_str:	10111HH;
+              799450ns <stm_atpg.vector_verify> vector_number:15989,vec_str:	10111LL;
 
-              799500ns <stm_atpg.vector_verify> vector_number:15990,vec_str:	10111LL;
+              799500ns <stm_atpg.vector_verify> vector_number:15990,vec_str:	10111LH;
 
-              799550ns <stm_atpg.vector_verify> vector_number:15991,vec_str:	11111LH;
+              799550ns <stm_atpg.vector_verify> vector_number:15991,vec_str:	11111HL;
 
               799600ns <stm_atpg.vector_verify> vector_number:15992,vec_str:	11111HL;
 
-              799650ns <stm_atpg.vector_verify> vector_number:15993,vec_str:	10011HL;
+              799650ns <stm_atpg.vector_verify> vector_number:15993,vec_str:	10011LH;
 
-              799700ns <stm_atpg.vector_verify> vector_number:15994,vec_str:	10111LH;
+              799700ns <stm_atpg.vector_verify> vector_number:15994,vec_str:	10111LL;
 
-              799750ns <stm_atpg.vector_verify> vector_number:15995,vec_str:	10111LL;
+              799750ns <stm_atpg.vector_verify> vector_number:15995,vec_str:	10111HH;
 
-              799800ns <stm_atpg.vector_verify> vector_number:15996,vec_str:	10111HH;
+              799800ns <stm_atpg.vector_verify> vector_number:15996,vec_str:	10111LH;
 
               799850ns <stm_atpg.vector_verify> vector_number:15997,vec_str:	11111LH;
 
-              799900ns <stm_atpg.vector_verify> vector_number:15998,vec_str:	10111LH;
+              799900ns <stm_atpg.vector_verify> vector_number:15998,vec_str:	10111HL;
 
-              799950ns <stm_atpg.vector_verify> vector_number:15999,vec_str:	11111HL;
+              799950ns <stm_atpg.vector_verify> vector_number:15999,vec_str:	11111LH;
 
               800000ns <stm_atpg.vector_verify> vector_number:16000,vec_str:	10111LH;
 
@@ -7202,6 +7202,10 @@ Doing SDF annotation ...... Done
             68150000ns <bench> vector: 1363000, mismatch: 0
             68200000ns <bench> vector: 1364000, mismatch: 0
             68250000ns <bench> vector: 1365000, mismatch: 0
+
+"/mnt/app1/ray/project/can1127/macro/std.v", 26124: Timing violation in bench.U0_DUT.U0_CORE.d_dodat_reg_7_
+    $setup( negedge D &&& (~SMC):68297076430, posedge C &&& (~SMC):68297076918, limit: 850 );
+
             68300000ns <bench> vector: 1366000, mismatch: 0
             68350000ns <bench> vector: 1367000, mismatch: 0
             68400000ns <bench> vector: 1368000, mismatch: 0
@@ -7233,5 +7237,5 @@ Doing SDF annotation ...... Done
             69700000ns <bench> vector: 1394000, mismatch: 0
             69750000ns <bench> vector: 1395000, mismatch: 0
             69764050ns <stm_atpg.vector_verify> NOTE: simulation completed at vector: 1395281
-$finish called from file "../stm/stm_atpg.v", line 157.
+$finish called from file "../stm/stm_atpg.v", line 152.
 $finish at simulation time          69764050000

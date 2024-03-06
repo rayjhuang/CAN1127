@@ -38,9 +38,9 @@
 #  vcs $VCSOPT ./syn/atpg_serial_stildpv.v       $VCSDUT -l atpg_serial+SF0.log   +define+MIN+SF0
 #  vcs $VCSOPT ./syn/atpg_iddq_stildpv.v         $VCSDUT -l atpg_iddq.log         +define+MIN+VEC_GEN=\"atpg_iddq.vec\"+VCD
 
-   vcs $VCSOPT ./syn/atpg_serial_836+3_stildpv.v $VCSDUT -l atpg_serial_836+3.log +define+MAX+VEC_GEN=\"atpg_serial_836+3.vec\"+VCD
-   vcs $VCSOPT ./syn/atpg_serial_836+3_stildpv.v $VCSDUT -l atpg_serial_836+3.log +define+MIN+VEC_GEN=\"atpg_serial_836+3.vec\"+VCD
-   diff ../workmin/atpg_serial_836+3.vec ../work1/atpg_serial_836+3.vec
+   vcs $VCSOPT ./syn/atpg_serial_836+4_stildpv.v $VCSDUT -l atpg_serial_836+4.log +define+MAX+VEC_GEN=\"atpg_serial_836+4.vec\"+VCD
+   vcs $VCSOPT ./syn/atpg_serial_836+4_stildpv.v $VCSDUT -l atpg_serial_836+4.log +define+MIN+VEC_GEN=\"atpg_serial_836+4.vec\"+VCD
+   diff ../workmin/atpg_serial_836+4.vec ../work1/atpg_serial_836+4.vec
 
    vfast -ft verilog bench_a.vcd
 #  mv bench_a.vcd.fsdb atpg_serial_99+3_gen.vcd.fsdb
@@ -49,13 +49,15 @@
    grep -H 'simulation .*completed' *.log
    grep -E "expected to be|End of STIL" atpg_*.log | grep -v 'to be Z'
    grep 'Signal .* expected' atpg_* | grep -v 'expected to be Z'
+   grep -l 'violation' atpg_*log
 
    diff ../workmin/atpg_serial_99+3.vec  ../work1/
    diff ../workmin/atpg_serial_8.vec     ../work1/
    diff ../workmin/atpg_serial_min.vec   ../work1/atpg_serial_max.vec
-#  sed 's/^P.*\t/\t/' ../workmin/atpg_serial_min.vec > ../release/$RELC/atpg_serial_${DCODE}.sd
-   sed '/P0000:/,/P0001:/s/^\(\s*1...1\)..;/\1XX;/' ../workmin/atpg_serial_min.vec | \
+   sed '1367545s/10111HL/10111XL/' ../workmin/atpg_serial_min.vec > ../workmin/atpg_serial_min.vecx
+   sed '/P0000:/,/P0001:/s/^\(\s*1...1\)..;/\1XX;/' ../workmin/atpg_serial_min.vecx | \
    sed 's/^P.*\t/\t/'                                > ../release/$RELC/atpg_serial_${DCODE}.sdx
+#  sed 's/^P.*\t/\t/' ../workmin/atpg_serial_min.vec > ../release/$RELC/atpg_serial_${DCODE}.sd
 
    vcs $VCSOPT $VCSDUT -l atpg_serial_99+3_ver.log +define+GATE+MIN+VEC_VER=\"atpg_serial_99+3.vec\"+VCD
    vcs $VCSOPT $VCSDUT -l atpg_serial_99+3_ver.log +define+GATE+MAX+VEC_VER=\"atpg_serial_99+3.vec\"+VCD

@@ -37,7 +37,7 @@ pulldown (pull0) (pd_scl);   tranif1 (pd_scl,  `DUT.SCL,  pd_ena); // and expect
 initial begin
 `ifdef MAX $sdf_annotate ("chiptop_ss.sdf",`DUT,,,"MAXIMUM");
 `elsif MIN $sdf_annotate ("chiptop_ff.sdf",`DUT,,,"MINIMUM");
-`else ERROR: no SDF case specified;
+`else "ERROR: no SDF case specified"
 `endif
 	force `DUT.U0_ANALOG_TOP.RSTB = 0; #80
 	force `DUT.U0_ANALOG_TOP.RSTB = 1; // for the test_setup cycle
@@ -66,9 +66,8 @@ parameter N_SIG = 7; // no. of scan signals (in/out/control)
 //rameter NP_POS = 8; // position of resetz (negative pulse)
 parameter PP_POS = 4; // position of clock (positive pulse)
 parameter CK_PERIOD = 50; // ns, defined in STIL (refer to exist.tcl chiptop_11xxa0.spf)
-parameter CK_RISE = 30; // ns
-parameter CK_DUTY = 10; // ns
-`define STR_PP "PP 30 40" // positive pulse string, according to CK_RISE
+parameter CK_RISE = 4; // x10%, rise at
+`define STR_PP "PP 20 40" // positive pulse string, according to CK_RISE
 parameter MAX_VEC_WIDTH = 100; // max char per vector
 `define SIG_OE 'h60 // output enable for those output signals
 `define SIG_BUS \
@@ -126,29 +125,25 @@ initial begin: vector_verify
 				vec_str[(idx+ptr)*8+:8]=="L" ?'hz :
 				vec_str[(idx+ptr)*8+:8]=="X" ?'hz :'hx;
 	      end
-	      fork
-	      #CK_RISE begin
-	         if (vec_str[(N_SIG-1-PP_POS+ptr)*8+:8]=="1") vec_bus[PP_POS] = 'h1;
-//	         if (vec_str[(N_SIG-1-NP_POS+ptr)*8+:8]=="0") vec_bus[NP_POS] = 'h0;
-	         #(CK_DUTY)
-	         vec_bus[PP_POS] = 'h0;
-//	         vec_bus[NP_POS] = 'h1;
-	      end
-	      #(CK_RISE-1)
-	         for (idx=0;idx<N_SIG;idx=idx+1) begin
-	            pos = N_SIG-1-idx;
-	            if (vec_str[(idx+ptr)*8+:8]=="H" && vec_wire[pos]!=='h1 ||
-	                vec_str[(idx+ptr)*8+:8]=="L" && vec_wire[pos]!=='h0) begin
-	               bench.mismatch_number = bench.mismatch_number +1;
-	               $display ($time,"ns <%m> ERROR: %0s mismatch vec:%0d, exp:%c, dat:%x",
-			   sig_name[pos],bench.vector_number,vec_str[(idx+ptr)*8+:8],vec_wire[pos]);
-	            end
+#(CK_PERIOD*CK_RISE/10)
+	      if (vec_str[(N_SIG-1-PP_POS+ptr)*8+:8]=="1") vec_bus[PP_POS] = 'h1;
+//	      if (vec_str[(N_SIG-1-NP_POS+ptr)*8+:8]=="0") vec_bus[NP_POS] = 'h0;
+#(CK_PERIOD*4/10)
+	      vec_bus[PP_POS] = 'h0;
+//	      vec_bus[NP_POS] = 'h1;
+#(CK_PERIOD*(10-CK_RISE-4)/10-1)
+	      for (idx=0;idx<N_SIG;idx=idx+1) begin
+	         pos = N_SIG-1-idx;
+	         if (vec_str[(idx+ptr)*8+:8]=="H" && vec_wire[pos]!=='h1 ||
+	             vec_str[(idx+ptr)*8+:8]=="L" && vec_wire[pos]!=='h0) begin
+	            bench.mismatch_number = bench.mismatch_number +1;
+	            $display ($time,"ns <%m> ERROR: %0s mismatch vec:%0d, exp:%c, dat:%x",
+		        sig_name[pos],bench.vector_number,vec_str[(idx+ptr)*8+:8],vec_wire[pos]);
 	         end
-	      #CK_PERIOD
-	         bench.vector_number = bench.vector_number +1;
-	      join
-	   end // if (ptr)
-	end // while
+	      end
+#1	      bench.vector_number = bench.vector_number +1;
+	   end
+	end
 	if (bench.mismatch_number>0)
 	   $display ($time,"ns <%m> ERROR: simulation ended at vector: %0d, mismatch: %0d",
 							bench.vector_number,bench.mismatch_number);
@@ -160,15 +155,14 @@ end
 endmodule // stm_atpg
 module bench; // a very simple bench for verfying vectors
    integer pattern_number ='hx,
-           mismatch_number =0,
-           vector_number;
+           vector_number =0,
+           mismatch_number =0;
 
    always @(vector_number)
 	if (vector_number%1000==0)
 	   $display ($time,"ns <%m> vector: %0d, mismatch: %0d",vector_number,mismatch_number);
 
-`ifdef CAN1127A0 chiptop_1127a0
-`endif
+`ifdef CAN1127A0 chiptop_1127a0 `endif
    U0_DUT (
       .DP(DP),
       .DN(DN),
@@ -197,6 +191,7 @@ initial begin
 	$fwrite(fpw,"@@PATTERN DEFINE\n");
 	for (idx=0;idx<N_SIG;idx=idx+1) $fwrite(fpw,"\/\/\t%0s\n",sig_name[idx]);
 end
+reg pp_pulse, np_pulse;
 integer pattern_number =-1;
 wire pattern_1st = (bench.vector_number <= (MAX_LENGTH+3)); // first MAX_LENGTH+3 vectors are shift-in only
 function [7:0] s2char (input sig, oe);
@@ -205,29 +200,21 @@ function [7:0] s2char (input sig, oe);
 endfunction
 wire [N_SIG-1:0] sig_bus = { `SIG_BUS },
                  sig_oe = { `SIG_OE };
-reg [N_SIG-1:0] stb_bus, stb_oe;
-reg pp_pulse, np_pulse;
 always @(bench.vector_number) begin
-	fork
-	#(CK_RISE+CK_DUTY/2) begin
-	   pp_pulse = sig_bus[PP_POS];
-//	   np_pulse = sig_bus[NP_POS];
-	end
-	#(CK_RISE-1) begin
-	   stb_bus  = sig_bus;
-	   stb_oe   = sig_oe;
-	end
-	join
+#(CK_PERIOD/2)
+	pp_pulse = sig_bus[PP_POS];
+//	np_pulse = sig_bus[NP_POS];
 	if (pattern_number!=bench.pattern_number && pp_pulse) begin
 	   $fwrite(fpw,"P%04d:",bench.pattern_number);
 	   pattern_number = bench.pattern_number;
 	end
 	$fwrite(fpw,"\t");
+#(CK_PERIOD/2-1)
 	for (idx=0;idx<N_SIG;idx=idx+1)
 	   $fwrite(fpw,"%1c",s2char(
 		(idx==PP_POS) ?pp_pulse :
 //		(idx==NP_POS) ?np_pulse :
-				stb_bus[idx], stb_oe[idx]));
+				sig_bus[idx], sig_oe[idx]));
 	$fwrite(fpw,";\n");
 	if (bench.vector_number%1000==0) $fflush(fpw);
 end // before 100ns

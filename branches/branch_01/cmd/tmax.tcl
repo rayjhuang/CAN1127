@@ -106,7 +106,7 @@
 #  write_patterns ./syn/atpg_serial_2.stil.gz     -compress gzip -format stil99 -serial -replace -last 2
    write_patterns ./syn/atpg_serial_8.stil.gz     -compress gzip -format stil99 -serial -replace -last 8
    write_patterns ./syn/atpg_serial_99+3.stil.gz  -compress gzip -format stil99 -serial -replace -last 101 -first 99
-   write_patterns ./syn/atpg_serial_836+3.stil.gz -compress gzip -format stil99 -serial -replace -last 838 -first 836
+   write_patterns ./syn/atpg_serial_836+4.stil.gz -compress gzip -format stil99 -serial -replace -last 839 -first 836
 
 ###To generate split patterns
 #  set_patterns -internal -split_patterns

@@ -50,7 +50,7 @@
 #  verdi     -v ../macro/std.v ./syn/chiptop_1127a0_1.v &
 #  verdi -sv -f ../cmd/macro.f ./syn/chiptop_1127a0_2.v &
 #  verdi -sv -f ../cmd/macro.f ./syn/chiptop_1127a0_3.v &
-#  verdi -sv -f ../cmd/macro.f -f ../cmd/bench.f gate.v $HWREV +define+GATE stm.v &
+#  verdi -sv -f ../cmd/macro.f -f ../cmd/bench.f gate.v $HWREV +define+GATE+MAX stm.v &
 
    setenv VERDI_ATPG "-f ../cmd/macro.f gate.v +define+GATE+VCD ../stm/stm_atpg.v"
 #  verdi $VERDI_ATPG +define+MIN+VEC_GEN ./syn/atpg_chain_stildpv.v &

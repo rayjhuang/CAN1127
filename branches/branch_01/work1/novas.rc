@@ -296,16 +296,16 @@ Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work1/bench_g.vcd.fsdb,/mnt/app1/ray/project/can1127/work1/,/mnt/app1/ray/project/can1127/workmin,/mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb,/mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb,
-nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work0,/mnt/app1/ray/project/can1127/work1/bench_a.rc,/mnt/app1/ray/project/can1127/work1,
+nWaveOpenFsdbDirHistory = /mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb,/mnt/app1/ray/project/can1127/workmin/bench_a.vcd.fsdb,/mnt/app1/ray/project/can1127/workmin,/mnt/app1/ray/project/can1127/work1/,/mnt/app1/ray/project/can1127/work1/bench_g.vcd.fsdb,
+nWaveRestoreRCDirHistory = /mnt/app1/ray/project/can1127/work1/bench_a.rc,/mnt/app1/ray/project/can1127/work0,/mnt/app1/ray/project/can1127/work0/bench_0.rc,/mnt/app1/ray/project/can1127/work1,
 [Form]
 version = Verdi3_J-2014.12-SP2
 wave/saveSig.fm = 228,192,723,530
 openfile.fm = 100,100,723,530
-wave/getSignal.fm = 100,100,965,579
 wave/unknownSave.fm = 100,100,520,275
-wave/openWFile.fm = 100,100,823,688
+wave/getSignal.fm = 100,100,965,579
 wave/restoreSig.fm = 100,100,723,530
+wave/openWFile.fm = 100,100,823,688
 [General]
 autoSaveSession = FALSE
 TclAutoSource = 
@@ -635,7 +635,7 @@ pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
 font = COURIER12
 [Text.1]
-viewport = 577 0 1101 975 45
+viewport = 569 0 1101 945 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -980,9 +980,9 @@ pcSelectMode = TRUE
 hierarchyDelimiter = /
 RecentFile1 = /mnt/app1/ray/project/can1127/work1/bench_a.rc
 RecentFile2 = /mnt/app1/ray/project/can1127/work1/bench_g.vcd.fsdb
-RecentFile3 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_ver.vcd.fsdb
-RecentFile4 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_gen.vcd.fsdb
-RecentFile5 = /mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb
+RecentFile3 = /mnt/app1/ray/project/can1127/work1/bench_a.vcd.fsdb
+RecentFile4 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_ver.vcd.fsdb
+RecentFile5 = /mnt/app1/ray/project/can1127/work1/atpg_serial_99+3_gen.vcd.fsdb
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto

@@ -1698,7 +1698,7 @@ SCANCHAINS 3 ;
 + ORDERED U0_CORE/u0_mcu/u_cpu/phase_reg_1_ ( IN SIN ) ( OUT Q )
           U0_CORE/u0_mcu/u_cpu/U458 ( IN A ) ( OUT Y )
           U0_CORE/u0_mcu/u_cpu/U460 ( IN A ) ( OUT Y )
-+ PARTITION GPIO3_30_30
++ PARTITION GPIO3_20_20
 + STOP U0_CORE/u0_ictlr/adr_p_reg_12_ SIN ;
 
 - 2
@@ -3348,7 +3348,7 @@ SCANCHAINS 3 ;
 + ORDERED U0_CORE/u0_updphy/u0_updprl/cs_prcl_reg_3_ ( IN SIN ) ( OUT Q )
           U0_CORE/u0_updphy/u0_updprl/U48 ( IN A ) ( OUT Y )
           U0_CORE/u0_updphy/u0_updprl/U11 ( IN A ) ( OUT Y )
-+ PARTITION GPIO3_30_30
++ PARTITION GPIO3_20_20
 + STOP U0_CORE/u0_regx/u0_reg07/mem_reg_4_ SIN ;
 
 END SCANCHAINS
