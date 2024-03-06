@@ -1,0 +1,9 @@
+Thu Jan 18 11:33:42 CST 2024
+all_stm: 74
+all_log: 67
+all_run: 66 	(started)
+all_pas: 65 	(completed)
+all_int: 0 	(interrupted)
+all_ext: 0 	(compiler exited)
+all_err: 1 	(error finished)
+./stm_uart_txrx+RTL.log

@@ -1,0 +1,1435 @@
+                          CONFORMAL (R)
+                   Version 10.10-s400 (24-May-2011) (64 bit executable)
+   Copyright (c) Cadence Design Systems, Inc., 1997-2011. All Rights Reserved
+
+
+This program is proprietary and confidential information belonging to
+Cadence Design Systems, Inc., and may be used and disclosed only as authorized
+in a license agreement controlling such use and disclosure.
+
+// Command:    SET SYstem Mode Setup
+// Command:    PRINTENV DCODE    // 20210922
+Variable 'DCODE' = '20240122'
+// Command:    PRINTENV PJ_PATH  // /mnt/app1/steven/project/can1127
+Variable 'PJ_PATH' = '/mnt/app1/ray/project/can1127'
+// Command:    DATE
+Mon Jan 22 18:09:36 2024
+// Command:    REAd LIbrary -Both -REPlace $PJ_PATH/rtl/softmacro.v -VERILOG2K
+// Parsing file /mnt/app1/ray/project/can1127/rtl/softmacro.v ...
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:3)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:1)
+// Warning: (RTL6.1) X created due to the assignment of value X (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:1)
+// Note: Read VERILOG library successfully
+// Command:    REAd DEsign -VERILOG2K -ROOT dacmux -Golden $PJ_PATH/rtl/dacmux.v
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacmux.v ...
+// Golden root module is set to 'dacmux'
+// Warning: (RTL1.4) Assignment with LHS bit width is greater than RHS bit width (occurrence:1)
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:13)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:37)
+// Warning: (RTL1.9) Parameter bit width does not match RHS bit width (occurrence:1)
+// Warning: (RTL5.3) Case expressions/items are resized (occurrence:18)
+// Warning: (RTL7.3) Array index in RHS might be out of range (occurrence:28)
+// Warning: (RTL7.10) Comparison with signed and unsigned operands (occurrence:1)
+// Warning: (RTL7.10a) Comparison with different data sizes (occurrence:13)
+// Warning: (RTL7.10b) Ternary branches have different data sizes (occurrence:21)
+// Warning: (RTL7.10c) Bit-wise operation with different data sizes (occurrence:3)
+// Warning: (RTL10) Both posedge and negedge are used in different always/process (occurrence:6)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:32)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:6)
+// Warning: (IGN2.1) Delay values(s) are ignored (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:16)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1)
+// Warning: (HRC3.15) Parameter positional association occurs in an instantiation (occurrence:5)
+// Warning: (HRC3.16) A wire is declared, but not used in the module (occurrence:4)
+// Note: Read VERILOG design successfully
+// Command:    REAd DEsign -VERILOG2K -ROOT dacmux -Revised \
+//          	$PJ_PATH/rtl/dacmux_equ.v \
+//          	$PJ_PATH/rtl/dacreg.v \
+//          	$PJ_PATH/rtl/dacsar.v \
+//          	$PJ_PATH/rtl/shmux.v
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacmux_equ.v ...
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacreg.v ...
+// Parsing file /mnt/app1/ray/project/can1127/rtl/dacsar.v ...
+// Parsing file /mnt/app1/ray/project/can1127/rtl/shmux.v ...
+// Revised root module is set to 'dacmux'
+// Warning: (RTL1.4) Assignment with LHS bit width is greater than RHS bit width (occurrence:1)
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:12)
+// Warning: (RTL1.5b) Potential loss of RHS msb or carry-out bit (occurrence:37)
+// Warning: (RTL1.9) Parameter bit width does not match RHS bit width (occurrence:1)
+// Warning: (RTL5.3) Case expressions/items are resized (occurrence:18)
+// Warning: (RTL7.3) Array index in RHS might be out of range (occurrence:28)
+// Warning: (RTL7.10) Comparison with signed and unsigned operands (occurrence:1)
+// Warning: (RTL7.10a) Comparison with different data sizes (occurrence:13)
+// Warning: (RTL7.10b) Ternary branches have different data sizes (occurrence:21)
+// Warning: (RTL7.10c) Bit-wise operation with different data sizes (occurrence:2)
+// Warning: (RTL10) Both posedge and negedge are used in different always/process (occurrence:7)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:32)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:9)
+// Warning: (IGN2.1) Delay values(s) are ignored (occurrence:1)
+// Warning: (HRC3.8) Port positional association occurs in an instantiation (occurrence:16)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:4)
+// Warning: (HRC3.15) Parameter positional association occurs in an instantiation (occurrence:5)
+// Warning: (HRC3.16) A wire is declared, but not used in the module (occurrence:4)
+// Note: Read VERILOG design successfully
+// Command:    SET System Mode LEc
+// Processing Golden ...
+// Modeling Golden ...
+// Warning: (F34) Converted 35 X assignment(s) as don't care(s)
+// Processing Revised ...
+// Modeling Revised ...
+// Warning: (F34.3) Converted 35 X assignment(s) as E(s)
+// Warning: Golden and Revised have different numbers of key points:
+// Golden  key points = 636
+// Revised key points = 671
+// Mapping key points ...
+// Warning: Primary output 'o_dacv[143]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[142]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[141]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[140]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[139]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[138]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[137]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[136]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[135]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[134]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[133]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[132]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[131]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[130]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[129]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[128]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[127]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[126]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[125]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[124]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[123]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[122]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[121]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[120]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[119]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[118]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[117]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[116]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[115]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[114]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[113]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[112]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[111]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[110]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[109]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[108]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[107]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[106]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[105]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[104]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[103]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[102]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[101]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[100]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[99]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[98]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[97]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[96]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[95]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[94]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[93]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[92]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[91]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[90]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[89]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[88]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[87]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[86]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[85]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[84]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[83]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[82]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[81]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[80]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[79]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[78]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[77]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[76]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[75]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[74]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[73]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[72]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[71]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[70]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[69]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[68]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[67]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[66]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[65]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[64]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[63]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[62]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[61]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[60]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[59]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[58]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[57]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[56]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[55]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[54]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[53]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[52]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[51]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[50]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[49]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[48]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[47]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[46]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[45]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[44]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[43]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[42]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[41]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[40]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[39]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[38]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[37]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[36]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[35]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[34]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[33]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[32]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[31]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[30]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[29]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[28]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[27]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[26]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[25]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[24]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[23]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[22]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[21]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[20]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[19]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[18]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[17]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[16]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[15]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[14]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[13]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[12]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[11]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[10]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[9]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[8]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[7]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[6]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[5]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[4]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[3]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[2]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[1]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dacv[0]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[17]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[16]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[15]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[14]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[13]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[12]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[11]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[10]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[9]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[8]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[7]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[6]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[5]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[4]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[3]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[2]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[1]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dat[0]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[7]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[6]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[5]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[4]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[3]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[2]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[1]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_dactl[0]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[7]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[6]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[5]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[4]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[3]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[2]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[1]' in Golden has no correspondence in Revised
+// Warning: Primary output 'o_cmpsta[0]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[5]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[4]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[3]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[2]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[1]' in Golden has no correspondence in Revised
+// Warning: Primary output 'x_daclsb[0]' in Golden has no correspondence in Revised
+// Warning: Primary output 'r_comp[17]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[16]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[15]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[14]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[13]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[12]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[11]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[10]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[9]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[8]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[7]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[6]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[5]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[4]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[3]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[2]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[1]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_comp[0]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[143]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[142]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[141]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[140]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[139]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[138]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[137]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[136]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[135]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[134]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[133]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[132]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[131]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[130]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[129]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[128]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[127]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[126]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[125]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[124]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[123]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[122]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[121]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[120]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[119]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[118]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[117]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[116]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[115]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[114]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[113]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[112]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[111]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[110]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[109]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[108]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[107]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[106]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[105]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[104]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[103]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[102]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[101]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[100]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[99]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[98]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[97]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[96]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[95]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[94]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[93]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[92]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[91]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[90]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[89]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[88]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[87]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[86]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[85]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[84]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[83]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[82]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[81]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[80]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[79]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[78]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[77]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[76]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[75]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[74]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[73]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[72]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[71]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[70]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[69]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[68]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[67]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[66]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[65]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[64]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[63]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[62]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[61]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[60]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[59]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[58]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[57]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[56]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[55]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[54]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[53]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[52]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[51]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[50]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[49]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[48]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[47]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[46]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[45]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[44]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[43]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[42]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[41]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[40]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[39]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[38]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[37]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[36]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[35]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[34]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[33]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[32]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[31]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[30]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[29]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[28]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[27]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[26]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[25]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[24]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[23]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[22]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[21]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[20]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[19]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[18]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[17]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[16]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[15]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[14]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[13]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[12]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[11]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[10]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[9]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[8]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[7]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[6]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[5]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[4]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[3]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[2]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[1]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacv[0]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[7]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[6]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[5]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[4]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[3]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[2]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[1]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_dacctl[0]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[7]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[6]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[5]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[4]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[3]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[2]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[1]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_cmpsta[0]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[5]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[4]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[3]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[2]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[1]' in Revised has no correspondence in Golden
+// Warning: Primary output 'r_daclsb_x[0]' in Revised has no correspondence in Golden
+// Warning: More than 1/3 of the key points have mis-matched names
+// Warning: Please use renaming rules if automatic mapping fails to finish
+// Warning: Revised has 35 unmapped key points
+================================================================================
+Mapped points: SYSTEM class
+--------------------------------------------------------------------------------
+Mapped points     PI     PO     DFF       Total   
+--------------------------------------------------------------------------------
+Golden            43     88     321       452     
+--------------------------------------------------------------------------------
+Revised           43     88     321       452     
+================================================================================
+Unmapped points:
+================================================================================
+Golden:
+--------------------------------------------------------------------------------
+Unmapped points   PO        Total   
+--------------------------------------------------------------------------------
+Extra             184       184     
+================================================================================
+Revised:
+--------------------------------------------------------------------------------
+Unmapped points   PO     E         Total   
+--------------------------------------------------------------------------------
+Extra             184    0         184     
+Not-mapped        0      35        35      
+================================================================================
+// Warning: Key point mapping is incomplete
+// Command:    REPort UNmapped Points -GOlden
+Unmapped point (extra):
+  (G)   60   PO   /o_dacv[143]
+Unmapped point (extra):
+  (G)   61   PO   /o_dacv[142]
+Unmapped point (extra):
+  (G)   62   PO   /o_dacv[141]
+Unmapped point (extra):
+  (G)   63   PO   /o_dacv[140]
+Unmapped point (extra):
+  (G)   64   PO   /o_dacv[139]
+Unmapped point (extra):
+  (G)   65   PO   /o_dacv[138]
+Unmapped point (extra):
+  (G)   66   PO   /o_dacv[137]
+Unmapped point (extra):
+  (G)   67   PO   /o_dacv[136]
+Unmapped point (extra):
+  (G)   68   PO   /o_dacv[135]
+Unmapped point (extra):
+  (G)   69   PO   /o_dacv[134]
+Unmapped point (extra):
+  (G)   70   PO   /o_dacv[133]
+Unmapped point (extra):
+  (G)   71   PO   /o_dacv[132]
+Unmapped point (extra):
+  (G)   72   PO   /o_dacv[131]
+Unmapped point (extra):
+  (G)   73   PO   /o_dacv[130]
+Unmapped point (extra):
+  (G)   74   PO   /o_dacv[129]
+Unmapped point (extra):
+  (G)   75   PO   /o_dacv[128]
+Unmapped point (extra):
+  (G)   76   PO   /o_dacv[127]
+Unmapped point (extra):
+  (G)   77   PO   /o_dacv[126]
+Unmapped point (extra):
+  (G)   78   PO   /o_dacv[125]
+Unmapped point (extra):
+  (G)   79   PO   /o_dacv[124]
+Unmapped point (extra):
+  (G)   80   PO   /o_dacv[123]
+Unmapped point (extra):
+  (G)   81   PO   /o_dacv[122]
+Unmapped point (extra):
+  (G)   82   PO   /o_dacv[121]
+Unmapped point (extra):
+  (G)   83   PO   /o_dacv[120]
+Unmapped point (extra):
+  (G)   84   PO   /o_dacv[119]
+Unmapped point (extra):
+  (G)   85   PO   /o_dacv[118]
+Unmapped point (extra):
+  (G)   86   PO   /o_dacv[117]
+Unmapped point (extra):
+  (G)   87   PO   /o_dacv[116]
+Unmapped point (extra):
+  (G)   88   PO   /o_dacv[115]
+Unmapped point (extra):
+  (G)   89   PO   /o_dacv[114]
+Unmapped point (extra):
+  (G)   90   PO   /o_dacv[113]
+Unmapped point (extra):
+  (G)   91   PO   /o_dacv[112]
+Unmapped point (extra):
+  (G)   92   PO   /o_dacv[111]
+Unmapped point (extra):
+  (G)   93   PO   /o_dacv[110]
+Unmapped point (extra):
+  (G)   94   PO   /o_dacv[109]
+Unmapped point (extra):
+  (G)   95   PO   /o_dacv[108]
+Unmapped point (extra):
+  (G)   96   PO   /o_dacv[107]
+Unmapped point (extra):
+  (G)   97   PO   /o_dacv[106]
+Unmapped point (extra):
+  (G)   98   PO   /o_dacv[105]
+Unmapped point (extra):
+  (G)   99   PO   /o_dacv[104]
+Unmapped point (extra):
+  (G)   100  PO   /o_dacv[103]
+Unmapped point (extra):
+  (G)   101  PO   /o_dacv[102]
+Unmapped point (extra):
+  (G)   102  PO   /o_dacv[101]
+Unmapped point (extra):
+  (G)   103  PO   /o_dacv[100]
+Unmapped point (extra):
+  (G)   104  PO   /o_dacv[99]
+Unmapped point (extra):
+  (G)   105  PO   /o_dacv[98]
+Unmapped point (extra):
+  (G)   106  PO   /o_dacv[97]
+Unmapped point (extra):
+  (G)   107  PO   /o_dacv[96]
+Unmapped point (extra):
+  (G)   108  PO   /o_dacv[95]
+Unmapped point (extra):
+  (G)   109  PO   /o_dacv[94]
+Unmapped point (extra):
+  (G)   110  PO   /o_dacv[93]
+Unmapped point (extra):
+  (G)   111  PO   /o_dacv[92]
+Unmapped point (extra):
+  (G)   112  PO   /o_dacv[91]
+Unmapped point (extra):
+  (G)   113  PO   /o_dacv[90]
+Unmapped point (extra):
+  (G)   114  PO   /o_dacv[89]
+Unmapped point (extra):
+  (G)   115  PO   /o_dacv[88]
+Unmapped point (extra):
+  (G)   116  PO   /o_dacv[87]
+Unmapped point (extra):
+  (G)   117  PO   /o_dacv[86]
+Unmapped point (extra):
+  (G)   118  PO   /o_dacv[85]
+Unmapped point (extra):
+  (G)   119  PO   /o_dacv[84]
+Unmapped point (extra):
+  (G)   120  PO   /o_dacv[83]
+Unmapped point (extra):
+  (G)   121  PO   /o_dacv[82]
+Unmapped point (extra):
+  (G)   122  PO   /o_dacv[81]
+Unmapped point (extra):
+  (G)   123  PO   /o_dacv[80]
+Unmapped point (extra):
+  (G)   124  PO   /o_dacv[79]
+Unmapped point (extra):
+  (G)   125  PO   /o_dacv[78]
+Unmapped point (extra):
+  (G)   126  PO   /o_dacv[77]
+Unmapped point (extra):
+  (G)   127  PO   /o_dacv[76]
+Unmapped point (extra):
+  (G)   128  PO   /o_dacv[75]
+Unmapped point (extra):
+  (G)   129  PO   /o_dacv[74]
+Unmapped point (extra):
+  (G)   130  PO   /o_dacv[73]
+Unmapped point (extra):
+  (G)   131  PO   /o_dacv[72]
+Unmapped point (extra):
+  (G)   132  PO   /o_dacv[71]
+Unmapped point (extra):
+  (G)   133  PO   /o_dacv[70]
+Unmapped point (extra):
+  (G)   134  PO   /o_dacv[69]
+Unmapped point (extra):
+  (G)   135  PO   /o_dacv[68]
+Unmapped point (extra):
+  (G)   136  PO   /o_dacv[67]
+Unmapped point (extra):
+  (G)   137  PO   /o_dacv[66]
+Unmapped point (extra):
+  (G)   138  PO   /o_dacv[65]
+Unmapped point (extra):
+  (G)   139  PO   /o_dacv[64]
+Unmapped point (extra):
+  (G)   140  PO   /o_dacv[63]
+Unmapped point (extra):
+  (G)   141  PO   /o_dacv[62]
+Unmapped point (extra):
+  (G)   142  PO   /o_dacv[61]
+Unmapped point (extra):
+  (G)   143  PO   /o_dacv[60]
+Unmapped point (extra):
+  (G)   144  PO   /o_dacv[59]
+Unmapped point (extra):
+  (G)   145  PO   /o_dacv[58]
+Unmapped point (extra):
+  (G)   146  PO   /o_dacv[57]
+Unmapped point (extra):
+  (G)   147  PO   /o_dacv[56]
+Unmapped point (extra):
+  (G)   148  PO   /o_dacv[55]
+Unmapped point (extra):
+  (G)   149  PO   /o_dacv[54]
+Unmapped point (extra):
+  (G)   150  PO   /o_dacv[53]
+Unmapped point (extra):
+  (G)   151  PO   /o_dacv[52]
+Unmapped point (extra):
+  (G)   152  PO   /o_dacv[51]
+Unmapped point (extra):
+  (G)   153  PO   /o_dacv[50]
+Unmapped point (extra):
+  (G)   154  PO   /o_dacv[49]
+Unmapped point (extra):
+  (G)   155  PO   /o_dacv[48]
+Unmapped point (extra):
+  (G)   156  PO   /o_dacv[47]
+Unmapped point (extra):
+  (G)   157  PO   /o_dacv[46]
+Unmapped point (extra):
+  (G)   158  PO   /o_dacv[45]
+Unmapped point (extra):
+  (G)   159  PO   /o_dacv[44]
+Unmapped point (extra):
+  (G)   160  PO   /o_dacv[43]
+Unmapped point (extra):
+  (G)   161  PO   /o_dacv[42]
+Unmapped point (extra):
+  (G)   162  PO   /o_dacv[41]
+Unmapped point (extra):
+  (G)   163  PO   /o_dacv[40]
+Unmapped point (extra):
+  (G)   164  PO   /o_dacv[39]
+Unmapped point (extra):
+  (G)   165  PO   /o_dacv[38]
+Unmapped point (extra):
+  (G)   166  PO   /o_dacv[37]
+Unmapped point (extra):
+  (G)   167  PO   /o_dacv[36]
+Unmapped point (extra):
+  (G)   168  PO   /o_dacv[35]
+Unmapped point (extra):
+  (G)   169  PO   /o_dacv[34]
+Unmapped point (extra):
+  (G)   170  PO   /o_dacv[33]
+Unmapped point (extra):
+  (G)   171  PO   /o_dacv[32]
+Unmapped point (extra):
+  (G)   172  PO   /o_dacv[31]
+Unmapped point (extra):
+  (G)   173  PO   /o_dacv[30]
+Unmapped point (extra):
+  (G)   174  PO   /o_dacv[29]
+Unmapped point (extra):
+  (G)   175  PO   /o_dacv[28]
+Unmapped point (extra):
+  (G)   176  PO   /o_dacv[27]
+Unmapped point (extra):
+  (G)   177  PO   /o_dacv[26]
+Unmapped point (extra):
+  (G)   178  PO   /o_dacv[25]
+Unmapped point (extra):
+  (G)   179  PO   /o_dacv[24]
+Unmapped point (extra):
+  (G)   180  PO   /o_dacv[23]
+Unmapped point (extra):
+  (G)   181  PO   /o_dacv[22]
+Unmapped point (extra):
+  (G)   182  PO   /o_dacv[21]
+Unmapped point (extra):
+  (G)   183  PO   /o_dacv[20]
+Unmapped point (extra):
+  (G)   184  PO   /o_dacv[19]
+Unmapped point (extra):
+  (G)   185  PO   /o_dacv[18]
+Unmapped point (extra):
+  (G)   186  PO   /o_dacv[17]
+Unmapped point (extra):
+  (G)   187  PO   /o_dacv[16]
+Unmapped point (extra):
+  (G)   188  PO   /o_dacv[15]
+Unmapped point (extra):
+  (G)   189  PO   /o_dacv[14]
+Unmapped point (extra):
+  (G)   190  PO   /o_dacv[13]
+Unmapped point (extra):
+  (G)   191  PO   /o_dacv[12]
+Unmapped point (extra):
+  (G)   192  PO   /o_dacv[11]
+Unmapped point (extra):
+  (G)   193  PO   /o_dacv[10]
+Unmapped point (extra):
+  (G)   194  PO   /o_dacv[9]
+Unmapped point (extra):
+  (G)   195  PO   /o_dacv[8]
+Unmapped point (extra):
+  (G)   196  PO   /o_dacv[7]
+Unmapped point (extra):
+  (G)   197  PO   /o_dacv[6]
+Unmapped point (extra):
+  (G)   198  PO   /o_dacv[5]
+Unmapped point (extra):
+  (G)   199  PO   /o_dacv[4]
+Unmapped point (extra):
+  (G)   200  PO   /o_dacv[3]
+Unmapped point (extra):
+  (G)   201  PO   /o_dacv[2]
+Unmapped point (extra):
+  (G)   202  PO   /o_dacv[1]
+Unmapped point (extra):
+  (G)   203  PO   /o_dacv[0]
+Unmapped point (extra):
+  (G)   234  PO   /o_dat[17]
+Unmapped point (extra):
+  (G)   235  PO   /o_dat[16]
+Unmapped point (extra):
+  (G)   236  PO   /o_dat[15]
+Unmapped point (extra):
+  (G)   237  PO   /o_dat[14]
+Unmapped point (extra):
+  (G)   238  PO   /o_dat[13]
+Unmapped point (extra):
+  (G)   239  PO   /o_dat[12]
+Unmapped point (extra):
+  (G)   240  PO   /o_dat[11]
+Unmapped point (extra):
+  (G)   241  PO   /o_dat[10]
+Unmapped point (extra):
+  (G)   242  PO   /o_dat[9]
+Unmapped point (extra):
+  (G)   243  PO   /o_dat[8]
+Unmapped point (extra):
+  (G)   244  PO   /o_dat[7]
+Unmapped point (extra):
+  (G)   245  PO   /o_dat[6]
+Unmapped point (extra):
+  (G)   246  PO   /o_dat[5]
+Unmapped point (extra):
+  (G)   247  PO   /o_dat[4]
+Unmapped point (extra):
+  (G)   248  PO   /o_dat[3]
+Unmapped point (extra):
+  (G)   249  PO   /o_dat[2]
+Unmapped point (extra):
+  (G)   250  PO   /o_dat[1]
+Unmapped point (extra):
+  (G)   251  PO   /o_dat[0]
+Unmapped point (extra):
+  (G)   288  PO   /o_dactl[7]
+Unmapped point (extra):
+  (G)   289  PO   /o_dactl[6]
+Unmapped point (extra):
+  (G)   290  PO   /o_dactl[5]
+Unmapped point (extra):
+  (G)   291  PO   /o_dactl[4]
+Unmapped point (extra):
+  (G)   292  PO   /o_dactl[3]
+Unmapped point (extra):
+  (G)   293  PO   /o_dactl[2]
+Unmapped point (extra):
+  (G)   294  PO   /o_dactl[1]
+Unmapped point (extra):
+  (G)   295  PO   /o_dactl[0]
+Unmapped point (extra):
+  (G)   296  PO   /o_cmpsta[7]
+Unmapped point (extra):
+  (G)   297  PO   /o_cmpsta[6]
+Unmapped point (extra):
+  (G)   298  PO   /o_cmpsta[5]
+Unmapped point (extra):
+  (G)   299  PO   /o_cmpsta[4]
+Unmapped point (extra):
+  (G)   300  PO   /o_cmpsta[3]
+Unmapped point (extra):
+  (G)   301  PO   /o_cmpsta[2]
+Unmapped point (extra):
+  (G)   302  PO   /o_cmpsta[1]
+Unmapped point (extra):
+  (G)   303  PO   /o_cmpsta[0]
+Unmapped point (extra):
+  (G)   304  PO   /x_daclsb[5]
+Unmapped point (extra):
+  (G)   305  PO   /x_daclsb[4]
+Unmapped point (extra):
+  (G)   306  PO   /x_daclsb[3]
+Unmapped point (extra):
+  (G)   307  PO   /x_daclsb[2]
+Unmapped point (extra):
+  (G)   308  PO   /x_daclsb[1]
+Unmapped point (extra):
+  (G)   309  PO   /x_daclsb[0]
+
+184 unmapped points reported
+================================================================================
+Golden:
+--------------------------------------------------------------------------------
+Unmapped points   PO        Total   
+--------------------------------------------------------------------------------
+Extra             184       184     
+================================================================================
+// Command:    ADD MApped Points -RULE "o_dacv\[%d\]" "r_dacv\[@1\]"
+These are added as user mapped points:
+  (G) + 60   PO   /o_dacv[143]
+  (R) + 128  PO   /r_dacv[143]
+These are added as user mapped points:
+  (G) + 61   PO   /o_dacv[142]
+  (R) + 129  PO   /r_dacv[142]
+These are added as user mapped points:
+  (G) + 62   PO   /o_dacv[141]
+  (R) + 130  PO   /r_dacv[141]
+These are added as user mapped points:
+  (G) + 63   PO   /o_dacv[140]
+  (R) + 131  PO   /r_dacv[140]
+These are added as user mapped points:
+  (G) + 64   PO   /o_dacv[139]
+  (R) + 132  PO   /r_dacv[139]
+These are added as user mapped points:
+  (G) + 65   PO   /o_dacv[138]
+  (R) + 133  PO   /r_dacv[138]
+These are added as user mapped points:
+  (G) + 66   PO   /o_dacv[137]
+  (R) + 134  PO   /r_dacv[137]
+These are added as user mapped points:
+  (G) + 67   PO   /o_dacv[136]
+  (R) + 135  PO   /r_dacv[136]
+These are added as user mapped points:
+  (G) + 68   PO   /o_dacv[135]
+  (R) + 136  PO   /r_dacv[135]
+These are added as user mapped points:
+  (G) + 69   PO   /o_dacv[134]
+  (R) + 137  PO   /r_dacv[134]
+These are added as user mapped points:
+  (G) + 70   PO   /o_dacv[133]
+  (R) + 138  PO   /r_dacv[133]
+These are added as user mapped points:
+  (G) + 71   PO   /o_dacv[132]
+  (R) + 139  PO   /r_dacv[132]
+These are added as user mapped points:
+  (G) + 72   PO   /o_dacv[131]
+  (R) + 140  PO   /r_dacv[131]
+These are added as user mapped points:
+  (G) + 73   PO   /o_dacv[130]
+  (R) + 141  PO   /r_dacv[130]
+These are added as user mapped points:
+  (G) + 74   PO   /o_dacv[129]
+  (R) + 142  PO   /r_dacv[129]
+These are added as user mapped points:
+  (G) + 75   PO   /o_dacv[128]
+  (R) + 143  PO   /r_dacv[128]
+These are added as user mapped points:
+  (G) + 76   PO   /o_dacv[127]
+  (R) + 144  PO   /r_dacv[127]
+These are added as user mapped points:
+  (G) + 77   PO   /o_dacv[126]
+  (R) + 145  PO   /r_dacv[126]
+These are added as user mapped points:
+  (G) + 78   PO   /o_dacv[125]
+  (R) + 146  PO   /r_dacv[125]
+These are added as user mapped points:
+  (G) + 79   PO   /o_dacv[124]
+  (R) + 147  PO   /r_dacv[124]
+These are added as user mapped points:
+  (G) + 80   PO   /o_dacv[123]
+  (R) + 148  PO   /r_dacv[123]
+These are added as user mapped points:
+  (G) + 81   PO   /o_dacv[122]
+  (R) + 149  PO   /r_dacv[122]
+These are added as user mapped points:
+  (G) + 82   PO   /o_dacv[121]
+  (R) + 150  PO   /r_dacv[121]
+These are added as user mapped points:
+  (G) + 83   PO   /o_dacv[120]
+  (R) + 151  PO   /r_dacv[120]
+These are added as user mapped points:
+  (G) + 84   PO   /o_dacv[119]
+  (R) + 152  PO   /r_dacv[119]
+These are added as user mapped points:
+  (G) + 85   PO   /o_dacv[118]
+  (R) + 153  PO   /r_dacv[118]
+These are added as user mapped points:
+  (G) + 86   PO   /o_dacv[117]
+  (R) + 154  PO   /r_dacv[117]
+These are added as user mapped points:
+  (G) + 87   PO   /o_dacv[116]
+  (R) + 155  PO   /r_dacv[116]
+These are added as user mapped points:
+  (G) + 88   PO   /o_dacv[115]
+  (R) + 156  PO   /r_dacv[115]
+These are added as user mapped points:
+  (G) + 89   PO   /o_dacv[114]
+  (R) + 157  PO   /r_dacv[114]
+These are added as user mapped points:
+  (G) + 90   PO   /o_dacv[113]
+  (R) + 158  PO   /r_dacv[113]
+These are added as user mapped points:
+  (G) + 91   PO   /o_dacv[112]
+  (R) + 159  PO   /r_dacv[112]
+These are added as user mapped points:
+  (G) + 92   PO   /o_dacv[111]
+  (R) + 160  PO   /r_dacv[111]
+These are added as user mapped points:
+  (G) + 93   PO   /o_dacv[110]
+  (R) + 161  PO   /r_dacv[110]
+These are added as user mapped points:
+  (G) + 94   PO   /o_dacv[109]
+  (R) + 162  PO   /r_dacv[109]
+These are added as user mapped points:
+  (G) + 95   PO   /o_dacv[108]
+  (R) + 163  PO   /r_dacv[108]
+These are added as user mapped points:
+  (G) + 96   PO   /o_dacv[107]
+  (R) + 164  PO   /r_dacv[107]
+These are added as user mapped points:
+  (G) + 97   PO   /o_dacv[106]
+  (R) + 165  PO   /r_dacv[106]
+These are added as user mapped points:
+  (G) + 98   PO   /o_dacv[105]
+  (R) + 166  PO   /r_dacv[105]
+These are added as user mapped points:
+  (G) + 99   PO   /o_dacv[104]
+  (R) + 167  PO   /r_dacv[104]
+These are added as user mapped points:
+  (G) + 100  PO   /o_dacv[103]
+  (R) + 168  PO   /r_dacv[103]
+These are added as user mapped points:
+  (G) + 101  PO   /o_dacv[102]
+  (R) + 169  PO   /r_dacv[102]
+These are added as user mapped points:
+  (G) + 102  PO   /o_dacv[101]
+  (R) + 170  PO   /r_dacv[101]
+These are added as user mapped points:
+  (G) + 103  PO   /o_dacv[100]
+  (R) + 171  PO   /r_dacv[100]
+These are added as user mapped points:
+  (G) + 104  PO   /o_dacv[99]
+  (R) + 172  PO   /r_dacv[99]
+These are added as user mapped points:
+  (G) + 105  PO   /o_dacv[98]
+  (R) + 173  PO   /r_dacv[98]
+These are added as user mapped points:
+  (G) + 106  PO   /o_dacv[97]
+  (R) + 174  PO   /r_dacv[97]
+These are added as user mapped points:
+  (G) + 107  PO   /o_dacv[96]
+  (R) + 175  PO   /r_dacv[96]
+These are added as user mapped points:
+  (G) + 108  PO   /o_dacv[95]
+  (R) + 176  PO   /r_dacv[95]
+These are added as user mapped points:
+  (G) + 109  PO   /o_dacv[94]
+  (R) + 177  PO   /r_dacv[94]
+These are added as user mapped points:
+  (G) + 110  PO   /o_dacv[93]
+  (R) + 178  PO   /r_dacv[93]
+These are added as user mapped points:
+  (G) + 111  PO   /o_dacv[92]
+  (R) + 179  PO   /r_dacv[92]
+These are added as user mapped points:
+  (G) + 112  PO   /o_dacv[91]
+  (R) + 180  PO   /r_dacv[91]
+These are added as user mapped points:
+  (G) + 113  PO   /o_dacv[90]
+  (R) + 181  PO   /r_dacv[90]
+These are added as user mapped points:
+  (G) + 114  PO   /o_dacv[89]
+  (R) + 182  PO   /r_dacv[89]
+These are added as user mapped points:
+  (G) + 115  PO   /o_dacv[88]
+  (R) + 183  PO   /r_dacv[88]
+These are added as user mapped points:
+  (G) + 116  PO   /o_dacv[87]
+  (R) + 184  PO   /r_dacv[87]
+These are added as user mapped points:
+  (G) + 117  PO   /o_dacv[86]
+  (R) + 185  PO   /r_dacv[86]
+These are added as user mapped points:
+  (G) + 118  PO   /o_dacv[85]
+  (R) + 186  PO   /r_dacv[85]
+These are added as user mapped points:
+  (G) + 119  PO   /o_dacv[84]
+  (R) + 187  PO   /r_dacv[84]
+These are added as user mapped points:
+  (G) + 120  PO   /o_dacv[83]
+  (R) + 188  PO   /r_dacv[83]
+These are added as user mapped points:
+  (G) + 121  PO   /o_dacv[82]
+  (R) + 189  PO   /r_dacv[82]
+These are added as user mapped points:
+  (G) + 122  PO   /o_dacv[81]
+  (R) + 190  PO   /r_dacv[81]
+These are added as user mapped points:
+  (G) + 123  PO   /o_dacv[80]
+  (R) + 191  PO   /r_dacv[80]
+These are added as user mapped points:
+  (G) + 124  PO   /o_dacv[79]
+  (R) + 192  PO   /r_dacv[79]
+These are added as user mapped points:
+  (G) + 125  PO   /o_dacv[78]
+  (R) + 193  PO   /r_dacv[78]
+These are added as user mapped points:
+  (G) + 126  PO   /o_dacv[77]
+  (R) + 194  PO   /r_dacv[77]
+These are added as user mapped points:
+  (G) + 127  PO   /o_dacv[76]
+  (R) + 195  PO   /r_dacv[76]
+These are added as user mapped points:
+  (G) + 128  PO   /o_dacv[75]
+  (R) + 196  PO   /r_dacv[75]
+These are added as user mapped points:
+  (G) + 129  PO   /o_dacv[74]
+  (R) + 197  PO   /r_dacv[74]
+These are added as user mapped points:
+  (G) + 130  PO   /o_dacv[73]
+  (R) + 198  PO   /r_dacv[73]
+These are added as user mapped points:
+  (G) + 131  PO   /o_dacv[72]
+  (R) + 199  PO   /r_dacv[72]
+These are added as user mapped points:
+  (G) + 132  PO   /o_dacv[71]
+  (R) + 200  PO   /r_dacv[71]
+These are added as user mapped points:
+  (G) + 133  PO   /o_dacv[70]
+  (R) + 201  PO   /r_dacv[70]
+These are added as user mapped points:
+  (G) + 134  PO   /o_dacv[69]
+  (R) + 202  PO   /r_dacv[69]
+These are added as user mapped points:
+  (G) + 135  PO   /o_dacv[68]
+  (R) + 203  PO   /r_dacv[68]
+These are added as user mapped points:
+  (G) + 136  PO   /o_dacv[67]
+  (R) + 204  PO   /r_dacv[67]
+These are added as user mapped points:
+  (G) + 137  PO   /o_dacv[66]
+  (R) + 205  PO   /r_dacv[66]
+These are added as user mapped points:
+  (G) + 138  PO   /o_dacv[65]
+  (R) + 206  PO   /r_dacv[65]
+These are added as user mapped points:
+  (G) + 139  PO   /o_dacv[64]
+  (R) + 207  PO   /r_dacv[64]
+These are added as user mapped points:
+  (G) + 140  PO   /o_dacv[63]
+  (R) + 208  PO   /r_dacv[63]
+These are added as user mapped points:
+  (G) + 141  PO   /o_dacv[62]
+  (R) + 209  PO   /r_dacv[62]
+These are added as user mapped points:
+  (G) + 142  PO   /o_dacv[61]
+  (R) + 210  PO   /r_dacv[61]
+These are added as user mapped points:
+  (G) + 143  PO   /o_dacv[60]
+  (R) + 211  PO   /r_dacv[60]
+These are added as user mapped points:
+  (G) + 144  PO   /o_dacv[59]
+  (R) + 212  PO   /r_dacv[59]
+These are added as user mapped points:
+  (G) + 145  PO   /o_dacv[58]
+  (R) + 213  PO   /r_dacv[58]
+These are added as user mapped points:
+  (G) + 146  PO   /o_dacv[57]
+  (R) + 214  PO   /r_dacv[57]
+These are added as user mapped points:
+  (G) + 147  PO   /o_dacv[56]
+  (R) + 215  PO   /r_dacv[56]
+These are added as user mapped points:
+  (G) + 148  PO   /o_dacv[55]
+  (R) + 216  PO   /r_dacv[55]
+These are added as user mapped points:
+  (G) + 149  PO   /o_dacv[54]
+  (R) + 217  PO   /r_dacv[54]
+These are added as user mapped points:
+  (G) + 150  PO   /o_dacv[53]
+  (R) + 218  PO   /r_dacv[53]
+These are added as user mapped points:
+  (G) + 151  PO   /o_dacv[52]
+  (R) + 219  PO   /r_dacv[52]
+These are added as user mapped points:
+  (G) + 152  PO   /o_dacv[51]
+  (R) + 220  PO   /r_dacv[51]
+These are added as user mapped points:
+  (G) + 153  PO   /o_dacv[50]
+  (R) + 221  PO   /r_dacv[50]
+These are added as user mapped points:
+  (G) + 154  PO   /o_dacv[49]
+  (R) + 222  PO   /r_dacv[49]
+These are added as user mapped points:
+  (G) + 155  PO   /o_dacv[48]
+  (R) + 223  PO   /r_dacv[48]
+These are added as user mapped points:
+  (G) + 156  PO   /o_dacv[47]
+  (R) + 224  PO   /r_dacv[47]
+These are added as user mapped points:
+  (G) + 157  PO   /o_dacv[46]
+  (R) + 225  PO   /r_dacv[46]
+These are added as user mapped points:
+  (G) + 158  PO   /o_dacv[45]
+  (R) + 226  PO   /r_dacv[45]
+These are added as user mapped points:
+  (G) + 159  PO   /o_dacv[44]
+  (R) + 227  PO   /r_dacv[44]
+These are added as user mapped points:
+  (G) + 160  PO   /o_dacv[43]
+  (R) + 228  PO   /r_dacv[43]
+These are added as user mapped points:
+  (G) + 161  PO   /o_dacv[42]
+  (R) + 229  PO   /r_dacv[42]
+These are added as user mapped points:
+  (G) + 162  PO   /o_dacv[41]
+  (R) + 230  PO   /r_dacv[41]
+These are added as user mapped points:
+  (G) + 163  PO   /o_dacv[40]
+  (R) + 231  PO   /r_dacv[40]
+These are added as user mapped points:
+  (G) + 164  PO   /o_dacv[39]
+  (R) + 232  PO   /r_dacv[39]
+These are added as user mapped points:
+  (G) + 165  PO   /o_dacv[38]
+  (R) + 233  PO   /r_dacv[38]
+These are added as user mapped points:
+  (G) + 166  PO   /o_dacv[37]
+  (R) + 234  PO   /r_dacv[37]
+These are added as user mapped points:
+  (G) + 167  PO   /o_dacv[36]
+  (R) + 235  PO   /r_dacv[36]
+These are added as user mapped points:
+  (G) + 168  PO   /o_dacv[35]
+  (R) + 236  PO   /r_dacv[35]
+These are added as user mapped points:
+  (G) + 169  PO   /o_dacv[34]
+  (R) + 237  PO   /r_dacv[34]
+These are added as user mapped points:
+  (G) + 170  PO   /o_dacv[33]
+  (R) + 238  PO   /r_dacv[33]
+These are added as user mapped points:
+  (G) + 171  PO   /o_dacv[32]
+  (R) + 239  PO   /r_dacv[32]
+These are added as user mapped points:
+  (G) + 172  PO   /o_dacv[31]
+  (R) + 240  PO   /r_dacv[31]
+These are added as user mapped points:
+  (G) + 173  PO   /o_dacv[30]
+  (R) + 241  PO   /r_dacv[30]
+These are added as user mapped points:
+  (G) + 174  PO   /o_dacv[29]
+  (R) + 242  PO   /r_dacv[29]
+These are added as user mapped points:
+  (G) + 175  PO   /o_dacv[28]
+  (R) + 243  PO   /r_dacv[28]
+These are added as user mapped points:
+  (G) + 176  PO   /o_dacv[27]
+  (R) + 244  PO   /r_dacv[27]
+These are added as user mapped points:
+  (G) + 177  PO   /o_dacv[26]
+  (R) + 245  PO   /r_dacv[26]
+These are added as user mapped points:
+  (G) + 178  PO   /o_dacv[25]
+  (R) + 246  PO   /r_dacv[25]
+These are added as user mapped points:
+  (G) + 179  PO   /o_dacv[24]
+  (R) + 247  PO   /r_dacv[24]
+These are added as user mapped points:
+  (G) + 180  PO   /o_dacv[23]
+  (R) + 248  PO   /r_dacv[23]
+These are added as user mapped points:
+  (G) + 181  PO   /o_dacv[22]
+  (R) + 249  PO   /r_dacv[22]
+These are added as user mapped points:
+  (G) + 182  PO   /o_dacv[21]
+  (R) + 250  PO   /r_dacv[21]
+These are added as user mapped points:
+  (G) + 183  PO   /o_dacv[20]
+  (R) + 251  PO   /r_dacv[20]
+These are added as user mapped points:
+  (G) + 184  PO   /o_dacv[19]
+  (R) + 252  PO   /r_dacv[19]
+These are added as user mapped points:
+  (G) + 185  PO   /o_dacv[18]
+  (R) + 253  PO   /r_dacv[18]
+These are added as user mapped points:
+  (G) + 186  PO   /o_dacv[17]
+  (R) + 254  PO   /r_dacv[17]
+These are added as user mapped points:
+  (G) + 187  PO   /o_dacv[16]
+  (R) + 255  PO   /r_dacv[16]
+These are added as user mapped points:
+  (G) + 188  PO   /o_dacv[15]
+  (R) + 256  PO   /r_dacv[15]
+These are added as user mapped points:
+  (G) + 189  PO   /o_dacv[14]
+  (R) + 257  PO   /r_dacv[14]
+These are added as user mapped points:
+  (G) + 190  PO   /o_dacv[13]
+  (R) + 258  PO   /r_dacv[13]
+These are added as user mapped points:
+  (G) + 191  PO   /o_dacv[12]
+  (R) + 259  PO   /r_dacv[12]
+These are added as user mapped points:
+  (G) + 192  PO   /o_dacv[11]
+  (R) + 260  PO   /r_dacv[11]
+These are added as user mapped points:
+  (G) + 193  PO   /o_dacv[10]
+  (R) + 261  PO   /r_dacv[10]
+These are added as user mapped points:
+  (G) + 194  PO   /o_dacv[9]
+  (R) + 262  PO   /r_dacv[9]
+These are added as user mapped points:
+  (G) + 195  PO   /o_dacv[8]
+  (R) + 263  PO   /r_dacv[8]
+These are added as user mapped points:
+  (G) + 196  PO   /o_dacv[7]
+  (R) + 264  PO   /r_dacv[7]
+These are added as user mapped points:
+  (G) + 197  PO   /o_dacv[6]
+  (R) + 265  PO   /r_dacv[6]
+These are added as user mapped points:
+  (G) + 198  PO   /o_dacv[5]
+  (R) + 266  PO   /r_dacv[5]
+These are added as user mapped points:
+  (G) + 199  PO   /o_dacv[4]
+  (R) + 267  PO   /r_dacv[4]
+These are added as user mapped points:
+  (G) + 200  PO   /o_dacv[3]
+  (R) + 268  PO   /r_dacv[3]
+These are added as user mapped points:
+  (G) + 201  PO   /o_dacv[2]
+  (R) + 269  PO   /r_dacv[2]
+These are added as user mapped points:
+  (G) + 202  PO   /o_dacv[1]
+  (R) + 270  PO   /r_dacv[1]
+These are added as user mapped points:
+  (G) + 203  PO   /o_dacv[0]
+  (R) + 271  PO   /r_dacv[0]
+// Command:    ADD MApped Points -RULE "o_dat\[%d\]" "r_comp\[@1\]"
+These are added as user mapped points:
+  (G) + 234  PO   /o_dat[17]
+  (R) + 74   PO   /r_comp[17]
+These are added as user mapped points:
+  (G) + 235  PO   /o_dat[16]
+  (R) + 75   PO   /r_comp[16]
+These are added as user mapped points:
+  (G) + 236  PO   /o_dat[15]
+  (R) + 76   PO   /r_comp[15]
+These are added as user mapped points:
+  (G) + 237  PO   /o_dat[14]
+  (R) + 77   PO   /r_comp[14]
+These are added as user mapped points:
+  (G) + 238  PO   /o_dat[13]
+  (R) + 78   PO   /r_comp[13]
+These are added as user mapped points:
+  (G) + 239  PO   /o_dat[12]
+  (R) + 79   PO   /r_comp[12]
+These are added as user mapped points:
+  (G) + 240  PO   /o_dat[11]
+  (R) + 80   PO   /r_comp[11]
+These are added as user mapped points:
+  (G) + 241  PO   /o_dat[10]
+  (R) + 81   PO   /r_comp[10]
+These are added as user mapped points:
+  (G) + 242  PO   /o_dat[9]
+  (R) + 82   PO   /r_comp[9]
+These are added as user mapped points:
+  (G) + 243  PO   /o_dat[8]
+  (R) + 83   PO   /r_comp[8]
+These are added as user mapped points:
+  (G) + 244  PO   /o_dat[7]
+  (R) + 84   PO   /r_comp[7]
+These are added as user mapped points:
+  (G) + 245  PO   /o_dat[6]
+  (R) + 85   PO   /r_comp[6]
+These are added as user mapped points:
+  (G) + 246  PO   /o_dat[5]
+  (R) + 86   PO   /r_comp[5]
+These are added as user mapped points:
+  (G) + 247  PO   /o_dat[4]
+  (R) + 87   PO   /r_comp[4]
+These are added as user mapped points:
+  (G) + 248  PO   /o_dat[3]
+  (R) + 88   PO   /r_comp[3]
+These are added as user mapped points:
+  (G) + 249  PO   /o_dat[2]
+  (R) + 89   PO   /r_comp[2]
+These are added as user mapped points:
+  (G) + 250  PO   /o_dat[1]
+  (R) + 90   PO   /r_comp[1]
+These are added as user mapped points:
+  (G) + 251  PO   /o_dat[0]
+  (R) + 91   PO   /r_comp[0]
+// Command:    ADD MApped Points -RULE "o_cmpsta\[%d\]" "r_cmpsta\[@1\]"
+These are added as user mapped points:
+  (G) + 296  PO   /o_cmpsta[7]
+  (R) + 296  PO   /r_cmpsta[7]
+These are added as user mapped points:
+  (G) + 297  PO   /o_cmpsta[6]
+  (R) + 297  PO   /r_cmpsta[6]
+These are added as user mapped points:
+  (G) + 298  PO   /o_cmpsta[5]
+  (R) + 298  PO   /r_cmpsta[5]
+These are added as user mapped points:
+  (G) + 299  PO   /o_cmpsta[4]
+  (R) + 299  PO   /r_cmpsta[4]
+These are added as user mapped points:
+  (G) + 300  PO   /o_cmpsta[3]
+  (R) + 300  PO   /r_cmpsta[3]
+These are added as user mapped points:
+  (G) + 301  PO   /o_cmpsta[2]
+  (R) + 301  PO   /r_cmpsta[2]
+These are added as user mapped points:
+  (G) + 302  PO   /o_cmpsta[1]
+  (R) + 302  PO   /r_cmpsta[1]
+These are added as user mapped points:
+  (G) + 303  PO   /o_cmpsta[0]
+  (R) + 303  PO   /r_cmpsta[0]
+// Command:    ADD MApped Points -RULE "o_dactl\[%d\]" "r_dacctl\[@1\]"
+These are added as user mapped points:
+  (G) + 288  PO   /o_dactl[7]
+  (R) + 288  PO   /r_dacctl[7]
+These are added as user mapped points:
+  (G) + 289  PO   /o_dactl[6]
+  (R) + 289  PO   /r_dacctl[6]
+These are added as user mapped points:
+  (G) + 290  PO   /o_dactl[5]
+  (R) + 290  PO   /r_dacctl[5]
+These are added as user mapped points:
+  (G) + 291  PO   /o_dactl[4]
+  (R) + 291  PO   /r_dacctl[4]
+These are added as user mapped points:
+  (G) + 292  PO   /o_dactl[3]
+  (R) + 292  PO   /r_dacctl[3]
+These are added as user mapped points:
+  (G) + 293  PO   /o_dactl[2]
+  (R) + 293  PO   /r_dacctl[2]
+These are added as user mapped points:
+  (G) + 294  PO   /o_dactl[1]
+  (R) + 294  PO   /r_dacctl[1]
+These are added as user mapped points:
+  (G) + 295  PO   /o_dactl[0]
+  (R) + 295  PO   /r_dacctl[0]
+// Command:    ADD MApped Points -RULE "x_daclsb\[%d\]" "r_daclsb_x\[@1\]"
+These are added as user mapped points:
+  (G) + 304  PO   /x_daclsb[5]
+  (R) + 304  PO   /r_daclsb_x[5]
+These are added as user mapped points:
+  (G) + 305  PO   /x_daclsb[4]
+  (R) + 305  PO   /r_daclsb_x[4]
+These are added as user mapped points:
+  (G) + 306  PO   /x_daclsb[3]
+  (R) + 306  PO   /r_daclsb_x[3]
+These are added as user mapped points:
+  (G) + 307  PO   /x_daclsb[2]
+  (R) + 307  PO   /r_daclsb_x[2]
+These are added as user mapped points:
+  (G) + 308  PO   /x_daclsb[1]
+  (R) + 308  PO   /r_daclsb_x[1]
+These are added as user mapped points:
+  (G) + 309  PO   /x_daclsb[0]
+  (R) + 309  PO   /r_daclsb_x[0]
+// Command:    REPort UNmapped Points -SUMmary
+================================================================================
+Revised:
+--------------------------------------------------------------------------------
+Unmapped points   E         Total   
+--------------------------------------------------------------------------------
+Not-mapped        35        35      
+================================================================================
+// Command:    ADD COmpared Points -All
+// 593 compared points added to compare list
+// Command:    COMpare -NONEQ_Print -ABORT_Print
+================================================================================
+Compared points      PO     DFF       Total   
+--------------------------------------------------------------------------------
+Equivalent           272    321       593     
+================================================================================
+// Command:    DATE
+Mon Jan 22 18:09:39 2024
+// Command: exit -f

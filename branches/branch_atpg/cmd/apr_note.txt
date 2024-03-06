@@ -1,0 +1,46 @@
+
+1). spare cells
+	AND2X1    2.64x3.92  x200
+	OR2X1     2.64x3.92  x200
+	INVX1     1.32x3.92  x400
+	SDFFQX1  13.86x3.92  x20
+
+2). power/ground pins (non-digital signals other than power straps)
+	a). macro (other than IO cells)
+	    U0_CODE_0_ (ATO0008KX8MX180LBX4DA)
+	    U0_CODE_1_ (ATO0008KX8MX180LBX4DA)
+	    U0_SRAM (MSL18B_1536X8_RW10TM4_16_20221107) - 3/15 - kimking@canyon-semi.com.tw
+	b). IO cell
+	    IOBMURUDA_A0, IOBMURUDA_A1
+	    IODMURUDA_A0
+	c). fully power/analog
+	    U0_ANALOG_TOP (analog_top) <-> U0_CODE_0_, U0_CODE_1_
+		VPP_OTP (Z/1.8/3.8V) <---> VDDP
+		VDD       (1.8) <--------> VDD
+	    U0_ANALOG_TOP (analog_top) <-> all IO cells (IOBMURUDA_A0,IOBMURUDA_A1,IODMURUDA_A0)
+	        RSTB_5 (ANA_RSTB5) <-----> RSTB_5
+	        V1P1 (V1P1) <------------> VB
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO5 (IOBMURUDA_A1)
+	        GP5_ANA_R (GP5_ANA_R) <--> ANA_R
+	        GP5_ANA_P (ANAP_GP5) <--> ANA_P
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO4 (IOBMURUDA_A1)
+	        GP4_ANA_R (GP4_ANA_R) <--> ANA_R
+	        GP4_ANA_P (ANAP_GP4) <--> ANA_P
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO3 (IOBMURUDA_A1)
+	        GP3_ANA_R (GP3_ANA_R) <--> ANA_R
+	        GP3_ANA_P (ANAP_GP3) <--> ANA_P
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO2 (IOBMURUDA_A1)
+	        GP2_ANA_R (GP2_ANA_R) <--> ANA_R
+	        GP2_ANA_P (ANAP_GP2) <--> ANA_P
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO1 (IOBMURUDA_A1)
+	        GP1_ANA_R (GP1_ANA_R) <--> ANA_R
+	        GP1_ANA_P (ANAP_GP1) <--> ANA_P
+	    U0_ANALOG_TOP (analog_top) <-> IO cell PAD_GPIO_TS (IOBMURUDA_A1)
+	        TS_ANA_R (TS_ANA_R) <----> ANA_R
+	        TS_ANA_P (ANAP_TS) <----> ANA_P
+
+6). special rules for APR
+    a). don't touch U0_CORE/U0_* and U0_CORE/u0_regbank/U0_* cells
+    b). use clock cells (buffer/inverter...) as possible on clock path
+    c). don't use clock cells as possible on non-clock path
+

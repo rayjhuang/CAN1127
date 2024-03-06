@@ -1,0 +1,46 @@
+
+   suppress_message VER-936 ;# the undeclared symbol... , which is 'wire'.
+   suppress_message VER-976 ;# The delay specification for net declaration is ignored.
+   suppress_message VER-173 ;# delays for continuous assignment are ignored.
+
+   set verilogout_unconnected_prefix _UNCNTD_ ;# useless?
+   set verilogout_show_unconnected_pins true
+   set verilogout_higher_designs_first true
+   set verilogout_equation false
+#  set verilogout_no_tri true
+   set compile_seqmap_enable_output_inversion false
+   set mw_hdl_create_multi_pg_net true
+   report_app_var verilogout*
+
+   set compile_seqmap_propagate_constants false
+   set compile_seqmap_propagate_high_effort false
+   set test_stil_multiclock_capture_procedures true
+   set test_default_scan_style multiplexed_flip_flop
+   set power_cg_auto_identify true
+
+   define_design_lib work -path ./work
+   set search_path [ list \
+		. \
+		${synopsys_root}/libraries/syn \
+		]
+#		../maxchip/otp \
+#		../../can1118/maxchip/std.lib/front_end/synopsys \
+
+   set target_library [ list \
+		MSL18B_1536X8_RW10TM4_16_20221107_worst_syn.db \
+		std_worst.db \
+		STX018SIO1P4M_WORST.db \
+		ATO0008KX8MX180LBX4DA_SS_1p620v_125c.db \
+		]
+#		VCSB150E18S640X8B3IDBAAW1_1P62V_125C_SS.db \
+#		VSC18VSSB15GB15S_1P62V_125C.db \
+#		./SC018S_512X8_AR1_WORST.db \
+#		./GM2_M1O_1K256X16_3p3T18GP_U05_WORST.db \
+#		GM_M1O_8K256X16_5T18_W05_WORST.db \
+#		../maxchip/std.lib/front_end/synopsys/STX018STD_3p3V_WORST.db \
+
+   set synthetic_library [ list dw_foundation.sldb ]
+   set link_library [ concat {*} $target_library $synthetic_library ]
+
+   echo $target_library $link_library
+

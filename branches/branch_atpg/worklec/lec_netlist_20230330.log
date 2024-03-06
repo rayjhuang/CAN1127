@@ -1,0 +1,133 @@
+                          CONFORMAL (R)
+                   Version 10.10-s400 (24-May-2011) (64 bit executable)
+   Copyright (c) Cadence Design Systems, Inc., 1997-2011. All Rights Reserved
+
+
+This program is proprietary and confidential information belonging to
+Cadence Design Systems, Inc., and may be used and disclosed only as authorized
+in a license agreement controlling such use and disclosure.
+
+// Command:    SET system mode setup
+// Command:    PRINTENV DCODE
+Variable 'DCODE' = '20230330'
+// Command:    PRINTENV RELC     // 20221021
+Variable 'RELC' = '20230330'
+// Command:    PRINTENV RETC     // 221022
+Variable 'RETC' is not defined
+// Command:    PRINTENV RET_PATH // ~king/WORK/CAN1127A0_A0543A0/APR_LAYOUT
+Variable 'RET_PATH' is not defined
+// Command:    PRINTENV PJ_PATH  // /mnt/app1/ray/project/can????
+Variable 'PJ_PATH' = '/mnt/app1/ray/project/can1127'
+// Command:    ls -l gate*
+lrwxrwxrwx 1 ray canyon 31 Mar 13 18:44 gate.v -> ../work1/syn/chiptop_1127a0_2.v
+// Command:    SETENV SRC $PJ_PATH/release/$RELC/chiptop_1127a0_1.v
+Set variable 'SRC' as '/mnt/app1/ray/project/can1127/release/20230330/chiptop_1127a0_1.v'
+// Command:    SETENV TAR $PJ_PATH/work1/syn/chiptop_1127a0_2.v
+Set variable 'TAR' as '/mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v'
+// Command:    REAd LIbrary -Both    -REPlace    $PJ_PATH/macro/std.v
+// Parsing file /mnt/app1/ray/project/can1127/macro/std.v ...
+// Warning: (RTL1.5a) Assignment with RHS bit width is greater than LHS bit width (occurrence:10)
+// Warning: (RTL7.2) Gate or transistor primitive is using weak attributes (occurrence:1)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:296)
+// Warning: (RTL14.1) Fanout load of the signal is removed (occurrence:616)
+// Note: (VLG8) Buffer inserted (occurrence:1456)
+// Note: (VLG9.2) `define macro is used (occurrence:14)
+// Warning: (UDP3.2) Primitive has unspecified term(s) (occurrence:4)
+// Warning: (DIR6.1) Ignored compiler directive is detected (occurrence:670)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:1382)
+// Warning: (HRC1.4) Module/entity is empty (blackboxed) (occurrence:1)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1)
+// Note: Read VERILOG library successfully
+// Command:    REAd LIbrary -Revised -APPend     $PJ_PATH/macro/empty.v
+// Parsing file /mnt/app1/ray/project/can1127/macro/empty.v ...
+// Warning: (RTL2.13) Undriven pin is detected (occurrence:22)
+// Warning: (HRC1.4) Module/entity is empty (blackboxed) (occurrence:5)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:72)
+// Note: Read VERILOG library successfully
+// Command:    REAd LIbrary -Revised -APPend     $PJ_PATH/macro/anatop_1127a0.v -Define ANATOP_EMPTY
+// Parsing file /mnt/app1/ray/project/can1127/macro/anatop_1127a0.v ...
+// Warning: (RTL2.13) Undriven pin is detected (occurrence:59)
+// Warning: (DIR6.1) Ignored compiler directive is detected (occurrence:1)
+// Warning: (DIR6.2) Supported compiler directive is detected (occurrence:6)
+// Warning: (HRC1.4) Module/entity is empty (blackboxed) (occurrence:6)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:286)
+// Note: Read VERILOG library successfully
+// Command:    REAd DEsign -VERILOG2K -root chiptop_1127a0 -Golden  $SRC
+// Parsing file /mnt/app1/ray/project/can1127/release/20230330/chiptop_1127a0_1.v ...
+// Golden root module is set to 'chiptop_1127a0'
+// Warning: (RTL2.13) Undriven pin is detected (occurrence:2141)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:2183)
+// Warning: (HRC1.4) Module/entity is empty (blackboxed) (occurrence:6)
+// Warning: (HRC2.2) Module/entity exists in library and design (occurrence:6)
+// Warning: (HRC3.5a) Open input/inout port connection is detected (occurrence:2)
+// Note: (HRC3.5b) Open output port connection is detected (occurrence:76)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1474)
+// Warning: (HRC3.16) A wire is declared, but not used in the module (occurrence:4)
+// Warning: Total black box modules referenced in Golden = 6
+// Warning: There are 2082 undriven nets in Golden
+// Warning: There are 2086 undriven pins in Golden
+// Note: Read VERILOG design successfully
+// Command:    REAd DEsign -Verilog   -root chiptop_1127a0 -Revised $TAR
+// Parsing file /mnt/app1/ray/project/can1127/work1/syn/chiptop_1127a0_2.v ...
+// Revised root module is set to 'chiptop_1127a0'
+// Warning: (RTL2.13) Undriven pin is detected (occurrence:2086)
+// Warning: (RTL14) Signal has input but it has no output (occurrence:2183)
+// Warning: (HRC3.5a) Open input/inout port connection is detected (occurrence:2)
+// Note: (HRC3.5b) Open output port connection is detected (occurrence:76)
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1188)
+// Warning: Total black box modules referenced in Revised = 6
+// Warning: There are 2082 undriven nets in Revised
+// Warning: There are 2086 undriven pins in Revised
+// Note: Read VERILOG design successfully
+// Command:    SET flatten model -gated_clock -seq_constant
+// Command:    SET system mode lec
+// Processing Golden ...
+// Modeling Golden ...
+// (F1) Created 1 wire resolution gate(s) due to multiple-driven net(s)
+// Processing Revised ...
+// Modeling Revised ...
+// (F1) Created 1 wire resolution gate(s) due to multiple-driven net(s)
+// Balanced modeling (auto) mapped 7208 out of 7208 DFF/DLATs
+// (F14) Remodeled 3240 gated-clock DFF/DLAT(s)
+// (F32) Created 4 Z gate(s) for floating net(s) and floating pin(s)
+// (F28) Converted 2082 internal output port(s) to inout port(s)
+// (F14) Remodeled 3240 gated-clock DFF/DLAT(s)
+// (F32) Created 4 Z gate(s) for floating net(s) and floating pin(s)
+// (F28) Converted 2082 internal output port(s) to inout port(s)
+// Mapping key points ...
+================================================================================
+Mapped points: SYSTEM class
+--------------------------------------------------------------------------------
+Mapped points     PI     PO     DFF    DLAT   Z      BBOX      Total   
+--------------------------------------------------------------------------------
+Golden            39     22     3255   6      4      13        3339    
+--------------------------------------------------------------------------------
+Revised           39     22     3255   6      4      13        3339    
+================================================================================
+Unmapped points:
+================================================================================
+Golden:
+--------------------------------------------------------------------------------
+Unmapped points   DLAT      Total   
+--------------------------------------------------------------------------------
+Unreachable       343       343     
+================================================================================
+Revised:
+--------------------------------------------------------------------------------
+Unmapped points   DLAT      Total   
+--------------------------------------------------------------------------------
+Unreachable       343       343     
+================================================================================
+// Command:    ADD COmpared points -all
+// 3296 compared points added to compare list
+// Command:    DATE
+Thu Mar 30 16:15:01 2023
+// Command:    COMpare -NONEQ_Print
+================================================================================
+Compared points      PO     DFF    DLAT   BBOX      Total   
+--------------------------------------------------------------------------------
+Equivalent           22     3255   6      13        3296    
+================================================================================
+// Command:    DATE
+Thu Mar 30 16:15:01 2023
+// Command:    EXIt -F

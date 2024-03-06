@@ -1,0 +1,103 @@
+Tue Mar 28 18:22:46 CST 2023 --- start syn.tcl
+|    r_lt_gpi_reg     | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+Warning: In design 'chiptop_1127a0', input pin 'VDD' of leaf cell 'U0_CODE[0]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'chiptop_1127a0', input pin 'VSS' of leaf cell 'U0_CODE[0]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'chiptop_1127a0', input pin 'VDD' of leaf cell 'U0_CODE[1]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'chiptop_1127a0', input pin 'VSS' of leaf cell 'U0_CODE[1]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: No scan equivalent exists for cell U0_CORE/r_lt_gpi_reg[3] (DLNQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/d_dodat_reg[4] (DFFQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/u0_mpb/pg0_wrwait_reg (DFFRQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/u0_ictlr/cs_n_reg (DFFNQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/u0_regbank/osc_gate_n_reg[0] (DFFNRQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/u0_i2cslv/rwbuf_reg[0] (DFFSQX4). (TEST-120)
+Warning: No scan equivalent exists for cell U0_CORE/u0_i2cslv/db_scl/r_i2c_reg (DFFSQXX4). (TEST-120)
+                             Clock Gating Summary
+          ------------------------------------------------------------
+          |    Number of Clock gating elements    |      339         |
+          |                                       |                  |
+          |    Number of Gated registers          |  2781 (85.39%)   |
+          |                                       |                  |
+          |    Number of Ungated registers        |   476 (14.61%)   |
+          |                                       |                  |
+          |    Total number of registers          |     3257         |
+          ------------------------------------------------------------
+Total cell area:                388367.171706
+Total area:                 undefined
+Total cell area:               1288197.937331
+Total area:                 undefined
+Tue Mar 28 18:24:27 CST 2023 --- start scan.tcl
+Warning: No scan equivalent exists for cell r_lt_gpi_reg_1_ (DLNQX1). (TEST-120)
+ Warning: Clock input XG of nonscan DLAT r_lt_gpi_reg_2_ cannot capture data. (C16-1)
+ test coverage                            95.50%
+Scan chain 'chain_0' (DI_GPIO[0] --> DO_GPIO[5]) contains 1629 cells:
+Scan chain 'chain_1' (DI_GPIO[1] --> DO_GPIO[6]) contains 1628 cells:
+Begin Scan chain violations...
+Scan chain violations completed...
+reg_summary
+
+register summary:
+--------
+3264	flip-flop
+4	latch
+3252	-	-	clock-leaf
+	0	-	CLK
+		0	rise
+		0	fall
+	3251	-	MCLK
+		3225	rise
+		26	fall
+
+-	non-leaf register:
+	--------
+	U0_CORE/r_lt_gpi_reg_3_
+	U0_CORE/r_lt_gpi_reg_1_
+	U0_CORE/r_lt_gpi_reg_2_
+	U0_CORE/r_lt_gpi_reg_0_
+	U0_CORE/u0_regx/lt_aswk_reg_0_
+Total cell area:                427832.323568
+Total area:                 undefined
+Total cell area:               1327694.135593
+Total area:                 undefined
+         COMP_O, CCI2C_EN, RSTB, SLEEP, OSC_LOW, OSC_STOP, PWRDN, VPP_0V,
+         VPP_SEL, LDO3P9V, OSC_O, RD_DET, OCP_SEL, CC1_DOB, CC2_DOB, CC1_DI,
+         CC2_DI, DP_COMP, DN_COMP, DN_FAULT, LFOSC_ENB, VPP_OTP, IO_RSTB5,
+        .VPP_ZERO(VPP_0V), .OSC_O(OSC_O), .RD_DET(RD_DET), .IMP_OSC(IMP_OSC), 
+        .SCP(srci[3]), .UVP(srci[0]), .LDO3P9V(LDO3P9V), .VPP_SEL(VPP_SEL), 
+        di_xanav[3]), .VPP_OTP(VPP_OTP), .RSTB_5(IO_RSTB5), .V1P1(V1P1), 
+        PMEM_CLK[0]), .PGM(n1), .RE(PMEM_RE), .TWLB(PMEM_TWLB), .VSS(), 
+        .VDD(), .VDDP(VPP_OTP), .SAP(PMEM_SAP), .Q(PMEM_Q0) );
+        PMEM_CLK[1]), .PGM(PMEM_PGM), .RE(PMEM_RE), .TWLB(PMEM_TWLB), .VSS(
+        ), .VDD(), .VDDP(VPP_OTP), .SAP(PMEM_SAP), .Q(PMEM_Q1) );
+        .PMEM_RE(PMEM_RE), .PMEM_PGM(PMEM_PGM), .VPP_SEL(VPP_SEL), .VPP_0V(
+        VPP_0V), .SRAM_WEB(SRAM_WEB), .SRAM_CEB(SRAM_CEB), .SRAM_OEB(SRAM_OEB), 
+        PMEM_PGM, VPP_SEL, VPP_0V, SRAM_WEB, SRAM_CEB, SRAM_OEB, SRAM_CLK, 
+         VPP_SEL, VPP_0V, SRAM_WEB, SRAM_CEB, SRAM_OEB, SRAM_CLK, TX_DAT,
+  NOR21XL U415 ( .B(PWRDN), .A(n318), .Y(VPP_0V) );
+  NOR21XL U736 ( .B(r_vpp_en), .A(n72), .Y(VPP_SEL) );
+module ATO0008KX8MX180LBX4DA ( A, CSB, CLK, PGM, RE, TWLB, VSS, VDD, VDDP, SAP, 
+  input CSB, CLK, PGM, RE, VSS, VDD, VDDP;
+        OSC_LOW, OSC_STOP, PWRDN, VPP_ZERO, OSC_O, RD_DET, IMP_OSC, DRP_OSC, 
+        STB_RP, RD_ENB, OCP, SCP, UVP, LDO3P9V, VPP_SEL, CC1_DOB, CC2_DOB, 
+        OCP_160M, OPTO1, OPTO2, VPP_OTP, RSTB_5, V1P1, TS_ANA_R, GP5_ANA_R, 
+         OSC_STOP, PWRDN, VPP_ZERO, STB_RP, RD_ENB, LDO3P9V, VPP_SEL, CC1_DOB,
+         DP_COMP, DN_FAULT, OCP_80M, OCP_160M, OPTO1, OPTO2, VPP_OTP, RSTB_5,
+        PMEM_CLK[0]), .PGM(n1), .RE(PMEM_RE), .TWLB(PMEM_TWLB), .VSS(), 
+        .VDD(), .VDDP(VPP_OTP), .SAP(PMEM_SAP), .Q(PMEM_Q0) );
+  ATO0008KX8MX180LBX4DA U0_CODE_1_ ( .A(PMEM_A), .CSB(PMEM_CSB), .CLK(
+        PMEM_CLK[1]), .PGM(PMEM_PGM), .RE(PMEM_RE), .TWLB(PMEM_TWLB), .VSS(
+        ), .VDD(), .VDDP(VPP_OTP), .SAP(PMEM_SAP), .Q(PMEM_Q1) );
+  core_a0 U0_CORE ( .SRCI(srci), .XANAV({1'b0, di_xanav}), .BCK_REGX({
+Tue Mar 28 18:26:23 CST 2023 --- start exist.tcl
+ Warning: Clock input XG of nonscan DLAT U0_CORE/r_lt_gpi_reg_0_ cannot capture data. (C16-1)
+ Warning: Clock input XG of nonscan DLAT U0_CORE/r_lt_gpi_reg_2_ cannot capture data. (C16-2)
+ Warning: Clock input XG of nonscan DLAT U0_CORE/r_lt_gpi_reg_1_ cannot capture data. (C16-3)
+ Warning: Clock input XG of nonscan DLAT U0_CORE/r_lt_gpi_reg_3_ cannot capture data. (C16-4)
+Tue Mar 28 18:26:48 CST 2023 --- start tmax.tcl
+./syn/tmax_20230313.log: test coverage                            96.81%
+./syn/tmax_20230313.log: test coverage                            90.03%
+./syn/tmax_20230317.log: test coverage                            96.81%
+./syn/tmax_20230317.log: test coverage                            90.03%
+./syn/tmax_20230328.log: test coverage                            96.75%
+./syn/tmax_20230328.log: test coverage                            90.21%
+run.sh time:
+273

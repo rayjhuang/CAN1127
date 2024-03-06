@@ -1,0 +1,61 @@
+
+#  svnserve -d --listen-port 1111
+#  svnserve -d --listen-port 1110 -R -r ~/project/svn
+##             --pid-file=svnserve.pid
+
+#  ps -Af | grep svn
+
+## in ~/svn/can1127/conf/svnserve.conf
+## un-comment anon-access
+##            auth-access
+##            password-db
+## in ~/svn/can1127/conf/passwd
+## add user
+
+#  su git
+#  svnadmin create ~/svn/can1127
+## svnadmin hotcopy ~/steven/project/svn/can1121.repository ~/svn/can1121.repository
+## to find those user-writable but group not writable files
+#  find ~/svn/can1127 -perm -u=w ! -perm -g+w
+#  chmod g+w `!!`
+#  svn mkdir --parents -m"creating basic directory structure" \
+      file:///mnt/app1/git/svn/can1127/trunk \
+      file:///mnt/app1/git/svn/can1127/branches \
+      file:///mnt/app1/git/svn/can1127/tags
+
+
+##### S T A R T ##### new/empty project, new repository #####
+#  mkdir ~/project/can1127
+## sed 's/newproj/can1127/g' ~git/svn/svn_note.txt > ~/project/can1127/svn_note.txt
+
+## to create .svn in a initial/developing copy, ./can1127
+## ./can1127 can already been there or not
+## ./can1127 should not contain any .svn
+#  svn co file:///mnt/app1/git/svn/can1127/trunk ~/project/can1127
+
+   svn add --parents ` \
+      find ./* -name '*.[vhcf]' -o -name '*.sv'  \
+            -o -name '*.sdc' -o -name '*.tcl' -o -name '*.cmd' \
+            -o -name '*.txt' \
+            -o -name '*.ucf' \
+            -o -name '*.A51' -o -name '*.hex' -o -name '*.memh' \
+            -o -name '*.p[ly]' -o -name '*.sh' \
+   `
+   svn ci
+
+## useful svn commands
+#% svn ls -Rvr HEAD  ;# list all of the repository
+#% svn log  -r HEAD
+#% svn diff --diff-cmd diff -x "-b" svn_note.txt
+#% svn st -q
+#% svn up -r PREV novas.rc
+
+#% svn info
+#% svn sw file:///mnt/app1/git/svn/can1127/trunk
+
+   svn copy file:///mnt/app1/git/svn/can1127/trunk \
+            file:///mnt/app1/git/svn/can1127/branches/branch_01 \
+            -m "creating a new branch for an additional zero-bit write"
+   svn sw file:///mnt/app1/git/svn/can1127/branches/branch_01
+   svn ci -m "commit the copied/modified branch"
+

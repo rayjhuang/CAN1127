@@ -1,0 +1,1 @@
+../cmd/stm_list.sh

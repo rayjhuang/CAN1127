@@ -1,0 +1,198 @@
+//----------------------------------------------------------------------------
+// Revision history:
+// Rev0.3	2021/6/3
+//	1. Fixing typo for defining Y address and Q address
+//	2. Fixing reserved_address_warning setup for supporting auto config.
+//
+// Rev0.2	2021/5/26
+//	1. Adding HaveDummyFlag
+//
+// Rev0.1       2021/4/26
+//      1. Copy test from AT1K64T40LLP7ZA V0.4 and modify the project name and model name
+//      2. Remove unused ports
+//
+//----------------------------------------------------------------------------
+// Module Name   : ATO0008KX8MX180LBX4DA 
+//----------------------------------------------------------------------------
+// Pin List
+//		A[numAddr-1:0]: Address (I) 
+//		Q: Data output (O)
+//		CSB: Chip select, low active (I) 
+//		CLK: R/W strobe; signal from system Clock (I) 
+//		PGM: Program enable, high active (I) 
+//		RE: Read enable , high active (I) 
+//		TWLB[1:0]: Turn on even/odd, normal WLs or spare WL (I)
+//		SAP[1:0]: Sense Amplifier Pulse modes. Sensing pulse: 00/01 for CLK high, 
+//			  10 for long and 11 for short pulses. Not hardwired to any values. Default 10.
+//		VDDP: High voltage input pin for program and read (P)
+//		VSS: GND pins (G)
+//		VDD: Core supply voltage pins (P)
+//----------------------------------------------------------------------------
+//ReadMe: 1. When back annotation , please define "SET_ANNOTATE".
+//        2. Load OTP data from loadfile.txt, please define "SET_LOADFILE".
+//           example: ncverilog  <verilogfilename> +define+SET_ANNOTATE
+//                 vcs <verilogfilename> +define+SET_ANNOTATE
+//
+//loadfile.txt bit map format in hexadecimal
+//Please refer to loadfile.txt generate from the gen_loadfile task in the testbench.
+//                           Q = A[9:5]
+//                                          Col=A[4:0]
+//                              A[4:0]=5'h1f    ...    A[4:0]=5'h00
+//              A[15:10]=6'h00  . . . . . . . . . . . . .
+//                              . Q
+//                              .   Q
+//      Row=A[15:10]        ... .     Q
+//                              .       
+//                              .         
+//              A[15:10]=6'h6f  .     
+//         redundant_row_bank_0 .	
+//----------------------------------------------------------------------------
+
+	parameter test_case = 1; 	
+
+	// !!!!!!!!!!!!!!!  Y is refering to COLUMNS  !!!!!!!!!!!!!!!
+	// !!!!!!!!!!!!!!!  X is refering to ROWS     !!!!!!!!!!!!!!!
+
+	// Full Address bit assignment is {[AX_start:AX_end],A[10],A[9],[AQ_start,AQ_end],[AY_start:AY_end]}
+	// [AX_start,AX_end] is the row address and alway exclude Bank Select A[10]
+	// A[10] is used as the Upper/Lower half-select (or Bank select, BankA[]) of a 64-bit double word. <could be more than one bit according to datasheet defines in other project>
+	// A[9] is used only when T1PC=1 as using full address programming to select the upper/lower byte.
+	// [AQ_start:AQ_end] is upper address of the column
+	// [AY_start:AY_end] is lower address of the column
+
+
+
+// **********************************************************************
+// ****** Structure of all QDs New Parameter from Thomas, 2021-4-1 ******
+// **********************************************************************
+
+	parameter numQDperCol = 1;				// number of QDs per column (as 2 to the power of 0 that cover full row range) 
+	parameter numQDperRow = 1;				// number of QDs per row (as 2 to the power of 2 that require to cover full column range)
+	parameter numQDColSel = 0;				// 2 to the power of the QD-Column-Select-width(numQDColSel) that cover all QDs per row
+	parameter numQDRowSel = 0;				// 2 to the power of the QD-Row-Select-width(numQDRowSel) that cover full address range of all QDs per column
+	parameter numQDTotal = numQDperCol * numQDperRow;	// Total number of QDs
+	parameter numQDOutTol = numQDperRow;			// Total number of QDs ouput at the same time <examples: in between 1 and numQDTotal, in the power of 2, as 1, 2, 4, 8, or 16.
+	parameter numUpAddr = numQDColSel + numQDRowSel;	// < Example: if integrated 5 to 8 QDs per column and 3 to 4 QDs per row, extra address width will be 3 + 2 = 5 extra Upper/higher address bits >
+
+	parameter numPDBitTotal = 0;				// Total number of Programming D's bits <When numPDBitTotal is less than 2, T1PC must be 1>
+
+	parameter BankAXYSelBit4 = 0;				// The address bit assigned for selecting Upper Bank and upper column address <such as A[19:16] and [12:9] etc.> <equal to 0 means doesnt exist>
+	parameter BankAXYSelBit3 = 0;				// The address bit assigned for selecting Upper Bank and upper column address <such as A[19:16] and [12:9] etc.> <equal to 0 means doesnt exist>
+	parameter BankAXYSelBit2 = 0;				// The address bit assigned for selecting Upper Bank and upper column address <such as A[19:16] and [12:9] etc.> <equal to 0 means doesnt exist>
+	parameter BankAXYSelBit1 = 0;				// The address bit assigned for selecting Upper Bank and upper column address <such as A[19:16] and [12:9] etc.> <equal to 0 means doesnt exist>
+	parameter BankAXYSelBit0 = 0;				// The address bit assigned for selecting Upper Bank and upper column address <such as A[19:16] and [12:9] etc.> <equal to 0 means doesnt exist>
+
+	parameter UpperBank1stAddrBitAt = 0;			// The bit allocation of the first upper bank address 
+
+	parameter HaveHDRON = 0;				// 0 means no HDRON i/o
+	parameter HaveMR = 0;					// 0 means no MR i/o
+	parameter HaveTP1C = 0;					// 0 means no TP1C i/o
+	parameter HaveVDD_OK = 0;				// 0 means no VDD_OK i/o
+	parameter HaveD = 0;					// 0 means no D i/o
+	parameter HaveTWLB = 1;					// 0 means no TWLB i/o
+	parameter HaveSAP = 1;					// 0 means no SAP i/o
+	parameter HaveDummyFlag = 1;                            // 0 means no DUMMY_FLAG
+
+	parameter NoAddrAX = 0;					// Must set to "1" only when AX_start == AX_end <as No upper Row address and A_X always 0>
+	parameter NoAddrAY = 0;					// Must set to "1" only when AY_start == AY_end <as No upper Row address and A_Y always 0>
+	parameter NoAddrAQ = 0;					// Must set to "1" only when AQ_start == AQ_end <as No upper Row address and A_Q always 0>
+
+// **************************************
+// ****** Structure of a single QD ******
+// **************************************
+
+	parameter AX_start = 15; 				// address MSB for USER 	<When AX_start=AX_end, A_X always = 0>
+	parameter AX_end = 9;					// address MSB for USER 	<When AX_start=AX_end, A_X always = 0>
+
+	parameter AY_start = 5;					// upper column address MSB for 512 bits of a single QD (1/4 of 2K)	<When AY_start=AY_end, A_Y always 0>
+	parameter AY_end = 0;					// upper column address LSB for 512 bits of a single QD (1/4 of 2K)	<When AY_start=AY_end, A_Y always 0>
+
+	parameter AQ_start = 8;					// lower column address MSB for 512 bits of a single QD (1/4 of 2K)
+	parameter AQ_end = 6;					// lower column address LSB for 512 bits of a single QD (1/4 of 2K)
+
+	parameter numRedundantRow = 1;				// # of redundant rows (of 64-bits wide data, as 16-bit/QD x 4QDs, with 1 redundunt row in each QD, and aligned on the same row)
+	parameter Reserve_address_en = 1;			// Enable reserved address in redundant row check
+
+
+// *************************************************************
+// ****** Others parameters, auto calculated, dont modify ******
+// *************************************************************
+	
+	parameter numAX = AX_start - AX_end + 1;		//7; 2**7=128, row address width of a single bank
+	parameter numAY = AY_start - AY_end + 1;		//6; 2**6=64, upper column address width
+	parameter numAQ = AQ_start - AQ_end + 1;		//3; 2**3=8, lower column address width	
+	parameter numAddr = numAY - NoAddrAY + numAQ - NoAddrAQ + numAX - NoAddrAX + numUpAddr;	//16; full address width 1K*64-bit=65536=2^16 of all Qards 
+	parameter numQBIT_QD = 2**(numAQ - NoAddrAQ);		//3; Dataout bit width per row of a single Quad
+	parameter numQBIT = 2**(numAQ-NoAddrAQ+numQDRowSel);	//8; Dataout bit width per row of all QDs; =2**(4+2); as total of 16bit/QD * 4QD
+	
+	// numABit_line == (numAY + numAQ + upper address);  as number of bits on the same line of all the QDs on the same row for multi QDs configurations
+	parameter numABit_line = numAY - NoAddrAY + numAQ - NoAddrAQ + numQDRowSel; // 11 addr bits per column in input file (of 64-bit wide data) < Data width of LOG file & data file, as total columns address of all Qards per rows >
+	parameter numBit_Line = 2**numABit_line;		// 2048 bits/line in input file (of 64-bit wide data)	 	< Data width of LOG file & data file, as total columns of all Qards per rows >
+//	parameter numLofY = 2**(numAY+numAQ)/numBit_Line; ???	// 1; Number of lines for 1 X row 				< *** Not being used, Dont know, dont care, dont use *** >
+	parameter numALine = numAddr-numABit_line;		// 5=16-11 = addr lines in input file				< address width of total rows of all user QDs per column >
+	parameter numMainLine = 2**numALine; 			// 32=2^(16-11); Total number of lines in main mem/input file	< Total no. of rows of all user QDs per column >
+	parameter numTotLine = numMainLine + numRedundantRow; 	// 32 + 1; Total lines: main+redundant				< Total no. of rows of all user QDs per column + total no. of redundant lines per column >
+	
+	//parameter AXML_start =  // Total lines: main+redundant
+	//parameter AXML_end =    // Total lines: main+redundant
+	
+	parameter numX = 2**(numAX-NoAddrAX);			//32;	< no. of lines, on a single column in a single Qard >
+	parameter numY = 2**(numAY-NoAddrAY);			//32;	< no. of lines, on a single row in a single Qard >
+
+
+// **********************************************
+// ****** Timing parameters from datasheet ******
+// **********************************************
+
+	// **********************************************
+	//Power Up/Down (New parameters for power saving)
+	// **********************************************
+		parameter TTcs_pi = 10_000.000000;	// Controls {(PGM=0 or CLK=0) and HDRON=0} to VDD_OK setup time
+		parameter TTch_pi = 10_000.000000;	// Controls {(PGM=0 or CLK=0) and HDRON=0} to VDD_OK hold time
+		parameter TTps_pi = 10_000.000000;	// VDDP to VDD_OK setup time
+		parameter TTph_pi = 10_000.000000;	// VDDP to VDD_OK hold time
+
+	 
+	// ************************************************************************************
+	// TTiming check for PROGRAM (READ Timing Diagram. VDD_OK should be high for the state)
+	// ************************************************************************************
+	        parameter TTr2s_pp = 100.000000;	// From old project.  Dont know what for !!
+		parameter TThs_pp = 3_000.000000;	// HDRON to CSB setup time
+		parameter TThh_pp = 3_000.000000;	// HDRON to CSB hold time
+	parameter TTvs_pp = 10_000.000000;	// VDDP to CSB setup time
+        parameter TTvh_pp = 1_000.000000;	// VDDP to CSB hold time
+    	parameter TTas_pp = 10.000000;		// Addresses to CSB setup time (and D to CSB setup time)
+	parameter TTah_pp = 10.000000;		// Addresses to CSB hold time (and D to CSB hold time)
+	parameter TTws_pp = 10.000000;		// PGM to CSB setup time
+	parameter TTwh_pp = 10.000000;		// PGM to CSB hold time
+	parameter TTrs_pp = 10.000000;		// RE to CSB setup time
+	parameter TTrh_pp = 10.000000;		// RE to CSB hold time
+	parameter TTss_pp = 7.000000;		// Addresses & D to CLK setup time
+	parameter TTsh_pp = 7.000000;		// Addresses & D to CLK hold time
+	parameter TTsw_min_pp = 9_000.000000;	// CLK pulse min. width
+	parameter TTsw_max_pp = 11_000.000000;	// CLK pulse max. width
+
+
+	// *********************************************************************************
+	// TTiming check for READ (READ Timing Diagram. VDD_OK should be high for the state)
+	// *********************************************************************************
+		parameter TThs_pr = 11_000.000000;	// HDRON to CSB setup time
+		parameter TThh_pr = 11_000.000000;	// HDRON to CSB hold time
+	parameter TTvs_pr = 10_000.000000;	// VDDP to CSB setup time
+	parameter TTvh_pr = 1_000.000000;	// VDDP to CSB hold time
+	parameter TTas_pr = 10.000000;		// Addresses to CSB setup time
+	parameter TTah_pr = 10.000000;		// Addresses to CSB hold time
+	parameter TTws_pr = 10.000000;		// PGM to CSB setup time
+	parameter TTwh_pr = 10.000000;		// PGM to CSB hold time
+	parameter TTrs_pr = 10.000000;		// RE to CSB setup time
+	parameter TTrh_pr = 10.000000;		// RE to CSB hold time
+	parameter TTqh_pr = 0.000000;		// Data out Q hold time after CSB rising edge
+	parameter TTcyc = 50.000000;		// CLK period (clock cycle time)
+	parameter TTckh = 25.000000; 		// CLK pulse peak width
+	parameter TTckl = 25.000000; 		// CLK pulse low width
+	parameter TTras = 7.000000;		// Addresses to CLK rising edge setup time
+	parameter TTrah = 7.000000;		// Addresses to CLK falling edge hold time
+	parameter TTcd =  7.000000; 		// Data out Q access time from CLK rising edge
+	parameter TThold = 5.000000;		// Data out Q hold time after next CLK rising edge
+
+
